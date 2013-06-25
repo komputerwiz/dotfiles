@@ -1,0 +1,6 @@
+[submodule "vim"]
+	path = vim
+	url = matthew@git.komputerwiz.net:git/vim-config.git
+[submodule "zsh"]
+	path = zsh
+	url = matthew@git.komputerwiz.net:git/zsh-config.git
