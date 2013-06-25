@@ -1,17 +1,40 @@
 Host home
-
 HostName custom.komputerwiz.net
 Port 22
 User matthew
 
 Host flagship
-
 HostName 50.56.79.101
 Port 22
 User matthew
 
-Host work
-
+Host tcat
 HostName tcat-mbarry.citd.tamu.edu
 Port 22
 User matthew
+
+Host origin
+HostName git.komputerwiz.net
+User git
+
+Host velma
+HostName vjz-home.dyndns.org
+Port 22
+User matthew
+
+
+Host tamu-cse-linux
+HostName linux.cs.tamu.edu
+Port 22
+User mbarry
+
+Host tamu-cse-unix
+HostName sun.cs.tamu.edu
+Port 22
+User mbarry
+
+# Host rackspace
+# HostName 50.56.69.22
+# Port 22
+# User mbarry
+
