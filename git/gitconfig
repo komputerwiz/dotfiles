@@ -1,0 +1,18 @@
+[user]
+	name = Matthew Barry
+	email = matthew@komputerwiz.net
+[github]
+	user = komputerwiz
+	
+[alias]
+	d = difftool
+	br = branch
+	ci = commit
+	co = checkout
+	sm = submodule
+[core]
+	excludesfile = /home/matthew/.gitignore
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff

@@ -1,0 +1,17 @@
+Host home
+
+HostName custom.komputerwiz.net
+Port 22
+User matthew
+
+Host flagship
+
+HostName 50.56.79.101
+Port 22
+User matthew
+
+Host work
+
+HostName tcat-mbarry.citd.tamu.edu
+Port 22
+User matthew

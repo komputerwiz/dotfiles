@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name=Eclipse
+Name[en_US]=Eclipse
+Comment=Eclipse Integrated Development Environment
+Comment[en_US]=Eclipse Integrated Development Environment
+Icon=eclipse
+Icon[en_US]=eclipse
+Exec=/home/matthew/.local/lib/eclipse/eclipse
+Categories=Development;IDE;Java;

@@ -1,0 +1,19 @@
+## Vim Files
+.*.sw[a-z]
+*.un~
+Session.vim
+
+
+## Emacs Files (hisssssss!)
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*
+
+
+## Vim Pathogen-generated help tags files
+tags
