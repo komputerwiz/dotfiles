@@ -5,14 +5,18 @@
 	user = komputerwiz
 	
 [alias]
-	d = difftool
+	d = diff
+	dt = difftool
 	br = branch
 	ci = commit
 	co = checkout
 	sm = submodule
+	st = status
 [core]
 	excludesfile = /home/matthew/.gitignore
 [diff]
 	tool = vimdiff
 [merge]
 	tool = vimdiff
+[credential]
+	helper = cache --timeout=3600
