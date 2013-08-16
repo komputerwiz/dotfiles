@@ -1,0 +1,2 @@
+#!/bin/sh
+java -jar /home/matthew/.local/games/minecraft.jar

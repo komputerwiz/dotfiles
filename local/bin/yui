@@ -1,0 +1,5 @@
+#!/bin/bash
+
+JAR="$HOME/.local/lib/yui/yuicompressor.jar"
+
+java -jar "$JAR" $*

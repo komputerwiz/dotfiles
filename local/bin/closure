@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# ==============================================================================
+# CONSTANT DECLARATIONS
+# ==============================================================================
+
+#FILE=$(readlink -f $0)
+#DIR=$(dirname $FILE)
+JAR="$HOME/.local/lib/closure/compiler.jar"
+
+# ==============================================================================
+# FUNCTION DECLARATIONS
+# ==============================================================================
+
+print_usage () {
+    printf "Usage: %s: [-o out_file.js] [-O (0|1|2)] file.js\n" "$0"
+}
+
+
+# ==============================================================================
+# COMMAND LINE OPTION PARSING
+# ==============================================================================
+
+while getopts o:O: name; do
+    case $name in
+        # output filename
+        o)
+            out="$OPTARG"
+            ;;
+
+        # optimization/compilation level
+        O)
+            case "$OPTARG" in
+                0)
+                    comp_level="WHITESPACE_ONLY"
+                    ;;
+                1)
+                    comp_level="SIMPLE_OPTIMIZATIONS"
+                    ;;
+                2)
+                    comp_level="ADVANCED_OPTIMIZATIONS"
+                    ;;
+                *)
+                    printf "Unrecognized optimization level: %s\n" "$OPTARG"
+                    exit 1
+                    ;;
+            esac
+            ;;
+
+        # invalid option
+        *)
+            print_usage
+            exit 2
+            ;;
+    esac
+done
+
+shift $(($OPTIND - 1))
+
+
+# ==============================================================================
+# MAIN EXECUTION
+# ==============================================================================
+
+# print usage if no arguments given
+if [ "$#" -eq 0 ]; then
+    print_usage
+    exit 0
+fi
+
+# construct array of file arguments
+declare -a files
+for js_file in "$@"; do
+    files+=(--js "$js_file")
+done
+
+# default output filename:
+# "$FILE.min.js" (for one file)
+# "compiled.min.js" (for multiple files)
+if [ -z "$out" ]; then
+   if [ "${#files[@]}" -eq "2" ]; then
+      out="${1%.*}.min.${1##*.}"
+   else
+      out="compiled.min.${1##*.}"
+   fi
+fi
+
+# run Google Closure Compiler script
+java -jar "$JAR" "${files[@]}" --compilation_level "${comp_level:-"SIMPLE_OPTIMIZATIONS"}" --js_output_file "$out"

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+HSQLDB_HOME="$HOME/.local/lib/hsqldb"
+JAR="$HSQLDB_HOME/hsqldb.jar"
+
+case "$1" in
+    "server" )
+        java -cp "$JAR" org.hsqldb.server.Server --database.0 "file:$HSQLDB_HOME/db/test" --dbname.0 test $*
+        ;;
+    * )
+        java -cp "$JAR" org.hsqldb.util.DatabaseManagerSwing $*
+        ;;
+esac
