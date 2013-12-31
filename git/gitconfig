@@ -1,6 +1,6 @@
 [user]
 	name = Matthew Barry
-	email = matthew@komputerwiz.net
+	email = komputerwiz.matt@gmail.com
 [github]
 	user = komputerwiz
 	
@@ -20,3 +20,5 @@
 	tool = vimdiff
 [credential]
 	helper = cache --timeout=3600
+[push]
+	default = simple
