@@ -50,8 +50,6 @@ xftalpha 0.5
 
 uppercase no
 
-temperature_unit celsius
-
 
 default_color FFFFFF
 
@@ -63,7 +61,7 @@ TEXT
 ${voffset 8}${color 00FFFF}${font caviar dreams:size=16}${time %A}${font}${voffset -8}${alignr 50}${color FFFFFF}${font caviar dreams:size=38}${time %e}${font}
 ${color FFFFFF}${voffset -30}${color FFFFFF}${font caviar dreams:size=18}${time %b}${font}${voffset -3} ${color FFFFFF}${font caviar dreams:size=20}${time %Y}${font}${color 00FFFF}${hr}
 ${voffset 140}${font caviar dreams:size=10}${alignr}HOME${font}
-${font caviar dreams:size=12}${color FFFFFF}${alignr}${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KCLL temperature temperature 30} °C${font}
+${font caviar dreams:size=12}${color FFFFFF}${alignr}${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KCLL temperature temperature 30} °F${font}
 
 ${color FFFFFF}${goto 25}${voffset 35}${cpu cpu0}%
 ${color 00FFFF}${goto 25}CPU
