@@ -1,24 +1,25 @@
 [user]
-	name = Matthew Barry
-	email = komputerwiz.matt@gmail.com
+    name = Matthew Barry
+    email = komputerwiz.matt@gmail.com
 [github]
-	user = komputerwiz
-	
+    user = komputerwiz
+    
 [alias]
-	d = diff
-	dt = difftool
-	br = branch
-	ci = commit
-	co = checkout
-	sm = submodule
-	st = status
+    br = branch
+    ci = commit
+    co = checkout
+    d = diff
+    dt = difftool
+    f = fetch
+    sm = submodule
+    st = status
 [core]
-	excludesfile = /home/matthew/.gitignore
+    excludesfile = /home/matthew/.gitignore
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [credential]
-	helper = cache --timeout=3600
+    helper = cache --timeout=3600
 [push]
-	default = simple
+    default = simple
