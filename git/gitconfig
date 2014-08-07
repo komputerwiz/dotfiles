@@ -14,7 +14,7 @@
     sm = submodule
     st = status
 [core]
-    excludesfile = /home/matthew/.gitignore
+    excludesfile = ~/.gitignore
 [diff]
     tool = vimdiff
 [merge]
@@ -23,3 +23,5 @@
     helper = cache --timeout=3600
 [push]
     default = simple
+[init]
+    templatedir ~/.git_template
