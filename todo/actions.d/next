@@ -1,0 +1,68 @@
+#!/bin/bash
+
+action=$1
+shift
+
+[ "$action" = "usage" ] && {
+  echo "  next:"
+  echo " todo.sh next"
+  echo " if todo.txt is an outline with"
+  echo " tabbed indentations, next " 
+  echo " displays tasks with no tasks or "
+  echo " higher siblings actions "
+  exit
+}
+
+
+# put next items in todo.txt
+TOTAL=$( sed -n '$ =' "$TODO_FILE" )
+            PADDING=${#TOTAL}
+awk 'BEGIN {
+    FS = "\t";
+    main = 1
+    isprevleaf = 1
+    curr=0
+    } ;
+    {
+    prev=curr
+    prevLine=currLine
+    curr=NF
+    currLine=$curr
+    # identify isprevleaf
+    if (prev >= curr){
+      isprevleaf=1
+    }
+    else
+    {isprevleaf=0}
+
+    if (isprevleaf && main)
+      {isprevnext=1}
+    else
+      {isprevnext=0}
+    if( isprevnext == 1)
+      {
+        print prevLine
+      }
+    else
+      {
+        if (NR > 1)
+        print NR  
+      }
+ 
+
+    # if prev is isprevleaf, curr is off main trunk
+    if (isprevleaf > 0){
+      main =0
+    }
+
+    # new root means back on main
+    if (curr==1){
+      main=1
+    }
+
+}
+END {
+  if ((main==1 && curr > prev) || curr==1)
+    print currLine
+}'  $TODO_FILE    | TODOTXT_VERBOSE=0 _format '' "$PADDING" "$@"
+
