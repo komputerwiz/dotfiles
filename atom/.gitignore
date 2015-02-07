@@ -1,0 +1,7 @@
+/packages/*
+!/packages/packages.cson
+/storage/*
+/compile-cache/*
+/dev/*
+/.npm/*
+/.node-gyp/*
