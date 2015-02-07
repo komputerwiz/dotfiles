@@ -4,3 +4,6 @@
 [submodule "zsh"]
 	path = zsh
 	url = matthew@git.komputerwiz.net:git/zsh-config.git
+[submodule "atom"]
+	path = atom
+	url = matthew@git.komputerwiz.net:git/atom-config.git
