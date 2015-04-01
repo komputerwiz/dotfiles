@@ -8,6 +8,11 @@ HostName 50.56.79.101
 Port 22
 User matthew
 
+Host sentinel
+HostName 104.239.142.75
+Port 22
+User matthew
+
 Host tcat
 HostName tcat-mbarry.citd.tamu.edu
 Port 22
@@ -23,15 +28,15 @@ Port 22
 User matthew
 
 
-Host tamu-cse-linux
-HostName linux.cs.tamu.edu
-Port 22
-User mbarry
+# Host tamu-cse-linux
+# HostName linux.cs.tamu.edu
+# Port 22
+# User mbarry
 
-Host tamu-cse-unix
-HostName sun.cs.tamu.edu
-Port 22
-User mbarry
+# Host tamu-cse-unix
+# HostName sun.cs.tamu.edu
+# Port 22
+# User mbarry
 
 # Host rackspace
 # HostName 50.56.69.22
