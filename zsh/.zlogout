@@ -10,7 +10,7 @@
 
 ### UPDATE SCRIPT DEFINITION ###
 
-update_scripts=("$HOME/.vim/update.sh" "$HOME/.zsh/update.sh")
+update_scripts=("$HOME/.vim/update.sh")
 
 
 ### SYSTEM-SPECIFIC OVERRIDE SETTINGS ###
