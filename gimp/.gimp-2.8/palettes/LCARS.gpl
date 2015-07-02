@@ -1,0 +1,14 @@
+GIMP Palette
+Name: LCARS
+Columns: 5
+#
+  0   0   0	Background
+255 204 102	Navigation
+255 204   0	Critical
+204 102 102	Display Functions
+153 204 255	System Functions
+204 153 204	Misc. Functions
+ 51 102 204	Unavailable
+255 255 153	Static Function
+255   0   0	Offline Function
+255 255 255	Primary Function
