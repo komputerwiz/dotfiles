@@ -1,0 +1,158 @@
+snippet notes "wiki notes header"
+{{Notes2 | ${1:class} | ${2:Lecture} | ${3:#}
+| date = ${4:`!p
+from datetime import date
+snip.rv = date.today().isoformat()
+`}${6:
+| exam = ${5:#}}${7:
+| last = true}
+}}
+endsnippet
+
+snippet eqs "multi-line equations"
+<math>\begin{align}
+$0
+\end{align}</math>
+endsnippet
+
+snippet Eqs "multi-line centered equations"
+<center><big><math>\begin{align}
+$0
+\end{align}</math></big></center>
+endsnippet
+
+snippet c "code tags"
+<code>$0</code>
+endsnippet
+
+snippet src "source code syntax highlighting"
+<source lang="${1:cpp}">
+$0
+</source>
+endsnippet
+
+snippet m "math tags"
+<math>$0</math>
+endsnippet
+
+snippet M "centered math tags"
+<center><big><math>$0</math></big></center>
+endsnippet
+
+snippet begin "begin-end environment"
+\begin{$1}
+$0
+\end{$1}
+endsnippet
+
+snippet thm "theorem and proof"
+<div class="theorem-proof${1: important}${2: mw-collapsible${3: mw-collapsed}}"><div class="theorem">
+'''Theorem.''' $4
+</div><div class="proof mw-collapsible-content">
+''Proof.'' $0
+</div>{{QED}}</div>
+endsnippet
+
+
+
+
+
+
+
+
+
+snippet diff "differentiation in LaTeX"
+\frac{\mathrm{d}${1:y}}{\mathrm{d}${2:x}}
+endsnippet
+
+snippet pdiff "partial differentiation in LaTeX"
+\frac{\partial ${1:y}}{\partial ${2:x}}
+endsnippet
+
+snippet int "Integral"
+\int${2:_{${1:a}}}${4:^{${3:b}}}
+endsnippet
+
+snippet d "differential"
+\,\mathrm{d}
+endsnippet
+
+snippet frac "fraction in LaTeX"
+\frac{${1:1}}{${2:n}}
+endsnippet
+
+snippet lim "limit"
+\lim_{${1:x} \to ${2:\infty}}
+endsnippet
+
+snippet e "natural exponent in LaTeX"
+\mathrm{e}^{${1:x}}
+endsnippet
+
+snippet gcd "greatest common divisor"
+\mathrm{gcd}\left($1, $2\right)
+endsnippet
+
+snippet lcm "least common multiple"
+\mathrm{lcm}\left($1, $2\right)
+endsnippet
+
+snippet NN "Set of natural numbers"
+\mathbb{N}
+endsnippet
+
+snippet ZZ "Set of integers"
+\mathbb{Z}
+endsnippet
+
+snippet QQ "Set of rational numbers"
+\mathbb{Q}
+endsnippet
+
+snippet RR "Set of real numbers"
+\mathbb{R}
+endsnippet
+
+snippet CC "Set of complex numbers"
+\mathbb{C}
+endsnippet
+
+snippet ( "LR parens"
+\left( $1 \right)
+endsnippet
+
+snippet [ "LR braces"
+\left[ $1 \right]
+endsnippet
+
+snippet { "LR braces"
+\left\{ $1 \right\}
+endsnippet
+
+snippet < "LR angle brackets"
+\left\langle $1 \right\rangle
+endsnippet
+
+snippet | "Absolute Value / Magnitude"
+\left| $1 \right|
+endsnippet
+
+snippet || "norm"
+\left\| $1 \right\|
+endsnippet
+
+snippet floor "floor / greatest integer"
+\left\lfloor $1 \right\rfloor
+endsnippet
+
+snippet ceil "ceiling"
+\left\lceil $1 \right\rceil
+endsnippet
+
+snippet eval "evaluation notation"
+\left. ${1:f} \right|${3:_{${2:a}}}${5:^{${4:b}}}
+endsnippet
+
+snippet laplace "Laplace Transform"
+\mathcal{L} \left\{ $1 \right\}
+endsnippet
