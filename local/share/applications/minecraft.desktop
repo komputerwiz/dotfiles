@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Minecraft
-Comment=Blocks!
-Icon=/home/matthew/.local/share/pixmaps/minecraft.svg
-Exec=/home/matthew/.local/bin/minecraft
-Terminal=false
-Type=Application
-Categories=Game;
-StartupNotify=true
