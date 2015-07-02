@@ -1,0 +1,9 @@
+#!/bin/sh
+
+JARFILE="/home/matthew/.local/games/minecraft.jar"
+
+if [ ! -f "$JARFILE" ]; then
+    curl --create-dirs -s -O "$JARFILE" "https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar"
+fi
+
+java -jar "$JARFILE"
