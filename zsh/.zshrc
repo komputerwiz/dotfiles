@@ -155,6 +155,14 @@ whatsup () diff <(lsof -p $1) <(sleep ${2:-10}; lsof -p $1)
 # automatically LS after CD
 cdls () { cd "$@" && ls; }
 
+# aggressive garbage collection on a git repo
+git-gc-aggressive () {
+    rm -rf .git/refs/original/*
+    git reflog expire --all --expire-unreachable=0
+    git repack -A -d
+    git prune
+}
+
 
 ### SYSTEM-SPECIFIC OVERRIDE SETTINGS ###
 
