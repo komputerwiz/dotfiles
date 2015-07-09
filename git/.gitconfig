@@ -19,9 +19,12 @@
     tool = vimdiff
 [merge]
     tool = vimdiff
+    ff = false
 [credential]
     helper = cache --timeout=3600
 [push]
     default = simple
+[pull]
+    rebase = true
 [init]
     templatedir = ~/.git_template
