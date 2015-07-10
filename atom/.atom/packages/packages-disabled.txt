@@ -1,0 +1,6 @@
+git-log
+language-ejs
+language-haxe
+language-latex
+seti-ui
+vim-mode

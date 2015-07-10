@@ -1,5 +1,5 @@
 /packages/*
-!/packages/packages.cson
+!/packages/packages*.txt
 /storage/*
 /compile-cache/*
 /dev/*
