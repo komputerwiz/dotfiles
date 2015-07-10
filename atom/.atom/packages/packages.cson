@@ -1,6 +1,7 @@
 packages: [
     'atom-beautify'
     'atom-jinja2'
+    'atom-ternjs'
     'autocomplete-paths'
     'color-picker'
     'docblockr'
@@ -21,6 +22,7 @@ packages: [
     'minimap'
     'minimap-highlight-selected'
     'minimap-selection'
+    'project-manager'
     # 'seti-ui'
     # 'vim-mode'
 ]
