@@ -13,6 +13,7 @@ linter-csslint
 linter-eslint
 linter-htmlhint
 linter-jsonlint
+linter-php
 merge-conflicts
 minimap
 minimap-highlight-selected
