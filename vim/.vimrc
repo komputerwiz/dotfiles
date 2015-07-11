@@ -49,6 +49,7 @@ Plugin 'tpope/vim-unimpaired'
 
 " vim-scripts hosted plugins
 " See http://vim-scripts.org/vim/scripts.html
+Plugin 'camelcasemotion'
 Plugin 'ebnf.vim'
 
 call vundle#end()
