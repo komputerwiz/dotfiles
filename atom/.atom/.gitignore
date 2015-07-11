@@ -7,3 +7,4 @@
 /.npm/*
 /.node-gyp/*
 /nohup.out
+/projects.cson
