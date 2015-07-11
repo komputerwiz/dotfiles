@@ -56,6 +56,8 @@
   "one-dark-ui":
     layoutMode: "Compact"
   "linter-htmlhint": {}
+  "project-manager": {}
+  "atom-ternjs": {}
 ".html.jinja.text":
   editor:
     preferredLineLength: 100
