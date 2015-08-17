@@ -113,6 +113,7 @@ set spelllang=en_us
 
 set foldmethod=syntax
 set foldcolumn=4
+set foldlevelstart=20           " expand 20 levels of folds by default
 
 
 " ====== "
