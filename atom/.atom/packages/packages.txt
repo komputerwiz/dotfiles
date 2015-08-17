@@ -18,4 +18,6 @@ merge-conflicts
 minimap
 minimap-highlight-selected
 minimap-selection
+php-debug
+php-twig
 project-manager
