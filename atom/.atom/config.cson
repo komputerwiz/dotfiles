@@ -1,74 +1,111 @@
 "*":
-  "exception-reporting":
-    userId: "586d1198-37a4-c54f-7140-5fc8f718d6a9"
-  editor:
-    invisibles: {}
-    fontFamily: "Ubuntu Mono"
-    preferredLineLength: 100
-    showIndentGuide: true
-    showInvisibles: true
-    scrollPastEnd: true
-    lineHeight: 1.1
-    softWrap: true
-    tabLength: 4
-    zoomFontWhenCtrlScrolling: false
-    fontSize: 12
-  core:
+  "atom-beautify":
+    html_indent_inner_html: true
+    js_space_after_anon_function: true
+
+  "atom-ternjs": {}
+
+  "autocomplete-plus":
+    confirmCompletion: "tab and enter"
+
+  "autosave":
+    enabled: true
+
+  "core":
+    autoHideMenuBar: true
+    followSymlinks: true
     themes: [
       "one-dark-ui"
       "solarized-dark-syntax"
     ]
-    autoHideMenuBar: true
-    followSymlinks: true
-  linter:
+
+  "docblockr":
+    lower_case_primitives: true
+
+  "editor":
+    fontFamily: "Ubuntu Mono"
+    fontSize: 12
+    invisibles: {}
+    lineHeight: 1.1
+    preferredLineLength: 100
+    showIndentGuide: true
+    showInvisibles: true
+    scrollPastEnd: true
+    softWrap: true
+    tabLength: 4
+    zoomFontWhenCtrlScrolling: false
+
+  "emmet": {}
+
+  "exception-reporting":
+    userId: "586d1198-37a4-c54f-7140-5fc8f718d6a9"
+
+  "fuzzy-finder": {}
+
+  "linter":
     showErrorInline: false
     statusBar: "Show error of the selected line"
-  minimap:
+
+  "linter-csslint": {}
+
+  "linter-eslint":
+    showRuleIdInMessage: true
+
+  "linter-htmlhint": {}
+
+  "linter-jsonlint": {}
+
+  "markdown-preview": {}
+
+  "minimap":
     charHeight: 1
     plugins:
       "highlight-selected": true
       selection: true
     scrollAnimation: true
-  "autocomplete-plus":
-    confirmCompletion: "tab and enter"
-  emmet: {}
-  docblockr:
-    lower_case_primitives: true
-  welcome:
-    showOnStartup: false
-  "linter-csslint": {}
-  "linter-eslint":
-    showRuleIdInMessage: true
-  "atom-beautify":
-    html_indent_inner_html: true
-    js_space_after_anon_function: true
-  "linter-jsonlint": {}
-  autosave:
-    enabled: true
-  "fuzzy-finder": {}
-  "markdown-preview": {}
-  "spell-check": {}
-  tabs: {}
-  whitespace:
-    ignoreWhitespaceOnCurrentLine: false
-  "tree-view":
-    hideVcsIgnoredFiles: false
+
   "one-dark-ui":
     layoutMode: "Compact"
-  "linter-htmlhint": {}
+
   "project-manager": {}
-  "atom-ternjs": {}
+
+  "spell-check": {}
+
+  "tabs": {}
+
+  "tree-view":
+    hideVcsIgnoredFiles: false
+
+  "welcome":
+    showOnStartup: false
+
+  "whitespace":
+    ignoreWhitespaceOnCurrentLine: false
+
+
+
+# syntax-specific settings
+
+
+# CoffeeScript
+
 ".coffee.source":
   editor:
     preferredLineLength: 100
     tabLength: 2
-".html.jinja.text":
-  editor:
-    preferredLineLength: 100
-".jinja.source":
-  editor:
-    preferredLineLength: 100
+
 ".litcoffee.source":
   editor:
     preferredLineLength: 100
     tabLength: 2
+
+
+# Jinja
+
+".html.jinja.text":
+  editor:
+    preferredLineLength: 100
+
+".jinja.source":
+  editor:
+    preferredLineLength: 100
