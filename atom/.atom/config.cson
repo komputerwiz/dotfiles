@@ -58,9 +58,17 @@
   "linter-htmlhint": {}
   "project-manager": {}
   "atom-ternjs": {}
+".coffee.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 2
 ".html.jinja.text":
   editor:
     preferredLineLength: 100
 ".jinja.source":
   editor:
     preferredLineLength: 100
+".litcoffee.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 2
