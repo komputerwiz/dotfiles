@@ -1,0 +1,7 @@
+# integrate with gnome 3:
+# https://wiki.archlinux.org/index.php/Conky#Integrate_with_Gnome_3
+
+own_window yes
+own_window_type conky
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
