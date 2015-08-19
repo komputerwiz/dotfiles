@@ -1,7 +1,47 @@
 # integrate with gnome 3:
 # https://wiki.archlinux.org/index.php/Conky#Integrate_with_Gnome_3
-
 own_window yes
-own_window_type conky
 own_window_transparent yes
+own_window_argb_visual yes
+own_window_argb_value 200
+own_window_type dock # instead of 'conky'
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# prevent flicker
+double_buffer yes
+
+# positioning
+gap_x 1920
+gap_y 30
+
+update_interval 1.0
+
+# font config
+#draw_outline no
+#draw_borders no
+use_xft yes
+xftfont UbuntuMono:size=9
+
+TEXT
+C P U ${hr 1}
+${cpugraph cpu0 40,465}
+${cpugraph cpu1 20,75}${offset 3}\
+${cpugraph cpu2 20,75}${offset 3}\
+${cpugraph cpu3 20,75}${offset 3}\
+${cpugraph cpu4 20,75}${offset 3}\
+${cpugraph cpu5 20,75}${offset 3}\
+${cpugraph cpu6 20,75}
+${cpugraph cpu7 20,75}${offset 3}\
+${cpugraph cpu8 20,75}${offset 3}\
+${cpugraph cpu9 20,75}${offset 3}\
+${cpugraph cpu10 20,75}${offset 3}\
+${cpugraph cpu11 20,75}${offset 3}\
+${cpugraph cpu12 20,75}
+
+M E M O R Y ${hr 1}
+${memgraph 40,465}
+
+W E A T H E R ${hr 1}
+${execi 60 curl -s http://weather.noaa.gov/pub/data/observations/metar/stations/KCLL.TXT | tail -1}
+
+${execi 3600 curl -s http://weather.noaa.gov/pub/data/forecasts/taf/stations/KCLL.TXT | tail -n +2}
