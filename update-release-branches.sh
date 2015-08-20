@@ -57,7 +57,7 @@ for host_branch in $(git branch -a | grep host | grep -v _skel | sed -E -e 's/^.
     echo "D"
 done
 
-echo "host/_skel: "
+echo -n "host/_skel: "
 
 # switch to master...
 git checkout master > /dev/null 2>&1
