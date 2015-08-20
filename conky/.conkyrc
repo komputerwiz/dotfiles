@@ -10,9 +10,10 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 # prevent flicker
 double_buffer yes
 
-# positioning
-gap_x 1920
+# positioning and size
+gap_x 1930
 gap_y 30
+minimum_size 480 400
 
 update_interval 1.0
 
@@ -22,26 +23,29 @@ update_interval 1.0
 use_xft yes
 xftfont UbuntuMono:size=9
 
+# increase text buffer to allow for long TAFs
+text_buffer_size 300
+
 TEXT
 C P U ${hr 1}
-${cpugraph cpu0 40,465}
-${cpugraph cpu1 20,75}${offset 3}\
-${cpugraph cpu2 20,75}${offset 3}\
-${cpugraph cpu3 20,75}${offset 3}\
-${cpugraph cpu4 20,75}${offset 3}\
-${cpugraph cpu5 20,75}${offset 3}\
-${cpugraph cpu6 20,75}
-${cpugraph cpu7 20,75}${offset 3}\
-${cpugraph cpu8 20,75}${offset 3}\
-${cpugraph cpu9 20,75}${offset 3}\
-${cpugraph cpu10 20,75}${offset 3}\
-${cpugraph cpu11 20,75}${offset 3}\
-${cpugraph cpu12 20,75}
+${cpugraph cpu0 40,477}
+${cpugraph cpu1 20,77}${offset 3}\
+${cpugraph cpu2 20,77}${offset 3}\
+${cpugraph cpu3 20,77}${offset 3}\
+${cpugraph cpu4 20,77}${offset 3}\
+${cpugraph cpu5 20,77}${offset 3}\
+${cpugraph cpu6 20,77}
+${cpugraph cpu7 20,77}${offset 3}\
+${cpugraph cpu8 20,77}${offset 3}\
+${cpugraph cpu9 20,77}${offset 3}\
+${cpugraph cpu10 20,77}${offset 3}\
+${cpugraph cpu11 20,77}${offset 3}\
+${cpugraph cpu12 20,77}
 
 M E M O R Y ${hr 1}
-${memgraph 40,465}
+${memgraph 40,477}
 
 W E A T H E R ${hr 1}
-${execi 60 curl -s http://weather.noaa.gov/pub/data/observations/metar/stations/KCLL.TXT | tail -1}
+${execi 60 curl -s http://weather.noaa.gov/pub/data/observations/metar/stations/KCLL.TXT | tail -n +2 | fold -s}
 
-${execi 3600 curl -s http://weather.noaa.gov/pub/data/forecasts/taf/stations/KCLL.TXT | tail -n +2}
+${execi 3600 curl -s http://weather.noaa.gov/pub/data/forecasts/taf/stations/KCLL.TXT | tail -n +2 | fold -s}
