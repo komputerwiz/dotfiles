@@ -12,23 +12,23 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " GitHub-hosted plugins
-Plugin 'JuliaLang/julia-vim'
-Plugin 'Rykka/riv.vim'
+"Plugin 'JuliaLang/julia-vim'
+"Plugin 'Rykka/riv.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'avakhov/vim-yaml', {'name': 'vim-yaml-indent'}
-Plugin 'chikamichi/mediawiki.vim'
-Plugin 'digitaltoad/vim-jade'
+"Plugin 'chikamichi/mediawiki.vim'
+"Plugin 'digitaltoad/vim-jade'
 Plugin 'ervandew/supertab'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
-Plugin 'groenewege/vim-less'
-Plugin 'hail2u/vim-css3-syntax'
+"Plugin 'groenewege/vim-less'
+"Plugin 'hail2u/vim-css3-syntax'
 Plugin 'honza/vim-snippets'    " engine for UltiSnips
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'juvenn/mustache.vim'
-Plugin 'kchmck/vim-coffee-script'
+"Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -167,20 +167,20 @@ noremap <silent> <F4> :w<CR>:make<CR>:cw<CR>
 
 " exchange lines like in eclipse; we do want recursive mapping...
 " vim-style up/down
-nmap <A-k> [e
-imap <A-k> [e
-vmap <A-k> [egv
-nmap <A-j> ]e
-imap <A-j> ]e
-vmap <A-j> ]egv
+nnoremap <A-k> [e
+inoremap <A-k> [e
+vnoremap <A-k> [egv
+nnoremap <A-j> ]e
+inoremap <A-j> ]e
+vnoremap <A-j> ]egv
 
 " arrow keys
-nmap <A-Up> [e
-imap <A-Up> [e
-vmap <A-Up> [egv
-nmap <A-Down> ]e
-imap <A-Down> ]e
-vmap <A-Down> ]egv
+nnoremap <A-Up> [e
+inoremap <A-Up> [e
+vnoremap <A-Up> [egv
+nnoremap <A-Down> ]e
+inoremap <A-Down> ]e
+vnoremap <A-Down> ]egv
 
 
 " ======================================================= "
@@ -264,7 +264,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "  Riv Plugin Variables  "
 " ====================== "
 
-let g:riv_default_path = '~'
+"let g:riv_default_path = '~'
 
 
 " ========================= "
