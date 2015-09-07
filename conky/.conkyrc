@@ -27,6 +27,8 @@ xftfont UbuntuMono:size=9
 text_buffer_size 300
 
 TEXT
+$nodename // $kernel // up $uptime // load $loadavg
+
 C P U ${hr 1}
 ${cpugraph cpu0 40,477}
 ${cpugraph cpu1 20,77}${offset 3}\
@@ -44,6 +46,14 @@ ${cpugraph cpu12 20,77}
 
 M E M O R Y ${hr 1}
 ${memgraph 40,477}
+
+D I S K   ( R / W ) ${hr 1}
+${diskiograph_read /dev/sdb 20,237}${offset 3}\
+${diskiograph_write /dev/sdb 20,237}
+
+N E T W O R K   ( U / D ) ${hr 1}
+${upspeedgraph eth0 20,237}${offset 3}\
+${downspeedgraph eth0 20,237}
 
 W E A T H E R ${hr 1}
 ${execi 60 curl -s http://weather.noaa.gov/pub/data/observations/metar/stations/KCLL.TXT | tail -n +2 | fold -s}
