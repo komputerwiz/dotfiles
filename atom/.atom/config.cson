@@ -28,9 +28,9 @@
     invisibles: {}
     lineHeight: 1.1
     preferredLineLength: 100
+    scrollPastEnd: true
     showIndentGuide: true
     showInvisibles: true
-    scrollPastEnd: true
     softWrap: true
     tabLength: 4
     zoomFontWhenCtrlScrolling: false
