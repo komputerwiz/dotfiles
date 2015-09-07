@@ -109,3 +109,11 @@
 ".jinja.source":
   editor:
     preferredLineLength: 100
+
+
+# Github-flavored markdown
+
+".gfm.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 2
