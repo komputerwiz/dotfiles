@@ -28,7 +28,7 @@ Plugin 'godlygeek/tabular'
 "Plugin 'hail2u/vim-css3-syntax'
 Plugin 'honza/vim-snippets'    " engine for UltiSnips
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'juvenn/mustache.vim'
+"Plugin 'juvenn/mustache.vim'
 "Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
