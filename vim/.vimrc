@@ -16,6 +16,7 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'Rykka/riv.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'avakhov/vim-yaml', {'name': 'vim-yaml-indent'}
 "Plugin 'chikamichi/mediawiki.vim'
