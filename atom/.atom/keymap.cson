@@ -25,6 +25,7 @@
 # https://github.com/bevry/cson#what-is-cson
 'atom-text-editor':
   'ctrl-space': 'autocomplete-plus:activate'
+  'alt-shift-L': 'editor:split-selections-into-lines'
 'atom-text-editor:not([mini])':
   'ctrl-e': 'emmet:expand-abbreviation'
   'ctrl-,': 'unset!'
