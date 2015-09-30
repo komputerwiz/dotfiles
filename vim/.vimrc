@@ -25,6 +25,7 @@ Plugin 'ervandew/supertab'
 Plugin 'evidens/vim-twig'
 "Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
+Plugin 'junegunn/goyo.vim'
 "Plugin 'groenewege/vim-less'
 "Plugin 'hail2u/vim-css3-syntax'
 Plugin 'honza/vim-snippets'    " engine for UltiSnips
@@ -166,6 +167,8 @@ noremap <silent> <F2> :let &background = ( &background == 'dark' ? 'light' : 'da
 noremap <silent> <F3> :NERDTreeToggle<CR>
 " build and display errors
 noremap <silent> <F4> :w<CR>:make<CR>:cw<CR>
+" toggle goyo.vim distraction-free mode
+noremap <silent> <F11> :Goyo<CR>
 
 " exchange lines like in eclipse; we do want recursive mapping...
 " vim-style up/down
