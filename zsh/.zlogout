@@ -13,15 +13,6 @@
 update_scripts=("$HOME/.vim/update.sh")
 
 
-### SYSTEM-SPECIFIC OVERRIDE SETTINGS ###
-
-if [[ -s "$HOME/.zlogout.local" ]]; then
-    . "$HOME/.zlogout.local"
-elif [[ -s "$HOME/.zsh/host/${HOST%%.*}/zlogout" ]]; then
-    . "$HOME/.zsh/host/${HOST%%.*}/zlogout"
-fi
-
-
 ### AUTOMATIC UPDATES ###
 
 LOCKFILE="$HOME/.zsh/var/update_epoch.lock"
@@ -53,15 +44,6 @@ if [ -f "$LOCKFILE" ]; then
     fi
 else
     _update_update_lock
-fi
-
-
-### SYSTEM-SPECIFIC OVERRIDE SETTINGS ###
-
-if [[ -s "$HOME/.zlogout_after.local" ]]; then
-    . "$HOME/.zlogout_after.local"
-elif [[ -s "$HOME/.zsh/host/${HOST%%.*}/zlogout_after" ]]; then
-    . "$HOME/.zsh/host/${HOST%%.*}/zlogout_after"
 fi
 
 

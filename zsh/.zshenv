@@ -8,15 +8,6 @@
 #    /etc/zlogout   +  ~/.zlogout
 
 
-### SYSTEM-SPECIFIC OVERRIDE SETTINGS ###
-
-if [[ -s "$HOME/.zshenv.local" ]]; then
-    . "$HOME/.zshenv.local"
-elif [[ -s "$HOME/.zsh/host/${HOST%%.*}/zshenv" ]]; then
-    . "$HOME/.zsh/host/${HOST%%.*}/zshenv"
-fi
-
-
 ### ENVIRONMENT VARIABLES AND OPTIONS ###
 
 # my files are not writable
@@ -33,11 +24,3 @@ if [[ -d $HOME/.local/bin ]]; then
 fi
 
 export PATH="$PATH:."
-
-### SYSTEM-SPECIFIC OVERRIDE SETTINGS ###
-
-if [[ -s "$HOME/.zshenv_after.local" ]]; then
-    . "$HOME/.zshenv_after.local"
-elif [[ -s "$HOME/.zsh/host/${HOST%%.*}/zshenv_after" ]]; then
-    . "$HOME/.zsh/host/${HOST%%.*}/zshenv_after"
-fi

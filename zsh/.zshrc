@@ -41,7 +41,7 @@ DISABLE_CORRECTION="true"
 DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you want to disable marking untracked files under
 # VCS as dirty. This makes repository status check for large repositories much,
@@ -66,15 +66,6 @@ plugins=(
     vi-mode
     wd
 )
-
-
-### SYSTEM-SPECIFIC OVERRIDE SETTINGS ###
-
-if [[ -s "$HOME/.zshrc.local" ]]; then
-    . "$HOME/.zshrc.local"
-elif [[ -s "$HOME/.zsh/host/${HOST%%.*}/zshrc" ]]; then
-    . "$HOME/.zsh/host/${HOST%%.*}/zshrc"
-fi
 
 
 ### LOAD OH-MY-ZSH ###
@@ -162,12 +153,3 @@ git-gc-aggressive () {
     git repack -A -d
     git prune
 }
-
-
-### SYSTEM-SPECIFIC OVERRIDE SETTINGS ###
-
-if [[ -s "$HOME/.zshrc_after.local" ]]; then
-    . "$HOME/.zshrc_after.local"
-elif [[ -s "$HOME/.zsh/host/${HOST%%.*}/zshrc_after" ]]; then
-    . "$HOME/.zsh/host/${HOST%%.*}/zshrc_after"
-fi
