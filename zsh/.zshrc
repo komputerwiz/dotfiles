@@ -1,36 +1,45 @@
-#!/bin/zsh
+# .zlogin
+# This file is loaded only if the shell is a login shell:
+#    /etc/zshenv    +  ~/.zshenv
+#    /etc/zprofile  +  ~/.zprofile
+# -> /etc/zshrc     +  ~/.zshrc
+#    /etc/zlogin    +  ~/.zlogin
+#    ...
+#    /etc/zlogout   +  ~/.zlogout
+
+### ANTIGEN ###
+
+source "$HOME/.antigen/antigen.zsh"
+
+
+### FRAMEWORK CONFIG ###
 
 DISABLE_CORRECTION="true"
 
-source "$HOME/.zgen/zgen.zsh"
 
-if ! zgen saved; then
-    zgen oh-my-zsh
+### OH-MY-ZSH FRAMEWORK AND PLUGINS ###
 
-    # plugins
-    zgen oh-my-zsh plugins/brew
-    zgen oh-my-zsh plugins/brew-cask
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/git-flow
-    zgen oh-my-zsh plugins/history
-    zgen oh-my-zsh plugins/history-substring-search
-    zgen oh-my-zsh plugins/osx
-    zgen oh-my-zsh plugins/rbenv
-    zgen oh-my-zsh plugins/sublime
-    zgen oh-my-zsh plugins/sudo
-    zgen oh-my-zsh plugins/symfony2
-    zgen oh-my-zsh plugins/terminalapp
-    zgen oh-my-zsh plugins/tmux
-    zgen oh-my-zsh plugins/vi-mode
-    zgen oh-my-zsh plugins/wd
+antigen use oh-my-zsh
 
-    zgen load unixorn/autoupdate-zgen
+antigen bundle git
+#antigen bundle git-flow
+antigen bundle history
+antigen bundle history-substring-search
+#antigen bundle rbenv
+#antigen bundle sublime
+antigen bundle sudo
+#antigen bundle symfony2
+#antigen bundle tmux
+#antigen bundle vi-mode
+antigen bundle wd
 
-    zgen load "$HOME/.zsh/plugins/reboot-notifier.plugin.zsh"
-    zgen load "$HOME/.zsh/themes/komputerwiz"
+antigen bundle "$HOME/.zsh/plugins/reboot-notifier"
 
-    zgen save
-fi
+# autosuggestions should be loaded last
+#antigen bundle jimmijj/zsh-syntax-highlighting
+antigen bundle tarruda/zsh-autosuggestions
+
+antigen theme "$HOME/.zsh/themes" komputerwiz
 
 
 ### OPTIONS ###
@@ -40,6 +49,8 @@ setopt no_hist_verify   # immediately execute history line
 setopt no_list_beep     # do not beep for autocomplete
 setopt dvorak           # oh yeah!
 
+
+### KEY BINDINGS ###
 
 zmodload zsh/terminfo
 
@@ -53,11 +64,8 @@ bindkey "$terminfo[kdch1]" delete-char-or-list
 # see https://github.com/robbyrussell/oh-my-zsh/issues/2735
 
 # bind k and j for VI mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
-# fix issue with esc key binding for sudo plugin
-#bindkey -M vicmd "\e" sudo-command-line
+#bindkey -M vicmd 'k' history-substring-search-up
+#bindkey -M vicmd 'j' history-substring-search-down
 
 # bind UP and DOWN arrow keys
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -72,8 +80,8 @@ bindkey '^[[B' history-substring-search-down
 
 ### ALIASES ###
 
-alias finder='open -a Finder'
-alias sb='${HOME}/Music/soundboard/soundboard'
+#alias finder='open -a Finder'
+#alias sb='${HOME}/Music/soundboard/soundboard'
 alias t='todo.sh'
 
 # list files
@@ -106,12 +114,6 @@ alias od='od -Ax -tx1'
 
 ### FUNCTIONS ###
 
-# eavesdrop on your system (http://commandlinefu.com/commands/view/5068/eavesdrop-on-your-system
-whatsup () diff <(lsof -p $1) <(sleep ${2:-10}; lsof -p $1)
-
-# automatically LS after CD
-cdls () { cd "$@" && ls; }
-
 # aggressive garbage collection on a git repo
 git-gc-aggressive () {
     rm -rf .git/refs/original/*
@@ -121,6 +123,12 @@ git-gc-aggressive () {
 }
 
 
-### RBENV INIT ###
+### ENABLE AUTOSUGGESTIONS ###
 
-eval "$(rbenv init -)"
+AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
+
+zle-line-init() {
+    zle autosuggest-start
+}
+
+zle -N zle-line-init
