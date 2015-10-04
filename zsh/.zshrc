@@ -80,8 +80,6 @@ bindkey '^[[B' history-substring-search-down
 
 ### ALIASES ###
 
-#alias finder='open -a Finder'
-#alias sb='${HOME}/Music/soundboard/soundboard'
 alias t='todo.sh'
 
 # list files
