@@ -218,17 +218,6 @@ if has('autocmd')
 endif
 
 
-" ========================================= "
-"  Load local configuration (if it exists)  "
-" ========================================= "
-"
-" Note: may not be necessary since stow is used for installation
-
-if filereadable(expand('~/.vimrc.local'))
-    source ~/.vimrc.local
-endif
-
-
 " ======================================== "
 "  vim -b : edit binary using xxd-format!  "
 " ======================================== "
