@@ -127,6 +127,14 @@ AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
 
 zle-line-init() {
     zle autosuggest-start
+
+    # enable application mode to make $terminfo valid
+    echoti smkx
+}
+
+zle-line-finish() {
+    echoti rmkx
 }
 
 zle -N zle-line-init
+zle -N zle-line-finish
