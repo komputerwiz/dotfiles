@@ -50,6 +50,7 @@ ${memgraph 40,477}
 D I S K   ( R / W ) ${hr 1}
 ${diskiograph_read /dev/sdb 20,237}${offset 3}\
 ${diskiograph_write /dev/sdb 20,237}
+${fs_bar 6,477 /}
 
 N E T W O R K   ( U / D ) ${hr 1}
 ${upspeedgraph eth0 20,237}${offset 3}\
