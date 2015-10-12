@@ -166,8 +166,6 @@ vnoremap <silent> <Space> za
 " toggle light and dark background
 noremap <silent> <F2> :let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>
 noremap <silent> <F3> :NERDTreeToggle<CR>
-" build and display errors
-noremap <silent> <F4> :w<CR>:make<CR>:cw<CR>
 " toggle goyo.vim distraction-free mode
 noremap <silent> <F11> :Goyo<CR>
 
@@ -282,3 +280,22 @@ let g:ctrlp_root_markers = ['.project']
 
 " prefer LaTeX variant of the TeX grammar
 let g:tex_flavor='latex'
+
+
+" ====================== "
+"  Vdebug Configuration  "
+" ====================== "
+
+let g:vdebug_keymap = {
+            \ 'run_to_cursor': '<F8>',
+            \ 'step_into': '<F5>',
+            \ 'step_over': '<F6>',
+            \ 'step_out': '<F7>',
+            \ 'run': '<C-F5>',
+            \ 'close': '<C-F6>',
+            \ 'detach': '<C-F7>',
+            \ 'set_breakpoint': '<C-S-b>',
+            \ 'get_context': '<F11>',
+            \ 'eval_under_cursor': '<F12>',
+            \ 'eval_visual': '<Leader>e',
+            \}
