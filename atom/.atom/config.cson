@@ -6,23 +6,29 @@
   "atom-ternjs": {}
 
   "autocomplete-plus":
-    confirmCompletion: "tab and enter"
+    confirmCompletion: "tab"
+    useAlternateScoring: true
 
-  "autosave":
+  autosave:
     enabled: true
 
-  "core":
+  core:
     autoHideMenuBar: true
+    excludeVcsIgnoredPaths: false
     followSymlinks: true
+    packagesWithKeymapsDisabled: [
+      "php-debug"
+      "imdone-atom"
+    ]
     themes: [
       "one-dark-ui"
       "solarized-dark-syntax"
     ]
 
-  "docblockr":
+  docblockr:
     lower_case_primitives: true
 
-  "editor":
+  editor:
     fontFamily: "Ubuntu Mono"
     fontSize: 12
     invisibles: {}
@@ -35,20 +41,21 @@
     tabLength: 4
     zoomFontWhenCtrlScrolling: false
 
-  "emmet": {}
+  emmet: {}
 
   "exception-reporting":
     userId: "586d1198-37a4-c54f-7140-5fc8f718d6a9"
 
   "fuzzy-finder": {}
 
-  "linter":
+  linter:
     showErrorInline: false
     statusBar: "Show error of the selected line"
 
   "linter-csslint": {}
 
   "linter-eslint":
+    disableWhenNoEslintrcFileInPath: true
     showRuleIdInMessage: true
 
   "linter-htmlhint": {}
@@ -57,7 +64,7 @@
 
   "markdown-preview": {}
 
-  "minimap":
+  minimap:
     charHeight: 1
     plugins:
       "highlight-selected": true
@@ -67,19 +74,22 @@
   "one-dark-ui":
     layoutMode: "Compact"
 
+  pigments:
+    mergeColorDuplicates: true
+
   "project-manager": {}
 
   "spell-check": {}
 
-  "tabs": {}
+  tabs: {}
 
   "tree-view":
     hideVcsIgnoredFiles: false
 
-  "welcome":
+  welcome:
     showOnStartup: false
 
-  "whitespace":
+  whitespace:
     ignoreWhitespaceOnCurrentLine: false
 
 
@@ -100,20 +110,11 @@
     tabLength: 2
 
 
-# Jinja
-
-".html.jinja.text":
-  editor:
-    preferredLineLength: 100
-
-".jinja.source":
-  editor:
-    preferredLineLength: 100
-
-
 # Github-flavored markdown
 
 ".gfm.source":
   editor:
     preferredLineLength: 100
     tabLength: 2
+  whitespace:
+    removeTrailingWhitespace: false

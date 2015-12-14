@@ -2,5 +2,6 @@ git-log
 language-ejs
 language-haxe
 language-latex
+linter-htmlhint
 seti-ui
 vim-mode

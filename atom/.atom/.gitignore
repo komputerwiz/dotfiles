@@ -6,5 +6,6 @@
 /.apm/*
 /.npm/*
 /.node-gyp/*
+/blob-store/*
 /nohup.out
 /projects.cson
