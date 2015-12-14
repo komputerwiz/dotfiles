@@ -73,7 +73,7 @@ if __name__ == '__main__':
         j = json.loads(line)
 
         # insert extra information
-        if metar_q.full():
+        if not metar_q.empty():
             metar = metar_q.get()
         j.insert(0, {'name': 'metar', 'instance': 'kcll', 'full_text': metar})
 
