@@ -44,6 +44,7 @@ Plugin 'stephpy/vim-yaml', {'name': 'vim-yaml-syntax'}
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-repeat'
