@@ -20,6 +20,7 @@ linter-php
 merge-conflicts
 minimap
 minimap-highlight-selected
+minimap-pigments
 minimap-selection
 php-debug
 php-twig
