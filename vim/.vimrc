@@ -29,7 +29,7 @@ Plugin 'godlygeek/tabular'
 "Plugin 'hail2u/vim-css3-syntax'
 Plugin 'honza/vim-snippets'    " engine for UltiSnips
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'joonty/vdebug'
+"Plugin 'joonty/vdebug'
 Plugin 'junegunn/goyo.vim'
 "Plugin 'juvenn/mustache.vim'
 "Plugin 'kchmck/vim-coffee-script'
