@@ -19,6 +19,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'avakhov/vim-yaml', {'name': 'vim-yaml-indent'}
+Plugin 'bling/vim-airline'
 "Plugin 'chikamichi/mediawiki.vim'
 "Plugin 'digitaltoad/vim-jade'
 Plugin 'ervandew/supertab'
