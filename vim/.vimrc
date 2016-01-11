@@ -22,6 +22,7 @@ Plugin 'avakhov/vim-yaml', {'name': 'vim-yaml-indent'}
 Plugin 'bling/vim-airline'
 "Plugin 'chikamichi/mediawiki.vim'
 "Plugin 'digitaltoad/vim-jade'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
 Plugin 'evidens/vim-twig'
 "Plugin 'fatih/vim-go'
