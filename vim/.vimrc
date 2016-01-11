@@ -28,7 +28,7 @@ Plugin 'evidens/vim-twig'
 Plugin 'godlygeek/tabular'
 "Plugin 'groenewege/vim-less'
 "Plugin 'hail2u/vim-css3-syntax'
-Plugin 'honza/vim-snippets'    " engine for UltiSnips
+Plugin 'honza/vim-snippets'    " snippets for UltiSnips
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'joonty/vdebug'
 Plugin 'junegunn/goyo.vim'
