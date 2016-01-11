@@ -1,6 +1,7 @@
 "*":
   "atom-beautify":
     html_indent_inner_html: true
+    js_keep_array_indentation: true
     js_space_after_anon_function: true
 
   "atom-ternjs": {}
@@ -69,6 +70,7 @@
     plugins:
       "highlight-selected": true
       selection: true
+      pigments: true
     scrollAnimation: true
 
   "one-dark-ui":
