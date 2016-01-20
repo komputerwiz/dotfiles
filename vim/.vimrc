@@ -100,6 +100,8 @@ set whichwrap+=<,>,h,l
 
 set autochdir                   " Automatically set browser to working dir
 
+set showcmd                     " show partially-entered commands in the status bar
+
 " silent! colorscheme komputerwiz
 silent! colorscheme solarized
 
