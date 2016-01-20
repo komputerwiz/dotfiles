@@ -48,6 +48,7 @@ setopt no_nomatch       # don't bug me about filename expansion
 setopt no_hist_verify   # immediately execute history line
 setopt no_list_beep     # do not beep for autocomplete
 setopt dvorak           # oh yeah!
+setopt extended_glob    # extra goodies for file globbing (like *~*.js)
 
 
 ### KEY BINDINGS ###
