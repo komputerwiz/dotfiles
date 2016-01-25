@@ -5,6 +5,6 @@ DIR="`cd "${DIR}" && pwd`"
 
 cd "${DIR}"
 
-vim +PluginUpdate +qall
+vim +PluginClean +PluginInstall +PluginUpdate +qall
 
 unset DIR
