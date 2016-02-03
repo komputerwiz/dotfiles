@@ -19,7 +19,6 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'avakhov/vim-yaml', {'name': 'vim-yaml-indent'}
-Plugin 'bling/vim-airline'
 "Plugin 'chikamichi/mediawiki.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'digitaltoad/vim-jade'
@@ -53,6 +52,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " vim-scripts hosted plugins
 " See http://vim-scripts.org/vim/scripts.html
