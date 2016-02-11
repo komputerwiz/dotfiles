@@ -24,7 +24,6 @@ antigen use oh-my-zsh
 antigen bundle git
 #antigen bundle git-flow
 antigen bundle history
-antigen bundle history-substring-search
 #antigen bundle rbenv
 #antigen bundle sublime
 antigen bundle sudo
@@ -35,9 +34,13 @@ antigen bundle wd
 
 antigen bundle "$HOME/.zsh/plugins/reboot-notifier"
 
-# autosuggestions should be loaded last
-#antigen bundle jimmijj/zsh-syntax-highlighting
-antigen bundle tarruda/zsh-autosuggestions
+# autosuggestions must be loaded before syntax highlighting
+antigen bundle tarruda/zsh-autosuggestions dist/autosuggestions.zsh
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# history substring search must be loaded after syntax highlighting
+antigen bundle zsh-users/zsh-history-substring-search
 
 antigen theme "$HOME/.zsh/themes" komputerwiz
 
@@ -124,18 +127,6 @@ git-gc-aggressive () {
 
 ### ENABLE AUTOSUGGESTIONS ###
 
-AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
-
-zle-line-init() {
-    zle autosuggest-start
-
-    # enable application mode to make $terminfo valid
-    echoti smkx
-}
-
-zle-line-finish() {
-    echoti rmkx
-}
-
-zle -N zle-line-init
-zle -N zle-line-finish
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}")
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
+autosuggest_start
