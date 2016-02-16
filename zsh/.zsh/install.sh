@@ -30,7 +30,7 @@ cd "${DIR}"
 
 
 echo "Installing Antigen..."
-git clone $GITFLAGS https://github.com/gmarik/Vundle.vim "$HOME/.antigen"
+git clone $GITFLAGS https://github.com/zsh-users/antigen.git "$HOME/.antigen"
 
 
 echo "Installation complete. Restart your shell to initialize the awesome!"
