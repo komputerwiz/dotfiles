@@ -35,7 +35,7 @@ antigen bundle wd
 antigen bundle "$HOME/.zsh/plugins/reboot-notifier"
 
 # autosuggestions must be loaded before syntax highlighting
-antigen bundle tarruda/zsh-autosuggestions dist/autosuggestions.zsh
+antigen bundle tarruda/zsh-autosuggestions
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 
@@ -125,8 +125,7 @@ git-gc-aggressive () {
 }
 
 
-### ENABLE AUTOSUGGESTIONS ###
+### AUTOSUGGESTIONS CONFIG ###
 
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}")
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
-autosuggest_start
