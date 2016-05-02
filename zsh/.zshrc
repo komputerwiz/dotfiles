@@ -100,7 +100,7 @@ alias cp='cp -i'
 alias gci='git commit'
 alias gdt='git difftool'
 alias gf='git fetch'
-alias glg='git log --oneline --graph --all --decorate'
+alias glg='git log --pretty=oneline-detailed --graph --all --decorate --date=local'
 
 # SHA1 hashing
 alias sha1='openssl sha1'

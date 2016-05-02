@@ -22,6 +22,8 @@
     ff = false
 [credential]
     helper = cache --timeout=3600
+[pretty]
+    oneline-detailed = format:%Cgreen%h %Creset[%ad] %Cred%an <%ae> %Cblue%d %Creset%s
 [push]
     default = simple
 [pull]
