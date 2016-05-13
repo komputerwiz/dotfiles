@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update base Antigen installation
-antigen-selfupdate
+antigen selfupdate
 
 # Update Antigen plugins
-antigen-update
+antigen update
