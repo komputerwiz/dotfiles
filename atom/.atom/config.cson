@@ -1,8 +1,10 @@
 "*":
   "atom-beautify":
-    html_indent_inner_html: true
-    js_keep_array_indentation: true
-    js_space_after_anon_function: true
+    html:
+      indent_inner_html: true
+    js:
+      keep_array_indentation: true
+      space_after_anon_function: true
 
   "atom-ternjs": {}
 
@@ -69,8 +71,11 @@
     charHeight: 1
     plugins:
       "highlight-selected": true
-      selection: true
+      "highlight-selectedDecorationsZIndex": 0
       pigments: true
+      pigmentsDecorationsZIndex: 0
+      selection: true
+      selectionDecorationsZIndex: 0
     scrollAnimation: true
 
   "one-dark-ui":
@@ -84,6 +89,8 @@
   "spell-check": {}
 
   tabs: {}
+
+  "todo-show": {}
 
   "tree-view":
     hideVcsIgnoredFiles: false
