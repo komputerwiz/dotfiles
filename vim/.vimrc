@@ -24,7 +24,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'digitaltoad/vim-jade'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
-Plugin 'evidens/vim-twig'
+Plugin 'evidens/vim-twig'    " note: author says repo is discontinued
 "Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 "Plugin 'groenewege/vim-less'
@@ -38,16 +38,18 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/gundo.vim'
 Plugin 'skammer/vim-css-color'
 Plugin 'stephpy/vim-yaml', {'name': 'vim-yaml-syntax'}
-Plugin 'terryma/vim-multiple-cursors'
+Plugin 'ternjs/tern_for_vim'
+"Plugin 'terryma/vim-multiple-cursors'    " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
 Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-haml'    " also includes SASS/SCSS support
+"Plugin 'tpope/vim-markdown'    " included in recent versions of vim
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
@@ -58,7 +60,7 @@ Plugin 'vim-airline/vim-airline-themes'
 " vim-scripts hosted plugins
 " See http://vim-scripts.org/vim/scripts.html
 Plugin 'camelcasemotion'
-Plugin 'ebnf.vim'
+"Plugin 'ebnf.vim'
 
 call vundle#end()
 
@@ -252,6 +254,11 @@ augroup END
 let g:ycm_min_num_of_chars_for_completion = 5
 let g:ycm_min_num_identifier_candidate_chars = 7
 
+" don't show preview YCM window
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
+
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
@@ -292,16 +299,16 @@ let g:tex_flavor='latex'
 "  Vdebug Configuration  "
 " ====================== "
 
-let g:vdebug_keymap = {
-            \ 'run_to_cursor': '<F8>',
-            \ 'step_into': '<F5>',
-            \ 'step_over': '<F6>',
-            \ 'step_out': '<F7>',
-            \ 'run': '<C-F5>',
-            \ 'close': '<C-F6>',
-            \ 'detach': '<C-F7>',
-            \ 'set_breakpoint': '<C-S-b>',
-            \ 'get_context': '<F11>',
-            \ 'eval_under_cursor': '<F12>',
-            \ 'eval_visual': '<Leader>e',
-            \}
+"let g:vdebug_keymap = {
+"            \ 'run_to_cursor': '<F8>',
+"            \ 'step_into': '<F5>',
+"            \ 'step_over': '<F6>',
+"            \ 'step_out': '<F7>',
+"            \ 'run': '<C-F5>',
+"            \ 'close': '<C-F6>',
+"            \ 'detach': '<C-F7>',
+"            \ 'set_breakpoint': '<C-S-b>',
+"            \ 'get_context': '<F11>',
+"            \ 'eval_under_cursor': '<F12>',
+"            \ 'eval_visual': '<Leader>e',
+"            \}
