@@ -1,7 +1,10 @@
+activate-power-mode
 git-log
+imdone-atom
 language-ejs
 language-haxe
 language-latex
 linter-htmlhint
+php-debug
 seti-ui
 vim-mode
