@@ -93,8 +93,10 @@ alias lal='ls -ahl'
 alias lla='ls -ahl'
 alias l='ls -F'
 
-# ask to overwrite files on copy
+# ask for confirmation on copy, move, and delete
 alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -I'
 
 # git shorthand
 alias gci='git commit'
