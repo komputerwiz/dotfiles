@@ -5,6 +5,7 @@ atom-ternjs
 atom-typescript
 autocomplete-paths
 color-picker
+cursor-blink-interval
 docblockr
 editorconfig
 emmet

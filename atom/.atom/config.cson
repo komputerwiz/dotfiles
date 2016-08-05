@@ -28,6 +28,9 @@
       "solarized-dark-syntax"
     ]
 
+  "cursor-blink-interval":
+    cursorBlinkInterval: 1000
+
   docblockr:
     lower_case_primitives: true
 
