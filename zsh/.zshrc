@@ -126,6 +126,21 @@ git-gc-aggressive () {
     git prune
 }
 
+# system-independent way of copying stdin to the clipboard
+__copy_to_clipboard() {
+    if [ "$(uname)" == "Darwin" ]; then
+        pbcopy
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        xclip -selection CLIPBOARD
+    else
+        cat
+    fi
+}
+
+# perform a hash of the string in the given argument and copy it to the clipboard
+copy_hash() {
+    echo -n "$2" | openssl dgst "-$1" | cut -d ' ' -f 2 | awk '{printf("%s",$0);}' | __copy_to_clipboard
+}
 
 ### AUTOSUGGESTIONS CONFIG ###
 
