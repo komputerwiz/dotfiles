@@ -103,30 +103,3 @@
 
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
-
-
-
-# syntax-specific settings
-
-
-# CoffeeScript
-
-".coffee.source":
-  editor:
-    preferredLineLength: 100
-    tabLength: 2
-
-".litcoffee.source":
-  editor:
-    preferredLineLength: 100
-    tabLength: 2
-
-
-# Github-flavored markdown
-
-".gfm.source":
-  editor:
-    preferredLineLength: 100
-    tabLength: 2
-  whitespace:
-    removeTrailingWhitespace: false
