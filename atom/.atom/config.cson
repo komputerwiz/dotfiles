@@ -5,16 +5,12 @@
     js:
       keep_array_indentation: true
       space_after_anon_function: true
-
   "atom-ternjs": {}
-
   "autocomplete-plus":
     confirmCompletion: "tab"
     useAlternateScoring: true
-
   autosave:
     enabled: true
-
   core:
     autoHideMenuBar: true
     excludeVcsIgnoredPaths: false
@@ -27,13 +23,10 @@
       "one-dark-ui"
       "solarized-dark-syntax"
     ]
-
   "cursor-blink-interval":
     cursorBlinkInterval: 1000
-
   docblockr:
     lower_case_primitives: true
-
   editor:
     fontFamily: "Ubuntu Mono"
     fontSize: 12
@@ -46,30 +39,20 @@
     softWrap: true
     tabLength: 4
     zoomFontWhenCtrlScrolling: false
-
   emmet: {}
-
   "exception-reporting":
     userId: "586d1198-37a4-c54f-7140-5fc8f718d6a9"
-
   "fuzzy-finder": {}
-
   linter:
     showErrorInline: false
     statusBar: "Show error of the selected line"
-
   "linter-csslint": {}
-
   "linter-eslint":
     disableWhenNoEslintrcFileInPath: true
     showRuleIdInMessage: true
-
   "linter-htmlhint": {}
-
   "linter-jsonlint": {}
-
   "markdown-preview": {}
-
   minimap:
     charHeight: 1
     plugins:
@@ -80,26 +63,17 @@
       selection: true
       selectionDecorationsZIndex: 0
     scrollAnimation: true
-
   "one-dark-ui":
     layoutMode: "Compact"
-
   pigments:
     mergeColorDuplicates: true
-
   "project-manager": {}
-
   "spell-check": {}
-
   tabs: {}
-
   "todo-show": {}
-
   "tree-view":
     hideVcsIgnoredFiles: false
-
   welcome:
     showOnStartup: false
-
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
