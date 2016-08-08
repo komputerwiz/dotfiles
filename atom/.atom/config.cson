@@ -62,7 +62,7 @@
       selectionDecorationsZIndex: 0
     scrollAnimation: true
   "minimap-selection":
-    highlightCursorLines: true
+    highlightCursorsLines: true
   "one-dark-ui":
     layoutMode: "Compact"
   pigments:
