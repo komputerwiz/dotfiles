@@ -42,13 +42,14 @@
   "fuzzy-finder": {}
   linter:
     showErrorInline: false
-    statusBar: "Show error of the selected line"
+    showErrorTabLine: true
   "linter-csslint": {}
   "linter-eslint":
     disableWhenNoEslintrcFileInPath: true
     showRuleIdInMessage: true
-  "linter-htmlhint": {}
   "linter-jsonlint": {}
+  "linter-php": {}
+  "linter-rubocop": {}
   "markdown-preview": {}
   minimap:
     charHeight: 1
@@ -66,9 +67,14 @@
     mergeColorDuplicates: true
   "project-manager": {}
   "spell-check": {}
-  tabs: {}
-  "todo-show": {}
+  tabs:
+    alwaysShowTabBar: false
+    enableVcsColoring: true
+  "todo-show":
+    sortBy: "Path"
+    statusBarIndicator: true
   "tree-view":
+    alwaysOpenExisting: true
     hideVcsIgnoredFiles: false
   welcome:
     showOnStartup: false
