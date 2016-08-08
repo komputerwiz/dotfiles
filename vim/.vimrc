@@ -25,7 +25,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
 Plugin 'evidens/vim-twig'    " note: author says repo is discontinued
-"Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 Plugin 'flowtype/vim-flow'
 Plugin 'godlygeek/tabular'
 "Plugin 'groenewege/vim-less'
