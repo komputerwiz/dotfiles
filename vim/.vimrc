@@ -107,6 +107,8 @@ set autochdir                   " Automatically set browser to working dir
 
 set showcmd                     " show partially-entered commands in the status bar
 
+set tags+=.tags,./.tags
+
 " silent! colorscheme komputerwiz
 silent! colorscheme solarized
 
