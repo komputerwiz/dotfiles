@@ -1,10 +1,16 @@
 activate-power-mode
+atom-html-preview
+atom-typescript
 git-log
+git-time-machine
 imdone-atom
 language-ejs
 language-haxe
 language-latex
+linter-coffeelint
 linter-htmlhint
+merge-conflicts
 php-debug
 seti-ui
+symbol-gen
 vim-mode

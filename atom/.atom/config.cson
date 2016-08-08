@@ -15,10 +15,6 @@
     autoHideMenuBar: true
     excludeVcsIgnoredPaths: false
     followSymlinks: true
-    packagesWithKeymapsDisabled: [
-      "php-debug"
-      "imdone-atom"
-    ]
     themes: [
       "one-dark-ui"
       "solarized-dark-syntax"
@@ -37,6 +33,7 @@
     showIndentGuide: true
     showInvisibles: true
     softWrap: true
+    softWrapHangingIndent: 4
     tabLength: 4
     zoomFontWhenCtrlScrolling: false
   emmet: {}
