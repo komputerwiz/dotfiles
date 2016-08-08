@@ -1,6 +1,6 @@
+atom-autocomplete-php
 atom-beautify
 atom-jinja2
-atom-autocomplete-php
 atom-ternjs
 autocomplete-paths
 color-picker
@@ -8,13 +8,16 @@ cursor-blink-interval
 docblockr
 editorconfig
 emmet
+git-time-machine
 highlight-line
 highlight-selected
 linter
 linter-csslint
 linter-eslint
+linter-flow
 linter-jsonlint
 linter-php
+linter-rubocop
 minimap
 minimap-highlight-selected
 minimap-pigments
