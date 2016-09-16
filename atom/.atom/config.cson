@@ -13,6 +13,9 @@
     enabled: true
   core:
     autoHideMenuBar: true
+    disabledPackages: [
+      "metrics"
+    ]
     excludeVcsIgnoredPaths: false
     followSymlinks: true
     themes: [
@@ -70,13 +73,13 @@
   "project-manager": {}
   "spell-check": {}
   tabs:
-    alwaysShowTabBar: false
     enableVcsColoring: true
   "todo-show":
     sortBy: "Path"
     statusBarIndicator: true
   "tree-view":
     alwaysOpenExisting: true
+    autoReveal: true
     hideVcsIgnoredFiles: false
   welcome:
     showOnStartup: false
