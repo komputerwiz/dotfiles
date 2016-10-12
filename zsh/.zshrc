@@ -44,6 +44,8 @@ antigen bundle zsh-users/zsh-history-substring-search
 
 antigen theme "$HOME/.zsh/themes" komputerwiz
 
+antigen apply
+
 
 ### OPTIONS ###
 
@@ -80,6 +82,9 @@ bindkey "$terminfo[cuu]" history-substring-search-up
 bindkey "$terminfo[cud]" history-substring-search-down
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+# autosuggest
+bindkey '^ ' autosuggest-accept
 
 
 ### ALIASES ###
