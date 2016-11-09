@@ -105,7 +105,7 @@ set hlsearch                    " Highlight search results
 set whichwrap+=<,>,h,l
 
 "set autochdir                   " Automatically set browser to working dir
-set path+=**                    " search all paths in current directly recursively
+set path+=**                    " search all paths in current directory recursively
 
 set showcmd                     " show partially-entered commands in the status bar
 
