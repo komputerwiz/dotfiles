@@ -16,7 +16,6 @@
     disabledPackages: [
       "metrics"
     ]
-    excludeVcsIgnoredPaths: false
     followSymlinks: true
     themes: [
       "one-dark-ui"
@@ -36,8 +35,7 @@
     showIndentGuide: true
     showInvisibles: true
     softWrap: true
-    softWrapHangingIndent: 4
-    tabLength: 4
+    softWrapHangingIndent: 2
     zoomFontWhenCtrlScrolling: false
   emmet: {}
   "exception-reporting":
