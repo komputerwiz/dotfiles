@@ -63,6 +63,8 @@ zmodload zsh/terminfo
 # common terminal keybindings
 bindkey "$terminfo[khome]" beginning-of-line
 bindkey "$terminfo[kend]" end-of-line
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
 bindkey "$terminfo[kdch1]" delete-char-or-list
 
 
@@ -80,8 +82,8 @@ bindkey "$terminfo[cuu1]" history-substring-search-up
 bindkey "$terminfo[cud1]" history-substring-search-down
 bindkey "$terminfo[cuu]" history-substring-search-up
 bindkey "$terminfo[cud]" history-substring-search-down
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey "\e[A" history-substring-search-up
+bindkey "\e[B" history-substring-search-down
 
 # autosuggest
 bindkey '^ ' autosuggest-accept
