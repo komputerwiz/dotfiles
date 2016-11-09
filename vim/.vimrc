@@ -25,8 +25,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
 Plugin 'evidens/vim-twig'    " note: author says repo is discontinued
-Plugin 'fatih/vim-go'
-Plugin 'flowtype/vim-flow'
+"Plugin 'fatih/vim-go'
+"Plugin 'flowtype/vim-flow'
 Plugin 'godlygeek/tabular'
 "Plugin 'groenewege/vim-less'
 "Plugin 'hail2u/vim-css3-syntax'
@@ -36,16 +36,17 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/goyo.vim'
 "Plugin 'juvenn/mustache.vim'
 "Plugin 'kchmck/vim-coffee-script'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'mattn/emmet-vim'
-Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'pangloss/vim-javascript'
-Plugin 'rust-lang/rust.vim'
+"Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/gundo.vim'
 Plugin 'skammer/vim-css-color'
 Plugin 'stephpy/vim-yaml', {'name': 'vim-yaml-syntax'}
-Plugin 'ternjs/tern_for_vim'
+"Plugin 'ternjs/tern_for_vim'
 "Plugin 'terryma/vim-multiple-cursors'    " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
 Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-abolish'
@@ -103,7 +104,8 @@ set hlsearch                    " Highlight search results
 
 set whichwrap+=<,>,h,l
 
-set autochdir                   " Automatically set browser to working dir
+"set autochdir                   " Automatically set browser to working dir
+set path+=**                    " search all paths in current directly recursively
 
 set showcmd                     " show partially-entered commands in the status bar
 
@@ -112,7 +114,7 @@ set tags+=.tags,./.tags
 " silent! colorscheme komputerwiz
 silent! colorscheme solarized
 
-let mapleader = '\'             " '\' by default, but can't use multichar maps
+let mapleader = '\'             " already '\' by default, but can't use multichar maps
 
 
 " ================ "
@@ -289,6 +291,8 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " let .project file mark the root of a project directory
 let g:ctrlp_root_markers = ['.project']
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard', 'find %s -type f']
 
 
 " ==================================== "
