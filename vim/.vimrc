@@ -59,6 +59,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-syntastic/syntastic'
 
 " vim-scripts hosted plugins
 " See http://vim-scripts.org/vim/scripts.html
