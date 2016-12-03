@@ -22,6 +22,7 @@ Plugin 'avakhov/vim-yaml', {'name': 'vim-yaml-indent'}
 "Plugin 'chikamichi/mediawiki.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'digitaltoad/vim-jade'
+Plugin 'duggiefresh/vim-easydir'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
 Plugin 'evidens/vim-twig'    " note: author says repo is discontinued
