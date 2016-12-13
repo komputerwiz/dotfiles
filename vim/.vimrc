@@ -86,8 +86,8 @@ set hidden                      " do not bug me about modified buffers
 
 set smartindent                 " Smart-indent
 set tabstop=8                   " Tab literals are 8 spaces wide
-set shiftwidth=4                " Soft tabs are 4 spaces wide
-set softtabstop=4               " Backspace acts like unindent
+set shiftwidth=2                " Soft tabs are 2 spaces wide
+set softtabstop=2               " Backspace acts like unindent
 set expandtab                   " Insert spaces instead of tabs
 
 set mat=2                       " Show matchng delimiter for .2sec
