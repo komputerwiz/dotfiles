@@ -18,6 +18,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'ap/vim-css-color'
 Plugin 'avakhov/vim-yaml', {'name': 'vim-yaml-indent'}
 "Plugin 'chikamichi/mediawiki.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -45,7 +46,6 @@ Plugin 'pangloss/vim-javascript'
 "Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/gundo.vim'
-Plugin 'skammer/vim-css-color'
 Plugin 'stephpy/vim-yaml', {'name': 'vim-yaml-syntax'}
 "Plugin 'ternjs/tern_for_vim'
 "Plugin 'terryma/vim-multiple-cursors'    " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
