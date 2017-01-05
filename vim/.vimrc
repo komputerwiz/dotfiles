@@ -255,71 +255,9 @@ augroup Binary
 augroup END
 
 
-" ================================================ "
-"  YouCompleteMe / UltiSnips Plugin Configuration  "
-" ================================================ "
-
-" tone down identifier autocompletion triggering; I can type fast enough
-let g:ycm_min_num_of_chars_for_completion = 5
-let g:ycm_min_num_identifier_candidate_chars = 7
-
-" don't show preview YCM window
-let g:ycm_add_preview_to_completeopt=0
-let g:ycm_confirm_extra_conf=0
-set completeopt-=preview
-
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-
-" ====================== "
-"  Riv Plugin Variables  "
-" ====================== "
-
-"let g:riv_default_path = '~'
-
-
-" ========================= "
-"  Ctrl-P Plugin Variables  "
-" ========================= "
-
-let g:ctrlp_working_path_mode = 'ra'
-
-" let .project file mark the root of a project directory
-let g:ctrlp_root_markers = ['.project']
-
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard', 'find %s -type f']
-
-
 " ==================================== "
 "  Global Vim Configuration Variables  "
 " ==================================== "
 
 " prefer LaTeX variant of the TeX grammar
 let g:tex_flavor='latex'
-
-
-" ====================== "
-"  Vdebug Configuration  "
-" ====================== "
-
-"let g:vdebug_keymap = {
-"            \ 'run_to_cursor': '<F8>',
-"            \ 'step_into': '<F5>',
-"            \ 'step_over': '<F6>',
-"            \ 'step_out': '<F7>',
-"            \ 'run': '<C-F5>',
-"            \ 'close': '<C-F6>',
-"            \ 'detach': '<C-F7>',
-"            \ 'set_breakpoint': '<C-S-b>',
-"            \ 'get_context': '<F11>',
-"            \ 'eval_under_cursor': '<F12>',
-"            \ 'eval_visual': '<Leader>e',
-"            \}
