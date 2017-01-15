@@ -39,6 +39,7 @@ Plugin 'junegunn/goyo.vim'
 "Plugin 'juvenn/mustache.vim'
 "Plugin 'kchmck/vim-coffee-script'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 "Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -174,6 +175,7 @@ endif
 
 nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <silent> <Leader>l :set list!<CR>
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
 nnoremap <silent> <Leader>v :tabedit $MYVIMRC<CR>
 
 " opening and closing folds quickly
