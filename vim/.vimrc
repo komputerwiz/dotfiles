@@ -125,7 +125,6 @@ let mapleader = '\'             " already '\' by default, but can't use multicha
 "  Spell Checking  "
 " ================ "
 
-nnoremap <silent> <Leader>s :set spell!<CR>
 set spelllang=en_us
 
 
@@ -149,7 +148,8 @@ elseif has('gui_running')
 endif
 
 if exists('&guioptions')
-    set guioptions-=T           " Hide toolbar by default
+    set guioptions-=m           " hide menu by default
+    set guioptions-=T           " hide toolbar by default
 
     " Hide scrollbars by default
     set guioptions-=r           " right scrollbar
@@ -157,12 +157,6 @@ if exists('&guioptions')
     set guioptions-=l           " left scrollbar
     set guioptions-=L           " left scrollbar (vsplit)
     set guioptions-=b           " bottom scrollbar
-
-    " mappings to toggle gui elements
-    nnoremap <D-\> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
-    nnoremap <Leader>R :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
-    nnoremap <Leader>L :if &go=~#'l'<Bar>set go-=l<Bar>else<Bar>set go+=l<Bar>endif<CR>
-    nnoremap <Leader>B :if &go=~#'b'<Bar>set go-=b<Bar>else<Bar>set go+=b<Bar>endif<CR>
 endif
 
 
@@ -173,37 +167,68 @@ endif
 " calculate expressions on C-A
 " inoremap <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
 
+" toggle gui elements
+if exists('&guioptions')
+    " toolbar
+    nnoremap <Leader>T :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
+    " menu
+    nnoremap <Leader>M :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
+endif
+
+" alignment via tabularize plugin
+if exists(':Tabularize')
+  " type '\a' followed by '|', ':', or '=' to tabularze at that char
+  nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+  vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+  nnoremap <Leader>a= :Tabularize /=<CR>
+  vnoremap <Leader>a= :Tabularize /=<CR>
+  nnoremap <Leader>a: :Tabularize /:\zs<CR>
+  vnoremap <Leader>a: :Tabularize /:\zs<CR>
+  nnoremap <Leader>a, :Tabularize /,\zs<CR>
+  vnoremap <Leader>a, :Tabularize /,\zs<CR>
+endif
+
+" cursor markings
 nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>
+" whitespace characters
 nnoremap <silent> <Leader>l :set list!<CR>
+" spelling
+nnoremap <silent> <Leader>s :set spell!<CR>
+" tagbar 'minimap'
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
+" graphical undo
+nnoremap <silent> <Leader>u :GundoToggle<CR>
+" edit vimrc
 nnoremap <silent> <Leader>v :tabedit $MYVIMRC<CR>
+
+" toggle light and dark background
+noremap <silent> <F2> :let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>
+" file browser
+noremap <silent> <F3> :NERDTreeToggle<CR>
+" toggle goyo.vim distraction-free mode
+noremap <silent> <F11> :Goyo<CR>
 
 " opening and closing folds quickly
 nnoremap <silent> <Space> za
 vnoremap <silent> <Space> za
 
-" toggle light and dark background
-noremap <silent> <F2> :let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>
-noremap <silent> <F3> :NERDTreeToggle<CR>
-" toggle goyo.vim distraction-free mode
-noremap <silent> <F11> :Goyo<CR>
-
-" exchange lines like in eclipse; we do want recursive mapping...
+" exchange lines like in eclipse
+" NOTE: we *do* want recursive mapping so that unimpaired maps get executed
 " vim-style up/down
-nnoremap <A-k> [e
-inoremap <A-k> [e
-vnoremap <A-k> [egv
-nnoremap <A-j> ]e
-inoremap <A-j> ]e
-vnoremap <A-j> ]egv
+nmap <A-k> [e
+imap <A-k> [e
+vmap <A-k> [egv
+nmap <A-j> ]e
+imap <A-j> ]e
+vmap <A-j> ]egv
 
 " arrow keys
-nnoremap <A-Up> [e
-inoremap <A-Up> [e
-vnoremap <A-Up> [egv
-nnoremap <A-Down> ]e
-inoremap <A-Down> ]e
-vnoremap <A-Down> ]egv
+nmap <A-Up> [e
+imap <A-Up> [e
+vmap <A-Up> [egv
+nmap <A-Down> ]e
+imap <A-Down> ]e
+vmap <A-Down> ]egv
 
 
 " ======================================================= "
@@ -225,15 +250,6 @@ endfunction
 " ========================== "
 
 iabbrev <expr> dts strftime("%c")
-
-
-" ==================================== "
-"  Autosource vimrc when it's updated  "
-" ==================================== "
-
-if has('autocmd')
-  autocmd BufWritePost .vimrc source $MYVIMRC
-endif
 
 
 " ======================================== "
