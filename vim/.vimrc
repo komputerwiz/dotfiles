@@ -175,18 +175,15 @@ if exists('&guioptions')
     nnoremap <Leader>M :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 endif
 
-" alignment via tabularize plugin
-if exists(':Tabularize')
-  " type '\a' followed by '|', ':', or '=' to tabularze at that char
-  nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
-  vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
-  nnoremap <Leader>a= :Tabularize /=<CR>
-  vnoremap <Leader>a= :Tabularize /=<CR>
-  nnoremap <Leader>a: :Tabularize /:\zs<CR>
-  vnoremap <Leader>a: :Tabularize /:\zs<CR>
-  nnoremap <Leader>a, :Tabularize /,\zs<CR>
-  vnoremap <Leader>a, :Tabularize /,\zs<CR>
-endif
+" type '\a' followed by '|', ':', or '=' to tabularze at that char
+nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+nnoremap <Leader>a= :Tabularize /=<CR>
+vnoremap <Leader>a= :Tabularize /=<CR>
+nnoremap <Leader>a: :Tabularize /:\zs<CR>
+vnoremap <Leader>a: :Tabularize /:\zs<CR>
+nnoremap <Leader>a, :Tabularize /,\zs<CR>
+vnoremap <Leader>a, :Tabularize /,\zs<CR>
 
 " cursor markings
 nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>
