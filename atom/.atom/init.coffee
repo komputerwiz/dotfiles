@@ -10,9 +10,6 @@
 #   editor.onDidSave ->
 #     console.log "Saved! #{editor.getPath()}"
 
-atom.workspace.observeTextEditors (editor) ->
-  setCursorBlinkPeriod(editor, 1000)
-
 
 ###*
 # Sets the cursor blink period on the given editor
@@ -29,3 +26,7 @@ setCursorBlinkPeriod = (editor, period) ->
     editorPresenter.cursorBlinkPeriod = period
     editorPresenter.startBlinkingCursors()
     true
+
+
+atom.workspace.observeTextEditors (editor) ->
+  setCursorBlinkPeriod(editor, 1000)
