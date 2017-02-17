@@ -76,7 +76,6 @@
     statusBarIndicator: true
   "tree-view":
     alwaysOpenExisting: true
-    autoReveal: true
     hideVcsIgnoredFiles: false
   welcome:
     showOnStartup: false
