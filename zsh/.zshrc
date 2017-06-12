@@ -109,7 +109,7 @@ alias rm='rm -I'
 alias gci='git commit'
 alias gdt='git difftool'
 alias gf='git fetch'
-alias glg='git log --pretty=oneline-detailed --graph --all --decorate --date=local'
+alias glg='git log --pretty=oneline-detailed --graph --all --decorate --date=iso'
 
 # SHA1 hashing
 alias sha1='openssl sha1'
