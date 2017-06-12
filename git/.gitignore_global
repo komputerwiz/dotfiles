@@ -13,3 +13,6 @@ Session.vim
 auto-save-list
 tramp
 .\#*
+
+## Visual Studio Code Files
+.vscode
