@@ -1,7 +1,0 @@
-global !p
-import uuid
-endglobal
-
-snippet uuid "Insert a randomly-generated UUID/GUID" w
-`!p if not snip.c: snip.rv = str(uuid.uuid4())`
-endsnippet

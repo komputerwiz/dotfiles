@@ -1,5 +1,5 @@
 .*
 !.gitignore
 *~
-/bundle/*
-!/bundle/.gitkeep
+/autoload/plug.vim
+/plugged/
