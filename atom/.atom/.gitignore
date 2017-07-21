@@ -7,5 +7,7 @@
 /.npm/*
 /.node-gyp/*
 /blob-store/*
+/github.cson
 /nohup.out
+/package-deps-state.json
 /projects.cson
