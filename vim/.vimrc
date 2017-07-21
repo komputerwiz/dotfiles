@@ -48,6 +48,7 @@ set spelllang=en_us
 set tabstop=8
 
 nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>
+nnoremap <silent> <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>s :set spell!<CR>
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
@@ -60,6 +61,9 @@ vnoremap <silent> <Space> za
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-Return> <C-x><C-l>
 
 map <C-p> :FZF<CR>
 
