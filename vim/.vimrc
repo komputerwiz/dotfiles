@@ -15,11 +15,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'chaoren/vim-wordmotion'
 Plug 'duggiefresh/vim-easydir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'lumiliet/vim-twig'
 Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
