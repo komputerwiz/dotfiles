@@ -87,7 +87,7 @@ endfunction
 " ============= "
 
 if has('gui_macvim')
-  set guifont=Ubuntu\ Mono:h9
+  set guifont=Ubuntu\ Mono:h11
 elseif has('gui_running')
   set guifont=Ubuntu\ Mono\ 9
 end
