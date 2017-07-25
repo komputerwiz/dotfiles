@@ -49,11 +49,16 @@ antigen apply
 
 ### OPTIONS ###
 
-setopt no_nomatch       # don't bug me about filename expansion
-setopt no_hist_verify   # immediately execute history line
-setopt no_list_beep     # do not beep for autocomplete
-setopt dvorak           # oh yeah!
-setopt extended_glob    # extra goodies for file globbing (like *~*.js)
+# don't bug me about filename expansion
+setopt no_nomatch
+# immediately execute history line
+setopt no_hist_verify
+# do not beep for autocomplete
+setopt no_list_beep
+# oh yeah!
+setopt dvorak
+# extra goodies for file globbing (like *~*.js)
+setopt extended_glob
 
 
 ### KEY BINDINGS ###
@@ -111,16 +116,9 @@ alias gdt='git difftool'
 alias gf='git fetch'
 alias glg='git log --pretty=oneline-detailed --graph --all --decorate --date=iso'
 
-# SHA1 hashing
-alias sha1='openssl sha1'
-
 # canonical mode for viewing binary files
 alias hexdump='hexdump -C'
 alias od='od -Ax -tx1'
-
-# regular expressions in grep and sed
-# alias grep='grep -E'
-# alias sed='sed -E'
 
 
 ### FUNCTIONS ###
