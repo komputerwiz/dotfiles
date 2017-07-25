@@ -48,6 +48,7 @@ set shiftwidth=2
 set softtabstop=2
 set spelllang=en_us
 set tabstop=8
+set wildmode=list,list:longest
 
 nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <silent> <Leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -65,7 +66,8 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 inoremap <C-Space> <C-x><C-o>
-inoremap <C-Return> <C-x><C-l>
+" <C-Space> is treated differently by terminal emulators
+inoremap <Nul> <C-x><C-o>
 
 map <C-p> :FZF<CR>
 
