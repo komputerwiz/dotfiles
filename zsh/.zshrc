@@ -14,7 +14,8 @@ source "$HOME/.antigen/antigen.zsh"
 
 ### FRAMEWORK CONFIG ###
 
-DISABLE_CORRECTION="true"
+DISABLE_CORRECTION=true
+DISABLE_AUTO_TITLE=true
 
 
 ### OH-MY-ZSH FRAMEWORK AND PLUGINS ###
