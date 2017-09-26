@@ -26,16 +26,6 @@ function _update_update_lock() {
     echo "LAST_EPOCH=$(_current_epoch)" > "$LOCKFILE"
 }
 
-function _update_antigen() {
-    # Antigen updates must be run internal to .zlogout in order for 'antigen' aliases to be visible
-
-    # Update base Antigen installation
-    antigen selfupdate
-
-    # Update Antigen plugins
-    antigen update
-}
-
 if [ -f "$LOCKFILE" ]; then
     . "$LOCKFILE"
 
@@ -45,8 +35,6 @@ if [ -f "$LOCKFILE" ]; then
 
     days_since_update=$(($(_current_epoch) - $LAST_EPOCH))
     if [ $days_since_update -gt 2 ]; then
-        echo ">>> updating zsh plugins..."
-        _update_antigen
         for script in "${update_scripts[@]}"; do
             echo ">>> ${script}"
             [[ -x "$script" ]] && "${script}"
