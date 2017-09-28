@@ -38,7 +38,7 @@ if [ -f "$LOCKFILE" ]; then
         for script in "${update_scripts[@]}"; do
             if [[ -x "$script" ]]; then
                 echo ">>> $script"
-                exec "$script"
+                "$script"
             else
                 echo "!!! $script is not executable: skipping"
             fi
