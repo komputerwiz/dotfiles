@@ -24,7 +24,6 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'lumiliet/vim-twig'
 Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -57,7 +56,7 @@ nnoremap <silent> <Leader>s :set spell!<CR>
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 noremap <silent> <F2> :let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>
-noremap <silent> <F3> :NERDTreeToggle<CR>
+noremap <silent> <F3> :Lexplore<CR>
 
 nnoremap <silent> <Space> za
 vnoremap <silent> <Space> za
@@ -115,6 +114,11 @@ let g:airline_mode_map = { '__': '-', 'n': 'N', 'i': 'I', 'R': 'R', 'c': 'C', 'v
 
 " editorconfig
 let g:EditorConfig_exclude_pattrens = ['fugitive://.*']
+
+" netrw (vim's built-in file browser)
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
 
 " syntastic
 function! FindConfig(prefix, what, where)
