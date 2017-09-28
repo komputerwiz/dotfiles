@@ -36,8 +36,12 @@ if [ -f "$LOCKFILE" ]; then
     days_since_update=$(($(_current_epoch) - $LAST_EPOCH))
     if [ $days_since_update -gt 2 ]; then
         for script in "${update_scripts[@]}"; do
-            echo ">>> ${script}"
-            [[ -x "$script" ]] && "${script}"
+            if [[ -x "$script" ]]; then
+                echo ">>> $script"
+                exec "$script"
+            else
+                echo "!!! $script is not executable: skipping"
+            fi
         done
         _update_update_lock
         sleep 3
