@@ -49,6 +49,14 @@ set spelllang=en_us
 set tabstop=8
 set wildmode=longest:full,full
 
+" put 'vim turds' in their own directory
+" https://www.reddit.com/r/vim/comments/741kjn/apple_commit_in_darwin_xnu_calls_swap_files_vim/
+let swap_dir = expand('~/.vim/swapfiles')
+if !isdirectory(swap_dir)
+  call mkdir(swap_dir)
+endif
+set directory^=~/.vim/swapfiles//
+
 nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <silent> <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> <Leader>l :set list!<CR>
