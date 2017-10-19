@@ -59,6 +59,7 @@ set directory^=~/.vim/swapfiles//
 
 nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <silent> <Leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <silent> <Leader>g :Gstatus<CR>
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>s :set spell!<CR>
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
