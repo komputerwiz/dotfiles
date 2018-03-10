@@ -18,12 +18,14 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'chaoren/vim-wordmotion'
 Plug 'duggiefresh/vim-easydir'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'lumiliet/vim-twig'
 Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'shawncplus/phpcomplete.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -38,6 +40,7 @@ colorscheme solarized
 
 set background=dark
 set colorcolumn=80,92,100,120
+set completeopt=longest,menuone
 set expandtab
 set hidden
 set nowrap
@@ -130,6 +133,9 @@ let g:EditorConfig_exclude_pattrens = ['fugitive://.*']
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
+
+" supertab
+let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
 " syntastic
 function! FindConfig(prefix, what, where)
