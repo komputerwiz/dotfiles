@@ -22,10 +22,10 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'lumiliet/vim-twig'
+Plug 'lumiliet/vim-twig', { 'for': 'twig' }
 Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'shawncplus/phpcomplete.vim'
+Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -33,6 +33,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/dbext.vim', { 'for': 'sql' }
 Plug 'vim-syntastic/syntastic'
 call plug#end()
 
@@ -40,7 +41,7 @@ colorscheme solarized
 
 set background=dark
 set colorcolumn=80,92,100,120
-set completeopt=longest,menuone
+set completeopt=longest,menu
 set expandtab
 set hidden
 set nowrap
