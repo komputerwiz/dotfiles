@@ -1,17 +1,9 @@
-" neovim-like default options not set by vim-plug or sensible
-set belloff=all
-set hlsearch
-set langnoremap
-set nocompatible
-set showcmd
-set ttyfast
-
 " Load vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  execute '!curl --create-dirs -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  execute '!curl --create-dirs -fLo ~/.local/share/nvim/site/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 "Plug 'altercation/vim-colors-solarized'
@@ -51,16 +43,9 @@ set path+=**
 set shiftwidth=2
 set softtabstop=2
 set spelllang=en_us
+set termguicolors
 set tabstop=8
 set wildmode=longest:full,full
-
-" put 'vim turds' in their own directory
-" https://www.reddit.com/r/vim/comments/741kjn/apple_commit_in_darwin_xnu_calls_swap_files_vim/
-let swap_dir = expand('~/.vim/swapfiles')
-if !isdirectory(swap_dir)
-  call mkdir(swap_dir)
-endif
-set directory^=~/.vim/swapfiles//
 
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>
@@ -99,26 +84,6 @@ function! Stab(width)
         let &l:sw = a:width
     endif
 endfunction
-
-" ============= "
-"  GUI options  "
-" ============= "
-
-if has('gui_macvim')
-  set guifont=Ubuntu\ Mono:h11
-elseif has('gui_running')
-  set guifont=Ubuntu\ Mono\ 9
-end
-
-if exists('&guioptions')
-  set guioptions-=m
-  set guioptions-=T
-  set guioptions-=r
-  set guioptions-=R
-  set guioptions-=l
-  set guioptions-=L
-  set guioptions-=b
-endif
 
 " =============== "
 "  Plugin config  "
