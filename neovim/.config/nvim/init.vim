@@ -37,6 +37,7 @@ set colorcolumn=80,92,100,120
 set completeopt=longest,menu
 set expandtab
 set hidden
+set mouse=a "temporary until neovim default mouse setting is changed
 set nowrap
 set number
 set path+=**
