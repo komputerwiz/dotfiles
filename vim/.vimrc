@@ -15,11 +15,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 "Plug 'altercation/vim-colors-solarized'
-Plug 'iCyMind/NeoSolarized'
+Plug 'icymind/NeoSolarized'
 Plug 'chaoren/vim-wordmotion'
 Plug 'duggiefresh/vim-easydir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
+Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
@@ -131,6 +132,12 @@ let g:airline_mode_map = { '__': '-', 'n': 'N', 'i': 'I', 'R': 'R', 'c': 'C', 'v
 
 " editorconfig
 let g:EditorConfig_exclude_pattrens = ['fugitive://.*']
+
+" gnupg
+let g:GPGPreferSign = 1
+let g:GPGDefaultRecipients = [
+      \'Matthew J. Barry <komputerwiz.matt@gmail.com>'
+      \]
 
 " netrw (vim's built-in file browser)
 let g:netrw_banner = 0
