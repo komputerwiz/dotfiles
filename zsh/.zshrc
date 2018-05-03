@@ -1,4 +1,4 @@
-# .zlogin
+# .zshrc
 # This file is loaded only if the shell is a login shell:
 #    /etc/zshenv    +  ~/.zshenv
 #    /etc/zprofile  +  ~/.zprofile
@@ -34,14 +34,9 @@ antigen bundle sudo
 antigen bundle wd
 
 antigen bundle "$HOME/.zsh/plugins/reboot-notifier"
-
-# autosuggestions must be loaded before syntax highlighting
-antigen bundle tarruda/zsh-autosuggestions
-
+antigen bundle zsh-users/zsh-autosuggestions # must be loaded before syntax highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
-
-# history substring search must be loaded after syntax highlighting
-antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-history-substring-search # must be loaded after syntax highlighting
 
 antigen theme "$HOME/.zsh/themes" komputerwiz
 
