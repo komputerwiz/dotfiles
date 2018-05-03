@@ -6,17 +6,15 @@ shopt -s extglob extquote
 # NOTE:  Todo.sh requires the .todo/config configuration file to run.
 # Place the .todo/config file in your home directory or use the -d option for a custom location.
 
-[ -f VERSION-FILE ] && . VERSION-FILE || VERSION="2.10"
+[ -f VERSION-FILE ] && . VERSION-FILE || VERSION="2.11.0"
 version() {
     cat <<-EndVersion
 		TODO.TXT Command Line Interface v$VERSION
 
-		First release: 5/11/2006
-		Original conception by: Gina Trapani (http://ginatrapani.org)
-		Contributors: http://github.com/ginatrapani/todo.txt-cli/network
-		License: GPL, http://www.gnu.org/copyleft/gpl.html
-		More information and mailing list at http://todotxt.com
-		Code repository: http://github.com/ginatrapani/todo.txt-cli/tree/master
+		Homepage: http://todotxt.org
+		Code repository: https://github.com/todotxt/todo.txt-cli/
+		Contributors: https://github.com/todotxt/todo.txt-cli/graphs/contributors
+		License: https://github.com/todotxt/todo.txt-cli/blob/master/LICENSE
 	EndVersion
     exit 1
 }
@@ -429,7 +427,7 @@ replaceOrPrepend()
 
   if [[ -z "$1" && $TODOTXT_FORCE = 0 ]]; then
     echo -n "$querytext"
-    read input
+    read -e -r input
   else
     input=$*
   fi
@@ -463,6 +461,19 @@ replaceOrPrepend()
         ;;
     esac
   fi
+}
+
+uppercasePriority()
+{
+    # Precondition:  $input contains task text for which to uppercase priority.
+    # Postcondition: Modifies $input.
+    lower=( {a..z} )
+    upper=( {A..Z} )
+    for ((i=0; i<26; i++))
+    do
+        upperPriority="${upperPriority};s/^[(]${lower[i]}[)]/(${upper[i]})/"
+    done
+    input=$(echo "$input" | sed $upperPriority)
 }
 
 #Preserving environment variables so they don't get clobbered by the config file
@@ -657,6 +668,15 @@ export SENTENCE_DELIMITERS=',.:;'
 }
 
 [ -e "$TODOTXT_CFG_FILE" ] || {
+    CFG_FILE_ALT="${XDG_CONFIG_HOME:-$HOME/.config}/todo/config"
+
+    if [ -e "$CFG_FILE_ALT" ]
+    then
+        TODOTXT_CFG_FILE="$CFG_FILE_ALT"
+    fi
+}
+
+[ -e "$TODOTXT_CFG_FILE" ] || {
     CFG_FILE_ALT=$(dirname "$0")"/todo.cfg"
 
     if [ -e "$CFG_FILE_ALT" ]
@@ -683,6 +703,15 @@ fi
 
 [ -d "$TODO_ACTIONS_DIR" ] || {
     TODO_ACTIONS_DIR_ALT="$HOME/.todo.actions.d"
+
+    if [ -d "$TODO_ACTIONS_DIR_ALT" ]
+    then
+        TODO_ACTIONS_DIR="$TODO_ACTIONS_DIR_ALT"
+    fi
+}
+
+[ -d "$TODO_ACTIONS_DIR" ] || {
+    TODO_ACTIONS_DIR_ALT="${XDG_CONFIG_HOME:-$HOME/.config}/todo/actions"
 
     if [ -d "$TODO_ACTIONS_DIR_ALT" ]
     then
@@ -755,6 +784,7 @@ _addto() {
     file="$1"
     input="$2"
     cleaninput
+    uppercasePriority
 
     if [[ $TODOTXT_DATE_ON_ADD = 1 ]]; then
         now=$(date '+%Y-%m-%d')
@@ -989,7 +1019,7 @@ case $action in
 "add" | "a")
     if [[ -z "$2" && $TODOTXT_FORCE = 0 ]]; then
         echo -n "Add: "
-        read input
+        read -e -r input
     else
         [ -z "$2" ] && die "usage: $TODO_SH add \"TODO ITEM\""
         shift
@@ -1001,7 +1031,7 @@ case $action in
 "addm")
     if [[ -z "$2" && $TODOTXT_FORCE = 0 ]]; then
         echo -n "Add: "
-        read input
+        read -e -r input
     else
         [ -z "$2" ] && die "usage: $TODO_SH addm \"TODO ITEM\""
         shift
@@ -1042,7 +1072,7 @@ case $action in
 
     if [[ -z "$1" && $TODOTXT_FORCE = 0 ]]; then
         echo -n "Append: "
-        read input
+        read -e -r input
     else
         input=$*
     fi
@@ -1082,7 +1112,7 @@ case $action in
     if [ -z "$3" ]; then
         if  [ $TODOTXT_FORCE = 0 ]; then
             echo "Delete '$todo'?  (y/n)"
-            read ANSWER
+            read -e -r ANSWER
         else
             ANSWER="y"
         fi
@@ -1278,7 +1308,7 @@ case $action in
     [ -z "$todo" ] && die "$item: No such item in $src."
     if  [ $TODOTXT_FORCE = 0 ]; then
         echo "Move '$todo' from $src to $dest? (y/n)"
-        read ANSWER
+        read -e -r ANSWER
     else
         ANSWER="y"
     fi
