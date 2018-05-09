@@ -30,7 +30,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+quotedbl kill
+bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+e exec dmenu_run
@@ -38,13 +38,13 @@ bindsym $mod+Shift+quotedbl kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+e exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb '#002B36' -nf '#839496' -sb '#073642' -sf '#268BD2'" --entry-type=command
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Ubuntu Mono-9' -nb '#002B36' -nf '#839496' -sb '#073642' -sf '#268BD2'" --entry-type=command
 
 # change focus
 bindsym $mod+h focus left
-bindsym $mod+t focus down
-bindsym $mod+n focus up
-bindsym $mod+s focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -54,9 +54,9 @@ bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+H move left
-bindsym $mod+Shift+T move down
-bindsym $mod+Shift+N move up
-bindsym $mod+Shift+S move right
+bindsym $mod+Shift+J move down
+bindsym $mod+Shift+K move up
+bindsym $mod+Shift+L move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -65,16 +65,16 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+d split h
+bindsym $mod+s split h
 
 # split in vertical orientation
-bindsym $mod+k split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+u fullscreen
+bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+o layout stacking
+bindsym $mod+apostrophe layout stacking
 bindsym $mod+comma layout tabbed
 bindsym $mod+period layout toggle split
 
@@ -120,11 +120,11 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 4%- unmut
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 
 # reload the configuration file
-bindsym $mod+Shift+J reload
+bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+P restart
+bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+greater exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+E exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -135,9 +135,9 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
-        bindsym t resize grow height 10 px or 10 ppt
-        bindsym n resize shrink height 10 px or 10 ppt
-        bindsym s resize grow width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -150,11 +150,10 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+p mode "resize"
+bindsym $mod+r mode "resize"
 
 # lock the screen
-#bindsym $mod+l exec --no-startup-id i3lock --color=000000 --image="$HOME/.wallpaper/screenlock" --tiling
-bindsym $mod+l exec --no-startup-id "$HOME/.i3/lock_screen.sh $HOME/.wallpaper/screenlock_tmp.png"
+bindsym $mod+l exec --no-startup-id i3lock --color=000000 --image="$HOME/.wallpaper/screenlock" --tiling
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
