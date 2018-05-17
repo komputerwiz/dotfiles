@@ -29,7 +29,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/dbext.vim', { 'for': 'sql' }
 Plug 'vim-syntastic/syntastic'
-Plug 'wikitopian/hardmode'
 call plug#end()
 
 colorscheme NeoSolarized
@@ -50,7 +49,6 @@ set termguicolors
 set tabstop=8
 set wildmode=longest:full,full
 
-nnoremap <silent> <Leader>a :call ToggleHardMode()<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <silent> <Leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -100,9 +98,6 @@ let g:airline_mode_map = { '__': '-', 'n': 'N', 'i': 'I', 'R': 'R', 'c': 'C', 'v
 
 " editorconfig
 let g:EditorConfig_exclude_pattrens = ['fugitive://.*']
-
-" hard mode by default
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
 " gnupg
 let g:GPGPreferSign = 1
