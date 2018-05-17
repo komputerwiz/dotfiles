@@ -27,6 +27,7 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'lumiliet/vim-twig', { 'for': 'twig' }
 Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
