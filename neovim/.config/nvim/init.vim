@@ -6,7 +6,6 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
-"Plug 'altercation/vim-colors-solarized'
 Plug 'icymind/NeoSolarized'
 Plug 'chaoren/vim-wordmotion'
 Plug 'duggiefresh/vim-easydir'
@@ -69,6 +68,9 @@ vnoremap <silent> <Space> za
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" use %% in command mode to insert the directory of the current buffer
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%;h').'/' : '%%'
 
 inoremap <C-Space> <C-x><C-o>
 " <C-Space> is treated differently by terminal emulators
