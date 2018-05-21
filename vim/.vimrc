@@ -83,7 +83,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " use %% in command mode to insert the directory of the current buffer
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%;h').'/' : '%%'
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 inoremap <C-Space> <C-x><C-o>
 " <C-Space> is treated differently by terminal emulators
