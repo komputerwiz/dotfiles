@@ -5,13 +5,17 @@
     user = komputerwiz
     
 [alias]
+    a = add
+    aa = add --all
     br = branch
     ci = commit
     co = checkout
     cp = cherry-pick
     d = diff
+    dc = diff --cached
     dt = difftool
     f = fetch
+    l = log --pretty=oneline-detailed --graph --all --decorate --date=iso
     rb = rebase
     sm = submodule
     st = status

@@ -108,6 +108,7 @@ alias rm='rm -I'
 
 # git shorthand
 alias gci='git commit'
+alias gdc='git diff --cached'
 alias gdt='git difftool'
 alias gf='git fetch'
 alias glg='git log --pretty=oneline-detailed --graph --all --decorate --date=iso'
