@@ -46,6 +46,7 @@ set colorcolumn=80,92,100,120
 set completeopt=longest,menu
 set expandtab
 set hidden
+set nojoinspaces
 set nowrap
 set number
 set path+=**

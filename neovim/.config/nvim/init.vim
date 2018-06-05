@@ -40,6 +40,7 @@ set completeopt=longest,menu
 set expandtab
 set hidden
 set mouse=a "temporary until neovim default mouse setting is changed
+set nojoinspaces
 set nowrap
 set number
 set path+=**
