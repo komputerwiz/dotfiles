@@ -29,7 +29,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/dbext.vim', { 'for': 'sql' }
-Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 call plug#end()
 
 colorscheme NeoSolarized
@@ -117,14 +117,3 @@ let g:netrw_winsize = 25
 
 " supertab
 let g:SuperTabDefaultCompletionType = 'context'
-
-" syntastic
-function! FindConfig(prefix, what, where)
-  " look for config in ancestral directories
-  let cfg = findfile(a:what, escape(a:where, ' ') . ';')
-  return cfg !=# '' ? ' ' . a:prefix . ' ' . shellescape(cfg) : ''
-endfunction
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_typescript_checkers = ['tslint']
