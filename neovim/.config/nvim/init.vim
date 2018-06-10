@@ -17,6 +17,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'lumiliet/vim-twig', { 'for': 'twig' }
 Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
+Plug 'nelstrom/vim-visual-star-search'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
