@@ -41,6 +41,7 @@ bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+e exec dmenu_run
+bindsym $mod+Shift+P exec --no-startup-id dmenu_run -i -fn 'Ubuntu Mono-9' -nb '#002B36' -nf '#839496' -sb '#073642' -sf '#268BD2'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -48,10 +49,10 @@ bindsym $mod+Shift+Q kill
 bindsym $mod+p exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Ubuntu Mono-9' -nb '#002B36' -nf '#839496' -sb '#073642' -sf '#268BD2'" --entry-type=command
 
 # change focus
-bindsym $mod+d focus left
-bindsym $mod+h focus down
-bindsym $mod+t focus up
-bindsym $mod+n focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -60,10 +61,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+D move left
-bindsym $mod+Shift+H move down
-bindsym $mod+Shift+T move up
-bindsym $mod+Shift+N move right
+bindsym $mod+Shift+H move left
+bindsym $mod+Shift+J move down
+bindsym $mod+Shift+K move up
+bindsym $mod+Shift+L move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -85,17 +86,15 @@ bindsym $mod+apostrophe layout stacking
 bindsym $mod+comma layout tabbed
 bindsym $mod+period layout toggle split
 
-# toggle tiling / floating
+# toggle tiling / floating mode for selected window
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
+# focus the parent/child container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+o focus child
 
 # switch to workspace
 bindsym $super+1 workspace 1
@@ -146,10 +145,10 @@ mode "resize" {
   # Pressing right will grow the window’s width.
   # Pressing up will shrink the window’s height.
   # Pressing down will grow the window’s height.
-  bindsym d resize shrink width 10 px or 10 ppt
-  bindsym h resize grow height 10 px or 10 ppt
-  bindsym t resize shrink height 10 px or 10 ppt
-  bindsym n resize grow width 10 px or 10 ppt
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym j resize grow height 10 px or 10 ppt
+  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
 
   # same bindings, but for the arrow keys
   bindsym Left resize shrink width 10 px or 10 ppt
@@ -158,10 +157,10 @@ mode "resize" {
   bindsym Right resize grow width 10 px or 10 ppt
 
   # fine-grained control
-  bindsym $alt+d resize shrink width 1 px or 1 ppt
-  bindsym $alt+h resize grow height 1 px or 1 ppt
-  bindsym $alt+t resize shrink height 1 px or 1 ppt
-  bindsym $alt+n resize grow width 1 px or 1 ppt
+  bindsym $alt+h resize shrink width 1 px or 1 ppt
+  bindsym $alt+j resize grow height 1 px or 1 ppt
+  bindsym $alt+k resize shrink height 1 px or 1 ppt
+  bindsym $alt+l resize grow width 1 px or 1 ppt
 
   bindsym $alt+Left resize shrink width 1 px or 1 ppt
   bindsym $alt+Down resize grow height 1 px or 1 ppt
@@ -176,7 +175,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # lock the screen
-bindsym $super+l exec --no-startup-id i3lock --color=000000 --image="$HOME/.wallpaper/screenlock" --tiling
+bindsym $mod+Control+l exec --no-startup-id i3lock --color=000000 --image="$HOME/.wallpaper/screenlock" --tiling
 
 # window decoration colors (solarized)
 #class                  title_border bg      fg      indicator child_border
