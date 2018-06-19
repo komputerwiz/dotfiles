@@ -1,0 +1,25 @@
+command=${XDG_CONFIG_HOME:-$HOME/.config}/i3blocks/blocks/$BLOCK_NAME
+interval=once
+
+[disk]
+instance=/
+interval=60
+
+[iface]
+label=E:
+interval=60
+
+[volume]
+label=♪:
+signal=1
+
+[load_average]
+interval=10
+
+[datetime]
+command=date '+%F %T'
+interval=1
+
+[kbdlayout]
+signal=2
+color=#268BD2
