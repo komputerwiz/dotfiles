@@ -151,3 +151,6 @@ let g:netrw_winsize = 25
 
 " supertab
 let g:SuperTabDefaultCompletionType = 'context'
+
+" tsuquyomi
+let g:tsuquyomi_disable_quickfix = 1
