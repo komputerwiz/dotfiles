@@ -1,4 +1,4 @@
-set colorcolumn=72,79
-set textwidth=72
-set formatoptions-=t "do not wrap code automatically
-set formatoptions+=c "wrap comments automatically
+setlocal colorcolumn=72,79
+setlocal textwidth=72
+setlocal formatoptions-=t "do not wrap code automatically
+setlocal formatoptions+=c "wrap comments automatically
