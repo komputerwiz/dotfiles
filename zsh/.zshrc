@@ -107,11 +107,10 @@ alias mv='mv -i'
 alias rm='rm -I'
 
 # git shorthand
-alias gci='git commit'
-alias gdc='git diff --cached'
 alias gdt='git difftool'
-alias gf='git fetch'
 alias glg='git log --pretty=oneline-detailed --graph --all --decorate --date=iso'
+alias gls='git log --stat'
+alias glsp='git log --stat -p'
 
 # canonical mode for viewing binary files
 alias hexdump='hexdump -C'
