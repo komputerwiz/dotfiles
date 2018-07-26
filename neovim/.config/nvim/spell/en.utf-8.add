@@ -1,0 +1,13 @@
+# don't forget to run `:mkspell! %` after updating this file
+# see `:help spell-wordlist-format` for more info
+/encoding=utf-8
+/regions=us
+GIS/=
+detectability
+durations
+metadata
+reflectivity
+serializable
+survivability
+undirected
+unintuitive
