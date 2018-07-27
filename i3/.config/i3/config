@@ -72,11 +72,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+s split h
-
-# split in vertical orientation
-bindsym $mod+v split v
+# horizontal/vertical splits are reversed compared to split/vsplit in vim
+bindsym $mod+s split v
+bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
