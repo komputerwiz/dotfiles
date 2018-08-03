@@ -64,13 +64,10 @@ endif
 set directory^=~/.vim/swapfiles//
 
 nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <silent> <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> <Leader>g :Gstatus<CR>
 nnoremap <silent> <Leader>h :Hexmode<CR>
-nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>o :TagbarToggle<CR>
-nnoremap <silent> <Leader>s :set spell!<CR>
 nnoremap <silent> <Leader>t :Tags<CR>
 
 noremap <silent> <F2> :let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>
