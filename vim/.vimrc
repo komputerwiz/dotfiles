@@ -25,6 +25,7 @@ Plug 'lumiliet/vim-twig', { 'for': 'twig' }
 Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 Plug 'tpope/vim-abolish'
@@ -144,8 +145,11 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
 
-" supertab
-let g:SuperTabDefaultCompletionType = 'context'
-
 " tsuquyomi
 let g:tsuquyomi_disable_quickfix = 1
+
+" vim-jsx-typescript
+hi link xmlTagName Function
+hi link xmlTag Function
+hi link xmlEndTag Function
+hi link jsxCloseString Function
