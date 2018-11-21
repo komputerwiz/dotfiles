@@ -149,7 +149,19 @@ let g:netrw_winsize = 25
 let g:tsuquyomi_disable_quickfix = 1
 
 " vim-jsx-typescript
-hi link xmlTagName Function
-hi link xmlTag Function
-hi link xmlEndTag Function
-hi link jsxCloseString Function
+" The following syntax components are forcibly colored by vim-jsx-typescript.
+" Here we reset them to their default links in RUNTIME/syntax/*.vim and let
+" the user-selected theme handle coloring
+hi link xmlEndTag Identifier
+hi link tsxCloseString htmlTagName
+hi link htmlTag Function
+hi link htmlEndTag Identifier
+hi link htmlTagName htmlStatement
+hi link tsxAttrib htmlArg
+"hi link ReactState
+"hi link ReactProps
+"hi link Events
+"hi link ReduxKeywords
+"hi link Ethereum
+"hi link WebBrowser
+"hi link ReactLifeCycleMethods
