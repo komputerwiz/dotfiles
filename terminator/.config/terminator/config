@@ -6,6 +6,34 @@
   title_transmit_bg_color = "#073642"
   title_transmit_fg_color = "#268bd2"
 [keybindings]
+  broadcast_all = None
+  broadcast_group = None
+  broadcast_off = None
+  close_term = None
+  close_window = None
+  cycle_next = None
+  cycle_prev = None
+  go_down = <Primary><Alt>Down
+  go_left = <Primary><Alt>Left
+  go_next = <Primary><Shift>braceright
+  go_prev = <Primary><Shift>braceleft
+  go_right = <Primary><Alt>Right
+  go_up = <Primary><Alt>Up
+  group_all = None
+  group_tab = None
+  help = None
+  hide_window = None
+  insert_number = None
+  insert_padded = None
+  layout_launcher = None
+  new_terminator = None
+  rotate_ccw = None
+  rotate_cw = None
+  split_horiz = None
+  split_vert = None
+  toggle_zoom = None
+  ungroup_all = None
+  ungroup_tab = None
 [layouts]
   [[default]]
     [[[child1]]]
