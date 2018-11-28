@@ -1,0 +1,10 @@
+[Unit]
+Description=Redshift display color temperature adjustment
+After=display-manager.service
+
+[Service]
+ExecStart=/usr/bin/redshift -c %h/.config/redshift/redshift.conf
+Restart=always
+
+[Install]
+WantedBy=default.target
