@@ -24,8 +24,21 @@
 # If you are unfamiliar with CSON, you can read more about it here:
 # https://github.com/bevry/cson#what-is-cson
 'atom-text-editor':
-  'ctrl-space': 'autocomplete-plus:activate'
   'alt-shift-L': 'editor:split-selections-into-lines'
+
 'atom-text-editor:not([mini])':
   'ctrl-e': 'emmet:expand-abbreviation'
   'ctrl-,': 'unset!'
+  'ctrl-shift-M': 'unset!'
+
+'atom-workspace, atom-workspace atom-text-editor':
+  'ctrl-shift-M': 'markdown-preview:toggle'
+
+'atom-pane atom-text-editor[data-grammar~="html"]:not([mini]):not(.autocomplete-active), atom-pane atom-text-editor[data-grammar~="xml"]:not([mini]):not(.autocomplete-active)':
+  'ctrl-shift-M': 'emmet:merge-lines'
+
+'.platform-linux atom-text-editor':
+  'ctrl-shift-up': 'symbols-view:return-from-declaration'
+  'ctrl-shift-down': 'symbols-view:go-to-declaration'
+  'ctrl-alt-up': 'unset!'
+  'ctrl-alt-down': 'unset!'
