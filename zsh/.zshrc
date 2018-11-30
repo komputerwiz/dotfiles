@@ -142,6 +142,26 @@ copy_hash() {
     echo -n "$2" | openssl dgst "-$1" | cut -d ' ' -f 2 | awk '{printf("%s",$0);}' | __copy_to_clipboard
 }
 
+# Perform a given command in each git repository in the current directory.
+each_repo() {
+    ROOT_PWD="$(pwd)"
+    for REPO in $(ls); do
+        # skip if not a directory or a git repository
+        if [[ ! ( -d "$REPO"  && -d "$REPO/.git" ) ]]; then
+            continue
+        fi
+        cd "$REPO"
+        echo "\n$REPO"
+        if eval "$@"; then
+            # command succeeded
+        else
+            echo -e "\e31mfailure to execute in $REPO"
+        fi
+        cd "$ROOT_PWD"
+    done
+}
+
+
 ### AUTOSUGGESTIONS CONFIG ###
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
