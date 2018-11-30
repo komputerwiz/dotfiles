@@ -26,7 +26,6 @@ antigen bundle git
 #antigen bundle git-flow
 antigen bundle history
 #antigen bundle rbenv
-#antigen bundle sublime
 antigen bundle sudo
 #antigen bundle symfony2
 #antigen bundle tmux
