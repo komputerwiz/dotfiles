@@ -199,7 +199,7 @@
         </menu>
         <menu id="39" label="Other">
             <item label="Win7-dev"> <action name="Execute">
-                    <execute>rdesktop -u matt.barry -d CITD -k en-dv -g 1200x1024 -a 32 -z -P win7-dev.citd.tamu.edu</execute>
+                    <execute>rdesktop -u matthew.barry -d CITD -k en-dv -g 1200x1024 -a 32 -z -P win7-dev.citd.tamu.edu</execute>
             </action> </item>
             <item label="Dropbox"> <action name="Execute">
                     <execute>dropboxd</execute>
