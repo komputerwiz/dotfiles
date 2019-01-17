@@ -54,7 +54,6 @@ set wildmode=longest:full,full
 
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <silent> <Leader>g :Gstatus<CR>
 nnoremap <silent> <Leader>h :Hexmode<CR>
 nnoremap <silent> <Leader>o :TagbarToggle<CR>
 nnoremap <silent> <Leader>t :Tags<CR>
