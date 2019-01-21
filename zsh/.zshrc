@@ -64,6 +64,7 @@ bindkey '^ ' autosuggest-accept
 ### ALIASES ###
 
 alias t='todo.sh'
+alias v="$EDITOR"
 
 # list files
 alias la='ls -a'
