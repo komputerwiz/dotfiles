@@ -1,5 +1,5 @@
 # .zshrc
-# This file is loaded only if the shell is a login shell:
+# This file is loaded only if the shell is an interactive shell:
 #    /etc/zshenv    +  ~/.zshenv
 #    /etc/zprofile  +  ~/.zprofile
 # -> /etc/zshrc     +  ~/.zshrc
@@ -10,36 +10,8 @@
 
 ### ANTIGEN ###
 
-source "$HOME/.antigen/antigen.zsh"
-
-
-### FRAMEWORK CONFIG ###
-
-DISABLE_CORRECTION=true
-DISABLE_AUTO_TITLE=true
-
-
-### OH-MY-ZSH FRAMEWORK AND PLUGINS ###
-
-antigen use oh-my-zsh
-
-for file in "$HOME"/.zsh/plugins.d/*.zsh(N); do source "$file"; done
-
-antigen bundle git
-#antigen bundle git-flow
-antigen bundle history
-antigen bundle sudo
-antigen bundle symfony2
-antigen bundle wd
-
-antigen bundle "$HOME/.zsh/plugins/reboot-notifier"
-antigen bundle zsh-users/zsh-autosuggestions # must be loaded before syntax highlighting
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search # must be loaded after syntax highlighting
-
-antigen theme "$HOME/.zsh/themes" komputerwiz
-
-antigen apply
+source "$ADOTDIR/antigen.zsh"
+antigen init "$HOME/.zsh/antigenrc"
 
 
 ### OPTIONS ###

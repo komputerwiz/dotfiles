@@ -15,6 +15,6 @@ while getopts ":s" opt; do
 done
 
 echo "Installing Antigen..."
-git clone $GITFLAGS https://github.com/zsh-users/antigen.git "$HOME/.antigen"
+git clone $GITFLAGS https://github.com/zsh-users/antigen.git "$HOME/.zsh/antigen"
 
 echo "Installation complete. Restart your shell to initialize the awesome!"

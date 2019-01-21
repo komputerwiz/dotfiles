@@ -1,0 +1,33 @@
+### CONFIG ###
+
+DISABLE_CORRECTION=true
+DISABLE_AUTO_TITLE=true
+
+
+### ANTIGEN ###
+
+antigen use oh-my-zsh
+
+for file in "$HOME"/.zsh/plugins.d/*.zsh(N); do source "$file"; done
+
+# bundles provided by oh-my-zsh
+antigen bundle git
+#antigen bundle git-flow
+antigen bundle history
+antigen bundle sudo
+antigen bundle wd
+
+# custom bundles
+antigen bundle "$HOME/.zsh/plugins/reboot-notifier"
+antigen bundle "$HOME/.zsh/plugins/symfony"
+
+# standalone git repo bundles
+antigen bundle zsh-users/zsh-autosuggestions # must be loaded before syntax highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search # must be loaded after syntax highlighting
+
+antigen theme "$HOME/.zsh/themes" komputerwiz
+
+antigen apply
+
+# vim: ft=zsh
