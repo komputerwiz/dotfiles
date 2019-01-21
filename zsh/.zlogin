@@ -6,3 +6,8 @@
 # -> /etc/zlogin    +  ~/.zlogin
 #    ...
 #    /etc/zlogout   +  ~/.zlogout
+
+
+### LOAD ADDITIONAL LOCAL FILES ###
+
+for file in "$HOME"/.zsh/login.d/*.zsh(N); do source "$file"; done

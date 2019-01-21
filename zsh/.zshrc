@@ -7,6 +7,7 @@
 #    ...
 #    /etc/zlogout   +  ~/.zlogout
 
+
 ### ANTIGEN ###
 
 source "$HOME/.antigen/antigen.zsh"
@@ -22,14 +23,13 @@ DISABLE_AUTO_TITLE=true
 
 antigen use oh-my-zsh
 
+for file in "$HOME"/.zsh/plugins.d/*.zsh(N); do source "$file"; done
+
 antigen bundle git
 #antigen bundle git-flow
 antigen bundle history
-#antigen bundle rbenv
 antigen bundle sudo
-#antigen bundle symfony2
-#antigen bundle tmux
-#antigen bundle vi-mode
+antigen bundle symfony2
 antigen bundle wd
 
 antigen bundle "$HOME/.zsh/plugins/reboot-notifier"
@@ -131,7 +131,14 @@ __copy_to_clipboard() {
     if [ "$(uname)" == "Darwin" ]; then
         pbcopy
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-        xclip -selection CLIPBOARD
+        if [ -z "$(which xsel)" ]; then
+          xsel -b
+        elif [ -z "$(which xclip)" ]; then
+          xclip -selection CLIPBOARD
+        else
+          echo "Unable to copy to clipboard: xsel nor xclip is installed." >&2
+          cat
+        fi
     else
         cat
     fi
@@ -166,3 +173,8 @@ each_repo() {
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
+
+
+### LOAD ADDITIONAL LOCAL FILES ###
+
+for file in "$HOME"/.zsh/rc.d/*.zsh(N); do source "$file"; done

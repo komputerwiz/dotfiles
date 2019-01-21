@@ -8,51 +8,16 @@
 # -> /etc/zlogout   +  ~/.zlogout
 
 
-### UPDATE SCRIPT DEFINITION ###
-
-update_scripts=("$HOME/.vim/update.sh")
-
-
 ### AUTOMATIC UPDATES ###
 
-LOCKFILE="$HOME/.zsh/var/update_epoch.lock"
+[ -x "$HOME/.config/dotfiles/update.sh" ] && "$HOME/.config/dotfiles/update.sh"
 
-function _current_epoch() {
-    echo $(($(date +%s) / 60 / 60 / 24))
-}
 
-function _update_update_lock() {
-    [[ ! -d "$(dirname "$LOCKFILE")" ]] && mkdir -p $(dirname "$LOCKFILE")
-    echo "LAST_EPOCH=$(_current_epoch)" > "$LOCKFILE"
-}
+### LOAD ADDITIONAL LOCAL FILES ###
 
-if [ -f "$LOCKFILE" ]; then
-    . "$LOCKFILE"
-
-    if [[ -z "${LAST_EPOCH}" ]]; then
-        _update_update_lock && return 0
-    fi
-
-    days_since_update=$(($(_current_epoch) - $LAST_EPOCH))
-    if [ $days_since_update -gt 2 ]; then
-        for script in "${update_scripts[@]}"; do
-            if [[ -x "$script" ]]; then
-                echo ">>> $script"
-                "$script"
-            else
-                echo "!!! $script is not executable: skipping"
-            fi
-        done
-        _update_update_lock
-        sleep 3
-    fi
-else
-    _update_update_lock
-fi
+for file in "$HOME"/.zsh/logout.d/*.zsh(N); do source "$file"; done
 
 
 ### CLEAR SCREEN ###
 
 clear
-
-unset LOCKFILE
