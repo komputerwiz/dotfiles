@@ -19,7 +19,6 @@ antigen bundle wd
 
 # custom bundles
 antigen bundle "$HOME/.zsh/plugins/reboot-notifier"
-antigen bundle "$HOME/.zsh/plugins/symfony"
 
 # standalone git repo bundles
 antigen bundle zsh-users/zsh-autosuggestions # must be loaded before syntax highlighting
