@@ -11,7 +11,7 @@ Plug 'duggiefresh/vim-easydir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'freitass/todo.txt-vim', { 'for': 'todo' }
 Plug 'jamessan/vim-gnupg'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'lumiliet/vim-twig', { 'for': 'twig' }

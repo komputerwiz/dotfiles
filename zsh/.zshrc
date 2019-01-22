@@ -1,5 +1,5 @@
 # .zshrc
-# This file is loaded only if the shell is a login shell:
+# This file is loaded only if the shell is an interactive shell:
 #    /etc/zshenv    +  ~/.zshenv
 #    /etc/zprofile  +  ~/.zprofile
 # -> /etc/zshrc     +  ~/.zshrc
@@ -7,39 +7,11 @@
 #    ...
 #    /etc/zlogout   +  ~/.zlogout
 
+
 ### ANTIGEN ###
 
-source "$HOME/.antigen/antigen.zsh"
-
-
-### FRAMEWORK CONFIG ###
-
-DISABLE_CORRECTION=true
-DISABLE_AUTO_TITLE=true
-
-
-### OH-MY-ZSH FRAMEWORK AND PLUGINS ###
-
-antigen use oh-my-zsh
-
-antigen bundle git
-#antigen bundle git-flow
-antigen bundle history
-#antigen bundle rbenv
-antigen bundle sudo
-#antigen bundle symfony2
-#antigen bundle tmux
-#antigen bundle vi-mode
-antigen bundle wd
-
-antigen bundle "$HOME/.zsh/plugins/reboot-notifier"
-antigen bundle zsh-users/zsh-autosuggestions # must be loaded before syntax highlighting
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search # must be loaded after syntax highlighting
-
-antigen theme "$HOME/.zsh/themes" komputerwiz
-
-antigen apply
+source "$ADOTDIR/antigen.zsh"
+antigen init "$HOME/.zsh/antigenrc"
 
 
 ### OPTIONS ###
@@ -92,6 +64,7 @@ bindkey '^ ' autosuggest-accept
 ### ALIASES ###
 
 alias t='todo.sh'
+alias v="$EDITOR"
 
 # list files
 alias la='ls -a'
@@ -100,10 +73,9 @@ alias lal='ls -ahl'
 alias lla='ls -ahl'
 alias l='ls -F'
 
-# ask for confirmation on copy, move, and delete
+# ask for confirmation on copy and move
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -I'
 
 # git shorthand
 alias gdt='git difftool'
@@ -131,7 +103,14 @@ __copy_to_clipboard() {
     if [ "$(uname)" == "Darwin" ]; then
         pbcopy
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-        xclip -selection CLIPBOARD
+        if [ -z "$(which xsel)" ]; then
+          xsel -b
+        elif [ -z "$(which xclip)" ]; then
+          xclip -selection CLIPBOARD
+        else
+          echo "Unable to copy to clipboard: xsel nor xclip is installed." >&2
+          cat
+        fi
     else
         cat
     fi
@@ -166,3 +145,8 @@ each_repo() {
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
+
+
+### LOAD ADDITIONAL LOCAL FILES ###
+
+for file in "$HOME"/.zsh/rc.d/*.zsh(N); do source "$file"; done

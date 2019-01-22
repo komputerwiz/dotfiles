@@ -1,36 +1,38 @@
+[include]
+  path = ~/.config/git/config.sec
 [user]
-    name = Matthew Barry
-    email = komputerwiz.matt@gmail.com
+  name = Matthew Barry
+  email = komputerwiz.matt@gmail.com
 [github]
-    user = komputerwiz
-    
+  user = komputerwiz
+  
 [alias]
-    a = add
-    aa = add --all
-    br = branch
-    ci = commit
-    co = checkout
-    cp = cherry-pick
-    d = diff
-    dc = diff --cached
-    dt = difftool
-    f = fetch
-    l = log --pretty=oneline-detailed --graph --all --decorate --date=iso
-    rb = rebase
-    sm = submodule
-    st = status
+  a = add
+  aa = add --all
+  br = branch
+  ci = commit
+  co = checkout
+  cp = cherry-pick
+  d = diff
+  dc = diff --cached
+  dt = difftool
+  f = fetch
+  l = log --pretty=oneline-detailed --graph --all --decorate --date=iso
+  rb = rebase
+  sm = submodule
+  st = status
 [core]
-    excludesfile = ~/.gitignore_global
+  excludesfile = ~/.config/git/ignore
 [diff]
-    tool = vimdiff
+  tool = vimdiff
 [merge]
-    tool = vimdiff
-    ff = false
+  tool = vimdiff
+  ff = false
 [credential]
-    helper = cache --timeout=3600
+  helper = cache --timeout=3600
 [pretty]
-    oneline-detailed = format:%Cgreen%h %Creset[%ad] %Cred%an <%ae> %Cblue%d %Creset%s
+  oneline-detailed = format:%Cgreen%h %Creset[%ad] %Cred%an <%ae> %Cblue%d %Creset%s
 [push]
-    default = simple
+  default = simple
 [pull]
-    rebase = true
+  rebase = true

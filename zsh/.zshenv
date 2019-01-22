@@ -16,11 +16,17 @@ umask 022
 # other environment variables
 export EDITOR="vim"
 
+# set antigen install path
+export ADOTDIR="$HOME/.zsh/antigen"
+
 
 ### GLOBAL PATHS ###
 
-if [[ -d $HOME/.local/bin ]]; then
-    export PATH="$PATH:$HOME/.local/bin"
-fi
+[ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
 
 export PATH="$PATH:."
+
+
+### LOAD ADDITIONAL LOCAL FILES ###
+
+for file in "$HOME"/.zsh/env.d/*.zsh(N); do source "$file"; done

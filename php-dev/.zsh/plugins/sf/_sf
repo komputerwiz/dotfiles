@@ -1,0 +1,9 @@
+#compdef sf
+
+_sf_get_command_list () {
+  php bin/console --no-ansi | sed "1,/Available commands/d" | awk '/^  [a-z]+/ {print $1}'
+}
+
+if [ -f bin/console ]; then
+  compadd `_sf_get_command_list`
+fi

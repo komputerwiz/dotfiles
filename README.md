@@ -4,8 +4,16 @@
 2. `cd ~/.dotfiles`
 3. `stow <package>`
 
+Some packages have subpackages (prefixed with `@`). See package README for
+details and instructions.
 
 # Updating
 
 1. `cd ~/.dotfiles`
-2. `./update.sh`
+2. `git pull`
+
+# Credits
+
+Inspired by [Kraymer's F-dotfiles][].
+
+[f-dotfiles]: https://github.com/Kraymer/F-dotfiles
