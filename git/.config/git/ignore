@@ -3,7 +3,6 @@
 *.un~
 Session.vim
 
-
 ## Emacs Files (hisssssss!)
 *~
 \#*\#
@@ -16,3 +15,17 @@ tramp
 
 ## Visual Studio Code Files
 .vscode
+
+## macOS Files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+## Windows files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
