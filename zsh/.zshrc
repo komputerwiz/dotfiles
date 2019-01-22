@@ -73,10 +73,9 @@ alias lal='ls -ahl'
 alias lla='ls -ahl'
 alias l='ls -F'
 
-# ask for confirmation on copy, move, and delete
+# ask for confirmation on copy and move
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -I'
 
 # git shorthand
 alias gdt='git difftool'

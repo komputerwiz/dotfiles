@@ -12,7 +12,6 @@ for file in "$HOME"/.zsh/plugins.d/*.zsh(N); do source "$file"; done
 
 # bundles provided by oh-my-zsh
 antigen bundle git
-#antigen bundle git-flow
 antigen bundle history
 antigen bundle sudo
 antigen bundle wd
