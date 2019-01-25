@@ -1,0 +1,3 @@
+let g:dbext_default_profile_local = 'type=PGSQL:host=localhost:user=postgres:passwd=...'
+
+let g:dbext_default_profile = 'local'
