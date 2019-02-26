@@ -1,0 +1,220 @@
+#compdef watson
+
+_watson_commands=(
+  #'add:Add a frame for a project that was not tracked live.'
+  'cancel:Cancel the last call to the start command.'
+  'config:Get and set configuration options.'
+  'edit:Edit a frame.'
+  'frames:Display the list of all frame IDs.'
+  'help:Display help information'
+  'log:Display each recorded session during the given timespan.'
+  'merge:Perform a merge of the existing frames with a conflicting frames...'
+  'projects:Display the list of all the existing projects.'
+  'remove:Remove a frame.'
+  'rename:Rename a project or tag.'
+  'report:Display a report of the time spent on each project.'
+  'restart:Restart monitoring time for a previously stopped project.'
+  'start:Start monitoring time for the given project.'
+  'status:Display when the current project was started and the time spent...'
+  'stop:Stop monitoring time for the current project.'
+  'sync:Get the frames from the server and push the new ones.'
+  'tags:Display the list of all the tags.'
+)
+
+if [[ -n "$WATSON_DIR" ]]; then
+  _watson_frame_file="$WATSON_DIR/frames"
+elif [[ "$OSTYPE" =~ "^darwin" ]]; then
+  _watson_frame_file="$HOME/Library/Application Support/watson/frames"
+else
+  _watson_frame_file="${XDG_APP_DIR:-"$HOME/.config"}/watson/frames"
+fi
+
+(( $+functions[_watson_get_projects] )) ||
+_watson_get_projects () {
+  local cacheid="WATSON_PROJECTS"
+  if ( [[ ${+_watson_project_list} -eq 0 ]] || _cache_invalid "$cacheid" ) && ! _retrieve_cache "$cacheid"; then
+    _watson_project_list=("${(f)$(_call_program watson-projects watson projects)}")
+    _store_cache "$cacheid" _watson_project_list
+  fi
+}
+
+(( $+functions[_watson_get_tags] )) ||
+_watson_get_tags () {
+  local cacheid="WATSON_TAGS"
+  if ( [[ ${+_watson_tag_list} -eq 0 ]] || _cache_invalid "$cacheid" ) && ! _retrieve_cache "$cacheid"; then
+    _watson_tag_list=("${(f)$(_call_program watson-tags watson tags)}")
+    _store_cache "$cacheid" _watson_tag_list
+  fi
+}
+
+(( $+functions[_watson_get_frames] )) ||
+_watson_get_frames () {
+  local cacheid="WATSON_FRAMES"
+  if ( [[ ${+_watson_frame_list} -eq 0 ]] || _cache_invalid "$cacheid" ) && ! _retrieve_cache "$cacheid"; then
+    _watson_frame_list=("${(f)$(_call_program watson-log watson log)}")
+    _store_cache "$cacheid" _watson_frame_list
+  fi
+}
+
+local cache_policy
+zstyle -s ":completion::complete:watson:*" cache-policy cache_policy
+if [[ -z "$cache_policy" ]]; then
+  zstyle ":completion::complete:watson:*" cache-policy _watson_caching_policy
+fi
+
+_watson_caching_policy () {
+  [[ "$_watson_frame_file" -nt "$1" ]] && return 0
+  return 1
+}
+
+_watson () {
+  local context state line curcontext="$curcontext"
+  typeset -A opt_args
+
+  _arguments : \
+    "--version[Show the version and exit.]" \
+    "--help[Show help and exit.]" \
+    "1: :_watson_cmds" \
+    "*::arg:->args" \
+    && return 0
+
+  case "$state" in
+    (args)
+      case $words[1] in
+        (cancel|frames|help|projects|stop|sync|tags)
+          _arguments : \
+            "--help"
+          ;;
+
+        (status)
+          _arguments : \
+            "(--project -p)"{-p,--project}"[only output project]" \
+            "(--tags -t)"{-t,--tags}"[only output tags]" \
+            "(--elapsed -e)"{-e,--elapsed}"[only output time elapsed]" \
+            "--help"
+          ;;
+
+        #(add)
+        #  _arguments -A "-*" : \
+        #    ": :_watson_projects" \
+        #    "*: :_watson_plus_tags" \
+        #    "(--from -f)"{-f,--from}"[start date and time (YYYY-MM-DD HH:MM:SS)]:date (YYYY-MM-DD HH:MM:SS):" \
+        #    "(--to -t)"{-t,--to}"[end date and time (YYYY-MM-DD HH:MM:SS)]:date (YYYY-MM-DD HH:MM:SS):" \
+        #    "--help"
+        #  ;;
+
+        (start)
+          _arguments -A "-*" : \
+            ": :_watson_projects" \
+            "*: :_watson_plus_tags" \
+            "--help"
+          ;;
+
+        (restart)
+          _arguments : \
+            "(--stop -s)"{-s,--stop}"[Stop already running project]" \
+            "(--no-stop -S)"{-S,--no-stop}"[Don't stop already running project]" \
+            ": :_watson_frames" \
+            "--help"
+          ;;
+
+        (edit)
+          _arguments -A "-*" : \
+            ": :_watson_frames" \
+            "--help"
+          ;;
+
+        (remove)
+          _arguments : \
+            "(--force -f)"{-f,--force}"[Don't ask for confirmation]" \
+            ": :_watson_frames" \
+            "--help"
+          ;;
+
+        (log|report)
+          _arguments : \
+            "*"{-p,--project}"[only for the given project]: :_watson_projects" \
+            "*"{-T,--tag}"[only for the given tag]: :_watson_tags" \
+            "(--from -f)"{-f,--from}"[start date]:date (YYYY-MM-DD):" \
+            "(--to -t)"{-t,--to}"[end date]:date (YYYY-MM-DD):" \
+            "(--year -y)"{-y,--year}"[output frames for current year]" \
+            "(--month -m)"{-m,--month}"[output frames for current month]" \
+            "(--week -w)"{-w,--week}"[output frames for current week]" \
+            "(--day -d)"{-d,--day}"[output frames for current day]" \
+            "(--all -a)"{-a,--all}"[output all frames]" \
+            "(--current -c)"{-c,--current}"[include current frame in output]" \
+            "(--no-current -C)"{-C,--no-current}"[exclude current frame from output]" \
+            "(--pager -g)"{-g,--pager}"[view output through pager]" \
+            "(--no-pager -G)"{-G,--no-pager}"[prevent paging output]" \
+            "(--json -j)"{-j,--json}"[format JSON output]" \
+            "--help"
+          ;;
+
+        (merge)
+          _arguments : \
+            "(--force -f)"{-f,--force}"[Don't ask for confirmation]" \
+          ;;
+
+        (rename)
+          _arguments : \
+            "*"{project}"[rename given project]: :_watson_projects" \
+            "*"{tag}"[rename given tag]: :_watson_tags" \
+            "--help"
+          ;;
+
+        #(config)
+        #  TODO: how to even complete this?
+        #  set config: `watson config SECTION.OPTION VALUE`
+        #  get config: `watson config SECTION.APTION` => VALUE
+        #  open with editor: `watson config -e` or `watson config --edit`
+        #  ;;
+      esac
+      ;;
+  esac
+}
+
+(( $+functions[_watson_projects] )) ||
+_watson_projects () {
+  _watson_get_projects
+  local expl
+  _description projects expl 'projects'
+  compadd "$expl[@]" -a -- _watson_project_list
+}
+
+(( $+functions[_watson_frames] )) ||
+_watson_frames () {
+  _watson_get_frames
+  local expl i
+  for l in $_watson_frame_list; do
+    if [[ "$l" =~ '^[A-Z]' ]]; then
+      i=$(($i+1))
+      _description -V frames$i expl "${l%%\(*\)}"
+    else
+      desc=(${l##[[:space:]]})
+      IFS=' ' read -r val _ <<< $desc
+      compadd "$expl[@]" -d desc -l - "$val"
+    fi
+  done;
+}
+
+(( $+functions[_watson_tags] )) ||
+_watson_tags () {
+  _watson_get_tags
+  compadd "$@" -a -- _watson_tag_list
+}
+
+(( $+functions[_watson_plus_tags] )) ||
+_watson_plus_tags () {
+  _watson_get_tags
+  local expl
+  _description tags expl 'tags'
+  compadd "$expl[@]" -a -p '+' -- _watson_tag_list
+}
+
+(( $+functions[_watson_cmds] )) ||
+_watson_cmds () {
+  _describe -t commands 'commands' _watson_commands "$@"
+}
+
+
+_watson "$@"
