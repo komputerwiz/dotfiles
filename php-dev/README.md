@@ -6,9 +6,9 @@ stowed, then this package will have no effect.
 
     └── .zsh
         ├── plugins
-        │   └── composer
-        │       ├── composer.plugin.zsh  provides composer aliases and PATH config
-        │       └── _composer            autocompletion for 'composer' and 'composer.phar'
+        │   ├── composer
+        │   │   ├── composer.plugin.zsh  provides composer aliases and PATH config
+        │   │   └── _composer            autocompletion for 'composer' and 'composer.phar'
         │   └── sf
         │       ├── sf.plugin.zsh        provides 'sf' alias for Symfony framework console
         │       └── _sf                  autocompletion for 'sf' alias
