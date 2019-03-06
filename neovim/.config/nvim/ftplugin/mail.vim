@@ -1,3 +1,4 @@
+set colorcolumn=72
 set spell
 
 iabbrev ssig --
