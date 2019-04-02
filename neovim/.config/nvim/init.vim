@@ -98,6 +98,9 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_mode_map = { '__': '-', 'n': 'N', 'i': 'I', 'R': 'R', 'c': 'C', 'v': 'V', 'V': 'V', '': 'V', 's': 'S', 'S': 'S', '': 'S' }
 
+" dbext (public config; put private config in plugin/dbext.sec.vim)
+let g:dbext_default_history_file = '~/.local/share/nvim/dbext_history.txt'
+
 " editorconfig
 let g:EditorConfig_exclude_pattrens = ['fugitive://.*']
 
