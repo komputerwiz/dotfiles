@@ -131,6 +131,11 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_mode_map = { '__': '-', 'n': 'N', 'i': 'I', 'R': 'R', 'c': 'C', 'v': 'V', 'V': 'V', '': 'V', 's': 'S', 'S': 'S', '': 'S' }
 
+" ale
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_error_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %severity%: %s'
+
 " dbext (public config; put private config in plugin/dbext.sec.vim)
 let g:dbext_default_history_file = '~/.vim/dbext_history.txt'
 
