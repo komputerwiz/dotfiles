@@ -3,6 +3,7 @@
 1. `git clone matthew@git.komputerwiz.net:git/dotfiles.git ~/.dotfiles`
 2. `cd ~/.dotfiles`
 3. `stow <package>`
+4. `echo <package> >> installed`
 
 Some packages have subpackages (prefixed with `@`). See package README for
 details and instructions.
@@ -10,7 +11,10 @@ details and instructions.
 # Updating
 
 1. `cd ~/.dotfiles`
-2. `git pull`
+2. `git fetch origin <branch>`
+3. `stow -D $(cat installed)`
+4. `git rebase origin/<branch>`
+5. `stow $(cat installed)`
 
 # Credits
 
