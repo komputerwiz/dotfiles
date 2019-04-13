@@ -29,6 +29,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
+Plug 'sirver/ultisnips' "| Plug 'honza/vim-snippets'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'

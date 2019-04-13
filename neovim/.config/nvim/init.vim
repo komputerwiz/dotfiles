@@ -22,6 +22,7 @@ Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 Plug 'Shougo/vimproc.vim', { 'do': 'make' } "dependency for tsuquyomi
+Plug 'sirver/ultisnips' "| Plug 'honza/vim-snippets'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
