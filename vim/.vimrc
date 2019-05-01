@@ -90,11 +90,14 @@ inoremap <Nul> <C-x><C-o>
 
 map <C-p> :FZF<CR>
 
-" ======================================================= "
-"  Set tabstop, softtab, and shiftwdth to the same value  "
-" ======================================================= "
+" ======================== "
+"  Commands and Functions  "
+" ======================== "
 
-command! -nargs=1 Stab call Stab(<f-args>)
+" delete the current file and its buffer (this functionality could be provided by tpope/vim-eunuch)
+command! -bar -bang Delete call delete(expand('%:p')) | bdelete<bang>
+
+" set tabstop, softtab, and shiftwdth to the same value
 function! Stab(width)
     if a:width > 0
         let &l:sts = a:width
@@ -102,6 +105,11 @@ function! Stab(width)
         let &l:sw = a:width
     endif
 endfunction
+
+command! -nargs=1 Stab call Stab(<f-args>)
+
+" load scriptnames into a scratch buffer
+command! -nargs=? Scriptnames Scratch scriptnames <f-args>
 
 " ============= "
 "  GUI options  "
