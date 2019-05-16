@@ -14,7 +14,7 @@ if [ -f "$PKGFILE" ]; then
   # unstow all packages before merging in changes
   stow --dir="$INSTALL_DIR" --delete $(cat "$PKGFILE")
 
-  git -C "$INSTALL_DIR" rebase "origin/$BRANCH"
+  git -C "$INSTALL_DIR" -c "user.name=Matthew Barry" -c "user.email=matthew@komputerwiz.net" rebase "origin/$BRANCH"
 
   # restow packages
   stow --dir="$INSTALL_DIR" --stow $(cat "$PKGFILE")
