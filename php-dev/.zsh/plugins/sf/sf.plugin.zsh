@@ -1,7 +1,7 @@
 sf () {
   if [ ! -f bin/console ]; then
     echo -e "\e[31mUnable to locate Symfony console executable (bin/console). Are you in a Symfony project directory?" >&2
-    exit 1
+    return 1
   fi
 
   if [ ! -x bin/console ]; then
