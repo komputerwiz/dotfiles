@@ -6,15 +6,17 @@ INSTALL_DIR="$HOME/.dotfiles"
 PKGFILE="$INSTALL_DIR/installed"
 
 PWD_SAVE="$PWD"
-cd "$INSTALL_DIR"
 
 restow () {
+  cd "$INSTALL_DIR"
   # restow installed packages after update (or error... yikes!)
   [ -f "$PKGFILE" ] && stow --stow $(cat "$PKGFILE")
+  cd "$PWD_SAVE"
 }
 
 trap restow EXIT
 
+cd "$INSTALL_DIR"
 if [ -f "$PKGFILE" ]; then
   BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
