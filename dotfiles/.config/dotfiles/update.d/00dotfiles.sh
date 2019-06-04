@@ -5,24 +5,29 @@ set -e
 INSTALL_DIR="$HOME/.dotfiles"
 PKGFILE="$INSTALL_DIR/installed"
 
+PWD_SAVE="$PWD"
+cd "$INSTALL_DIR"
+
 restow () {
   # restow installed packages after update (or error... yikes!)
-  [ -f "$PKGFILE" ] && stow --dir="$INSTALL_DIR" --stow $(cat "$PKGFILE")
+  [ -f "$PKGFILE" ] && stow --stow $(cat "$PKGFILE")
 }
 
 trap restow EXIT
 
 if [ -f "$PKGFILE" ]; then
-  BRANCH="$(git -C "$INSTALL_DIR" rev-parse --abbrev-ref HEAD)"
+  BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
   # fetch changes, but don't update working directory yet
-  git -C "$INSTALL_DIR" fetch
+  git fetch
 
   # unstow all packages before merging in changes
-  stow --dir="$INSTALL_DIR" --delete $(cat "$PKGFILE")
+  stow --delete $(cat "$PKGFILE")
 
-  git -C "$INSTALL_DIR" -c "user.name=Matthew Barry" -c "user.email=matthew@komputerwiz.net" rebase "origin/$BRANCH"
+  git -c "user.name=Matthew Barry" -c "user.email=matthew@komputerwiz.net" rebase "origin/$BRANCH"
 else
   # just pull and hope we don't create bad symlinks
-  git -C "$INSTALL_DIR" pull
+  git pull
 fi
+
+cd "$PWD_SAVE"
