@@ -1,8 +1,8 @@
-function HugoSlugify(str)
+function! HugoSlugify(str)
   return substitute(substitute(tolower(a:str), '[-'']\+', '', 'g'), '\W\+', '-', 'g')
 endfunction
 
-function MarkdownTOC(...) range
+function! MarkdownTOC(...) range
   if a:0 > 0
     let depth = a:1
   else
@@ -32,7 +32,7 @@ function MarkdownTOC(...) range
   let @a = savereg
 endfunction
 
-command -nargs=? -range=% TOC
+command! -nargs=? -range=% TOC
       \ let b:winview = winsaveview() |
       \ <line1>,<line2>call MarkdownTOC(<f-args>) |
       \ unlet b:winview
