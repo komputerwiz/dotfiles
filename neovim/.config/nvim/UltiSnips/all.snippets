@@ -1,0 +1,11 @@
+snippet date "ISO 8601 date" w
+`!v strftime("%Y-%m-%d")`
+endsnippet
+
+snippet datetime "ISO 8601 date and time" w
+`!v strftime("%Y-%m-%d %H:%M:%S%z")`
+endsnippet
+
+snippet uuid "Random UUID" w
+`!p if not snip.c: import uuid; snip.rv = uuid.uuid4()`
+endsnippet
