@@ -52,6 +52,7 @@ set nojoinspaces
 set nowrap
 set number
 set path+=**
+set shiftround
 set shiftwidth=2
 set softtabstop=2
 set spelllang=en_us
