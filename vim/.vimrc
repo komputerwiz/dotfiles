@@ -24,6 +24,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'lumiliet/vim-twig', { 'for': 'twig' }
 Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
+Plug 'nblock/vim-dokuwiki', { 'for': 'dokuwiki' }
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
@@ -151,6 +152,9 @@ let g:ale_echo_msg_format = '[%linter%] %severity%: %s'
 
 " dbext (public config; put private config in plugin/dbext.sec.vim)
 let g:dbext_default_history_file = '~/.vim/dbext_history.txt'
+
+" dokuwiki
+let g:dokuwiki_fenced_languages = ['bash=sh', 'javascript', 'php', 'ruby']
 
 " editorconfig
 let g:EditorConfig_exclude_pattrens = ['fugitive://.*']
