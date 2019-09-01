@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'icymind/NeoSolarized'
 Plug 'chaoren/vim-wordmotion'
+Plug 'chikamichi/mediawiki.vim'
 Plug 'duggiefresh/vim-easydir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'freitass/todo.txt-vim', { 'for': 'todo' }
