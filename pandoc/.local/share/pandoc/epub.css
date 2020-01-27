@@ -10,28 +10,36 @@ code {
   white-space: pre-wrap;
 }
 
-h1 {
-  text-align: left;
-}
-
-h2 {
-  text-align: left;
-}
-
-h3 {
-  text-align: left;
-}
-
-h4 {
-  text-align: left;
-}
-
-h5 {
-  text-align: left;
-}
-
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
   text-align: left;
+}
+
+p {
+  margin: 1em 0;
+}
+
+ol,
+ul {
+  padding: 0 0 0 1.5em;
+  margin: 1em 0;
+}
+
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+  margin: 0;
+}
+
+blockquote {
+  margin: 1em 0;
+  padding: 0 2em;
+  font-size: 0.8em;
 }
 
 nav#toc ol,
@@ -49,6 +57,7 @@ nav#landmarks ol li {
 
 a.footnote-ref {
   vertical-align: super;
+  font-size: 0.8em;
 }
 
 em,
