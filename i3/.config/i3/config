@@ -36,6 +36,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # start a vim window
 bindsym $mod+Shift+Return exec i3-sensible-terminal -e i3-sensible-editor
 
+# start a file browser
+bindsym $mod+Control+Return exec xdg-open "$HOME"
+
 # kill focused window
 bindsym $mod+Shift+Q kill
 
@@ -138,6 +141,10 @@ bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+E exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# screenshots
+bindsym --release $mod+Shift+S exec scrot --multidisp
+bindsym --release $mod+Shift+W exec scrot --select
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
   # These bindings trigger as soon as you enter the resize mode
@@ -200,7 +207,8 @@ client.background       #073642
 # finds out, if available)
 bar {
   status_command i3blocks
-  tray_output primary
+  # the following config option requires a primary xrandr output
+  #tray_output primary
   colors {
     background #002b36
     statusline #839496
@@ -214,7 +222,7 @@ exec --no-startup-id xset dpms 0 0 600
 ## AUTOSTART BACKGROUND
 
 # set wallpaper
-exec --no-startup-id feh --bg-scale "$HOME/.wallpaper/wallpaper"
+exec --no-startup-id feh --no-fehbg --bg-scale "$HOME/.wallpaper/wallpaper"
 
 # automatically lock after 10 minutes of inactivity
 exec --no-startup-id xautolock -time 10 -locker 'i3lock --color=000000 --image="$HOME/.wallpaper/screenlock" --tiling'
