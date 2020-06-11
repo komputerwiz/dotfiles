@@ -4,7 +4,7 @@
     "command": "editor.action.joinLines"
   },
 
-  // remove default bindings for <C-Down> and <C-Up>...
+  // remove default (unused) bindings for <C-Down> and <C-Up>...
   {
     "key": "ctrl+up",
     "command": "-scrollLineUp",
@@ -61,11 +61,11 @@
   {
     "key": "alt+backspace",
     "command": "deleteWordPartLeft",
-    "when": "textInputFocus"
+    "when": "textInputFocus && !editorReadonly"
   },
   {
     "key": "alt+delete",
     "command": "deleteWordPartRight",
-    "when": "textInputFocus"
-  }
+    "when": "textInputFocus && !editorReadonly"
+  },
 ]

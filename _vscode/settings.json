@@ -11,7 +11,7 @@
         80,
         92,
         100,
-        120
+        120,
     ],
     // "editor.cursorSmoothCaretAnimation": true, // only if power/GPU can handle it
     // "editor.smoothScrolling": true, // only if power/GPU can handle it
@@ -46,5 +46,6 @@
     "gitProjectManager.baseProjectsFolders": [ "/home/citd.tamu.edu/matthew.barry/git/" ],
     "C_Cpp.intelliSenseEngine": "Default",
     // "vim.enableNeovim": true,
+    // "vim.neovimPath": "/path/to/nvim",
     "vsicons.projectDetection.autoReload": true,
 }
