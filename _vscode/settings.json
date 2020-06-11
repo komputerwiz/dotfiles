@@ -1,38 +1,50 @@
-// Place your settings in this file to overwrite the default settings
 {
-    "C_Cpp.intelliSenseEngine": "Default",
     "editor.acceptSuggestionOnEnter": "off",
     "editor.cursorBlinking": "phase",
-    "editor.find.autoFindInSelection": true,
-    "editor.fontFamily": "Ubuntu Mono",
+    "editor.cursorSurroundingLines": 1,
+    "editor.find.autoFindInSelection": "multiline",
+    "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 12,
-    "editor.lineHeight": 13,
+    "editor.lineHeight": 14,
     "editor.renderWhitespace": "boundary",
-    "editor.rulers": [80, 92, 100, 120],
-    "editor.smoothScrolling": true,
-    // "editor.tabSize": 2,
+    "editor.rulers": [
+        80,
+        92,
+        100,
+        120
+    ],
+    // "editor.cursorSmoothCaretAnimation": true, // only if power/GPU can handle it
+    // "editor.smoothScrolling": true, // only if power/GPU can handle it
+    "editor.tabSize": 2, // set here as a default; prefer editorconfig
     "files.autoSave": "onFocusChange",
-    // "files.insertFinalNewline": true,
-    // "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true, // set here as a default; prefer editorconfig
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true, // set here as a default; prefer editorconfig
+    "git.allowForcePush": true,
     "git.autofetch": true,
     "git.confirmSync": false,
-    "gitProjectManager.baseProjectsFolders": [ "/home/citd.tamu.edu/matthew.barry/git/" ],
+    "git.enableSmartCommit": true,
+    "git.rebaseWhenSync": true,
+    "git.suggestSmartCommit": false,
     "php.suggest.basic": false,
     "php.validate.run": "onType",
+    "search.smartCase": true,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-    "terminal.integrated.lineHeight": 1.1,
-    "vsicons.projectDetection.autoReload": true,
     "window.enableMenuBarMnemonics": false,
-    "window.menuBarVisibility": "toggle",
-    "workbench.activityBar.visible": true,
+    "window.menuBarVisibility": "hidden",
     "workbench.colorTheme": "Solarized Dark",
+    "workbench.enableExperiments": false,
     "workbench.iconTheme": "vscode-icons",
+    "workbench.preferredDarkColorTheme": "Solarized Dark",
+    "workbench.preferredLightColorTheme": "Solarized Light",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tips.enabled": false,
     "window.zoomLevel": 0,
+
+    // extension-specific configuration
+    "gitProjectManager.baseProjectsFolders": [ "/home/citd.tamu.edu/matthew.barry/git/" ],
+    "C_Cpp.intelliSenseEngine": "Default",
     // "vim.enableNeovim": true,
-    "editor.multiCursorModifier": "alt",
-    "git.enableSmartCommit": true,
-    "diffEditor.ignoreTrimWhitespace": true
+    "vsicons.projectDetection.autoReload": true,
 }
