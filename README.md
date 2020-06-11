@@ -13,8 +13,11 @@ details and instructions.
 1. `cd ~/.dotfiles`
 2. `git fetch origin <branch>`
 3. `stow -D $(cat installed)`
-4. `git rebase origin/<branch>`
+4. `git -c "user.name=<name>" -c "user.email=<email>" rebase origin/<branch>`
 5. `stow $(cat installed)`
+
+This process is automated as part of the update script
+`~/.config/dotfiles/update.sh`) in the `dotfiles` package.
 
 # Credits
 
