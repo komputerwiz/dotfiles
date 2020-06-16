@@ -39,6 +39,9 @@ bindsym $mod+Shift+Return exec i3-sensible-terminal -e i3-sensible-editor
 # start a file browser
 bindsym $mod+Control+Return exec xdg-open "$HOME"
 
+# start a web browser
+bindsym $mod+$alt+Return exec xdg-open "https://about:newtab"
+
 # kill focused window
 bindsym $mod+Shift+Q kill
 
