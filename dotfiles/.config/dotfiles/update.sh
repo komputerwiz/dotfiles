@@ -1,6 +1,22 @@
 #!/bin/bash
 set -e
 
+FORCE=false
+
+POSITIONAL=()
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -f|--force)
+      FORCE=true
+      shift
+      ;;
+    *)
+      POSITIONAL+=("$1")
+      shift
+      ;;
+  esac
+done
+
 FREQ=3 # days
 DATA_DIR="${XDG_DATA_HOME:-"$HOME/.local/share"}/dotfiles"
 [ -d "$DATA_DIR" ] || mkdir -p "$DATA_DIR"
@@ -17,7 +33,7 @@ EPOCH_FILE="$DATA_DIR/update_epoch"
 [ -f "$EPOCH_FILE" ] && LAST_RUN="$(cat "$EPOCH_FILE")"
 
 NOW=$(( $(date +%s) / 60 / 60 / 24 ))
-[ ! -z "$LAST_RUN" ] && [ "$(( $NOW - $LAST_RUN ))" -lt "$FREQ" ] && exit 0
+[ ! -z "$LAST_RUN" ] && [ "$(( $NOW - $LAST_RUN ))" -lt "$FREQ" ] && [ "$FORCE" != true ] && exit 0
 
 DIR="$(cd $(dirname "${BASH_SOURCE[0]}") > /dev/null && pwd)"
 for SCRIPT in "$DIR"/update.d/*; do
