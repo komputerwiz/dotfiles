@@ -1,7 +1,8 @@
 #compdef watson
+#version 1.9.0
 
-_watson_commands=(
-  'add:Add a frame for a project that was not tracked live.'
+_watson_comamnds=(
+  'add:Add time to a project with tag(s) that was not tracked live.'
   'aggregate:Display a report of the time spent on each project aggregated by day.'
   'cancel:Cancel the last call to the start command.'
   'config:Get and set configuration options.'
@@ -9,14 +10,14 @@ _watson_commands=(
   'frames:Display the list of all frame IDs.'
   'help:Display help information'
   'log:Display each recorded session during the given timespan.'
-  'merge:Perform a merge of the existing frames with a conflicting frames...'
+  'merge:Perform a merge of the existing frames with a conflicting frames file.'
   'projects:Display the list of all the existing projects.'
   'remove:Remove a frame.'
   'rename:Rename a project or tag.'
   'report:Display a report of the time spent on each project.'
   'restart:Restart monitoring time for a previously stopped project.'
   'start:Start monitoring time for the given project.'
-  'status:Display when the current project was started and the time spent...'
+  'status:Display when the current project was started and the time spent since.'
   'stop:Stop monitoring time for the current project.'
   'sync:Get the frames from the server and push the new ones.'
   'tags:Display the list of all the tags.'
@@ -86,6 +87,8 @@ _watson () {
           _arguments -A "-*" : \
             "(--from -f)"{-f,--from}"[start date and time (YYYY-MM-DD HH:MM:SS)]:date (YYYY-MM-DD HH:MM:SS):" \
             "(--to -t)"{-t,--to}"[end date and time (YYYY-MM-DD HH:MM:SS)]:date (YYYY-MM-DD HH:MM:SS):" \
+            "(--confirm-new-project -c)"{-c,--confirm-new-project}"[Confirm addition of new project]" \
+            "(--confirm-new-tag -b)"{-b,--confirm-new-tag}"[Confirm creation of new tag]" \
             "--help" \
             ": :_watson_projects" \
             "*: :_watson_plus_tags"
@@ -100,12 +103,13 @@ _watson () {
             "(--project -p)"{-p,--project}"[only output project]" \
             "(--tag -T)"{-T,--tag}"[only output tag]" \
             "(--json -j)"{-j,--json}"[format JSON output]" \
+            "(--csv -s)"{-s,--csv}"[format CSV output]" \
             "(--pager -g)"{-g,--pager}"[view output through pager]" \
             "(--no-pager -G)"{-G,--no-pager}"[prevent paging output]" \
             "--help"
           ;;
 
-        (cancel|frames|help|projects|stop|sync|tags)
+        (cancel|frames|help|projects|sync|tags)
           _arguments : \
             "--help"
           ;;
@@ -119,11 +123,13 @@ _watson () {
 
         (edit)
           _arguments -A "-*" : \
-            ": :_watson_frames" \
-            "--help"
+            "(--confirm-new-project -c)"{-c,--confirm-new-project}"[Confirm addition of new project]" \
+            "(--confirm-new-tag -b)"{-b,--confirm-new-tag}"[Confirm creation of new tag]" \
+            "--help" \
+            ": :_watson_frames"
           ;;
 
-        (log|report)
+        (log)
           _arguments : \
             "(--current -c)"{-c,--current}"[include current frame in output]" \
             "(--no-current -C)"{-C,--no-current}"[exclude current frame from output]" \
@@ -138,6 +144,7 @@ _watson () {
             "*"{-p,--project}"[only for the given project]: :_watson_projects" \
             "*"{-T,--tag}"[only for the given tag]: :_watson_tags" \
             "(--json -j)"{-j,--json}"[format JSON output]" \
+            "(--csv -s)"{-s,--csv}"[format CSV output]" \
             "(--pager -g)"{-g,--pager}"[view output through pager]" \
             "(--no-pager -G)"{-G,--no-pager}"[prevent paging output]" \
             "--help"
@@ -175,6 +182,29 @@ _watson () {
           esac
           ;;
 
+        (report)
+          _arguments : \
+            "(--current -c)"{-c,--current}"[include current frame in output]" \
+            "(--no-current -C)"{-C,--no-current}"[exclude current frame from output]" \
+            "(--from -f)"{-f,--from}"[start date]:date (YYYY-MM-DD):" \
+            "(--to -t)"{-t,--to}"[end date]:date (YYYY-MM-DD):" \
+            "(--year -y)"{-y,--year}"[output frames for current year]" \
+            "(--month -m)"{-m,--month}"[output frames for current month]" \
+            "(--luna -l)"{-l,--luna}"[output frames for current moon cycle]" \
+            "(--week -w)"{-w,--week}"[output frames for current week]" \
+            "(--day -d)"{-d,--day}"[output frames for current day]" \
+            "(--all -a)"{-a,--all}"[output all frames]" \
+            "*"{-p,--project}"[only for the given project]: :_watson_projects" \
+            "*"{-T,--tag}"[only for the given tag]: :_watson_tags" \
+            "*--ignore-project[exclude frames belonging to the given project]: :_watson_projects" \
+            "*--ignore-tag[exclude frames with the given tag]: :_watson_tags" \
+            "(--json -j)"{-j,--json}"[format JSON output]" \
+            "(--csv -s)"{-s,--csv}"[format CSV output]" \
+            "(--pager -g)"{-g,--pager}"[view output through pager]" \
+            "(--no-pager -G)"{-G,--no-pager}"[prevent paging output]" \
+            "--help"
+          ;;
+
         (restart)
           _arguments : \
             "(--stop -s)"{-s,--stop}"[Stop already running project]" \
@@ -187,6 +217,8 @@ _watson () {
           _arguments -A "-*" : \
             "(--gap -g)"{-g,--gap}"[leave gap between end of previous frame and start of current]" \
             "(--no-gap -G)"{-G,--no-gap}"[don't leave gap between end of previous frame and start of current]" \
+            "(--confirm-new-project -c)"{-c,--confirm-new-project}"[Confirm addition of new project]" \
+            "(--confirm-new-tag -b)"{-b,--confirm-new-tag}"[Confirm creation of new tag]" \
             "--help" \
             ": :_watson_projects" \
             "*: :_watson_plus_tags"
