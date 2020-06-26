@@ -169,6 +169,7 @@ _watson () {
             "--help" \
             ": :(project tag)" \
             "*::arg:->args"
+          ;;
 
           case $line[1] in
             (project)
