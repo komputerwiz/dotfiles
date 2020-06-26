@@ -85,8 +85,8 @@ _watson () {
       case $words[1] in
         (add)
           _arguments -A "-*" : \
-            "(--from -f)"{-f,--from}"[start date and time (YYYY-MM-DD HH:MM:SS)]:date (YYYY-MM-DD HH:MM:SS):" \
-            "(--to -t)"{-t,--to}"[end date and time (YYYY-MM-DD HH:MM:SS)]:date (YYYY-MM-DD HH:MM:SS):" \
+            "(--from -f)"{-f,--from}"[start date and time (YYYY-MM-DD HH:MM:SS)]:date (YYYY-MM-DD HH\\:MM\\:SS):" \
+            "(--to -t)"{-t,--to}"[end date and time (YYYY-MM-DD HH:MM:SS)]:date (YYYY-MM-DD HH\\:MM\\:SS):" \
             "(--confirm-new-project -c)"{-c,--confirm-new-project}"[Confirm addition of new project]" \
             "(--confirm-new-tag -b)"{-b,--confirm-new-tag}"[Confirm creation of new tag]" \
             "--help" \
@@ -234,7 +234,7 @@ _watson () {
 
         (stop)
           _arguments : \
-            "--at[end date and time ([YYYY-MM-DD] HH:MM[:SS])]:date ([YYYY-MM-DD] HH:MM[:SS]):" \
+            "--at[end date and time (\\[YYYY-MM-DD\\] HH:MM\\[:SS\\])]:date ([YYYY-MM-DD] HH\\:MM[\\:SS]):" \
             "--help"
           ;;
       esac
