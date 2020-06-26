@@ -1,7 +1,8 @@
 [
   {
     "key": "ctrl+j",
-    "command": "editor.action.joinLines"
+    "command": "editor.action.joinLines",
+    "when": "textInputFocus && !editorReadonly"
   },
 
   // remove default (unused) bindings for <C-Down> and <C-Up>...
