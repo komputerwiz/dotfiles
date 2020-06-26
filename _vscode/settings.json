@@ -1,6 +1,8 @@
 {
+    "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.acceptSuggestionOnEnter": "off",
     "editor.cursorBlinking": "phase",
+    // "editor.cursorSmoothCaretAnimation": true,  // only if power/GPU can handle it
     "editor.cursorSurroundingLines": 1,
     "editor.find.autoFindInSelection": "multiline",
     "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
@@ -13,8 +15,8 @@
         100,
         120,
     ],
-    // "editor.cursorSmoothCaretAnimation": true, // only if power/GPU can handle it
-    // "editor.smoothScrolling": true, // only if power/GPU can handle it
+    // "editor.smoothScrolling": true,  // only if power/GPU can handle it
+    "editor.snippetSuggestions": "top",
     "editor.tabSize": 2, // set here as a default; prefer editorconfig
     "files.autoSave": "onFocusChange",
     "files.insertFinalNewline": true, // set here as a default; prefer editorconfig
@@ -35,7 +37,6 @@
     "window.menuBarVisibility": "hidden",
     "workbench.colorTheme": "Solarized Dark",
     "workbench.enableExperiments": false,
-    "workbench.iconTheme": "vscode-icons",
     "workbench.preferredDarkColorTheme": "Solarized Dark",
     "workbench.preferredLightColorTheme": "Solarized Light",
     "workbench.startupEditor": "newUntitledFile",
@@ -45,6 +46,7 @@
     // extension-specific configuration
     "gitProjectManager.baseProjectsFolders": [ "/home/citd.tamu.edu/matthew.barry/git/" ],
     "C_Cpp.intelliSenseEngine": "Default",
+    "C_Cpp.suggestSnippets": false,
     // "vim.enableNeovim": true,
     // "vim.neovimPath": "/path/to/nvim",
     "vsicons.projectDetection.autoReload": true,

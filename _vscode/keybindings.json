@@ -68,4 +68,37 @@
     "command": "deleteWordPartRight",
     "when": "textInputFocus && !editorReadonly"
   },
+
+  // toggle settings (via rebornix.toggle extension)
+  {
+    "key": "F2",
+    "command": "toggle",
+    "args": {
+      "id": "light-dark-theme",
+      "value": [
+        {
+          "workbench.colorTheme": "Solarized Dark"
+        },
+        {
+          "workbench.colorTheme": "Solarized Light"
+        }
+      ]
+    }
+  },
+  {
+    "key": "ctrl+alt+c",
+    "command": "toggle",
+    "when": "editorTextFocus",
+    "args": {
+      "id": "codelens",
+      "value": [
+        {
+          "editor.codeLens": true,
+        },
+        {
+          "editor.codeLens": false,
+        }
+      ]
+    }
+  },
 ]
