@@ -1,7 +1,7 @@
 #compdef watson
 #version 1.9.0
 
-_watson_comamnds=(
+_watson_commands=(
   'add:Add time to a project with tag(s) that was not tracked live.'
   'aggregate:Display a report of the time spent on each project aggregated by day.'
   'cancel:Cancel the last call to the start command.'
@@ -169,7 +169,6 @@ _watson () {
             "--help" \
             ": :(project tag)" \
             "*::arg:->args"
-          ;;
 
           case $line[1] in
             (project)
