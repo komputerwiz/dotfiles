@@ -1,5 +1,5 @@
 #compdef watson
-#version 1.9.0
+#version 1.10.0
 
 _watson_commands=(
   'add:Add time to a project with tag(s) that was not tracked live.'
@@ -75,6 +75,8 @@ _watson () {
 
   _arguments : \
     "--version[Show the version and exit.]" \
+    "--color[Color output.]" \
+    "--no-color[Don't color output.]" \
     "--help[Show help and exit.]" \
     "1: :_watson_cmds" \
     "*::arg:->args" \
@@ -133,6 +135,8 @@ _watson () {
           _arguments : \
             "(--current -c)"{-c,--current}"[include current frame in output]" \
             "(--no-current -C)"{-C,--no-current}"[exclude current frame from output]" \
+            "(--reverse -r)"{-r,--reverse}"[reverse the order of the days in output]" \
+            "(--no-reverse -R)"{-R,--no-reverse}"[don't reverse the order of the days in output]" \
             "(--from -f)"{-f,--from}"[start date]:date (YYYY-MM-DD):" \
             "(--to -t)"{-t,--to}"[end date]:date (YYYY-MM-DD):" \
             "(--year -y)"{-y,--year}"[output frames for current year]" \
@@ -215,6 +219,7 @@ _watson () {
 
         (start)
           _arguments -A "-*" : \
+            "--at[start date and time (\\[YYYY-MM-DD\\] HH:MM\\[:SS\\])]:date ([YYYY-MM-DD] HH\\:MM[\\:SS]):" \
             "(--gap -g)"{-g,--gap}"[leave gap between end of previous frame and start of current]" \
             "(--no-gap -G)"{-G,--no-gap}"[don't leave gap between end of previous frame and start of current]" \
             "(--confirm-new-project -c)"{-c,--confirm-new-project}"[Confirm addition of new project]" \
