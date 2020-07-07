@@ -55,8 +55,10 @@ set shiftround
 set shiftwidth=2
 set softtabstop=2
 set spelllang=en_us
-set termguicolors
+set splitbelow
+set splitright
 set tabstop=8
+set termguicolors
 set wildmode=longest:full,full
 
 nnoremap <silent> <Leader>b :Buffers<CR>

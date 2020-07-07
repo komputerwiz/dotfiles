@@ -60,6 +60,8 @@ set shiftround
 set shiftwidth=2
 set softtabstop=2
 set spelllang=en_us
+set splitbelow
+set splitright
 set tabstop=8
 set wildmode=longest:full,full
 
