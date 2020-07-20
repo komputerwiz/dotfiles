@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+set -e
+
+SERVICE="tamuvpn.service"
+SUDO="/usr/bin/sudo"
+SYSTEMCTL="/usr/bin/systemctl"
+JOURNALCTL="/usr/bin/journalctl"
+
+case "$1" in
+  open|start)
+    "$SUDO" "$SYSTEMCTL" start "$SERVICE"
+    ;;
+
+  close|stop)
+    "$SUDO" "$SYSTEMCTL" stop "$SERVICE"
+    ;;
+
+  r|restart)
+    "$SUDO" "$SYSTEMCTL" restart "$SERVICE"
+    ;;
+
+  log)
+    shift
+    "$JOURNALCTL" -eu "$SERVICE" "$@"
+    ;;
+
+  status)
+    "$SYSTEMCTL" status "$SERVICE"
+    ;;
+
+  *)
+    echo "Usage: $0 (start|stop|log|status)" >&2
+    exit 1
+    ;;
+esac

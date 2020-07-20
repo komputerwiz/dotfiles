@@ -1,0 +1,27 @@
+#!/bin/bash
+set -e
+
+SUDO="/usr/bin/sudo"
+SYSTEMCTL="/usr/bin/systemctl"
+
+MOUNT="mnt-vault.mount"
+CRYPT="systemd-cryptsetup@vault.service"
+
+case "$1" in
+  open)
+    "$SUDO" "$SYSTEMCTL" start "$MOUNT"
+    ;;
+
+  close)
+    "$SUDO" "$SYSTEMCTL" stop "$CRYPT"
+    ;;
+
+  status)
+    "$SYSTEMCTL" status "$MOUNT" "$CRYPT"
+    ;;
+
+  *)
+    echo "Usage: $0 (open|close|status)" >&2
+    exit 1
+    ;;
+esac
