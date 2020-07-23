@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SINK="${BLOCK_INSTANCE:-$(pactl list short | grep RUNNING | awk '{print $1}')}"
+SINK="${BLOCK_INSTANCE:-$(pactl list sinks short | grep RUNNING | awk '{print $1}')}"
 
 # The first parameter sets the step to change the volume by (and units to display)
 # This may be in in % or dB (eg. 5% or 3dB)
