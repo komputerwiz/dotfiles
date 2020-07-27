@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 set -e
 
+MOUNT="mnt-vault.mount"
 SERVICE="tamuvpn.service"
 SUDO="/usr/bin/sudo"
 SYSTEMCTL="/usr/bin/systemctl"
@@ -8,6 +9,9 @@ JOURNALCTL="/usr/bin/journalctl"
 
 case "$1" in
   open|start)
+    if ! "$SYSTEMCTL" is-active --quiet "$MOUNT"; then
+      "$SUDO" "$SYSTEMCTL" start "$MOUNT"
+    fi
     "$SUDO" "$SYSTEMCTL" start "$SERVICE"
     ;;
 
