@@ -145,8 +145,8 @@ bindsym $mod+Shift+R restart
 bindsym $mod+Shift+E exec "i3-nagbar -t warning -m 'Exit i3 Session' -B 'Shut Down' 'systemctl poweroff' -B 'Reboot' 'systemctl reboot' -B 'Hibernate' 'systemctl hibernate' -B 'Suspend' 'systemctl hybrid-sleep' -B 'Logout' 'i3-msg exit'"
 
 # screenshots
-bindsym --release $mod+Shift+S exec scrot --multidisp
-bindsym --release $mod+Shift+W exec scrot --select
+bindsym --release $mod+Shift+S exec scrot --multidisp "${XDG_PICTURES_DIR:-$HOME/Pictures}/screenshots/%Y-%m-%dT%H-%M-%S_scrot.png"
+bindsym --release $mod+Shift+W exec scrot --select "${XDG_PICTURES_DIR:-$HOME/Pictures}/screenshots/%Y-%m-%dT%H-%M-%S_scrot.png"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
