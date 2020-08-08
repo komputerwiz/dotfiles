@@ -6,13 +6,13 @@ package will have no effect.
 
     ├── .config
     │   └── watson
-    │       ├── .gitignore             ignores other watson data files (these should technically go in $XDG_DATA_DIR)
-    │       └── config                 watson configuration file
+    │       ├── .gitignore             ignores other watson data files (these should technically go in $XDG_DATA_DIR)
+    │       └── config                 watson configuration file
     └── .zsh
         ├── plugins
-        │   └── watson
-        │       ├── watson.plugin.zsh  provides watson aliases
-        │       └── _watson            autocompletion for 'watson'
+        │   └── watson
+        │       ├── watson.plugin.zsh  provides watson aliases
+        │       └── _watson            autocompletion for 'watson'
         └── plugins.d
             └── watson.zsh             loads 'watson' plugin
 

@@ -1,16 +1,16 @@
 # ZSH configuration
 
     ├── .config
-    │   └── dotfiles
-    │       └── update.d
-    │           └── zsh.zsh                     automatic updater
+    │   └── dotfiles
+    │       └── update.d
+    │           └── zsh.zsh                     automatic updater
     ├── .zsh
-    │   ├── antigenrc                           configuration for antigen bundle system
-    │   ├── plugins
-    │   │   └── reboot-notifier
-    │   │       └── reboot-notifier.plugin.zsh  adds indicator to prompt when reboot is required
-    │   └── themes
-    │       └── komputerwiz.zsh-theme           prompt theme
+    │   ├── antigenrc                           configuration for antigen bundle system
+    │   ├── plugins
+    │   │   └── reboot-notifier
+    │   │       └── reboot-notifier.plugin.zsh  adds indicator to prompt when reboot is required
+    │   └── themes
+    │       └── komputerwiz.zsh-theme           prompt theme
     │
     ├── .zshenv                                 sourced first and unconditionally
     ├── .zprofile                               sourced before .zshrc only for login shells

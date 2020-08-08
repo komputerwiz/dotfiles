@@ -1,9 +1,9 @@
-# FZF <https://github.com/junegunn/fzf> 
+# FZF <https://github.com/junegunn/fzf>
 
     ├── .config
-    │   └── dotfiles
-    │       └── update.d
-    │           └── fzf.sh   periodically update FZF with update script
+    │   └── dotfiles
+    │       └── update.d
+    │           └── fzf.sh   periodically update FZF with update script
     ├── install.sh           install FZF to ~/.fzf
     └── @zsh
         └── .zsh

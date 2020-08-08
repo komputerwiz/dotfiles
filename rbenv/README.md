@@ -1,12 +1,12 @@
 # rbenv configuration
 
     ├── .config
-    │   └── dotfiles
-    │       └── update.d
-    │           └── rbenv.sh  update rbenv and ruby-build
+    │   └── dotfiles
+    │       └── update.d
+    │           └── rbenv.sh  update rbenv and ruby-build
     ├── .zsh
-    │   └── plugins.d
-    │       └── rbenv.zsh     load rbenv antigen bundle
+    │   └── plugins.d
+    │       └── rbenv.zsh     load rbenv antigen bundle
     │
     └── install.sh            installation script
 
