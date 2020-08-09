@@ -10,12 +10,10 @@
 # Notmuch will store its database within a sub-directory of the path
 # configured here named ".notmuch".
 #
-# Homedir (e.g. `~/...`) and env var (e.g., `$HOME/...`) expansion are
-# not supported. Paths must be absolute or relative to the user's home
-# directory.
+# Path must be absolute.
 #
 [database]
-path=mail
+path=/home/matthew/mail
 
 # User configuration
 #
