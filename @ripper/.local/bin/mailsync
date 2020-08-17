@@ -1,11 +1,13 @@
 #!/bin/bash
 set -e
 
+SUDO="/usr/bin/sudo"
 JOURNALCTL="/usr/bin/journalctl"
 SYSTEMCTL="/usr/bin/systemctl"
 
 SYNC="offlineimap-oneshot@tamu.service"
 TIMER="offlineimap-oneshot@tamu.timer"
+VAULT="mnt-vault.mount"
 
 case "$1" in
   start|resume)
@@ -17,6 +19,9 @@ case "$1" in
     ;;
 
   sync)
+    if ! "$SYSTEMCTL" is-active --quiet "$VAULT"; then
+      "$SUDO" "$SYSTEMCTL" start "$VAULT"
+    fi
     "$SYSTEMCTL" --user start "$SYNC"
     ;;
 
