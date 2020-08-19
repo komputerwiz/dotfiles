@@ -1,6 +1,12 @@
 #!/bin/bash
 
-SINK="${BLOCK_INSTANCE:-$(pactl list sinks short | grep RUNNING | awk '{print $1}')}"
+# if no instance is provided, look for first 'running' sink
+SINK="${BLOCK_INSTANCE:-$(pactl list sinks short | grep RUNNING | awk '{print $1}' | head -n 1)}"
+
+MULTI=''
+if [ "$(pactl list sinks short | grep RUNNING | wc -l)" -gt 1 ]; then
+  MULTI='*'
+fi
 
 # The first parameter sets the step to change the volume by (and units to display)
 # This may be in in % or dB (eg. 5% or 3dB)
@@ -23,15 +29,21 @@ muted() {
 }
 
 case $BLOCK_BUTTON in
+  1) pavucontrol ;; # left click, open control panel
   3) pactl set-sink-mute $SINK toggle ;;  # right click, mute/unmute
   4) pactl set-sink-volume $SINK +$STEP ;; # scroll up, increase
   5) pactl set-sink-volume $SINK -$STEP ;; # scroll down, decrease
 esac
 
+# raw output format:
+#   1st line: full_text
+#   2nd line (if present): short_text
+#   3rd line (if present): color
+#   4th line (if present): background
 if [ "$(muted)" = "yes" ]; then
-  echo "muted ($(volume)%)"
+  echo "muted ($(volume)%)$MULTI"
   echo "mute"
   echo \#B58900
 else
-  echo "$(volume)%"
+  echo "$(volume)%$MULTI"
 fi
