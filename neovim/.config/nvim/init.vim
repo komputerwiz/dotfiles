@@ -5,12 +5,12 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
-Plug 'icymind/NeoSolarized'
 Plug 'chaoren/vim-wordmotion'
-Plug 'chikamichi/mediawiki.vim'
+Plug 'chikamichi/mediawiki.vim', { 'for': 'mediawiki' }
 Plug 'duggiefresh/vim-easydir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'freitass/todo.txt-vim', { 'for': 'todo' }
+Plug 'icymind/NeoSolarized'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -19,11 +19,9 @@ Plug 'lumiliet/vim-twig', { 'for': 'twig' }
 Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
 Plug 'nblock/vim-dokuwiki', { 'for': 'dokuwiki' }
 Plug 'nelstrom/vim-visual-star-search'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
-Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
-Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
-Plug 'Shougo/vimproc.vim', { 'do': 'make' } "dependency for tsuquyomi
 Plug 'sirver/ultisnips' "| Plug 'honza/vim-snippets'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
@@ -34,7 +32,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-pandoc/vim-criticmarkup', { 'for': 'markdown' }
 Plug 'vim-scripts/dbext.vim', { 'for': 'sql' }
-Plug 'dense-analysis/ale'
+
+"Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+"Plug 'Shougo/vimproc.vim', { 'do': 'make' } "dependency for tsuquyomi
+"Plug 'dense-analysis/ale'
+"Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 call plug#end()
 
 colorscheme NeoSolarized
@@ -46,7 +48,7 @@ set concealcursor=nc
 set conceallevel=2
 set expandtab
 set hidden
-set mouse=a "temporary until neovim default mouse setting is changed
+set mouse=a
 set nojoinspaces
 set nowrap
 set number
@@ -67,9 +69,6 @@ nnoremap <silent> <Leader>h :Hexmode<CR>
 nnoremap <silent> <Leader>o :TagbarToggle<CR>
 nnoremap <silent> <Leader>t :Tags<CR>
 
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
 noremap <silent> <F2> :let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>
 noremap <silent> <F3> :Lexplore<CR>
 
@@ -78,13 +77,21 @@ vnoremap <silent> <Space> za
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+nmap <silent> gd <Plug>(coc-definition)
 
 " use %% in command mode to insert the directory of the current buffer
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-inoremap <C-Space> <C-x><C-o>
+"inoremap <C-Space> <C-x><C-o>
+inoremap <silent> <expr> <C-Space> coc#refresh()
 " <C-Space> is treated differently by terminal emulators
-inoremap <Nul> <C-x><C-o>
+"inoremap <Nul> <C-x><C-o>
+inoremap <silent> <expr> <Nul> coc#refresh()
+
+nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 map <C-p> :FZF<CR>
 
@@ -119,9 +126,13 @@ let g:airline_right_sep = ''
 let g:airline_mode_map = { '__': '-', 'n': 'N', 'i': 'I', 'R': 'R', 'c': 'C', 'v': 'V', 'V': 'V', '': 'V', 's': 'S', 'S': 'S', '': 'S' }
 
 " ale
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_error_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %severity%: %s'
+"let g:ale_echo_msg_error_str = 'E'
+"let g:ale_echo_msg_error_str = 'W'
+"let g:ale_echo_msg_format = '[%linter%] %severity%: %s'
+"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+"nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" coc
 
 " dbext (public config; put private config in plugin/dbext.sec.vim)
 let g:dbext_default_history_file = '~/.local/share/nvim/dbext_history.txt'
