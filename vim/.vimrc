@@ -156,24 +156,42 @@ endif
 " airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+" Vim mode key:
+"   __ = unknown
+"   c  = command
+"   i  = insert
+"   ic = insert (completion)
+"   ix = insert (completion)
+"   n  = normal
+"   ni = insert-normal (i_CTRL-O)
+"   no = operator pending
+"   R  = replace
+"   Rv = virtual replace
+"   s  = select
+"   S  = select (line)
+"   ^S = select (block)
+"   t  = terminal
+"   v  = visual
+"   V  = visual (line)
+"   ^V = visual (block)
 let g:airline_mode_map = {
-      \ '__' : '-', " unknown
-      \ 'c'  : 'C', " command
-      \ 'i'  : 'I', " insert
-      \ 'ic' : 'I', " insert (completion)
-      \ 'ix' : 'I', " insert (completion)
-      \ 'n'  : 'N', " normal
-      \ 'ni' : 'N', " insert-normal (i_CTRL-O)
-      \ 'no' : 'N', " operator pending
-      \ 'R'  : 'R', " replace
-      \ 'Rv' : 'R', " virtual replace
-      \ 's'  : 'S', " select
-      \ 'S'  : 'S', " select (line)
-      \ '' : 'S', " select (block)
-      \ 't'  : 'T', " terminal
-      \ 'v'  : 'V', " visual
-      \ 'V'  : 'V', " visual (line)
-      \ '' : 'V', " visual (block)
+      \ '__' : '-',
+      \ 'c'  : 'C',
+      \ 'i'  : 'I',
+      \ 'ic' : 'I',
+      \ 'ix' : 'I',
+      \ 'n'  : 'N',
+      \ 'ni' : 'N',
+      \ 'no' : 'N',
+      \ 'R'  : 'R',
+      \ 'Rv' : 'R',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ 't'  : 'T',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
       \ }
 
 " ale
