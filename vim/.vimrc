@@ -115,13 +115,13 @@ map <C-p> :FZF<CR>
 " delete the current file and its buffer (this functionality could be provided by tpope/vim-eunuch)
 command! -bar -bang Delete call delete(expand('%:p')) | bdelete<bang>
 
-" set tabstop, softtab, and shiftwdth to the same value
+" set tabstop, softtab, and shiftwidth to the same value
 function! Stab(width)
-    if a:width > 0
-        let &l:sts = a:width
-        let &l:ts = a:width
-        let &l:sw = a:width
-    endif
+  if a:width > 0
+    let &l:sts = a:width
+    let &l:ts = a:width
+    let &l:sw = a:width
+  endif
 endfunction
 
 command! -nargs=1 Stab call Stab(<f-args>)
@@ -156,7 +156,25 @@ endif
 " airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_mode_map = { '__': '-', 'n': 'N', 'i': 'I', 'R': 'R', 'c': 'C', 'v': 'V', 'V': 'V', '': 'V', 's': 'S', 'S': 'S', '': 'S' }
+let g:airline_mode_map = {
+      \ '__' : '-', " unknown
+      \ 'c'  : 'C', " command
+      \ 'i'  : 'I', " insert
+      \ 'ic' : 'I', " insert (completion)
+      \ 'ix' : 'I', " insert (completion)
+      \ 'n'  : 'N', " normal
+      \ 'ni' : 'N', " insert-normal (i_CTRL-O)
+      \ 'no' : 'N', " operator pending
+      \ 'R'  : 'R', " replace
+      \ 'Rv' : 'R', " virtual replace
+      \ 's'  : 'S', " select
+      \ 'S'  : 'S', " select (line)
+      \ '' : 'S', " select (block)
+      \ 't'  : 'T', " terminal
+      \ 'v'  : 'V', " visual
+      \ 'V'  : 'V', " visual (line)
+      \ '' : 'V', " visual (block)
+      \ }
 
 " ale
 "let g:ale_echo_msg_error_str = 'E'
@@ -174,7 +192,7 @@ let g:dbext_default_history_file = '~/.vim/dbext_history.txt'
 let g:dokuwiki_fenced_languages = ['bash=sh', 'javascript', 'php', 'ruby']
 
 " editorconfig
-let g:EditorConfig_exclude_pattrens = ['fugitive://.*']
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " gnupg
 let g:GPGPreferSign = 1
