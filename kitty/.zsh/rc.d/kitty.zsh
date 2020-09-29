@@ -1,4 +1,4 @@
-if kitty +kitten icat --detect-support > /dev/null 2>&1; then
+if kitty +kitten icat --detect-support --detection-timeout=2 > /dev/null 2>&1; then
   alias icat='kitty +kitten icat'
 fi
 
