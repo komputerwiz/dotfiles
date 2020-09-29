@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.gabc set filetype=gabc
+autocmd BufNewFile,BufRead *.gabc setfiletype gabc
