@@ -22,15 +22,15 @@ Plug 'icymind/NeoSolarized'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'lumiliet/vim-twig', { 'for': 'twig' }
+Plug 'leafgarland/typescript-vim', { 'for': '*typescript*' }
+Plug 'lumiliet/vim-twig', { 'for': '*twig*' }
 Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
-Plug 'mattn/emmet-vim', { 'for': 'html' }
+Plug 'mattn/emmet-vim', { 'for': ['*html*', '*css*'] }
 Plug 'nblock/vim-dokuwiki', { 'for': 'dokuwiki' }
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
+Plug 'peitalin/vim-jsx-typescript', { 'for': '*typescript*' }
 Plug 'sirver/ultisnips' "| Plug 'honza/vim-snippets'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
