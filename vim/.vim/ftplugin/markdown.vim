@@ -32,7 +32,7 @@ function! MarkdownTOC(...) range
   let @a = savereg
 endfunction
 
-command! -nargs=? -range=% TOC
+command! -buffer -nargs=? -range=% TOC
       \ let b:winview = winsaveview() |
       \ <line1>,<line2>call MarkdownTOC(<f-args>) |
       \ unlet b:winview

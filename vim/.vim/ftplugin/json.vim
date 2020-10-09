@@ -1,2 +1,2 @@
-command! FormatJSON %!python -m json.tool
-nmap =j :FormatJSON<CR>
+command! -buffer FormatJSON %!python -m json.tool
+nmap <buffer> =j :FormatJSON<CR>
