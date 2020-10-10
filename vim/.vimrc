@@ -51,7 +51,7 @@ if executable('node')
   "Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 endif
 
-if has('python')
+if has('python') || has('python3')
   Plug 'sirver/ultisnips' "| Plug 'honza/vim-snippets'
 endif
 
