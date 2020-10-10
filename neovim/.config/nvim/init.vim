@@ -92,21 +92,28 @@ vnoremap <silent> <Space> za
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-nmap <silent> gd <Plug>(coc-definition)
+if exists('g:did_coc_loaded')
+  nmap <silent> gd <Plug>(coc-definition)
+endif
 
 " use %% in command mode to insert the directory of the current buffer
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-"inoremap <C-Space> <C-x><C-o>
-inoremap <silent> <expr> <C-Space> coc#refresh()
 " <C-Space> is treated differently by terminal emulators
-"inoremap <Nul> <C-x><C-o>
-inoremap <silent> <expr> <Nul> coc#refresh()
+if exists('g:did_coc_loaded')
+  inoremap <silent> <expr> <C-Space> coc#refresh()
+  inoremap <silent> <expr> <Nul> coc#refresh()
+else
+  inoremap <C-Space> <C-x><C-o>
+  inoremap <Nul> <C-x><C-o>
+endif
 
-nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
-nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
+if exists('g:did_coc_loaded')
+  nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
+  nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+endif
 
 map <C-p> :FZF<CR>
 
