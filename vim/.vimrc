@@ -12,28 +12,21 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'airblade/vim-gitgutter'
 Plug 'chaoren/vim-wordmotion'
 Plug 'chikamichi/mediawiki.vim', { 'for': 'mediawiki' }
 Plug 'duggiefresh/vim-easydir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'freitass/todo.txt-vim', { 'for': 'todo' }
 Plug 'icymind/NeoSolarized'
-Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'leafgarland/typescript-vim', { 'for': '*typescript*' }
 Plug 'lumiliet/vim-twig', { 'for': '*twig*' }
 Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
 Plug 'mattn/emmet-vim', { 'for': ['*html*', '*css*'] }
 Plug 'nblock/vim-dokuwiki', { 'for': 'dokuwiki' }
 Plug 'nelstrom/vim-visual-star-search'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'peitalin/vim-jsx-typescript', { 'for': '*typescript*' }
-Plug 'sirver/ultisnips' "| Plug 'honza/vim-snippets'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -42,9 +35,30 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-pandoc/vim-criticmarkup', { 'for': 'markdown' }
 Plug 'vim-scripts/dbext.vim', { 'for': 'sql' }
 
-"Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+if executable('git')
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
+endif
+
+if executable('gpg')
+  Plug 'jamessan/vim-gnupg'
+endif
+
+if executable('node')
+  Plug 'leafgarland/typescript-vim', { 'for': '*typescript*' }
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+  Plug 'peitalin/vim-jsx-typescript', { 'for': '*typescript*' }
+  "Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+endif
+
+if has('python')
+  Plug 'sirver/ultisnips' "| Plug 'honza/vim-snippets'
+endif
+
 "Plug 'dense-analysis/ale'
-"Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
+"if executable('php')
+"  Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
+"endif
 call plug#end()
 
 colorscheme NeoSolarized
