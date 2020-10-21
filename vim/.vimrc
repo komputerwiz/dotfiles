@@ -48,7 +48,6 @@ if executable('node')
   Plug 'leafgarland/typescript-vim', { 'for': '*typescript*' }
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
   Plug 'peitalin/vim-jsx-typescript', { 'for': '*typescript*' }
-  "Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 endif
 
 if has('python') || has('python3')
@@ -66,7 +65,7 @@ colorscheme NeoSolarized
 set background=dark
 set colorcolumn=80,92,100,120
 set completeopt=longest,menu
-set concealcursor=nc
+set concealcursor=c
 set conceallevel=2
 set expandtab
 set hidden
@@ -105,28 +104,13 @@ vnoremap <silent> <Space> za
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-if exists('g:did_coc_loaded')
-  nmap <silent> gd <Plug>(coc-definition)
-endif
 
 " use %% in command mode to insert the directory of the current buffer
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " <C-Space> is treated differently by terminal emulators
-if exists('g:did_coc_loaded')
-  inoremap <silent> <expr> <C-Space> coc#refresh()
-  inoremap <silent> <expr> <Nul> coc#refresh()
-else
-  inoremap <C-Space> <C-x><C-o>
-  inoremap <Nul> <C-x><C-o>
-endif
-
-if exists('g:did_coc_loaded')
-  nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
-  nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
-
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-endif
+inoremap <C-Space> <C-x><C-o>
+inoremap <Nul> <C-x><C-o>
 
 map <C-p> :FZF<CR>
 
@@ -216,15 +200,6 @@ let g:airline_mode_map = {
       \ '' : 'V',
       \ }
 
-" ale
-"let g:ale_echo_msg_error_str = 'E'
-"let g:ale_echo_msg_error_str = 'W'
-"let g:ale_echo_msg_format = '[%linter%] %severity%: %s'
-"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-"nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-" coc
-
 " dbext (public config; put private config in plugin/dbext.sec.vim)
 let g:dbext_default_history_file = '~/.vim/dbext_history.txt'
 
@@ -244,9 +219,6 @@ let g:GPGDefaultRecipients = [
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
-
-" tsuquyomi
-let g:tsuquyomi_disable_quickfix = 1
 
 " vim-jsx-typescript
 " The following syntax components are forcibly colored by vim-jsx-typescript.
