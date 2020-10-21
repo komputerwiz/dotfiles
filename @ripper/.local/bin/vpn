@@ -3,6 +3,7 @@ set -e
 
 MOUNT="mnt-vault.mount"
 SERVICE="tamuvpn.service"
+WATCHDOG="tamuvpn-watchdog.service"
 SUDO="/usr/bin/sudo"
 SYSTEMCTL="/usr/bin/systemctl"
 JOURNALCTL="/usr/bin/journalctl"
@@ -25,11 +26,11 @@ case "$1" in
 
   log)
     shift
-    "$JOURNALCTL" -eu "$SERVICE" "$@"
+    "$JOURNALCTL" -eu "$SERVICE" -u "$WATCHDOG" "$@"
     ;;
 
   status)
-    "$SYSTEMCTL" status "$SERVICE"
+    "$SYSTEMCTL" status "$SERVICE" "$WATCHDOG"
     ;;
 
   *)
