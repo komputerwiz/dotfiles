@@ -229,3 +229,9 @@ exec --no-startup-id feh --no-fehbg --bg-scale "$HOME/.wallpaper/wallpaper"
 
 # automatically lock after 10 minutes of inactivity
 exec --no-startup-id xautolock -time 10 -locker 'i3lock --color=000000 --image="$HOME/.wallpaper/screenlock" --tiling'
+
+
+## PERSISTENT WINDOW PROPERTIES
+
+# zeal window is always floating
+for_window [class="Zeal" instance="zeal"] floating enable
