@@ -4,6 +4,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chaoren/vim-wordmotion'
 Plug 'chikamichi/mediawiki.vim', { 'for': 'mediawiki' }
 Plug 'duggiefresh/vim-easydir'

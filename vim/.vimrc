@@ -12,6 +12,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chaoren/vim-wordmotion'
 Plug 'chikamichi/mediawiki.vim', { 'for': 'mediawiki' }
 Plug 'duggiefresh/vim-easydir'
