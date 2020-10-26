@@ -221,6 +221,10 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
 
+" rust (built-in)
+let g:rust_conceal = 1
+let g:rust_fold = 1
+
 " vim-jsx-typescript
 " The following syntax components are forcibly colored by vim-jsx-typescript.
 " Here we reset them to their default links in RUNTIME/syntax/*.vim and let
