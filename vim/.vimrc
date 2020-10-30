@@ -19,6 +19,7 @@ Plug 'duggiefresh/vim-easydir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'freitass/todo.txt-vim', { 'for': 'todo' }
 Plug 'icymind/NeoSolarized'
+Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lumiliet/vim-twig', { 'for': '*twig*' }
