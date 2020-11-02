@@ -81,7 +81,7 @@ set softtabstop=2
 set spelllang=en_us
 set splitbelow
 set splitright
-set tabstop=8
+set tabstop=2
 set wildmode=longest:full,full
 
 " put 'vim turds' in their own directory
