@@ -63,6 +63,7 @@ set concealcursor=c
 set conceallevel=2
 set expandtab
 set hidden
+set list
 set mouse=a
 set nojoinspaces
 set nowrap
@@ -209,3 +210,10 @@ hi link tsxAttrib htmlArg
 "hi link Ethereum
 "hi link WebBrowser
 "hi link ReactLifeCycleMethods
+
+
+" ===================== "
+"  Syntax Highlighting  "
+" ===================== "
+
+hi link Whitespace Comment
