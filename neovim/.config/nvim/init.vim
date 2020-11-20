@@ -64,6 +64,7 @@ set conceallevel=2
 set expandtab
 set hidden
 set list
+set listchars=tab:»\ ,trail:-,nbsp:+
 set mouse=a
 set nojoinspaces
 set nowrap
