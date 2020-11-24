@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chaoren/vim-wordmotion'
 Plug 'chikamichi/mediawiki.vim', { 'for': 'mediawiki' }
+Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'duggiefresh/vim-easydir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'freitass/todo.txt-vim', { 'for': 'todo' }
