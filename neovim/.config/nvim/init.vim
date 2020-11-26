@@ -22,6 +22,7 @@ Plug 'nblock/vim-dokuwiki', { 'for': 'dokuwiki' }
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
