@@ -117,7 +117,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 inoremap <C-Space> <C-x><C-o>
 inoremap <Nul> <C-x><C-o>
 
-map <C-p> :FZF<CR>
+nnoremap <C-p> :FZF<CR>
 
 " ======================== "
 "  Commands and Functions  "
