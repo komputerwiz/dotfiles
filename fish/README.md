@@ -6,18 +6,14 @@
     │   │       └── fish.fish
     │   └── fish
     │       ├── conf.d
-    │       │   ├── 10-composer-aliases.fish
-    │       │   ├── 10-git-aliases.fish
-    │       │   ├── 10-kitty-aliases.fish
-    │       │   └── 99-@ripper.fish
+    │       │   └── 10-git-aliases.fish
     │       ├── config.fish
     │       ├── fish_plugins
     │       ├── functions
     │       │   ├── fish_prompt.fish
     │       │   ├── fish_right_prompt.fish
     │       │   ├── fish_user_key_bindings.fish
-    │       │   ├── pyv.fish
-    │       │   └── sf.fish
+    │       │   └── pyv.fish
     │       └── .gitignore
     └── install.fish
 

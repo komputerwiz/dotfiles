@@ -10,4 +10,3 @@ function sf
 
   command php bin/console $argv
 end
-
