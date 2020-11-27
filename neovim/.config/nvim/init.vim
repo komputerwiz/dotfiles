@@ -220,3 +220,12 @@ hi link tsxAttrib htmlArg
 " ===================== "
 
 hi link Whitespace Comment
+
+
+" ========================================= "
+"  Automatically Source File After Editing  "
+" ========================================= "
+
+augroup vimrc
+  autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+augroup END
