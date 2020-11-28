@@ -87,6 +87,7 @@ nnoremap <silent> <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> <Leader>h :Hexmode<CR>
 nnoremap <silent> <Leader>o :TagbarToggle<CR>
 nnoremap <silent> <Leader>t :Tags<CR>
+nnoremap <silent> <Leader>v :leftabove split $MYVIMRC<CR>
 
 noremap <silent> <F2> :let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>
 noremap <silent> <F3> :Lexplore<CR>
