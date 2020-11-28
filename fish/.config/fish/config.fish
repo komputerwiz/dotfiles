@@ -1,5 +1,4 @@
 alias t='todo.sh'
-alias tt='watson'
 alias v="$EDITOR"
 
 alias la='ls -a'

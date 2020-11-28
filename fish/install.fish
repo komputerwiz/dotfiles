@@ -8,10 +8,6 @@ set -U fish_user_paths $fish_user_paths $HOME/.local/bin
 # fish config
 set -U fish_greeting ''
 
-# FZF
-set -Ux FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*"'
-set -U fish_user_paths $fish_user_paths $HOME/.fzf/bin
-
 # syntax highlighting colors (solarized)
 #
 #                              dark          light
