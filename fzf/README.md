@@ -11,6 +11,8 @@
 **IMPORTANT:** This package does not have to be stowed if FZF is managed
 through vim or neovim.
 
+    install.sh
+
 ## related packages
 
 * fzf-zsh - load FZF plugin with zsh config
