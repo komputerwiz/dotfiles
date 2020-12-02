@@ -64,6 +64,7 @@ set completeopt=longest,menu
 set concealcursor=c
 set conceallevel=2
 set expandtab
+set exrc
 set hidden
 set list
 set listchars=tab:»\ ,trail:-,nbsp:+
@@ -72,6 +73,7 @@ set nojoinspaces
 set nowrap
 set number
 set path+=**
+set secure
 set shiftround
 set shiftwidth=2
 set softtabstop=2

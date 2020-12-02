@@ -2,6 +2,9 @@
 .*.sw[a-z]
 *.un~
 Session.vim
+.exrc
+.vimrc
+.nvimrc
 
 ## Emacs Files (hisssssss!)
 *~
