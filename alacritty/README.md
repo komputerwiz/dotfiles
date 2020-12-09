@@ -1,0 +1,5 @@
+# alacritty
+
+    └── .config
+        └── alacritty
+            └── alacritty.yml
