@@ -199,6 +199,11 @@ let g:netrw_winsize = 25
 let g:rust_conceal = 1
 let g:rust_fold = 1
 
+" UltiSnips
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
 " vim-jsx-typescript
 " The following syntax components are forcibly colored by vim-jsx-typescript.
 " Here we reset them to their default links in RUNTIME/syntax/*.vim and let

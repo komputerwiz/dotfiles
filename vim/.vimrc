@@ -103,6 +103,7 @@ nnoremap <silent> <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> <Leader>h :Hexmode<CR>
 nnoremap <silent> <Leader>o :TagbarToggle<CR>
 nnoremap <silent> <Leader>t :Tags<CR>
+nnoremap <silent> <Leader>v :leftabove split $MYVIMRC<CR>
 
 noremap <silent> <F2> :let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>
 noremap <silent> <F3> :Lexplore<CR>
@@ -231,6 +232,11 @@ let g:netrw_winsize = 25
 " rust (built-in)
 let g:rust_conceal = 1
 let g:rust_fold = 1
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " vim-jsx-typescript
 " The following syntax components are forcibly colored by vim-jsx-typescript.
