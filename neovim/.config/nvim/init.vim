@@ -82,6 +82,7 @@ set splitbelow
 set splitright
 set tabstop=2
 set termguicolors
+set updatetime=1000
 set wildmode=longest:full,full
 
 nnoremap <silent> <Leader>b :Buffers<CR>
