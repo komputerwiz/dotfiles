@@ -191,6 +191,9 @@ let g:GPGDefaultRecipients = [
       \'Matthew J. Barry <komputerwiz.matt@gmail.com>'
       \]
 
+" markdown (built-in)
+let g:markdown_folding = 1
+
 " netrw (vim's built-in file browser)
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
