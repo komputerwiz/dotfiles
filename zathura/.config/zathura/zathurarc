@@ -16,10 +16,10 @@ set notification-error-bg   "#073642" # base02
 set notification-error-fg   "#dc322f" # red
 set statusbar-bg            "#073642" # base03
 set statusbar-fg            "#839496" # base0
-set tabbar-bg               "#002b36" # base03
-set tabbar-fg               "#839496" # base0
-set tabbar-focus-bg         "#073642" # base02
-set tabbar-focus-fg         "#93a1a1" # base1
+#set tabbar-bg               "#002b36" # base03
+#set tabbar-fg               "#839496" # base0
+#set tabbar-focus-bg         "#073642" # base02
+#set tabbar-focus-fg         "#93a1a1" # base1
 
 set index-bg                "#002b36" # base03
 set index-fg                "#839496" # base0
