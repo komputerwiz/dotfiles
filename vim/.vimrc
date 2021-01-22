@@ -112,8 +112,8 @@ noremap <silent> <F3> :Lexplore<CR>
 nnoremap <silent> <Space> za
 vnoremap <silent> <Space> za
 
-xnoremap ga <Plug>(EasyAlign)
-nnoremap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " use %% in command mode to insert the directory of the current buffer
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
