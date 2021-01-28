@@ -36,3 +36,5 @@
   rebase = true
 [include]
   path = ~/.config/git/config.sec
+[init]
+	defaultBranch = master
