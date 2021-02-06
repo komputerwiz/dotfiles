@@ -49,12 +49,17 @@ bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+e exec dmenu_run
-bindsym $mod+Shift+P $exec dmenu_run -i -fn 'Ubuntu Mono-9' -nb '#002B36' -nf '#839496' -sb '#073642' -sf '#268BD2'
+#bindsym $mod+Shift+P $exec dmenu_run -i -fn 'Ubuntu Mono-9' -nb '#002B36' -nf '#839496' -sb '#073642' -sf '#268BD2'
+bindsym $mod+Shift+P $exec rofi -show run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 #bindsym $mod+d $exec i3-dmenu-desktop
-bindsym $mod+p $exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Ubuntu Mono-9' -nb '#002B36' -nf '#839496' -sb '#073642' -sf '#268BD2'"
+#bindsym $mod+p $exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Ubuntu Mono-9' -nb '#002B36' -nf '#839496' -sb '#073642' -sf '#268BD2'"
+#bindsym $mod+p $exec i3-dmenu-desktop --dmenu="rofi -font 'Ubuntu Mono 9' -theme solarized -dmenu -i"
+bindsym $mod+p $exec rofi -show drun
+# emoji picker
+bindsym $mod+m $exec rofimoji --rofi-args="-font 'Ubuntu Mono 24'"
 
 # change focus
 bindsym $mod+h focus left
