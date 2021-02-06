@@ -59,7 +59,7 @@ bindsym $mod+Shift+P $exec rofi -show run
 #bindsym $mod+p $exec i3-dmenu-desktop --dmenu="rofi -font 'Ubuntu Mono 9' -theme solarized -dmenu -i"
 bindsym $mod+p $exec rofi -show drun
 # emoji picker
-bindsym $mod+m $exec rofimoji --rofi-args="-font 'Ubuntu Mono 24'"
+bindsym $mod+e $exec rofimoji --rofi-args="-font 'Ubuntu Mono 24'"
 
 # change focus
 bindsym $mod+h focus left
