@@ -20,6 +20,7 @@ Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
 Plug 'mattn/emmet-vim', { 'for': ['*html*', '*css*'] }
 Plug 'nblock/vim-dokuwiki', { 'for': 'dokuwiki' }
 Plug 'nelstrom/vim-visual-star-search'
+Plug 'neoclide/jsonc.vim', { 'for': 'jsonc' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
