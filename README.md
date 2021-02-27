@@ -2,8 +2,9 @@
 
 1. `git clone matthew@git.komputerwiz.net:git/dotfiles.git ~/.dotfiles`
 2. `cd ~/.dotfiles`
-3. `stow <package>`
-4. `echo <package> >> installed`
+3. `stow stow`
+4. `stow dotfiles <package>...`
+5. `echo <package> >> installed`
 
 Some packages have subpackages (prefixed with `@`). See package README for
 details and instructions.
