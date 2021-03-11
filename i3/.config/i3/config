@@ -136,9 +136,18 @@ bindsym $super+Shift+0 move container to workspace 10
 #bindsym XF86AudioLowerVolume $exec amixer -q set Master 4%- unmute && pkill -RTMIN+1 i3blocks
 #bindsym XF86AudioMute $exec amixer -q set Master toggle && pkill -RTMIN+1 i3blocks
 # volume keys (pulseaudio)
-bindsym XF86AudioRaiseVolume $exec pactl set-sink-volume $(pactl list sinks short | grep RUNNING | awk '{print $1}') +5% && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume $exec pactl set-sink-volume $(pactl list sinks short | grep RUNNING | awk '{print $1}') -5% && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute $exec pactl set-sink-mute $(pactl list sinks short | grep RUNNING | awk '{print $1}') toggle && pkill -RTMIN+1 i3blocks
+#bindsym XF86AudioRaiseVolume $exec pactl set-sink-volume $(pactl list sinks short | grep RUNNING | awk '{print $1}') +5% && pkill -RTMIN+1 i3blocks
+#bindsym XF86AudioLowerVolume $exec pactl set-sink-volume $(pactl list sinks short | grep RUNNING | awk '{print $1}') -5% && pkill -RTMIN+1 i3blocks
+#bindsym XF86AudioMute $exec pactl set-sink-mute $(pactl list sinks short | grep RUNNING | awk '{print $1}') toggle && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume $exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume $exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute $exec pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+1 i3blocks
+
+# media keys
+bindsym XF86AudioStop $exec playerctl stop
+bindsym XF86AudioPlay $exec playerctl play-pause
+bindsym XF86AudioNext $exec playerctl next
+bindsym XF86AudioPrev $exec playerctl previous
 
 # toggle keyboard layouts
 bindsym $mod+semicolon $exec setxkbmap us && pkill -RTMIN+2 i3blocks
