@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TAGS="$(watson --no-color status --tags | sed 's/[[:space:]]//g')"
-ELAPSED="$(watson --no-color status --elapsed | sed 's/ ago$//' | sed 's/ minutes\?/m/' | sed 's/ hours\?/h/' | sed 's/ days\?/d/')"
+ELAPSED="$(watson --no-color status --elapsed | sed 's/ ago$//' | sed 's/^an\?/1/' | sed 's/ seconds\?/s/' | sed 's/ minutes\?/m/' | sed 's/ hours\?/h/' | sed 's/ days\?/d/')"
 PROJECT="$(watson --no-color status --project)"
 
 if [ "$PROJECT" = "No project started." ]; then
