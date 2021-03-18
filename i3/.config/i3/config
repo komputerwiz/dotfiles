@@ -226,6 +226,7 @@ client.background       #073642
 # finds out, if available)
 bar {
   status_command i3blocks
+  separator_symbol "·"
   # the following config option requires a primary xrandr output
   #tray_output primary
   colors {
