@@ -68,7 +68,7 @@ set expandtab
 set exrc
 set hidden
 set list
-set listchars=tab:»\ ,trail:-,nbsp:+
+set listchars=tab:»\ ,trail:·,nbsp:+
 set mouse=a
 set nojoinspaces
 set nowrap
