@@ -13,4 +13,6 @@ alias mv='mv -i'
 alias h='history'
 alias hs='history | grep'
 
-alias dr='docker run -it --rm -v"'$PWD':/data:rw" -w/data'
+function dr --wraps docker --description 'run ephemeral docker container in current directory'
+  docker run --interactive --tty --rm --volume "$PWD:/data:rw" --workdir /data $argv
+end
