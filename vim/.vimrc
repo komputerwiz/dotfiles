@@ -1,3 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 " neovim-like default options not set by vim-plug or sensible
 set belloff=all
 set hlsearch
