@@ -32,8 +32,10 @@ function __fish_watson_has_project -d "determine if watson is using a passed com
   set cmd (commandline -opc)
   if [ (count $cmd) -gt 2 -a $cmd[1] = 'watson' ]
     if [ $argv[1] = $cmd[2] ]
-      if contains "$cmd[3]" (__fish_watson_get_projects)
-        return 0
+      for i in $cmd
+        if contains -- "$i" (__fish_watson_get_projects)
+          return 0
+        end
       end
     end
   end
@@ -44,8 +46,10 @@ function __fish_watson_has_from -d "determine if watson is using a passed comman
   set cmd (commandline -opc)
   if [ (count $cmd) -gt 2 -a $cmd[1] = 'watson' ]
     if [ $argv[1] = $cmd[2] ]
-      if contains -- "$cmd[3]" -f --from
-        return 0
+      for i in $cmd
+        if contains -- "$i" -f --from
+          return 0
+        end
       end
     end
   end
@@ -61,7 +65,7 @@ function __fish_watson_needs_project -d "check if we need a project"
   if [ (count $cmd) -ge 2 -a $cmd[1] = 'watson' ]
     if [ $argv[1] = $cmd[2] ]
       for i in $cmd
-        if contains $i (__fish_watson_get_projects)
+        if contains -- "$i" (__fish_watson_get_projects)
           return 1 # return 1 because we alredy have a project
         end
       end
@@ -81,6 +85,12 @@ else
   set url "a remote Crick server"
 end
 
+# global options
+complete -f -c watson -n '__fish_watson_needs_sub' -l version -d "show the version and exit"
+complete -f -c watson -n '__fish_watson_needs_sub' -l color -d "color output"
+complete -f -c watson -n '__fish_watson_needs_sub' -l no-color -d "don't color output"
+complete -f -c watson -l help -d "show help message"
+
 # ungrouped
 complete -f -c watson -n '__fish_watson_needs_sub' -a cancel -d "Cancel the last start command"
 complete -f -c watson -n '__fish_watson_needs_sub' -a frames -d "Display the list of all frame IDs"
@@ -91,19 +101,21 @@ complete -f -c watson -n '__fish_watson_needs_sub' -a tags -d "Display the list 
 
 # add
 complete -f -c watson -n '__fish_watson_needs_sub' -a add -d "Add time for project with tag(s) that was not tracked live"
-complete -f -c watson -n '__fish_watson_using_command add' -s f -l from -d "Start date for add"
-complete -f -c watson -n '__fish_watson_has_from add' -s t -l to -d "end date for add"
-complete -f -c watson -n '__fish_watson_using_command add' -s c -l confirm-new-project -d "Confirm addition of new project"
-complete -f -c watson -n '__fish_watson_using_command add' -s b -l confirm-new-tag -d "Confirm addition of new tag"
+complete -f -c watson -n '__fish_watson_using_command add' -s f -l from -r -d "Start date for add"
+complete -f -c watson -n '__fish_watson_has_from add' -s t -l to -r -d "end date for add"
+complete -f -c watson -n '__fish_watson_using_command add' -s c -l confirm-new-project -d "confirm addition of new project"
+complete -f -c watson -n '__fish_watson_using_command add' -s b -l confirm-new-tag -d "confirm addition of new tag"
+complete -f -c watson -n '__fish_watson_needs_project add' -a "(__fish_watson_get_projects)"
+complete -f -c watson -n '__fish_watson_has_project add' -a "+(__fish_watson_get_tags)"
 
 # aggregate
 complete -f -c watson -n '__fish_watson_needs_sub' -a aggregate -d "Display a report of the time spent on each project aggregated by day"
 complete -f -c watson -n '__fish_watson_using_command aggregate' -s c -l current -d "include the running frame"
 complete -f -c watson -n '__fish_watson_using_command aggregate' -s C -l no-current -d "exclude the running frame (default)"
-complete -f -c watson -n '__fish_watson_using_command aggregate' -s f -l from -d "Start date for aggregate"
-complete -f -c watson -n '__fish_watson_has_from aggregate' -s t -l to -d "end date for aggregate"
-complete -f -c watson -n '__fish_watson_using_command aggregate' -s p -l project -d "restrict to project" -a "(__fish_watson_get_projects)"
-complete -f -c watson -n '__fish_watson_using_command aggregate' -s T -l tag -d "restrict to tag" -a "(__fish_watson_get_tags)"
+complete -f -c watson -n '__fish_watson_using_command aggregate' -s f -l from -r -d "Start date for aggregate"
+complete -f -c watson -n '__fish_watson_has_from aggregate' -s t -l to -r -d "end date for aggregate"
+complete -f -c watson -n '__fish_watson_using_command aggregate' -s p -l project -r -d "restrict to project" -a "(__fish_watson_get_projects)"
+complete -f -c watson -n '__fish_watson_using_command aggregate' -s T -l tag -r -d "restrict to tag" -a "(__fish_watson_get_tags)"
 complete -f -c watson -n '__fish_watson_using_command aggregate' -s j -l json -d "output json"
 complete -f -c watson -n '__fish_watson_using_command aggregate' -s s -l csv -d "output csv"
 complete -f -c watson -n '__fish_watson_using_command aggregate' -s g -l pager -d "view through pager"
@@ -116,21 +128,25 @@ complete -f -c watson -n '__fish_watson_using_command config' -s e -l edit -d "E
 # edit
 complete -f -c watson -n '__fish_watson_needs_sub' -a edit -d "Edit a frame"
 complete -f -c watson -n '__fish_watson_using_command edit' -a "(__fish_watson_get_frames)"
+complete -f -c watson -n '__fish_watson_using_command edit' -s c -l confirm-new-project -d "confirm addition of new project"
+complete -f -c watson -n '__fish_watson_using_command edit' -s b -l confirm-new-tag -d "confirm addition of new tag"
 
 # log
 complete -f -c watson -n '__fish_watson_needs_sub' -a log -d "Display sessions during the given timespan"
 complete -f -c watson -n '__fish_watson_using_command log' -s c -l current -d "include the running frame"
 complete -f -c watson -n '__fish_watson_using_command log' -s C -l no-current -d "exclude the running frame (default)"
-complete -f -c watson -n '__fish_watson_using_command log' -s f -l from -d "Start date for log"
-complete -f -c watson -n '__fish_watson_has_from log' -s t -l to -d "end date for log"
+complete -f -c watson -n '__fish_watson_using_command log' -s r -l reverse -d "reverse the order of days in output"
+complete -f -c watson -n '__fish_watson_using_command log' -s R -l no-reverse -d "don't reverse the order of days in output"
+complete -f -c watson -n '__fish_watson_using_command log' -s f -l from -r -d "Start date for log"
+complete -f -c watson -n '__fish_watson_has_from log' -s t -l to -r -d "end date for log"
 complete -f -c watson -n '__fish_watson_using_command log' -s y -l year -d "show the last year"
 complete -f -c watson -n '__fish_watson_using_command log' -s m -l month -d "show the last month"
 complete -f -c watson -n '__fish_watson_using_command log' -s l -l luna -d "show the last lunar cycle"
 complete -f -c watson -n '__fish_watson_using_command log' -s w -l week -d "show week-to-day"
 complete -f -c watson -n '__fish_watson_using_command log' -s d -l day -d "show today"
 complete -f -c watson -n '__fish_watson_using_command log' -s a -l all -d "show all"
-complete -f -c watson -n '__fish_watson_using_command log' -s p -l project -d "restrict to project" -a "(__fish_watson_get_projects)"
-complete -f -c watson -n '__fish_watson_using_command log' -s T -l tag -d "restrict to tag" -a "(__fish_watson_get_tags)"
+complete -f -c watson -n '__fish_watson_using_command log' -s p -l project -r -d "restrict to project" -a "(__fish_watson_get_projects)"
+complete -f -c watson -n '__fish_watson_using_command log' -s T -l tag -r -d "restrict to tag" -a "(__fish_watson_get_tags)"
 complete -f -c watson -n '__fish_watson_using_command log' -s j -l json -d "output json"
 complete -f -c watson -n '__fish_watson_using_command log' -s s -l csv -d "output csv"
 complete -f -c watson -n '__fish_watson_using_command log' -s g -l pager -d "view through pager"
@@ -139,30 +155,34 @@ complete -f -c watson -n '__fish_watson_using_command log' -s G -l no-pager -d "
 # merge
 complete -f -c watson -n '__fish_watson_needs_sub' -a merge -d "merge existing frames with conflicting ones"
 complete -f -c watson -n '__fish_watson_using_command merge' -s f -l force -d "silently merge"
+complete -f -c watson -n '__fish_watson_using_command merge' -a "(__fish_watson_get_frames)"
 
 # remove
 complete -f -c watson -n '__fish_watson_needs_sub' -a remove -d "Remove a frame"
-complete -f -c watson -n '__fish_watson_using_command remove' -a "(__fish_watson_get_frames)"
 complete -f -c watson -n '__fish_watson_using_command remove' -s f -l force -d "silently remove"
+complete -f -c watson -n '__fish_watson_using_command remove' -a "(__fish_watson_get_frames)"
 
 # rename
 complete -f -c watson -n '__fish_watson_needs_sub' -a rename -d "Rename a project or tag"
+# TODO: complete project or tag based on sub-sub-command: "watson rename project <project> <new name>" or "watson rename tag <tag> <new name>"
 complete -f -c watson -n '__fish_watson_using_command rename' -a "(__fish_watson_get_projects) (__fish_watson_get_tags)"
 
 # report
 complete -f -c watson -n '__fish_watson_needs_sub' -a report -d "Display a report of time spent"
 complete -f -c watson -n '__fish_watson_using_command report' -s c -l current -d "include the running frame"
 complete -f -c watson -n '__fish_watson_using_command report' -s C -l no-current -d "exclude the running frame (default)"
-complete -f -c watson -n '__fish_watson_using_command report' -s f -l from -d "Start date for report"
-complete -f -c watson -n '__fish_watson_has_from report' -s t -l to -d "end date for report"
+complete -f -c watson -n '__fish_watson_using_command report' -s f -l from -r -d "Start date for report"
+complete -f -c watson -n '__fish_watson_has_from report' -s t -l to -r -d "end date for report"
 complete -f -c watson -n '__fish_watson_using_command report' -s y -l year -d "show the last year"
 complete -f -c watson -n '__fish_watson_using_command report' -s m -l month -d "show the last month"
 complete -f -c watson -n '__fish_watson_using_command report' -s l -l luna -d "show the last lunar cycle"
 complete -f -c watson -n '__fish_watson_using_command report' -s w -l week -d "show week-to-day"
 complete -f -c watson -n '__fish_watson_using_command report' -s d -l day -d "show today"
 complete -f -c watson -n '__fish_watson_using_command report' -s a -l all -d "show all"
-complete -f -c watson -n '__fish_watson_using_command report' -s p -l project -d "restrict to project" -a "(__fish_watson_get_projects)"
-complete -f -c watson -n '__fish_watson_using_command report' -s T -l tag -d "restrict to tag" -a "(__fish_watson_get_tags)"
+complete -f -c watson -n '__fish_watson_using_command report' -s p -l project -r -d "restrict to project" -a "(__fish_watson_get_projects)"
+complete -f -c watson -n '__fish_watson_using_command report' -s T -l tag -r -d "restrict to tag" -a "(__fish_watson_get_tags)"
+complete -f -c watson -n '__fish_watson_using_command report' -l ignore-project -r -d "exclude projects" -a "(__fish_watson_get_projects)"
+complete -f -c watson -n '__fish_watson_using_command report' -l ignore-tag -r -d "exclude tags" -a "(__fish_watson_get_tags)"
 complete -f -c watson -n '__fish_watson_using_command report' -s j -l json -d "output json"
 complete -f -c watson -n '__fish_watson_using_command report' -s s -l csv -d "output csv"
 complete -f -c watson -n '__fish_watson_using_command report' -s g -l pager -d "view through pager"
@@ -170,12 +190,18 @@ complete -f -c watson -n '__fish_watson_using_command report' -s G -l no-pager -
 
 # restart
 complete -f -c watson -n '__fish_watson_needs_sub' -a restart -d "Restart monitoring time for a stopped project"
+complete -f -c watson -n '__fish_watson_using_command restart' -l at -r -d "start frame at this time (YYYY-MM-DDT)?HH:MM(:SS)?"
 complete -f -c watson -n '__fish_watson_using_command restart' -s s -l stop -d "stop running project"
 complete -f -c watson -n '__fish_watson_using_command restart' -s S -l no-stop -d "do not stop running project"
 complete -f -c watson -n '__fish_watson_using_command restart' -a "(__fish_watson_get_frames)"
 
 # start
 complete -f -c watson -n '__fish_watson_needs_sub' -a start -d "Start monitoring time for a project"
+complete -f -c watson -n '__fish_watson_using_command start' -l at -r -d "start frame at this time (YYYY-MM-DDT)?HH:MM(:SS)?"
+complete -f -c watson -n '__fish_watson_using_command start' -s g -l gap -d "leave gap between end time of previous project"
+complete -f -c watson -n '__fish_watson_using_command start' -s G -l no-gap -d "don't leave gap between end time of previous project"
+complete -f -c watson -n '__fish_watson_using_command start' -s c -l confirm-new-project -d "confirm addition of new project"
+complete -f -c watson -n '__fish_watson_using_command start' -s b -l confirm-new-tag -d "confirm addition of new tag"
 complete -f -c watson -n '__fish_watson_needs_project start' -a "(__fish_watson_get_projects)"
 complete -f -c watson -n '__fish_watson_has_project start' -a "+(__fish_watson_get_tags)"
 
@@ -187,4 +213,4 @@ complete -f -c watson -n '__fish_watson_using_command status' -s e -l elapsed -d
 
 # stop
 complete -f -c watson -n '__fish_watson_needs_sub' -a stop -d "Stop monitoring time for the current project"
-complete -f -c watson -n '__fish_watson_using_command stop' -l at -d "Stop frame at this time (YYYY-MM-DDT)?HH:MM(:SS)?"
+complete -f -c watson -n '__fish_watson_using_command stop' -l at -r -d "stop frame at this time (YYYY-MM-DDT)?HH:MM(:SS)?"
