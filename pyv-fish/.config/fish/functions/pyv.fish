@@ -10,7 +10,8 @@ function pyv
     if set -q PYV_VIRTUALENV_BASE
       set virtualenv_base $PYV_VIRTUALENV_BASE
     else
-      set virtualenv_base $HOME/.virtualenvs
+      set -q XDG_DATA_HOME; or set XDG_DATA_HOME $HOME/.local/share
+      set virtualenv_base $XDG_DATA_HOME/pyv
     end
 
     set activate_script $virtualenv_base/$venv/bin/activate.fish
