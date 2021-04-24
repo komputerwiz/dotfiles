@@ -1,0 +1,7 @@
+# zshenv for custom-linux
+
+
+### PATHS ###
+
+export PATH="${PATH}:${HOME}/bin"
+export NODE_PATH="/usr/local/lib/node:/usr/local/lib/node_modules"

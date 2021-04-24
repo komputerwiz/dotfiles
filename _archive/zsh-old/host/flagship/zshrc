@@ -1,0 +1,14 @@
+# zshrc for flagship
+
+
+### OH-MY-ZSH ###
+
+plugins=("${plugins[@]}" "debian" "git-flow")
+
+
+# colorized diff
+# if [[ -n `which colordiff` ]]; then
+#     function diff() { diff $@ | colordiff }
+#     function gdiff() { gdiff $@ | colordiff }
+#     function sdiff() { svn diff $@ | colordiff }
+# fi

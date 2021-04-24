@@ -1,0 +1,281 @@
+set nocompatible                " We're using VIM, not VI
+
+
+" ========================== "
+"  Vundle Bundle Management  "
+" ========================== "
+
+filetype off
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+" GitHub-hosted plugins
+Plugin 'JuliaLang/julia-vim'
+Plugin 'Rykka/riv.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'avakhov/vim-yaml', {'name': 'vim-yaml-indent'}
+Plugin 'chikamichi/mediawiki.vim'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'ervandew/supertab'
+Plugin 'fatih/vim-go'
+Plugin 'godlygeek/tabular'
+Plugin 'groenewege/vim-less'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'honza/vim-snippets'    " engine for UltiSnips
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'juvenn/mustache.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'scrooloose/nerdtree'
+Plugin 'sjl/gundo.vim'
+Plugin 'skammer/vim-css-color'
+Plugin 'stephpy/vim-yaml', {'name': 'vim-yaml-syntax'}
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tmhedberg/matchit'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+
+" vim-scripts hosted plugins
+" See http://vim-scripts.org/vim/scripts.html
+Plugin 'ebnf.vim'
+
+call vundle#end()
+
+filetype plugin indent on
+
+" even though this line is in tpope/vim-sensible, this forces a clean syntax
+" state when loading
+syntax on
+
+
+" ==================== "
+"  Editor Preferences  "
+" ==================== "
+
+set background=dark             " lights out, please; don't burn my eyes
+
+set hidden                      " do not bug me about modified buffers
+
+set smartindent                 " Smart-indent
+set tabstop=8                   " Tab literals are 8 spaces wide
+set shiftwidth=4                " Soft tabs are 4 spaces wide
+set softtabstop=4               " Backspace acts like unindent
+set expandtab                   " Insert spaces instead of tabs
+
+set mat=2                       " Show matchng delimiter for .2sec
+
+set nowrap                      " do not wrap text in display
+
+set colorcolumn=80,92,100,120   " right margins for common text widths
+
+set number                      " Line numbers
+if exists('&rnu')
+    set rnu                     " Relative line numbering
+endif
+
+set magic                       " Pattern matching with special chars
+set hlsearch                    " Highlight search results
+
+set whichwrap+=<,>,h,l
+
+set autochdir                   " Automatically set browser to working dir
+
+" silent! colorscheme komputerwiz
+silent! colorscheme solarized
+
+let mapleader = '\'             " '\' by default, but can't use multichar maps
+
+
+" ================ "
+"  Spell Checking  "
+" ================ "
+
+nnoremap <silent> <Leader>s :set spell!<CR>
+set spelllang=en_us
+
+
+" ========= "
+"  Folding  "
+" ========= "
+
+set foldmethod=syntax
+set foldcolumn=4
+
+
+" ====== "
+"  gVim  "
+" ====== "
+
+if has ('gui_macvim')
+    set guifont=Ubuntu\ Mono:h11
+elseif has('gui_running')
+    set guifont=Ubuntu\ Mono\ 11
+endif
+
+if exists('&guioptions')
+    set guioptions-=T           " Hide toolbar by default
+
+    " Hide scrollbars by default
+    set guioptions-=r           " right scrollbar
+    set guioptions-=R           " right scrollbar (vsplit)
+    set guioptions-=l           " left scrollbar
+    set guioptions-=L           " left scrollbar (vsplit)
+    set guioptions-=b           " bottom scrollbar
+
+    " mappings to toggle gui elements
+    nnoremap <D-\> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
+    nnoremap <Leader>R :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+    nnoremap <Leader>L :if &go=~#'l'<Bar>set go-=l<Bar>else<Bar>set go+=l<Bar>endif<CR>
+    nnoremap <Leader>B :if &go=~#'b'<Bar>set go-=b<Bar>else<Bar>set go+=b<Bar>endif<CR>
+endif
+
+
+" =========================== "
+"  Mappings and Key Bindings  "
+" =========================== "
+
+" calculate expressions on C-A
+" inoremap <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
+
+nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>
+nnoremap <silent> <Leader>l :set list!<CR>
+nnoremap <silent> <Leader>v :tabedit $MYVIMRC<CR>
+
+" opening and closing folds quickly
+nnoremap <silent> <Space> za
+vnoremap <silent> <Space> za
+
+" toggle light and dark background
+noremap <silent> <F2> :let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>
+noremap <silent> <F3> :NERDTreeToggle<CR>
+" build and display errors
+noremap <silent> <F4> :w<CR>:make<CR>:cw<CR>       
+
+" exchange lines like in eclipse; we do want recursive mapping...
+" vim-style up/down
+nmap <A-k> [e
+imap <A-k> [e
+vmap <A-k> [egv
+nmap <A-j> ]e
+imap <A-j> ]e
+vmap <A-j> ]egv
+
+" arrow keys
+nmap <A-Up> [e
+imap <A-Up> [e
+vmap <A-Up> [egv
+nmap <A-Down> ]e
+imap <A-Down> ]e
+vmap <A-Down> ]egv
+
+
+" ======================================================= "
+"  Set tabstop, softtab, and shiftwdth to the same value  "
+" ======================================================= "
+
+command! -nargs=1 Stab call Stab(<f-args>)
+function! Stab(width)
+    if a:width > 0
+        let &l:sts = a:width
+        let &l:ts = a:width
+        let &l:sw = a:width
+    endif
+endfunction
+
+
+" ========================== "
+"  insert current timestamp  "
+" ========================== "
+
+iabbrev <expr> dts strftime("%c")
+
+
+" ==================================== "
+"  Autosource vimrc when it's updated  "
+" ==================================== "
+
+if has('autocmd')
+  autocmd BufWritePost .vimrc source $MYVIMRC
+endif
+
+
+" ========================================= "
+"  Load local configuration (if it exists)  "
+" ========================================= "
+
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
+endif
+
+
+" ======================================== "
+"  vim -b : edit binary using xxd-format!  "
+" ======================================== "
+
+augroup Binary
+    " remove all autocmds for group 'Binary'
+    autocmd!
+
+    autocmd BufReadPre  *.bin let &bin=1
+
+    autocmd BufReadPost *.bin if &bin | %!xxd
+    autocmd BufReadPost *.bin set ft=xxd | endif
+
+    autocmd BufWritePre *.bin if &bin | %!xxd -r
+    autocmd BufWritePre *.bin endif
+
+    autocmd BufWritePost *.bin if &bin | %!xxd
+    autocmd BufWritePost *.bin set nomod | endif
+augroup END
+
+
+" ================================================ "
+"  YouCompleteMe / UltiSnips Plugin Configuration  "
+" ================================================ "
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
+" ====================== "
+"  Riv Plugin Variables  "
+" ====================== "
+
+let g:riv_default_path = '~'
+
+
+" ========================= "
+"  Ctrl-P Plugin Variables  "
+" ========================= "
+
+let g:ctrlp_working_path_mode = 'ra'
+
+" let .project file mark the root of a project directory
+let g:ctrlp_root_markers = ['.project']
+
+
+" ==================================== "
+"  Global Vim Configuration Variables  "
+" ==================================== "
+
+" prefer LaTeX variant of the TeX grammar
+let g:tex_flavor='latex'

@@ -1,0 +1,11 @@
+# zshenv for <del>simlab-barry</del> <del><ins>tcat-mbarry</ins></del> <ins>mbarry</ins>
+
+
+### PATHS ###
+
+# rbenv and ruby-build (override system executables)
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+
+# cabal
+export PATH="$PATH:$HOME/.cabal/bin"

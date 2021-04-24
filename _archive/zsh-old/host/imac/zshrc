@@ -1,0 +1,19 @@
+# zshrc for imac.local
+
+
+### OH-MY-ZSH ###
+
+plugins=("${plugins[@]}"
+	git-flow
+	osx
+	sublime
+)
+
+
+### ALIASES ###
+
+# open folder in Finder
+alias finder='open -a Finder'
+
+# Soundboard
+alias sb="${HOME}/Music/soundboard/soundboard"
