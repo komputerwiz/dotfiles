@@ -6,3 +6,7 @@ function alot --wraps 'alot' --description 'run alot with TERM=xterm to fix term
   set -lx TERM xterm
   command alot $argv
 end
+
+# "equivalent" programs
+alias dig='drill'
+alias vim='nvim'
