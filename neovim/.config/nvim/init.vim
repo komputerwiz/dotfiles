@@ -132,6 +132,9 @@ command! -nargs=1 Stab call Stab(<f-args>)
 " load scriptnames into a scratch buffer
 command! -nargs=? Scriptnames Scratch scriptnames <f-args>
 
+" simplify colorscheme for non-true-color terminals
+command! SimpleColors set notermguicolors | colorscheme default
+
 " =============== "
 "  Plugin config  "
 " =============== "
