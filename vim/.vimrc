@@ -128,6 +128,9 @@ inoremap <Nul> <C-x><C-o>
 
 nnoremap <C-p> :FZF<CR>
 
+" have Y behave more like D
+nnoremap Y y$
+
 " ======================== "
 "  Commands and Functions  "
 " ======================== "
