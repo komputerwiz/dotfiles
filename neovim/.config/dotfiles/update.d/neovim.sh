@@ -1,2 +1,2 @@
 #!/bin/bash
-nvim +PlugClean +PlugUpdate +PlugInstall +qall
+nvim +PaqSync +qall
