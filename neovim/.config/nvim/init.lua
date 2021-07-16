@@ -67,7 +67,13 @@ cmd [[
 -- ------------------- --
 
 cmd 'colorscheme NeoSolarized'
-cmd 'hi link Whitespace Comment'
+
+-- force whitespace highlighting to look like comments
+cmd [[
+  augroup mysyntax
+    autocmd! Syntax,BufNewFile,BufReadPost * highlight link Whitespace Comment
+  augroup END
+]]
 
 -- ------- --
 -- options --
@@ -221,20 +227,23 @@ g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
 -- Here we reset them to their default links in RUNTIME/syntax/*.vim and let
 -- the user-selected theme handle coloring
 cmd [[
-  hi link xmlEndTag Identifier
-  hi link tsxCloseString htmlTagName
-  hi link htmlTag Function
-  hi link htmlEndTag Identifier
-  hi link htmlTagName htmlStatement
-  hi link tsxAttrib htmlArg
+  augroup jsxsyntax
+    autocmd!
+    autocmd Syntax *typescript* highlight link xmlEndTag Identifier
+    autocmd Syntax *typescript* highlight link tsxCloseString htmlTagName
+    autocmd Syntax *typescript* highlight link htmlTag Function
+    autocmd Syntax *typescript* highlight link htmlEndTag Identifier
+    autocmd Syntax *typescript* highlight link htmlTagName htmlStatement
+    autocmd Syntax *typescript* highlight link tsxAttrib htmlArg
+  augroup END
 ]]
---hi link ReactState
---hi link ReactProps
---hi link Events
---hi link ReduxKeywords
---hi link Ethereum
---hi link WebBrowser
---hi link ReactLifeCycleMethods
+--autocmd Syntax *typescript* highlight link ReactState
+--autocmd Syntax *typescript* highlight link ReactProps
+--autocmd Syntax *typescript* highlight link Events
+--autocmd Syntax *typescript* highlight link ReduxKeywords
+--autocmd Syntax *typescript* highlight link Ethereum
+--autocmd Syntax *typescript* highlight link WebBrowser
+--autocmd Syntax *typescript* highlight link ReactLifeCycleMethods
 
 -- --------------------------------------- --
 -- automatically source file after editing --
