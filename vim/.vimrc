@@ -27,7 +27,6 @@ Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lumiliet/vim-twig', { 'for': '*twig*' }
-Plug 'majutsushi/tagbar' ", { 'on': 'TagbarToggle' }
 Plug 'mattn/emmet-vim', { 'for': ['*html*', '*css*'] }
 Plug 'nblock/vim-dokuwiki', { 'for': 'dokuwiki' }
 Plug 'nelstrom/vim-visual-star-search'
@@ -106,8 +105,6 @@ set directory^=~/.vim/swapfiles/
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> <Leader>h :Hexmode<CR>
-nnoremap <silent> <Leader>o :TagbarToggle<CR>
-nnoremap <silent> <Leader>t :Tags<CR>
 nnoremap <silent> <Leader>v :leftabove split $MYVIMRC<CR>
 
 noremap <silent> <F2> :let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>

@@ -23,7 +23,6 @@ require 'paq' {
   {'junegunn/fzf', run='./install --bin'}; 'junegunn/fzf.vim';
   'junegunn/vim-easy-align';
   'lumiliet/vim-twig';
-  'majutsushi/tagbar';
   'mattn/emmet-vim';
   'nblock/vim-dokuwiki';
   'nelstrom/vim-visual-star-search';
@@ -100,8 +99,6 @@ local map = vim.api.nvim_set_keymap
 map('n', '<Leader>b', ':Buffers<CR>', opts)
 map('n', '<Leader>cd', ':cd %:p:h<CR>:pwd<CR>', opts)
 map('n', '<Leader>h', ':Hexmode<CR>', opts)
-map('n', '<Leader>o', ':TagbarToggle<CR>', opts)
-map('n', '<Leader>t', ':Tags<CR>', opts)
 map('n', '<Leader>v', ':leftabove split $MYVIMRC<CR>', opts)
 
 map('', '<F2>', [[:let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>]], opts)
@@ -229,17 +226,10 @@ cmd [[
 --autocmd Syntax *typescript* highlight link WebBrowser
 --autocmd Syntax *typescript* highlight link ReactLifeCycleMethods
 
--- --------------------------------------- --
--- automatically source file after editing --
--- --------------------------------------- --
+-- ---------------------- --
+-- language server config --
+-- ---------------------- --
 
-cmd [[
-  augroup vimrc
-    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
-  augroup END
-]]
-
--- Language Server Config
 local nvim_lsp = require('lspconfig')
 
 -- use an on_attach function to only map the following keys
@@ -252,6 +242,7 @@ local on_attach = function (client, bufnr)
   bopt('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- mappings (see `:h vim.lsp.*` for docs)
+  -- TODO: figure out my own mappings
   local opts = { noremap=true, silent=true }
   bmap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   bmap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -275,3 +266,13 @@ end
 nvim_lsp.rust_analyzer.setup {on_attach=on_attach}
 nvim_lsp.tsserver.setup {on_attach=on_attach}
 nvim_lsp.jdtls.setup {on_attach=on_attach, cmd={'jdtls'}}
+
+-- --------------------------------------- --
+-- automatically source file after editing --
+-- --------------------------------------- --
+
+cmd [[
+  augroup vimrc
+    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+  augroup END
+]]
