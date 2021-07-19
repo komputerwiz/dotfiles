@@ -11,23 +11,23 @@ local function extend(...) return vim.tbl_extend('force', ...) end -- merge opti
 
 require 'paq' {
   'savq/paq-nvim'; -- let paq manage itself
-  {'cespare/vim-toml', opt=true};
+  'cespare/vim-toml';
   'chaoren/vim-wordmotion';
-  {'chikamichi/mediawiki.vim', opt=true};
-  {'dag/vim-fish', opt=true};
+  'chikamichi/mediawiki.vim';
+  'dag/vim-fish';
   'duggiefresh/vim-easydir';
   'editorconfig/editorconfig-vim';
-  {'freitass/todo.txt-vim', opt=true};
+  'freitass/todo.txt-vim';
   'icymind/NeoSolarized';
-  {'jparise/vim-graphql', opt=true};
+  'jparise/vim-graphql';
   {'junegunn/fzf', run='./install --bin'}; 'junegunn/fzf.vim';
   'junegunn/vim-easy-align';
-  {'lumiliet/vim-twig', opt=true};
-  {'majutsushi/tagbar'};
-  {'mattn/emmet-vim', opt=true};
-  {'nblock/vim-dokuwiki', opt=true};
+  'lumiliet/vim-twig';
+  'majutsushi/tagbar';
+  'mattn/emmet-vim';
+  'nblock/vim-dokuwiki';
   'nelstrom/vim-visual-star-search';
-  {'neoclide/jsonc.vim', opt=true};
+  'neoclide/jsonc.vim';
   'neovim/nvim-lspconfig';
   'ntpeters/vim-better-whitespace';
   'tpope/vim-abolish';
@@ -37,30 +37,14 @@ require 'paq' {
   'tpope/vim-surround';
   'tpope/vim-unimpaired';
   'vim-airline/vim-airline'; 'vim-airline/vim-airline-themes';
-  {'vim-pandoc/vim-criticmarkup', opt=true};
+  'vim-pandoc/vim-criticmarkup';
   'airblade/vim-gitgutter';
   'tpope/vim-fugitive';
   'jamessan/vim-gnupg';
-  {'leafgarland/typescript-vim', opt=true};
-  {'peitalin/vim-jsx-typescript', opt=true};
+  'leafgarland/typescript-vim';
+  'peitalin/vim-jsx-typescript';
   'sirver/ultisnips'; -- 'honza/vim-snippets';
 }
-
--- load optional plugins
-cmd [[
-  augroup paqopt
-    autocmd FileType toml         packadd! vim-toml
-    autocmd FileType mediawiki    packadd! mediawiki.vim
-    autocmd FileType fish         packadd! vim-fish
-    autocmd FileType todo         packadd! todo.txt-vim
-    autocmd FileType graphql      packadd! vim-graphql
-    autocmd FileType *twig*       packadd! vim-twig
-    autocmd FileType *html*,*css* packadd! emmet-vim
-    autocmd FileType dokuwiki     packadd! vim-dokuwiki
-    autocmd FileType jsonc        packadd! jsonc.vim
-    autocmd FileType markdown     packadd! vim-criticmarkup
-  augroup END
-]]
 
 -- ------------------- --
 -- syntax highlighting --
