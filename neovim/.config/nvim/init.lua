@@ -242,25 +242,47 @@ local on_attach = function (client, bufnr)
   bopt('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- mappings (see `:h vim.lsp.*` for docs)
-  -- TODO: figure out my own mappings
   local opts = { noremap=true, silent=true }
+
+  -- code navigation
   bmap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  bmap('n', 'g]', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   bmap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  bmap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  bmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+
+  -- inline help
   bmap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  bmap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   bmap('n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+
+  -- workspace management
   bmap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   bmap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   bmap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  bmap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+
+  -- code manipulation
   bmap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   bmap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  bmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  bmap('n', '<space>=', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  -- diagnostics
   bmap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   bmap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   bmap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   bmap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  bmap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+
+  cmd [[
+    augroup lspconfig
+      autocmd!
+      autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+      autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      autocmd Syntax * highlight link LspReferenceText CursorLine
+      autocmd Syntax * highlight link LspReferenceRead LspReferenceText
+      autocmd Syntax * highlight link LspReferenceWrite LspReferenceText
+    augroup END
+  ]]
 end
 
 nvim_lsp.rust_analyzer.setup {on_attach=on_attach}
