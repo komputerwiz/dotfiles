@@ -64,7 +64,7 @@ cmd [[
 
 opt.background = 'dark'
 opt.colorcolumn = {80, 92, 100, 120}
-opt.completeopt = {'longest', 'menu'}
+opt.completeopt = {'menuone', 'noinsert', 'noselect'}
 opt.concealcursor = 'c'
 opt.conceallevel = 2
 opt.expandtab = true
