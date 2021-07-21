@@ -1,3 +1,6 @@
+## Environment Configuration Files
+.envrc
+
 ## Vim Files
 .*.sw[a-z]
 *.un~
