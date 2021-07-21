@@ -1,0 +1,49 @@
+global !p
+def camel(word):
+	if not word: return ''
+	return word[0].upper() + word[1:]
+
+def mixedCase(word):
+	if not word: return ''
+	return word[0].lower() + word[1:]
+endglobal
+
+snippet logger "logger" b
+private static final Logger logger = Logger.getLogger(${1:`!p snip.rv = snip.basename or "MyClass"`}.class.getName());$0
+endsnippet
+
+snippet fori "for (i)" b
+for (int ${1:i} = 0; $1 < ${2:max}; $1++)$0
+endsnippet
+
+snippet fore "for (each)" b
+for (var ${1:item} : ${2:collection})$0
+endsnippet
+
+snippet cl "class" b
+${1:public}${1/..*/ /}class ${2:`!p snip.rv = snip.basename or "MyClass"`}${3: extends ${4:BaseClass}}${5: implements ${6:MyInterface}}
+{
+	$0
+}
+endsnippet
+
+snippet in "interface" b
+${1:public}${1/..*/ /}interface ${2:`!p snip.rv = snip.basename or "MyInterface"`}${3: extends ${4:BaseInterface}}
+{
+	$0
+}
+endsnippet
+
+snippet main "main(args)" b
+public static void main(String[] args)
+{
+	$0
+}
+endsnippet
+
+snippet m "method" b
+${1:private} ${2:void} ${3:methodName}($4)
+{
+	$0
+}
+endsnippet
