@@ -111,7 +111,7 @@ map('x', 'ga', '<Plug>(EasyAlign)', opts)
 map('n', 'ga', '<Plug>(EasyAlign)', opts)
 
 -- use %% in command mode to insert the directory of the current buffer
-map('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], extend(opts, {expr=true}))
+map('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], {noremap=true, nowait=true, expr=true})
 
 -- <C-Space> is treated differently by terminal emulators
 map('i', '<C-Space>', '<C-x><C-o>', opts)
