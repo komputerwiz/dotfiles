@@ -11,6 +11,7 @@ local function extend(...) return vim.tbl_extend('force', ...) end -- merge opti
 
 require 'paq' {
   'savq/paq-nvim'; -- let paq manage itself
+  'airblade/vim-gitgutter';
   'cespare/vim-toml';
   'chaoren/vim-wordmotion';
   'chikamichi/mediawiki.vim';
@@ -19,9 +20,11 @@ require 'paq' {
   'editorconfig/editorconfig-vim';
   'freitass/todo.txt-vim';
   'icymind/NeoSolarized';
+  'jamessan/vim-gnupg';
   'jparise/vim-graphql';
   {'junegunn/fzf', run='./install --bin'}; 'junegunn/fzf.vim';
   'junegunn/vim-easy-align';
+  'leafgarland/typescript-vim';
   'lumiliet/vim-twig';
   'mattn/emmet-vim';
   'nblock/vim-dokuwiki';
@@ -29,20 +32,17 @@ require 'paq' {
   'neoclide/jsonc.vim';
   'neovim/nvim-lspconfig';
   'ntpeters/vim-better-whitespace';
+  'peitalin/vim-jsx-typescript';
+  'sirver/ultisnips'; -- 'honza/vim-snippets';
   'tpope/vim-abolish';
   'tpope/vim-commentary';
+  'tpope/vim-fugitive';
   'tpope/vim-repeat';
   'tpope/vim-sensible';
   'tpope/vim-surround';
   'tpope/vim-unimpaired';
   'vim-airline/vim-airline'; 'vim-airline/vim-airline-themes';
   'vim-pandoc/vim-criticmarkup';
-  'airblade/vim-gitgutter';
-  'tpope/vim-fugitive';
-  'jamessan/vim-gnupg';
-  'leafgarland/typescript-vim';
-  'peitalin/vim-jsx-typescript';
-  'sirver/ultisnips'; -- 'honza/vim-snippets';
 }
 
 -- ------------------- --
