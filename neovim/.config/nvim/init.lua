@@ -22,7 +22,7 @@ require 'paq' {
   'icymind/NeoSolarized';
   'jamessan/vim-gnupg';
   'jparise/vim-graphql';
-  {'junegunn/fzf', run='./install --bin'}; 'junegunn/fzf.vim';
+  {'junegunn/fzf', run = './install --bin'}; 'junegunn/fzf.vim';
   'junegunn/vim-easy-align';
   'leafgarland/typescript-vim';
   'lumiliet/vim-twig';
@@ -93,7 +93,7 @@ opt.wrap = false
 -- key mappings --
 -- ------------ --
 
-local opts = {noremap=true, silent=true}
+local opts = {noremap = true, silent = true}
 local map = vim.api.nvim_set_keymap
 
 map('n', '<Leader>b', ':Buffers<CR>', opts)
@@ -111,7 +111,7 @@ map('x', 'ga', '<Plug>(EasyAlign)', opts)
 map('n', 'ga', '<Plug>(EasyAlign)', opts)
 
 -- use %% in command mode to insert the directory of the current buffer
-map('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], {noremap=true, nowait=true, expr=true})
+map('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], {noremap = true, nowait = true, expr = true})
 
 -- <C-Space> is treated differently by terminal emulators
 map('i', '<C-Space>', '<C-x><C-o>', opts)
@@ -242,7 +242,7 @@ local on_attach = function (client, bufnr)
   bopt('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- mappings (see `:h vim.lsp.*` for docs)
-  local opts = { noremap=true, silent=true }
+  local opts = {noremap = true, silent = true}
 
   -- code navigation
   bmap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -285,9 +285,9 @@ local on_attach = function (client, bufnr)
   ]]
 end
 
-nvim_lsp.rust_analyzer.setup {on_attach=on_attach}
-nvim_lsp.tsserver.setup {on_attach=on_attach}
-nvim_lsp.jdtls.setup {on_attach=on_attach, cmd={'jdtls'}}
+nvim_lsp.rust_analyzer.setup {on_attach = on_attach}
+nvim_lsp.tsserver.setup {on_attach = on_attach}
+nvim_lsp.jdtls.setup {on_attach = on_attach, cmd = {'jdtls'}}
 
 -- --------------------------------------- --
 -- automatically source file after editing --
