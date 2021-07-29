@@ -33,6 +33,7 @@ require 'paq' {
   'neovim/nvim-lspconfig';
   'ntpeters/vim-better-whitespace';
   'peitalin/vim-jsx-typescript';
+  'simrat39/symbols-outline.nvim';
   'sirver/ultisnips'; -- 'honza/vim-snippets';
   'tpope/vim-abolish';
   'tpope/vim-commentary';
@@ -41,6 +42,7 @@ require 'paq' {
   'tpope/vim-sensible';
   'tpope/vim-surround';
   'tpope/vim-unimpaired';
+  {'nvim-treesitter/nvim-treesitter', run = function () cmd 'TSUpdate' end};
   'vim-airline/vim-airline'; 'vim-airline/vim-airline-themes';
   'vim-pandoc/vim-criticmarkup';
 }
@@ -99,6 +101,7 @@ local map = vim.api.nvim_set_keymap
 map('n', '<Leader>b', ':Buffers<CR>', opts)
 map('n', '<Leader>cd', ':cd %:p:h<CR>:pwd<CR>', opts)
 map('n', '<Leader>h', ':Hexmode<CR>', opts)
+map('n', '<Leader>o', ':SymbolsOutline<CR>', opts)
 map('n', '<Leader>v', ':leftabove split $MYVIMRC<CR>', opts)
 
 map('', '<F2>', [[:let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>]], opts)
@@ -194,9 +197,47 @@ g.netrw_banner = 0
 g.netrw_liststyle = 3
 g.netrw_winsize = 25
 
+-- nvim-treesitter
+require('nvim-treesitter.configs').setup {
+  highlight = {enable = true},
+}
+
 -- rust (built-in)
 g.rust_conceal = 1
 g.rust_fold = 1
+
+-- symbols-outline
+g.symbols_outline = {
+  auto_preview = false,
+  symbols = {
+    File = {icon = "file"},
+    Module = {icon = "mod"},
+    Namespace = {icon = "∷"},
+    Package = {icon = "pkg"},
+    Class = {icon = "Ϲ"},
+    Method = {icon = "µ"},
+    Property = {icon = "+"},
+    Field = {icon = "-"},
+    Constructor = {icon = "¢"},
+    Enum = {icon = "Ε"},
+    Interface = {icon = "Ι"},
+    Function = {icon = "ƒ"},
+    Variable = {icon = "ν"},
+    Constant = {icon = "π"},
+    String = {icon = "$"},
+    Number = {icon = "#"},
+    Boolean = {icon = "!"},
+    Array = {icon = "@"},
+    Object = {icon = "⊙"},
+    Key = {icon = "κ"},
+    Null = {icon = "∅"},
+    EnumMember = {icon = "·"},
+    Struct = {icon = "§"},
+    Event = {icon = "&"},
+    Operator = {icon = "⊕"},
+    TypeParameter = {icon = "Τ"}
+  },
+}
 
 -- UltiSnips
 g.UltiSnipsExpandTrigger = '<tab>'
