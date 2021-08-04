@@ -4,8 +4,32 @@ TAGS="$(watson --no-color status --tags | sed 's/[[:space:]]//g')"
 ELAPSED="$(watson --no-color status --elapsed | sed 's/ ago$//' | sed 's/^an\?/1/' | sed 's/ seconds\?/s/' | sed 's/ minutes\?/m/' | sed 's/ hours\?/h/' | sed 's/ days\?/d/')"
 PROJECT="$(watson --no-color status --project)"
 
+# Solarized colors
+base03="#002b36"
+base02="#073642"
+base01="#586e75"
+base00="#657b83"
+base0="#839496"
+base1="#93a1a1"
+base2="#eee8d5"
+base3="#fdf6e3"
+yellow="#b58900"
+orange="#cb4b16"
+red="#dc322f"
+magenta="#d33682"
+violet="#6c71c4"
+blue="#268bd2"
+cyan="#2aa198"
+green="#859900"
+
 if [ "$PROJECT" = "No project started." ]; then
-  exit
+  echo "no project"
+  echo
+  echo "$orange"
+else
+  echo "$PROJECT$TAGS:$ELAPSED"
+  echo "$PROJECT:$ELAPSED"
+  echo "$magenta"
 fi
 
 echo "$PROJECT$TAGS:$ELAPSED"

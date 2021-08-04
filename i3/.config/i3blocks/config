@@ -1,6 +1,9 @@
 command=${XDG_CONFIG_HOME:-$HOME/.config}/i3blocks/blocks/$BLOCK_NAME
 interval=once
 
+[watson]
+interval=10
+
 [disk]
 instance=/
 interval=60
