@@ -867,6 +867,7 @@ key_bindings:
   - { key: NumpadSubtract, mods: Control, action: ReceiveChar }
 
   # set my own bindings
+  - { key: Return,         mods: Control|Shift, action: SpawnNewInstance } # start new terminal in same directory
   - { key: Key0,           mods: Control|Shift, action: ResetFontSize    } # doesn't work?
   - { key: 11,             mods: Control|Shift, action: ResetFontSize    } # explicit code for Key0
   - { key: Numpad0,        mods: Control|Shift, action: ResetFontSize    }
