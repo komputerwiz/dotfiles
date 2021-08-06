@@ -44,4 +44,5 @@ alias gstd='git stash drop'
 alias gstl='git stash list'
 alias gstp='git stash pop'
 alias gsts='git stash show --text'
-
+alias gy='git apply'
+alias gyr='git apply --reverse'
