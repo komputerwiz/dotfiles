@@ -110,8 +110,8 @@ map('', '<F3>', ':Lexplore<CR>', opts)
 map('n', '<Space>', 'za', opts)
 map('v', '<Space>', 'za', opts)
 
-map('x', 'ga', '<Plug>(EasyAlign)', opts)
-map('n', 'ga', '<Plug>(EasyAlign)', opts)
+map('x', 'ga', '<Plug>(EasyAlign)', {silent = true})
+map('n', 'ga', '<Plug>(EasyAlign)', {silent = true})
 
 -- use %% in command mode to insert the directory of the current buffer
 map('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], {noremap = true, nowait = true, expr = true})
