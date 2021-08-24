@@ -248,6 +248,10 @@ $exec feh --no-fehbg --bg-scale "$HOME/.wallpaper/wallpaper"
 $exec xautolock -time 10 -locker 'i3lock --color=000000 --image="$HOME/.wallpaper/screenlock" --tiling'
 
 
+## XDG AUTOSTART
+$exec dex -a
+
+
 ## PERSISTENT WINDOW PROPERTIES
 
 # zeal window is always floating
