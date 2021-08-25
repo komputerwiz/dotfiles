@@ -35,3 +35,6 @@ ehthumbs.db
 ehthumbs_vista.db
 *.stackdump
 [Dd]esktop.ini
+
+## Local configuration patches
+_*.patch
