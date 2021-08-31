@@ -1,7 +1,5 @@
 configuration {
-  modi: "run,drun";
+	modi: "run,drun";
 	theme: "solarized";
 	font: "Ubuntu Mono 9";
-	location: 2;
-	width: 100;
 }
