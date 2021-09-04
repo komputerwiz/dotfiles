@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # if no instance is provided, look for first 'running' sink
-SINK="${BLOCK_INSTANCE:-$(pactl list sinks short | grep RUNNING | awk '{print $1}' | head -n 1)}"
+SINK="${BLOCK_INSTANCE:-$(pactl info | grep '^Default Sink:' | awk '{print $1}')}"
 
 MULTI=''
 if [ "$(pactl list sinks short | grep RUNNING | wc -l)" -gt 1 ]; then
@@ -15,17 +15,12 @@ STEP="${1:-5%}"
 #------------------------------------------------------------------------
 
 volume() {
-  pactl list sinks | \
-    grep '^[[:space:]]Volume:' | \
-    head -n $(( $SINK + 1 )) | tail -n 1 | \
-    sed -e 's/.* \([0-9][0-9]*\)%.*/\1/'
+  # Hack: this only gets the volume of the first channel; assumes equal balance
+  pactl get-sink-volume "$SINK" | head -n 1 | sed -e 's/.* \([0-9][0-9]*\)%.*/\1/'
 }
 
 muted() {
-  pactl list sinks | \
-    grep '^[[:space:]]Mute:' | \
-    head -n $(( $SINK + 1 )) | tail -n 1 | \
-    awk '{print $2}'
+  pactl get-sink-mute "$SINK" | head -n 1 | awk '{print $2}'
 }
 
 case $BLOCK_BUTTON in
