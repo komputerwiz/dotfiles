@@ -1,13 +1,13 @@
--- common vim aliases
+-- {{{ common vim lua aliases
+
 local cmd = vim.cmd -- execute commands
 local fn = vim.fn   -- call functions
 local g = vim.g     -- set global variables
 local opt = vim.opt -- set options
 local function extend(...) return vim.tbl_extend('force', ...) end -- merge option tables
 
--- ------- --
--- plugins --
--- ------- --
+-- }}}
+-- {{{ plugins
 
 require 'paq' {
   'savq/paq-nvim'; -- let paq manage itself
@@ -47,9 +47,8 @@ require 'paq' {
   'vim-pandoc/vim-criticmarkup';
 }
 
--- ------------------- --
--- syntax highlighting --
--- ------------------- --
+-- }}}
+-- {{{ syntax highlighting
 
 cmd 'colorscheme NeoSolarized'
 
@@ -60,9 +59,8 @@ cmd [[
   augroup END
 ]]
 
--- ------- --
--- options --
--- ------- --
+-- }}}
+-- {{{ options
 
 opt.background = 'dark'
 opt.colorcolumn = {80, 92, 100, 120}
@@ -91,9 +89,8 @@ opt.updatetime = 1000
 opt.wildmode = {'longest:full', 'full'}
 opt.wrap = false
 
--- ------------ --
--- key mappings --
--- ------------ --
+-- }}}
+-- {{{ key mappings
 
 local opts = {noremap = true, silent = true}
 local map = vim.api.nvim_set_keymap
@@ -125,9 +122,8 @@ map('n', '<C-p>', ':FZF<CR>', opts)
 -- have Y behave more like D
 map('n', 'Y', 'y$', opts)
 
--- ---------------------- --
--- commands and functions --
--- ---------------------- --
+-- }}}
+-- {{{ commands and functions
 
 -- delete the current file and its buffer (this functionality could be provided by tpope/vim-eunuch)
 cmd [[command! -bar -bang Delete call delete(expand('%:p')) | bdelete<bang>]]
@@ -150,11 +146,11 @@ cmd [[command! -nargs=? Scriptnames Scratch scriptnames <f-args>]]
 -- simplify colorscheme for non-true-color terminals
 cmd [[command! SimpleColors set notermguicolors | colorscheme default]]
 
--- ------------- --
--- plugin config --
--- ------------- --
+-- }}}
+-- {{{ plugin config
 
--- airline
+-- {{{ airline
+
 g.airline_left_sep = ''
 g.airline_right_sep = ''
 g.airline_mode_map = {
@@ -177,36 +173,51 @@ g.airline_mode_map = {
   [''] = 'V',  -- visual (block)
 }
 
--- dokuwiki
+-- }}}
+-- {{{ dokuwiki
+
 g.dokuwiki_fenced_languages = {'bash=sh', 'javascript', 'php', 'ruby'}
 
--- editorconfig
+-- }}}
+-- {{{ editorconfig
 g.EditorConfig_exclude_patterns = {'fugitive://.*'}
 
--- gnupg
+-- }}}
+-- {{{ gnupg
+
 g.GPGPreferSign = 1
 g.GPGDefaultRecipients = {
   'Matthew J. Barry <komputerwiz.matt@gmail.com>',
 }
 
--- markdown (built-in)
+-- }}}
+-- {{{ markdown (built-in)
+
 g.markdown_folding = 1
 
--- netrw (vim's built-in file browser)
+-- }}}
+-- {{{ netrw (vim's built-in file browser)
+
 g.netrw_banner = 0
 g.netrw_liststyle = 3
 g.netrw_winsize = 25
 
--- nvim-treesitter
+-- }}}
+-- {{{ nvim-treesitter
+
 require('nvim-treesitter.configs').setup {
   highlight = {enable = true},
 }
 
--- rust (built-in)
+-- }}}
+-- {{{ rust (built-in)
+
 g.rust_conceal = 1
 g.rust_fold = 1
 
--- symbols-outline
+-- }}}
+-- {{{ symbols-outline
+
 g.symbols_outline = {
   auto_preview = false,
   symbols = {
@@ -239,12 +250,16 @@ g.symbols_outline = {
   },
 }
 
--- UltiSnips
+-- }}}
+-- {{{ UltiSnips
+
 g.UltiSnipsExpandTrigger = '<tab>'
 g.UltiSnipsJumpForwardTrigger = '<tab>'
 g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
--- vim-jsx-typescript
+-- }}}
+-- {{{ vim-jsx-typescript
+
 -- The following syntax components are forcibly colored by vim-jsx-typescript.
 -- Here we reset them to their default links in RUNTIME/syntax/*.vim and let
 -- the user-selected theme handle coloring
@@ -267,9 +282,10 @@ cmd [[
 --autocmd Syntax *typescript* highlight link WebBrowser
 --autocmd Syntax *typescript* highlight link ReactLifeCycleMethods
 
--- ---------------------- --
--- language server config --
--- ---------------------- --
+-- }}}
+
+-- }}}
+-- {{{ language server (LSP) config
 
 local nvim_lsp = require('lspconfig')
 
@@ -330,12 +346,15 @@ nvim_lsp.rust_analyzer.setup {on_attach = on_attach}
 nvim_lsp.tsserver.setup {on_attach = on_attach}
 nvim_lsp.jdtls.setup {on_attach = on_attach, cmd = {'jdtls'}}
 
--- --------------------------------------- --
--- automatically source file after editing --
--- --------------------------------------- --
+-- }}}
+-- {{{ automatically source file after editing
 
 cmd [[
   augroup vimrc
     autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
   augroup END
 ]]
+
+-- }}}
+
+-- vim: foldmethod=marker foldlevel=0
