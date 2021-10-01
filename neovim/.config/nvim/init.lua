@@ -298,36 +298,50 @@ local on_attach = function (client, bufnr)
   -- enable omni-completion (<C-x><C-o>)
   bopt('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- mappings (see `:h vim.lsp.*` for docs)
+  -- {{{ key mappings
+
+  -- (see `:h vim.lsp.*` for docs)
   local opts = {noremap = true, silent = true}
 
-  -- code navigation
+  -- {{{ code navigation
+
   bmap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   bmap('n', 'g]', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   bmap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   bmap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   bmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 
-  -- inline help
+  -- }}}
+  -- {{{ inline help
+
   bmap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   bmap('n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
-  -- workspace management
-  bmap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  bmap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  bmap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  -- }}}
+  -- {{{ workspace management
 
-  -- code manipulation
-  bmap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  bmap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  bmap('n', '<space>=', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  bmap('n', '<Leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  bmap('n', '<Leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  bmap('n', '<Leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 
-  -- diagnostics
-  bmap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  -- }}}
+  -- {{{ code manipulation
+
+  bmap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  bmap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  bmap('n', '<Leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  -- }}}
+  -- {{{ diagnostics
+
+  bmap('n', '<Leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   bmap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   bmap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  bmap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  bmap('n', '<Leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
+  -- }}}
+
+  -- }}}
 
   cmd [[
     augroup lspconfig
