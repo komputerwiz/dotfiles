@@ -23,6 +23,8 @@
   excludesfile = ~/.config/git/ignore
 [diff]
   tool = vimdiff
+[fetch]
+  prune = true
 [merge]
   tool = vimdiff
   ff = false
@@ -37,4 +39,4 @@
 [include]
   path = ~/.config/git/config.sec
 [init]
-	defaultBranch = master
+  defaultBranch = master
