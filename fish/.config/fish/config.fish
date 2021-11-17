@@ -1,10 +1,10 @@
 alias t='todo.sh'
 alias v="$EDITOR"
 
-alias la='ls -a'
-alias ll='ls -hl'
-alias lal='ls -ahl'
-alias lla='ls -ahl'
+alias la='ls -aF'
+alias ll='ls -hlF'
+alias lal='ls -ahlF'
+alias lla='ls -ahlF'
 alias l='ls -F'
 
 alias cp='cp -i'
