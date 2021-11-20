@@ -52,9 +52,11 @@ if test -f "$EPOCH_FILE"; then
 fi
 
 NOW=$(( $(date +%s) / 60 / 60 / 24 ))
-if test -n "$LAST_RUN" -a "$(expr "$NOW" - "$LAST_RUN" )" -lt "$FREQ" -a "$FORCE" != true; then
-  echo "update was run recently; exiting"
-  exit 0
+if test -n "$LAST_RUN"; then
+  if test "$(expr "$NOW" - "$LAST_RUN" )" -lt "$FREQ" -a "$FORCE" != true; then
+    echo "update was run recently; exiting"
+    exit 0
+  fi
 fi
 
 CONF_DIR="${XDG_CONFIG_HOME:-"$HOME/.config"}/dotfiles"
