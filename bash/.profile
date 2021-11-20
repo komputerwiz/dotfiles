@@ -8,8 +8,6 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-export EDITOR='nvim'
-
 add_user_paths() {
   for ARG in "$@"; do
     if test -d "$ARG"; then
@@ -22,6 +20,12 @@ add_user_paths() {
 
 add_user_paths \
   "$HOME/.local/bin"
+
+for FILE in "${XDG_CONFIG_HOME:-"$HOME/.config"}/bash/env.d/"*".sh"; do
+  if test -f "$FILE"; then
+    . "$FILE"
+  fi
+done
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
