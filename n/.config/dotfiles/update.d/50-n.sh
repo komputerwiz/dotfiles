@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-n-update
+n-update -y

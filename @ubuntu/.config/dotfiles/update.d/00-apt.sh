@@ -2,6 +2,6 @@
 set -e
 
 sudo apt update
-sudo apt full-upgrade
+sudo apt full-upgrade --assume-yes
 
-sudo apt autoremove --purge
+sudo apt autoremove --purge --assume-yes
