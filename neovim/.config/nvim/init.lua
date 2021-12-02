@@ -39,7 +39,6 @@ require 'paq' {
   'tpope/vim-commentary';
   'tpope/vim-fugitive';
   'tpope/vim-repeat';
-  'tpope/vim-sensible';
   'tpope/vim-surround';
   'tpope/vim-unimpaired';
   {'nvim-treesitter/nvim-treesitter', run = function () cmd 'TSUpdate' end};
@@ -76,9 +75,11 @@ opt.listchars = {tab='» ', trail='·', nbsp='+'}
 opt.mouse = 'a'
 opt.number = true
 opt.path:append {'**'}
+opt.scrolloff = 1
 opt.secure = true
 opt.shiftround = true
 opt.shiftwidth = 2
+opt.sidescrolloff = 5
 opt.softtabstop = 2
 opt.spelllang = 'en_us'
 opt.splitbelow = true
@@ -119,8 +120,9 @@ map('i', '<Nul>', '<C-x><C-o>', opts)
 
 map('n', '<C-p>', ':FZF<CR>', opts)
 
--- have Y behave more like D
-map('n', 'Y', 'y$', opts)
+-- start new undo sequence for <C-u> and <C-w> in insert mode
+map('i', '<C-u>', '<C-g>u<C-u>', opts)
+map('i', '<C-w>', '<C-g>u<C-w>', opts)
 
 -- }}}
 -- {{{ commands and functions
