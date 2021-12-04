@@ -9,7 +9,18 @@ instance=/
 interval=60
 
 [iface]
+instance=enp5s0
 label=E:
+interval=60
+
+[iface]
+instance=wlp6s0
+label=W:
+interval=60
+
+[iface]
+instance=tamuvpn
+label=V:
 interval=60
 
 [volume]
