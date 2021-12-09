@@ -75,6 +75,7 @@ opt.listchars = {tab='» ', trail='·', nbsp='+'}
 opt.mouse = 'a'
 opt.number = true
 opt.path:append {'**'}
+opt.redrawtime = 500
 opt.scrolloff = 1
 opt.secure = true
 opt.shiftround = true

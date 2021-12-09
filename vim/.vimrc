@@ -83,6 +83,7 @@ set nojoinspaces
 set nowrap
 set number
 set path+=**
+set redrawtime=500
 set secure
 set shiftround
 set shiftwidth=2
