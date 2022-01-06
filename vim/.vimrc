@@ -71,7 +71,7 @@ colorscheme NeoSolarized
 
 set background=dark
 set colorcolumn=80,92,100,120
-set completeopt=menuone,noinsert,noselect
+set completeopt=longest,menu
 set concealcursor=c
 set conceallevel=2
 set expandtab
