@@ -37,6 +37,9 @@
 	default = simple
 [pull]
 	rebase = true
+[rebase]
+	autoSquash = true
+	autoStash = true
 [user]
 	name = Matthew Barry
 	email = komputerwiz.matt@gmail.com
