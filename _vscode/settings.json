@@ -25,8 +25,7 @@
     "git.rebaseWhenSync": true,
     "git.suggestSmartCommit": false,
     "search.smartCase": true,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     "terminal.integrated.allowChords": false,
     "terminal.integrated.defaultProfile.linux": "fish",
     "window.autoDetectColorScheme": true,
@@ -44,7 +43,7 @@
     "window.zoomLevel": 0,
 
     // extension-specific configuration
-    "gitProjectManager.baseProjectsFolders": [ "/home/citd.tamu.edu/matthew.barry/git/" ],
+    "gitProjectManager.baseProjectsFolders": [ "/home/citd/matthew.barry/git/" ],
     "C_Cpp.intelliSenseEngine": "Default",
     "C_Cpp.suggestSnippets": false,
     // "vim.enableNeovim": true,
