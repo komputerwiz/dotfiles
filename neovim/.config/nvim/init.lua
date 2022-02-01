@@ -254,6 +254,11 @@ g.symbols_outline = {
 }
 
 -- }}}
+-- {{{ tex (built-in)
+
+g.tex_flavor = 'latex'
+
+-- }}}
 -- {{{ UltiSnips
 
 g.UltiSnipsExpandTrigger = '<tab>'

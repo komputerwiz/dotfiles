@@ -245,6 +245,9 @@ let g:netrw_winsize = 25
 let g:rust_conceal = 1
 let g:rust_fold = 1
 
+" tex (built-in)
+let g:tex_flavor = 'latex'
+
 " UltiSnips
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
