@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FZF_DIR="$HOME/.fzf"
+FZF_DIR="${FZF_DIR:-"$HOME/.fzf"}"
 
 [ -d "$FZF_DIR" ] && echo "FZF is already installed" && exit 0
 
