@@ -342,7 +342,7 @@ local on_attach = function (client, bufnr)
   -- }}}
   -- {{{ diagnostics
 
-  bmap('n', '<Leader>e', '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', opts)
+  bmap('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   bmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   bmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   bmap('n', '<Leader>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
