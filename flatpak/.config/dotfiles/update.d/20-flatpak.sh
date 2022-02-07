@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e
 
-flatpak update --assumeyes
-flatpak uninstall --unused --assumeyes
+sudo flatpak update --assumeyes
+sudo flatpak uninstall --unused --assumeyes
