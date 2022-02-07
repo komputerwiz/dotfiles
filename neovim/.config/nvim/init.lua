@@ -19,11 +19,16 @@ require 'paq' {
   'duggiefresh/vim-easydir';
   'editorconfig/editorconfig-vim';
   'freitass/todo.txt-vim';
+  'hrsh7th/cmp-buffer';
+  'hrsh7th/cmp-nvim-lsp';
+  'hrsh7th/cmp-path';
+  'hrsh7th/nvim-cmp';
   'icymind/NeoSolarized';
   'jamessan/vim-gnupg';
   'jparise/vim-graphql';
   {'junegunn/fzf', run = './install --bin'}; 'junegunn/fzf.vim';
   'junegunn/vim-easy-align';
+  'L3MON4D3/LuaSnip';
   'leafgarland/typescript-vim';
   'lumiliet/vim-twig';
   'mattn/emmet-vim';
@@ -33,8 +38,9 @@ require 'paq' {
   'neovim/nvim-lspconfig';
   'ntpeters/vim-better-whitespace';
   'peitalin/vim-jsx-typescript';
+  'saadparwaiz1/cmp_luasnip';
   'simrat39/symbols-outline.nvim';
-  'sirver/ultisnips'; -- 'honza/vim-snippets';
+  -- 'sirver/ultisnips'; -- 'honza/vim-snippets';
   'tpope/vim-abolish';
   'tpope/vim-commentary';
   'tpope/vim-fugitive';
@@ -194,6 +200,13 @@ g.GPGDefaultRecipients = {
 }
 
 -- }}}
+-- {{{ luasnip
+
+-- this configuration is too large and complex to fit here and has been broken
+-- into a separate file
+require 'snippets'
+
+-- }}}
 -- {{{ markdown (built-in)
 
 g.markdown_folding = 1
@@ -204,6 +217,65 @@ g.markdown_folding = 1
 g.netrw_banner = 0
 g.netrw_liststyle = 3
 g.netrw_winsize = 25
+
+-- }}}
+-- {{{ nvim-cmp
+
+-- from https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
+local luasnip = require 'luasnip'
+local cmp = require 'cmp'
+
+local has_words_before = function ()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+end
+
+cmp.setup({
+  snippet = {
+    expand = function (args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+
+  mapping = {
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+
+    ['<Tab>'] = cmp.mapping(function (fallback)
+      if cmp.visible() then
+        -- cmp.select_next_item()
+        cmp.confirm({ select = true })
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
+
+    ['<S-Tab>'] = cmp.mapping(function (fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
+  },
+
+  sources = cmp.config.sources({
+    {name = 'nvim_lsp'},
+    {name = 'luasnip'},
+  }, {
+    {name = 'buffer'},
+  }, {
+    {name = 'path'},
+  }),
+})
 
 -- }}}
 -- {{{ nvim-treesitter
