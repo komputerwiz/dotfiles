@@ -32,7 +32,10 @@ ls.snippets = {
 
   all = {
     s('date', f(function () return os.date('%F') end)),
-    s('datetime', f(function () return os.date('%F %T%z') end)),
+    s('time', f(function () return os.date('%T') end)),
+    s('timetz', f(function () return os.date('%T%z') end)),
+    s('datetime', f(function () return os.date('%F %T') end)),
+    s('datetimetz', f(function () return os.date('%F %T%z') end)),
   },
 
   -- }}}
