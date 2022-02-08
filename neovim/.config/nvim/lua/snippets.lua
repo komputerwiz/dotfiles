@@ -36,6 +36,7 @@ ls.snippets = {
     s('timetz', f(function () return os.date('%T%z') end)),
     s('datetime', f(function () return os.date('%F %T') end)),
     s('datetimetz', f(function () return os.date('%F %T%z') end)),
+    s('shrug', t('¯\\_(ツ)_/¯')),
   },
 
   -- }}}
