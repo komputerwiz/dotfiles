@@ -20,6 +20,7 @@ require 'paq' {
   'editorconfig/editorconfig-vim';
   'freitass/todo.txt-vim';
   'hrsh7th/cmp-buffer';
+  'hrsh7th/cmp-cmdline';
   'hrsh7th/cmp-nvim-lsp';
   'hrsh7th/cmp-path';
   'hrsh7th/nvim-cmp';
@@ -69,7 +70,7 @@ cmd [[
 
 opt.background = 'dark'
 opt.colorcolumn = {80, 92, 100, 120}
-opt.completeopt = {'longest', 'menu'}
+opt.completeopt = {'menu', 'menuone', 'noselect'} -- {'longest', 'menu'}
 opt.concealcursor = 'c'
 opt.conceallevel = 2
 opt.expandtab = true
@@ -268,12 +269,26 @@ cmp.setup({
   },
 
   sources = cmp.config.sources({
-    {name = 'nvim_lsp'},
     {name = 'luasnip'},
-  }, {
-    {name = 'buffer'},
+    {name = 'nvim_lsp'},
   }, {
     {name = 'path'},
+  }, {
+    {name = 'buffer'},
+  }),
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    {name = 'buffer'},
+  },
+})
+
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    {name = 'path'},
+  }, {
+    {name = 'cmdline'},
   }),
 })
 
