@@ -31,11 +31,11 @@ ls.snippets = {
   -- {{{ global snippets
 
   all = {
-    s('date', f(function () return os.date('%F') end)),
-    s('time', f(function () return os.date('%T') end)),
-    s('timetz', f(function () return os.date('%T%z') end)),
-    s('datetime', f(function () return os.date('%F %T') end)),
-    s('datetimetz', f(function () return os.date('%F %T%z') end)),
+    s({trig='date', name='ISO 8601 Date'}, f(function () return os.date('%F') end)),
+    s({trig='time', name='ISO 8601 Time'}, f(function () return os.date('%T') end)),
+    s({trig='timetz', name='ISO 8601 Time with Timezone Offset'}, f(function () return os.date('%T%z') end)),
+    s({trig='datetime', name='ISO 8601 Date and Time'}, f(function () return os.date('%F %T') end)),
+    s({trig='datetimetz', name='ISO 8601 Date and Time with Timezone Offset'}, f(function () return os.date('%F %T%z') end)),
     s('shrug', t('¯\\_(ツ)_/¯')),
   },
 
@@ -43,7 +43,7 @@ ls.snippets = {
   -- {{{ c
 
   c = {
-    s('ifnd', {
+    s({trig='ifnd', name='#ifndef Header Guard'}, {
       t('#ifndef '), i(1),
       t({'', '#define '}), f(copy, 1),
       t({'', '', ''}),
@@ -57,13 +57,31 @@ ls.snippets = {
   -- {{{ cpp
 
   cpp = {
-    s({trig = 'ro5', desc = 'Rule of 5'}, {
-      i(1), t('('), f(copy, 1), t({' const&) = default;', ''}),
-      f(copy, 1), t('('), f(copy, 1), t({'&&) noexcept = default;', ''}),
-      f(copy, 1), t('& operator=('), f(copy, 1), t({' const&) = default;', ''}),
-      f(copy, 1), t('& operator=('), f(copy, 1), t({'&&) noexcept = default;', ''}),
-      t('~'), f(copy, 1), t({'() = default;', ''}),
-    }),
+    s(
+      {
+        trig = 'ro5',
+        wordTrig = false,
+        name = 'Rule of 5',
+        dscr = 'Member functions on a class or struct whose definitions \z
+          should be defined together: copy/move constructors, copy/move \z
+          assignment operators, and destructor',
+      }, {
+        i(1), t('('), f(copy, 1), t({' const&) = default;', ''}),
+        f(copy, 1), t('('), f(copy, 1), t({'&&) noexcept = default;', ''}),
+        f(copy, 1), t('& operator=('), f(copy, 1), t({' const&) = default;', ''}),
+        f(copy, 1), t('& operator=('), f(copy, 1), t({'&&) noexcept = default;', ''}),
+        t('~'), f(copy, 1), t({'() = default;', ''}),
+      }
+    ),
+  },
+
+  -- }}}
+  -- {{{ markdown
+
+  markdown = {
+    s('qso', {t('{{% qso '), i(1), t(' %}}')}),
+    s('sup', {t('<sup>'), i(1), t('</sup>')}),
+    s('sub', {t('<sub>'), i(1), t('</sub>')}),
   },
 
   -- }}}
@@ -84,25 +102,26 @@ ls.snippets = {
   -- {{{ tex
 
   tex = {
-    s('e', {
+    s({trig='e', name='TeX Environment'}, {
       t('\\begin{'), i(1), t('}'),
       t({'', '\t'}),
       i(0),
       t({'', '\\end{'}), f(copy, 1), t('}'),
     }),
 
-    s('f', { t('\\frac{'), i(1), t('}{'), i(2), t('}') }),
-    s('m', { t('\\( '), i(1), t(' \\)') }),
-    s('M', { t('\\[ '), i(1), t(' \\]') }),
-    s('(', { t('\\left( '), i(1), t(' \\right)') }),
-    s('[', { t('\\left[ '), i(1), t(' \\right]') }),
-    s('{', { t('\\left\\{ '), i(1), t(' \\right\\}') }),
+    s({trig='f', name='Math Fraction'}, { t('\\frac{'), i(1), t('}{'), i(2), t('}') }),
+    s({trig='m', name='Inline Math'}, { t('\\( '), i(1), t(' \\)') }),
+    s({trig='M', name='Display Math'}, { t('\\[ '), i(1), t(' \\]') }),
+    s({trig='(', name='Matching Parentheses: ()'}, { t('\\left( '), i(1), t(' \\right)') }),
+    s({trig='[', name='Matching Square Brackets: []'}, { t('\\left[ '), i(1), t(' \\right]') }),
+    s({trig='{', name='Matching Curly Braces: {}'}, { t('\\left\\{ '), i(1), t(' \\right\\}') }),
   },
 
   -- }}}
 }
 
--- load 'c' extensions in 'cpp' files
+-- load 'c' extensions in 'cpp' files, etc.
 ls.filetype_extend('cpp', {'c'})
+ls.filetype_extend('markdown', {'tex'})
 
 -- vim: foldmethod=marker foldlevel=0
