@@ -1,4 +1,3 @@
-# git aliases
 alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
@@ -38,7 +37,7 @@ alias grbm='git rebase master'
 alias grbs='git rebase --skip'
 alias grm='git rm'
 alias grmc='git rm --cached'
-alias gr='git restore'
+alias grs='git restore --staged'
 alias gst='git status'
 alias gsta='git stash push'
 alias gstd='git stash drop'
