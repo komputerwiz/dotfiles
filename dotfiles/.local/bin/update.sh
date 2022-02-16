@@ -66,13 +66,21 @@ fi
 
 CONF_DIR="${XDG_CONFIG_HOME:-"$HOME/.config"}/dotfiles"
 for SCRIPT in "$CONF_DIR"/update.d/*; do
-  if test -x "$SCRIPT"; then
-    echo ">>> $SCRIPT"
+  if [[ "$SCRIPT" == *.sh ]]; then
+    # source bash scripts regardless of executable bit status
+    # so they share the same environment
+    echo ">>> src $SCRIPT"
+    if test "$DRY" != true; then
+      source "$SCRIPT"
+    fi
+  elif test -x "$SCRIPT"; then
+    # run executables
+    echo ">>> run $SCRIPT"
     if test "$DRY" != true; then
       "$SCRIPT"
     fi
   else
-    echo "!!! $SCRIPT is not executable: skipping"
+    echo "!!! $SCRIPT is not source-able or executable: skipping"
   fi
 done
 
