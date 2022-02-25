@@ -21,8 +21,49 @@ ls.config.set_config({
 -- {{{ helper functions
 
 -- copies the text value of another text field
-local copy = function (args)
+local function copy(args)
   return args[1]
+end
+
+-- traditional functional map operation
+local function map(tbl, fn)
+  local rv = {}
+  for key, val in pairs(tbl) do
+    rv[key] = fn(val)
+  end
+  return rv
+end
+
+-- generates a new random v4 UUID
+local function uuid4()
+  local template = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+  return template:gsub('[xy]', function (c)
+    local v = (c == 'x') and math.random(0, 0xf) or math.random(8, 0xb)
+    return string.format('%x', v)
+  end)
+end
+
+local function filename_node(num, placeholder)
+  return d(num, function ()
+    local classname = vim.fn.expand('%:t:r')
+    if classname == '' then
+      -- fallback for placeholder text
+      classname = placeholder or 'MyType'
+    end
+    return sn(nil, i(1, classname))
+  end)
+end
+
+-- recursive delimited expansion
+local function rec_delim(args, parent, old_state, delim, placeholder)
+  return sn(nil, c(1, {
+    t(''), -- putting sn(...) first causes infinite loop
+    sn(nil, {
+      t(delim),
+      i(1, placeholder),
+      d(2, rec_delim, {}, delim, placeholder)
+    }),
+  }))
 end
 
 -- }}}
@@ -37,6 +78,7 @@ ls.snippets = {
     s({trig='datetime', name='ISO 8601 Date and Time'}, f(function () return os.date('%F %T') end)),
     s({trig='datetimetz', name='ISO 8601 Date and Time with Timezone Offset'}, f(function () return os.date('%F %T%z') end)),
     s('shrug', t('¯\\_(ツ)_/¯')),
+    s({trig='uuid', name='Random UUIDv4'}, f(uuid4)),
   },
 
   -- }}}
@@ -76,6 +118,142 @@ ls.snippets = {
   },
 
   -- }}}
+  -- {{{ java
+
+  java = {
+    s({trig='logger', name='System Logger for class'}, {
+      t('private static final Logger logger = System.getLogger('),
+      filename_node(1),
+      t('.class.getName());'),
+    }),
+    s({trig='fori', name='for (i)'}, {
+      t('for (int '),
+      i(1, 'i'),
+      t(' = 0; '),
+      f(copy, 1),
+      t(' < '),
+      i(2, 'max'),
+      t('; '),
+      f(copy, 1),
+      t('++)'),
+    }),
+    s({trig='fore', name='for (each)'}, {
+      t('for (var '),
+      i(1, 'item'),
+      t(' : '),
+      i(2, 'collection'),
+      t(')'),
+    }),
+    s('class', {
+      c(1, {
+        t('public '),
+        t('private '),
+      }),
+      c(2, {
+        t(''),
+        t('static '),
+      }),
+      t('class '),
+      filename_node(3, 'MyClass'),
+      -- f(function (args) return table.concat(args[1]):gsub('..*', ' ') end, 1),
+      c(4, {
+        t(''),
+        sn(nil, {
+          t(' extends '),
+          i(1, 'BaseClass'),
+        }),
+      }),
+      c(5, {
+        t(''),
+        sn(nil, {
+          t(' implements '),
+          i(1, 'MyInterface'),
+          d(2, rec_delim, {}, ', ', 'MyInterface'),
+        }),
+      }),
+      t({'', '{', '\t'}),
+      i(0),
+      t({'', '}'}),
+    }),
+    s('interface', {
+      c(1, {
+        t('public '),
+        t('private '),
+      }),
+      c(2, {
+        t(''),
+        t('static '),
+      }),
+      t('interface '),
+      filename_node(3, 'MyInterface'),
+      c(4, {
+        t(''),
+        sn(nil, {
+          t(' extends '),
+          i(1, 'MyInterface'),
+          d(2, rec_delim, {}, ', ', 'MyInterface'),
+        }),
+      }),
+      t({'', '{', '\t'}),
+      i(0),
+      t({'', '}'}),
+    }),
+    s('main', {
+      t({'public static void main(String[] args)', '\t'}),
+      i(0),
+      t({'', '}'}),
+    }),
+    s('method', {
+      c(1, {
+        t('public'),
+        t('protected'),
+        t('private'),
+      }),
+      c(2, {
+        t(''),
+        t(' static'),
+      }),
+      t(' '),
+      i(3, 'void'),
+      t(' '),
+      i(4, 'methodName'),
+      t('('),
+      i(5),
+      t({')', '{', '\t'}),
+      i(0),
+      t({'', '}'}),
+    }),
+    s('getter', {
+      t('public '),
+      i(2, 'String'),
+      t(' get'),
+      d(3, function (args)
+        local capitalized = table.concat(args[1]):gsub('^%l', string.upper)
+        return sn(nil, i(1, capitalized))
+      end, {1}),
+      t({'()', '{', '\treturn '}),
+      i(1),
+      t({';', '}'}),
+    }),
+    s('setter', {
+      t({'public void set'}),
+      d(3, function (args)
+        local capitalized = table.concat(args[1]):gsub('^%l', string.upper)
+        return sn(nil, i(1, capitalized))
+      end, {1}),
+      t('('),
+      i(2, 'String'),
+      t(' '),
+      f(copy, 1),
+      t({')', '{', '\tthis.'}),
+      i(1),
+      t(' = '),
+      f(copy, 1),
+      t({';', '}'}),
+    }),
+  },
+
+  -- }}}
   -- {{{ markdown
 
   markdown = {
@@ -89,13 +267,61 @@ ls.snippets = {
 
   php = {
     s('php', t({'<?php declare(strict_types=1);', '', ''})),
+    s('getter', {
+      t({'/**', ' * Get '}),
+      d(4, function (args)
+        local words = table.concat(args[1]):gsub('%u+', function (m) return ' ' .. m:lower() end)
+        return sn(nil, i(1, words))
+      end, {1}),
+      t({'', ' *', ' * @return '}),
+      f(function (args)
+        return table.concat(args[1]):gsub('^%?(.*)', function (m) return m .. '|null' end)
+      end, {2}),
+      t({'', ' */', 'public function get'}),
+      d(3, function (args)
+        local capitalized = table.concat(args[1]):gsub('^%l', string.upper)
+        return sn(nil, i(1, capitalized))
+      end, {1}),
+      t('(): '),
+      i(2, '?string'),
+      t({'', '{', '\treturn $this->'}),
+      i(1),
+      t({';', '}'}),
+    }),
+    s('setter', {
+      t({'/**', ' * Set '}),
+      d(4, function (args)
+        local words = table.concat(args[1]):gsub('%u+', function (m) return ' ' .. m:lower() end)
+        return sn(nil, i(1, words))
+      end, {1}),
+      t({'', ' *', ' * @param '}),
+      f(function (args)
+        return table.concat(args[1]):gsub('^%?(.*)', function (m) return m .. '|null' end)
+      end, {2}),
+      t(' $'),
+      f(copy, 1),
+      t({'', ' * @return $this', ' */', 'public function set'}),
+      d(3, function (args)
+        local capitalized = table.concat(args[1]):gsub('^%l', string.upper)
+        return sn(nil, i(1, capitalized))
+      end, {1}),
+      t('('),
+      i(2, '?string'),
+      t(' $'),
+      f(copy, 1),
+      t({'): self', '{', '\t$this->'}),
+      i(1),
+      t(' = $'),
+      f(copy, 1),
+      t({';', '\treturn $this;', '}'}),
+    }),
   },
 
   -- }}}
   -- {{{ sh
 
   sh = {
-    s('DIR', t({'DIR="$(cd $(dirname "${BASH_SOURCE[0]}") > /dev/null && pwd)"', ''})),
+    s('DIR', t({'DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null && pwd)"', ''})),
   },
 
   -- }}}
@@ -109,12 +335,33 @@ ls.snippets = {
       t({'', '\\end{'}), f(copy, 1), t('}'),
     }),
 
+    s({trig='item', name='Itemized List Item'}, {
+      t('\\item '),
+      i(1),
+      d(2, rec_delim, {}, {'', '\\item '})
+    }),
+
     s({trig='f', name='Math Fraction'}, { t('\\frac{'), i(1), t('}{'), i(2), t('}') }),
     s({trig='m', name='Inline Math'}, { t('\\( '), i(1), t(' \\)') }),
     s({trig='M', name='Display Math'}, { t('\\[ '), i(1), t(' \\]') }),
     s({trig='(', name='Matching Parentheses: ()'}, { t('\\left( '), i(1), t(' \\right)') }),
     s({trig='[', name='Matching Square Brackets: []'}, { t('\\left[ '), i(1), t(' \\right]') }),
     s({trig='{', name='Matching Curly Braces: {}'}, { t('\\left\\{ '), i(1), t(' \\right\\}') }),
+  },
+
+  -- }}}
+  -- {{{ xml
+
+  xml = {
+    s({trig='trans', name='XLIFF Translation Table Entry'}, {
+      t('<trans-unit id="'),
+      f(function (args) return table.concat(args[1]):gsub('%.', '_') end, {1}),
+      t({'">','\t<source>'}),
+      i(1),
+      t({'</source>', '\t<target>'}),
+      i(2),
+      t({'</target>', '</trans-unit>'}),
+    }),
   },
 
   -- }}}
