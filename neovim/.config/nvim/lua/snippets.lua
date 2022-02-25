@@ -2,6 +2,8 @@ local ls = require('luasnip')
 
 -- {{{ shorthand variables
 
+local types = require('luasnip.util.types')
+
 local s = ls.snippet
 local sn = ls.snippet_node
 local t = ls.text_node
@@ -16,6 +18,15 @@ local r = ls.restore_node
 ls.config.set_config({
   history = true,
   updateevents = 'TextChanged,TextChangedI',
+  -- enable_autosnippets = true,
+  ext_opts = {
+    -- display `snip:choice` at end of line when choice node is active
+    [types.choiceNode] = {
+      active = {
+        virt_text = {{"snip:choice", "Comment"}},
+      },
+    },
+  },
 })
 
 -- {{{ helper functions

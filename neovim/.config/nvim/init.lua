@@ -242,7 +242,13 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
 
     ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
+      i = function (fallback)
+        if luasnip.choice_active() then
+          luasnip.change_choice(1)
+        else
+          cmp.abort()
+        end
+      end,
       c = cmp.mapping.close(),
     }),
 
