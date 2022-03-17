@@ -39,6 +39,7 @@ require 'paq' {
   'neovim/nvim-lspconfig';
   'ntpeters/vim-better-whitespace';
   'peitalin/vim-jsx-typescript';
+  'quangnguyen30192/cmp-nvim-tags';
   'saadparwaiz1/cmp_luasnip';
   'simrat39/symbols-outline.nvim';
   -- 'sirver/ultisnips'; -- 'honza/vim-snippets';
@@ -280,6 +281,7 @@ cmp.setup({
   }, {
     {name = 'path'},
   }, {
+    {name = 'tags'},
     {name = 'buffer'},
   }),
 })
