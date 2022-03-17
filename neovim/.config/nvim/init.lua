@@ -460,6 +460,7 @@ end
 nvim_lsp.rust_analyzer.setup {on_attach = on_attach}
 nvim_lsp.tsserver.setup {on_attach = on_attach}
 nvim_lsp.jdtls.setup {on_attach = on_attach, cmd = {'jdtls'}}
+nvim_lsp.phpactor.setup {on_attach = on_attach}
 
 -- }}}
 -- {{{ automatically source file after editing
