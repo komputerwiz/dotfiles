@@ -14,7 +14,8 @@ As described, this means that every time I need to run a command as root, e.g.,
 
 It is possible to run multiple commands without having to re-enter the password
 if I do not log out after step 2 and just leave a persistent `su`-ed terminal
-up, but this does not work at all with the `update.d` in this dotfiles repo.
+up, but this does not work at all with the `update.d` scripts in my _dotfiles_
+repo.
 
 Here I describe a workaround that allows my regular user to run `sudo` without
 even needing to type the password once.
@@ -53,6 +54,9 @@ The following commands must be run as the workstation admin user
     ```bash
     if [ -n "$LC_PASSWORD" ]; then
       export SUDO_ASKPASS="$HOME/.local/bin/getpass"
+
+      # optionally, for "interactive" sudo/ssh session:
+      alias sudo="\\sudo --askpass"
     fi
     ```
 
@@ -107,6 +111,9 @@ Run the following commands as the regular user (`matthew.barry`)
     ```bash
     export LC_PASSWORD="$(gpg --decrypt "$HOME/.local/share/creds/sudo.gpg" | base64 --wrap=0)"
     ssh -o SendEnv=LC_PASSWORD sudo "cd '$PWD' && bash -lc 'sudo --askpass $@'"
+
+    # alternatively, open an interactive SSH session:
+    ssh -o SendEnv=LC_PASSWORD sudo
     ```
 
 ## Explanation
