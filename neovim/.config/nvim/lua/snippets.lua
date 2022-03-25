@@ -23,7 +23,7 @@ ls.config.set_config({
     -- display `snip:choice` at end of line when choice node is active
     [types.choiceNode] = {
       active = {
-        virt_text = {{"snip:choice", "Comment"}},
+        virt_text = {{'snip:choice', 'Comment'}},
       },
     },
   },
@@ -43,6 +43,12 @@ local function map(tbl, fn)
     rv[key] = fn(val)
   end
   return rv
+end
+
+-- capitalize the first letter of a word
+local function capitalize(args)
+  local capitalized = table.concat(args[1]):gsub('^%l', string.upper)
+  return sn(nil, i(1, capitalized))
 end
 
 -- generates a new random v4 UUID
@@ -97,8 +103,10 @@ ls.snippets = {
 
   c = {
     s({trig='ifnd', name='#ifndef Header Guard'}, {
-      t('#ifndef '), i(1),
-      t({'', '#define '}), f(copy, 1),
+      t('#ifndef '),
+      i(1),
+      t({'', '#define '}),
+      f(copy, 1),
       t({'', '', ''}),
       i(0),
       t({'', '', ''}),
@@ -137,6 +145,7 @@ ls.snippets = {
       filename_node(1),
       t('.class.getName());'),
     }),
+
     s({trig='fori', name='for (i)'}, {
       t('for (int '),
       i(1, 'i'),
@@ -148,6 +157,7 @@ ls.snippets = {
       f(copy, 1),
       t('++)'),
     }),
+
     s({trig='fore', name='for (each)'}, {
       t('for (var '),
       i(1, 'item'),
@@ -155,6 +165,7 @@ ls.snippets = {
       i(2, 'collection'),
       t(')'),
     }),
+
     s('class', {
       c(1, {
         t('public '),
@@ -186,6 +197,7 @@ ls.snippets = {
       i(0),
       t({'', '}'}),
     }),
+
     s('interface', {
       c(1, {
         t('public '),
@@ -209,11 +221,13 @@ ls.snippets = {
       i(0),
       t({'', '}'}),
     }),
+
     s('main', {
       t({'public static void main(String[] args)', '\t'}),
       i(0),
       t({'', '}'}),
     }),
+
     s('method', {
       c(1, {
         t('public'),
@@ -234,24 +248,20 @@ ls.snippets = {
       i(0),
       t({'', '}'}),
     }),
+
     s('getter', {
       t('public '),
       i(2, 'String'),
       t(' get'),
-      d(3, function (args)
-        local capitalized = table.concat(args[1]):gsub('^%l', string.upper)
-        return sn(nil, i(1, capitalized))
-      end, {1}),
+      d(3, capitalize, {1}),
       t({'()', '{', '\treturn '}),
       i(1),
       t({';', '}'}),
     }),
+
     s('setter', {
       t({'public void set'}),
-      d(3, function (args)
-        local capitalized = table.concat(args[1]):gsub('^%l', string.upper)
-        return sn(nil, i(1, capitalized))
-      end, {1}),
+      d(3, capitalize, {1}),
       t('('),
       i(2, 'String'),
       t(' '),
@@ -278,7 +288,9 @@ ls.snippets = {
 
   php = {
     s('php', t({'<?php declare(strict_types=1);', '', ''})),
+
     s('getter', {
+      --[[
       t({'/**', ' * Get '}),
       d(4, function (args)
         local words = table.concat(args[1]):gsub('%u+', function (m) return ' ' .. m:lower() end)
@@ -288,18 +300,19 @@ ls.snippets = {
       f(function (args)
         return table.concat(args[1]):gsub('^%?(.*)', function (m) return m .. '|null' end)
       end, {2}),
-      t({'', ' */', 'public function get'}),
-      d(3, function (args)
-        local capitalized = table.concat(args[1]):gsub('^%l', string.upper)
-        return sn(nil, i(1, capitalized))
-      end, {1}),
+      t({'', ' */', ''})
+      --]]
+      t('public function get'),
+      d(3, capitalize, {1}),
       t('(): '),
       i(2, '?string'),
       t({'', '{', '\treturn $this->'}),
       i(1),
       t({';', '}'}),
     }),
+
     s('setter', {
+      --[[
       t({'/**', ' * Set '}),
       d(4, function (args)
         local words = table.concat(args[1]):gsub('%u+', function (m) return ' ' .. m:lower() end)
@@ -311,11 +324,10 @@ ls.snippets = {
       end, {2}),
       t(' $'),
       f(copy, 1),
-      t({'', ' * @return $this', ' */', 'public function set'}),
-      d(3, function (args)
-        local capitalized = table.concat(args[1]):gsub('^%l', string.upper)
-        return sn(nil, i(1, capitalized))
-      end, {1}),
+      t({'', ' * @return $this', ' */', ''}),
+      --]]
+      t('public function set'),
+      d(3, capitalize, {1}),
       t('('),
       i(2, '?string'),
       t(' $'),
@@ -340,10 +352,14 @@ ls.snippets = {
 
   tex = {
     s({trig='e', name='TeX Environment'}, {
-      t('\\begin{'), i(1), t('}'),
+      t('\\begin{'),
+      i(1),
+      t('}'),
       t({'', '\t'}),
       i(0),
-      t({'', '\\end{'}), f(copy, 1), t('}'),
+      t({'', '\\end{'}),
+      f(copy, 1),
+      t('}'),
     }),
 
     s({trig='item', name='Itemized List Item'}, {

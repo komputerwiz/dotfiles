@@ -9,50 +9,49 @@ local function extend(...) return vim.tbl_extend('force', ...) end -- merge opti
 -- }}}
 -- {{{ plugins
 
-require 'paq' {
-  'savq/paq-nvim'; -- let paq manage itself
-  'airblade/vim-gitgutter';
-  'cespare/vim-toml';
-  'chaoren/vim-wordmotion';
-  'chikamichi/mediawiki.vim';
-  'dag/vim-fish';
-  'duggiefresh/vim-easydir';
-  'editorconfig/editorconfig-vim';
-  'freitass/todo.txt-vim';
-  'hrsh7th/cmp-buffer';
-  'hrsh7th/cmp-cmdline';
-  'hrsh7th/cmp-nvim-lsp';
-  'hrsh7th/cmp-path';
-  'hrsh7th/nvim-cmp';
-  'icymind/NeoSolarized';
-  'jamessan/vim-gnupg';
-  'jparise/vim-graphql';
-  {'junegunn/fzf', run = './install --bin'}; 'junegunn/fzf.vim';
-  'junegunn/vim-easy-align';
-  'L3MON4D3/LuaSnip';
-  'leafgarland/typescript-vim';
-  'lumiliet/vim-twig';
-  'mattn/emmet-vim';
-  'nblock/vim-dokuwiki';
-  'nelstrom/vim-visual-star-search';
-  'neoclide/jsonc.vim';
-  'neovim/nvim-lspconfig';
-  'ntpeters/vim-better-whitespace';
-  'peitalin/vim-jsx-typescript';
-  'quangnguyen30192/cmp-nvim-tags';
-  'saadparwaiz1/cmp_luasnip';
-  'simrat39/symbols-outline.nvim';
-  -- 'sirver/ultisnips'; -- 'honza/vim-snippets';
-  'tpope/vim-abolish';
-  'tpope/vim-commentary';
-  'tpope/vim-fugitive';
-  'tpope/vim-repeat';
-  'tpope/vim-surround';
-  'tpope/vim-unimpaired';
-  {'nvim-treesitter/nvim-treesitter', run = function () cmd 'TSUpdate' end};
-  'vim-airline/vim-airline'; 'vim-airline/vim-airline-themes';
-  'vim-pandoc/vim-criticmarkup';
-}
+require('paq')({
+  'savq/paq-nvim', -- let paq manage itself
+  'airblade/vim-gitgutter',
+  'cespare/vim-toml',
+  'chaoren/vim-wordmotion',
+  'chikamichi/mediawiki.vim',
+  'dag/vim-fish',
+  'duggiefresh/vim-easydir',
+  'editorconfig/editorconfig-vim',
+  'freitass/todo.txt-vim',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-path',
+  'hrsh7th/nvim-cmp',
+  'icymind/NeoSolarized',
+  'jamessan/vim-gnupg',
+  'jparise/vim-graphql',
+  {'junegunn/fzf', run = './install --bin'}, 'junegunn/fzf.vim',
+  'junegunn/vim-easy-align',
+  'L3MON4D3/LuaSnip',
+  'leafgarland/typescript-vim',
+  'lumiliet/vim-twig',
+  'mattn/emmet-vim',
+  'nblock/vim-dokuwiki',
+  'nelstrom/vim-visual-star-search',
+  'neoclide/jsonc.vim',
+  'neovim/nvim-lspconfig',
+  'ntpeters/vim-better-whitespace',
+  'peitalin/vim-jsx-typescript',
+  'quangnguyen30192/cmp-nvim-tags',
+  'saadparwaiz1/cmp_luasnip',
+  'simrat39/symbols-outline.nvim',
+  'tpope/vim-abolish',
+  'tpope/vim-commentary',
+  'tpope/vim-fugitive',
+  'tpope/vim-repeat',
+  'tpope/vim-surround',
+  'tpope/vim-unimpaired',
+  {'nvim-treesitter/nvim-treesitter', run = function () cmd 'TSUpdate' end},
+  'vim-airline/vim-airline', 'vim-airline/vim-airline-themes',
+  'vim-pandoc/vim-criticmarkup',
+})
 
 -- }}}
 -- {{{ syntax highlighting
@@ -206,7 +205,7 @@ g.GPGDefaultRecipients = {
 
 -- this configuration is too large and complex to fit here and has been broken
 -- into a separate file
-require 'snippets'
+require('snippets')
 
 -- }}}
 -- {{{ markdown (built-in)
@@ -224,10 +223,10 @@ g.netrw_winsize = 25
 -- {{{ nvim-cmp
 
 -- from https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
-local luasnip = require 'luasnip'
-local cmp = require 'cmp'
+local luasnip = require('luasnip')
+local cmp = require('cmp')
 
-local has_words_before = function ()
+local function has_words_before()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
@@ -303,9 +302,9 @@ cmp.setup.cmdline(':', {
 -- }}}
 -- {{{ nvim-treesitter
 
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
   highlight = {enable = true},
-}
+})
 
 -- }}}
 -- {{{ rust (built-in)
@@ -319,32 +318,32 @@ g.rust_fold = 1
 g.symbols_outline = {
   auto_preview = false,
   symbols = {
-    File = {icon = "file"},
-    Module = {icon = "mod"},
-    Namespace = {icon = "∷"},
-    Package = {icon = "pkg"},
-    Class = {icon = "Ϲ"},
-    Method = {icon = "µ"},
-    Property = {icon = "+"},
-    Field = {icon = "-"},
-    Constructor = {icon = "¢"},
-    Enum = {icon = "Ε"},
-    Interface = {icon = "Ι"},
-    Function = {icon = "ƒ"},
-    Variable = {icon = "ν"},
-    Constant = {icon = "π"},
-    String = {icon = "$"},
-    Number = {icon = "#"},
-    Boolean = {icon = "!"},
-    Array = {icon = "@"},
-    Object = {icon = "⊙"},
-    Key = {icon = "κ"},
-    Null = {icon = "∅"},
-    EnumMember = {icon = "·"},
-    Struct = {icon = "§"},
-    Event = {icon = "&"},
-    Operator = {icon = "⊕"},
-    TypeParameter = {icon = "Τ"}
+    File = {icon = 'file'},
+    Module = {icon = 'mod'},
+    Namespace = {icon = '∷'},
+    Package = {icon = 'pkg'},
+    Class = {icon = 'Ϲ'},
+    Method = {icon = 'µ'},
+    Property = {icon = '+'},
+    Field = {icon = '-'},
+    Constructor = {icon = '¢'},
+    Enum = {icon = 'Ε'},
+    Interface = {icon = 'Ι'},
+    Function = {icon = 'ƒ'},
+    Variable = {icon = 'ν'},
+    Constant = {icon = 'π'},
+    String = {icon = '$'},
+    Number = {icon = '#'},
+    Boolean = {icon = '!'},
+    Array = {icon = '@'},
+    Object = {icon = '⊙'},
+    Key = {icon = 'κ'},
+    Null = {icon = '∅'},
+    EnumMember = {icon = '·'},
+    Struct = {icon = '§'},
+    Event = {icon = '&'},
+    Operator = {icon = '⊕'},
+    TypeParameter = {icon = 'Τ'}
   },
 }
 
@@ -352,13 +351,6 @@ g.symbols_outline = {
 -- {{{ tex (built-in)
 
 g.tex_flavor = 'latex'
-
--- }}}
--- {{{ UltiSnips
-
-g.UltiSnipsExpandTrigger = '<tab>'
-g.UltiSnipsJumpForwardTrigger = '<tab>'
-g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 -- }}}
 -- {{{ vim-jsx-typescript
@@ -394,7 +386,7 @@ local nvim_lsp = require('lspconfig')
 
 -- use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function (client, bufnr)
+local function on_attach(client, bufnr)
   local function bmap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function bopt(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
