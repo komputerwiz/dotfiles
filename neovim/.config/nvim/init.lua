@@ -51,6 +51,7 @@ require('paq')({
   {'nvim-treesitter/nvim-treesitter', run = function () cmd 'TSUpdate' end},
   'vim-airline/vim-airline', 'vim-airline/vim-airline-themes',
   'vim-pandoc/vim-criticmarkup',
+  'williamboman/nvim-lsp-installer',
 })
 
 -- }}}
@@ -303,7 +304,12 @@ cmp.setup.cmdline(':', {
 -- {{{ nvim-treesitter
 
 require('nvim-treesitter.configs').setup({
-  highlight = {enable = true},
+  highlight = {
+    enable = true,
+    disable = {
+      'php',  -- breaks indentation
+    },
+  },
 })
 
 -- }}}
@@ -382,8 +388,6 @@ cmd [[
 -- }}}
 -- {{{ language server (LSP) config
 
-local nvim_lsp = require('lspconfig')
-
 -- use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local function on_attach(client, bufnr)
@@ -451,11 +455,28 @@ local function on_attach(client, bufnr)
   ]]
 end
 
-nvim_lsp.clangd.setup {on_attach = on_attach}
-nvim_lsp.rust_analyzer.setup {on_attach = on_attach}
-nvim_lsp.tsserver.setup {on_attach = on_attach}
-nvim_lsp.jdtls.setup {on_attach = on_attach, cmd = {'jdtls'}}
-nvim_lsp.phpactor.setup {on_attach = on_attach}
+local lsp_installer = require('nvim-lsp-installer')
+
+lsp_installer.settings({
+  ui = {
+    icons = {
+      server_installed = "●",
+      server_pending = "◑",
+      server_uninstalled = "○",
+    },
+  },
+})
+
+lsp_installer.on_server_ready(function (server)
+  server:setup({on_attach = on_attach})
+end)
+
+-- local nvim_lsp = require('lspconfig')
+-- nvim_lsp.clangd.setup {on_attach = on_attach}
+-- nvim_lsp.rust_analyzer.setup {on_attach = on_attach}
+-- nvim_lsp.tsserver.setup {on_attach = on_attach}
+-- nvim_lsp.jdtls.setup {on_attach = on_attach, cmd = {'jdtls'}}
+-- nvim_lsp.phpactor.setup {on_attach = on_attach}
 
 -- }}}
 -- {{{ automatically source file after editing
