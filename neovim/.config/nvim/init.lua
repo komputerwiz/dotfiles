@@ -460,15 +460,30 @@ local lsp_installer = require('nvim-lsp-installer')
 lsp_installer.settings({
   ui = {
     icons = {
-      server_installed = "●",
-      server_pending = "◑",
-      server_uninstalled = "○",
+      server_installed = '●',
+      server_pending = '◑',
+      server_uninstalled = '○',
     },
   },
 })
 
+server_opts = {
+  -- define custom server config here
+}
+
+-- jdtls workspace
+if not vim.env.WORKSPACE then
+  vim.env.WORKSPACE = vim.env.HOME .. '/ws/jdtls'
+end
+
 lsp_installer.on_server_ready(function (server)
-  server:setup({on_attach = on_attach})
+  local opts = {on_attach = on_attach}
+
+  if server_opts[server.name] then
+    extend(opts, server_opts[server.name])
+  end
+
+  server:setup(opts)
 end)
 
 -- local nvim_lsp = require('lspconfig')
