@@ -243,7 +243,6 @@ cmp.setup({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),  -- set to 'false' to force selection
     ['<C-e>'] = cmp.mapping({
       i = function (fallback)
         if luasnip.choice_active() then
@@ -257,7 +256,8 @@ cmp.setup({
 
     ['<Tab>'] = cmp.mapping(function (fallback)
       if cmp.visible() then
-        cmp.select_next_item()
+        -- cmp.select_next_item()
+        cmp.confirm({ select = true }) -- set to 'false' to force selection
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       elseif has_words_before() then
@@ -268,9 +268,10 @@ cmp.setup({
     end, {'i', 's'}),
 
     ['<S-Tab>'] = cmp.mapping(function (fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+      -- if cmp.visible() then
+        -- cmp.select_prev_item()
+      -- elseif luasnip.jumpable(-1) then
+      if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()
