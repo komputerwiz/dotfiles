@@ -347,6 +347,7 @@ ls.add_snippets('tex', {
   s({trig='f', name='Math Fraction'}, { t('\\frac{'), i(1), t('}{'), i(2), t('}') }),
   s({trig='m', name='Inline Math'}, { t('\\( '), i(1), t(' \\)') }),
   s({trig='M', name='Display Math'}, { t('\\[ '), i(1), t(' \\]') }),
+  s({trig='t', name='Math Text'}, { t('\\text{'), i(1), t('}') }),
   s({trig='(', name='Matching Parentheses: ()'}, { t('\\left( '), i(1), t(' \\right)') }),
   s({trig='[', name='Matching Square Brackets: []'}, { t('\\left[ '), i(1), t(' \\right]') }),
   s({trig='{', name='Matching Curly Braces: {}'}, { t('\\left\\{ '), i(1), t(' \\right\\}') }),
