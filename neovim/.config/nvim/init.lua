@@ -474,7 +474,11 @@ lsp_installer.settings({
 })
 
 server_opts = {
-  -- define custom server config here
+  intelephense = {
+    init_options = {
+      licenseKey = 'XXXXXXXXXXXXXXX',
+    },
+  },
 }
 
 -- jdtls workspace
