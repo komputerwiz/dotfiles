@@ -9,6 +9,7 @@
 	dc = diff --cached
 	dt = difftool
 	f = fetch
+	gc-all = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc
 	l = log --pretty=oneline-detailed --graph --all --decorate --date=iso
 	rb = rebase
 	sm = submodule
