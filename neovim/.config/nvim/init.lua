@@ -51,7 +51,8 @@ require('paq')({
   {'nvim-treesitter/nvim-treesitter', run = function () cmd 'TSUpdate' end},
   'vim-airline/vim-airline', 'vim-airline/vim-airline-themes',
   'vim-pandoc/vim-criticmarkup',
-  'williamboman/nvim-lsp-installer',
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
 })
 
 -- }}}
@@ -212,6 +213,19 @@ require('snippets')
 -- {{{ markdown (built-in)
 
 g.markdown_folding = 1
+
+-- }}}
+-- {{{ mason
+
+require('mason').setup({
+  ui = {
+    icons = {
+      package_installed = '●',
+      package_pending = '◑',
+      package_uninstalled = '○',
+    },
+  },
+})
 
 -- }}}
 -- {{{ netrw (vim's built-in file browser)
@@ -394,121 +408,13 @@ cmd [[
 -- }}}
 -- {{{ language server (LSP) config
 
--- use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local function on_attach(client, bufnr)
-  local function bmap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function bopt(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  -- enable omni-completion (<C-x><C-o>)
-  bopt('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- {{{ key mappings
-
-  -- (see `:h vim.lsp.*` for docs)
-  local opts = {noremap = true, silent = true}
-
-  -- {{{ code navigation
-
-  bmap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  bmap('n', 'g]', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  bmap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  bmap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  bmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-
-  -- }}}
-  -- {{{ inline help
-
-  bmap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  bmap('n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-
-  -- }}}
-  -- {{{ workspace management
-
-  bmap('n', '<Leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  bmap('n', '<Leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  bmap('n', '<Leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-
-  -- }}}
-  -- {{{ code manipulation
-
-  bmap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  bmap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  bmap('n', '<Leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
-  -- }}}
-  -- {{{ diagnostics
-
-  bmap('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-  bmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  bmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  bmap('n', '<Leader>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
-
-  -- }}}
-
-  -- }}}
-
-  cmd [[
-    augroup lspconfig
-      autocmd!
-      autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-      autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      autocmd Syntax * highlight link LspReferenceText CursorLine
-      autocmd Syntax * highlight link LspReferenceRead LspReferenceText
-      autocmd Syntax * highlight link LspReferenceWrite LspReferenceText
-    augroup END
-  ]]
-end
-
-local lsp_installer = require('nvim-lsp-installer')
-
-lsp_installer.settings({
-  ui = {
-    icons = {
-      server_installed = '●',
-      server_pending = '◑',
-      server_uninstalled = '○',
-    },
-  },
-})
-
-server_opts = {
-  intelephense = {
-    init_options = {
-      licenseKey = 'XXXXXXXXXXXXXXX',
-    },
-  },
-}
-
--- jdtls workspace
-if not vim.env.WORKSPACE then
-  vim.env.WORKSPACE = vim.env.HOME .. '/ws/jdtls'
-end
-
--- decorate LSP capabilities
+-- update LSP capabilities with plugin support
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-lsp_installer.on_server_ready(function (server)
-  local opts = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-
-  if server_opts[server.name] then
-    extend(opts, server_opts[server.name])
-  end
-
-  server:setup(opts)
-end)
-
--- local nvim_lsp = require('lspconfig')
--- nvim_lsp.clangd.setup {on_attach = on_attach}
--- nvim_lsp.rust_analyzer.setup {on_attach = on_attach}
--- nvim_lsp.tsserver.setup {on_attach = on_attach}
--- nvim_lsp.jdtls.setup {on_attach = on_attach, cmd = {'jdtls'}}
--- nvim_lsp.phpactor.setup {on_attach = on_attach}
+require('language-servers').setup({
+  capabilities = capabilities,
+})
 
 -- }}}
 -- {{{ automatically source file after editing
