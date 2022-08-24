@@ -27,8 +27,9 @@ require('paq')({
   'icymind/NeoSolarized',
   'jamessan/vim-gnupg',
   'jparise/vim-graphql',
-  {'junegunn/fzf', run = './install --bin'}, 'junegunn/fzf.vim',
+  -- {'junegunn/fzf', run = './install --bin'}, 'junegunn/fzf.vim',
   'junegunn/vim-easy-align',
+  'kyazdani42/nvim-web-devicons',
   'L3MON4D3/LuaSnip',
   'leafgarland/typescript-vim',
   'lumiliet/vim-twig',
@@ -38,6 +39,10 @@ require('paq')({
   'neoclide/jsonc.vim',
   'neovim/nvim-lspconfig',
   'ntpeters/vim-better-whitespace',
+  'nvim-lua/plenary.nvim',
+  'nvim-telescope/telescope.nvim',
+  'nvim-telescope/telescope-file-browser.nvim',
+  {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
   'peitalin/vim-jsx-typescript',
   'quangnguyen30192/cmp-nvim-tags',
   'saadparwaiz1/cmp_luasnip',
@@ -106,14 +111,20 @@ opt.wrap = false
 local opts = {noremap = true, silent = true}
 local map = vim.api.nvim_set_keymap
 
-map('n', '<Leader>b', '<Cmd>Buffers<CR>', opts)
-map('n', '<Leader>cd', '<Cmd>cd %:p:h<CR>:pwd<CR>', opts)
+map('n', '<Leader>fb', '<Cmd>Telescope buffers theme=ivy<CR>', opts)
+map('n', '<Leader>fe', '<Cmd>Telescope file_browser<CR>', opts)
+map('n', '<Leader>ff', '<Cmd>Telescope find_files hidden=true<CR>', opts)
+map('n', '<Leader>fg', '<Cmd>Telescope live_grep<CR>', opts)
+map('n', '<Leader>fo', '<Cmd>Telescope lsp_document_symbols theme=cursor<CR>', opts)
+map('n', '<Leader>ft', '<Cmd>Telescope lsp_workspace_symbols theme=cursor<CR>', opts)
+map('n', '<Leader>cd', '<Cmd>cd %:p:h<CR><Cmd>pwd<CR>', opts)
 map('n', '<Leader>h', '<Cmd>Hexmode<CR>', opts)
 map('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>', opts)
 map('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>', opts)
 
 map('', '<F2>', [[<Cmd>let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>]], opts)
-map('', '<F3>', '<Cmd>Lexplore<CR>', opts)
+-- map('', '<F3>', '<Cmd>Lexplore<CR>', opts)
+map('', '<F3>', '<Cmd>Telescope file_browser<CR>', opts)
 
 map('n', '<Space>', 'za', opts)
 map('v', '<Space>', 'za', opts)
@@ -128,7 +139,7 @@ map('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], {noremap = tr
 map('i', '<C-Space>', '<C-x><C-o>', opts)
 map('i', '<Nul>', '<C-x><C-o>', opts)
 
-map('n', '<C-p>', '<Cmd>FZF<CR>', opts)
+map('n', '<C-p>', '<Cmd>Telescope find_files hidden=true<CR>', opts)
 
 -- start new undo sequence for <C-u> and <C-w> in insert mode
 map('i', '<C-u>', '<C-g>u<C-u>', opts)
@@ -372,6 +383,20 @@ g.symbols_outline = {
     TypeParameter = {icon = 'Τ'}
   },
 }
+
+-- }}}
+-- {{{ telescope
+
+local telescope = require('telescope')
+telescope.setup({
+  extensions = {
+    file_browser = {
+      hijack_netrw = true,
+    },
+  },
+})
+
+telescope.load_extension('file_browser')
 
 -- }}}
 -- {{{ tex (built-in)
