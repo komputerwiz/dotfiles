@@ -283,6 +283,23 @@ ls.add_snippets('markdown', {
   s('qso', {t('{{% qso '), i(1), t(' %}}')}),
   s('sup', {t('<sup>'), i(1), t('</sup>')}),
   s('sub', {t('<sub>'), i(1), t('</sub>')}),
+  s(
+    {
+      trig = '#(%d+)',
+      name = 'TCAT Gitea Issue Link',
+      regTrig = true,
+      docTrig = 'Gitea Link',
+    },
+    {
+      t('[#'),
+      f(function (_, snip) return snip.captures[1] end),
+      t('](https://gitea.citd.tamu.edu/TCAT/'),
+      i(1, 'project'),
+      t('/issues/'),
+      f(function (_, snip) return snip.captures[1] end),
+      t(')'),
+    }
+  ),
 })
 
 -- }}}
