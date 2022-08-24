@@ -106,14 +106,14 @@ opt.wrap = false
 local opts = {noremap = true, silent = true}
 local map = vim.api.nvim_set_keymap
 
-map('n', '<Leader>b', ':Buffers<CR>', opts)
-map('n', '<Leader>cd', ':cd %:p:h<CR>:pwd<CR>', opts)
-map('n', '<Leader>h', ':Hexmode<CR>', opts)
-map('n', '<Leader>o', ':SymbolsOutline<CR>', opts)
-map('n', '<Leader>v', ':leftabove split $MYVIMRC<CR>', opts)
+map('n', '<Leader>b', '<Cmd>Buffers<CR>', opts)
+map('n', '<Leader>cd', '<Cmd>cd %:p:h<CR>:pwd<CR>', opts)
+map('n', '<Leader>h', '<Cmd>Hexmode<CR>', opts)
+map('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>', opts)
+map('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>', opts)
 
-map('', '<F2>', [[:let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>]], opts)
-map('', '<F3>', ':Lexplore<CR>', opts)
+map('', '<F2>', [[<Cmd>let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>]], opts)
+map('', '<F3>', '<Cmd>Lexplore<CR>', opts)
 
 map('n', '<Space>', 'za', opts)
 map('v', '<Space>', 'za', opts)
@@ -128,7 +128,7 @@ map('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], {noremap = tr
 map('i', '<C-Space>', '<C-x><C-o>', opts)
 map('i', '<Nul>', '<C-x><C-o>', opts)
 
-map('n', '<C-p>', ':FZF<CR>', opts)
+map('n', '<C-p>', '<Cmd>FZF<CR>', opts)
 
 -- start new undo sequence for <C-u> and <C-w> in insert mode
 map('i', '<C-u>', '<C-g>u<C-u>', opts)
@@ -142,7 +142,7 @@ cmd [[command! -bar -bang Delete call delete(expand('%:p')) | bdelete<bang>]]
 
 -- set tabstop, softtab, and shiftwidth to the same value
 function stab(width)
-  width = tonumber(width)
+  local width = tonumber(width)
   if width > 0 then
     vim.opt_local.softtabstop = width
     vim.opt_local.tabstop = width
