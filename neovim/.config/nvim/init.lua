@@ -26,6 +26,7 @@ require('paq')({
   'hrsh7th/nvim-cmp',
   'icymind/NeoSolarized',
   'jamessan/vim-gnupg',
+  'jose-elias-alvarez/null-ls.nvim',
   'jparise/vim-graphql',
   -- {'junegunn/fzf', run = './install --bin'}, 'junegunn/fzf.vim',
   'junegunn/vim-easy-align',
@@ -244,6 +245,16 @@ require('mason').setup({
 g.netrw_banner = 0
 g.netrw_liststyle = 3
 g.netrw_winsize = 25
+
+-- }}}
+-- {{{ null-ls
+
+local null_ls = require('null-ls')
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.prettierd,
+  },
+})
 
 -- }}}
 -- {{{ nvim-cmp
