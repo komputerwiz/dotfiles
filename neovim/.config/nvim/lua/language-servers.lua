@@ -3,7 +3,7 @@ local M = {}
 M.setup = function(opts)
 	opts = opts or {}
 
-	-- adjust settings after the language server attaches to the current buffer
+	-- {{{ on_attach() - adjust settings after the language server attaches to the current buffer
 	local function on_attach(client, bufnr)
 		local function bmap(...)
 			vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -61,34 +61,37 @@ M.setup = function(opts)
 
 		-- }}}
 		-- {{{ autocmd and syntax
+
 		vim.cmd([[
-      augroup lspconfig
-        autocmd!
-        autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        autocmd Syntax * highlight link LspReferenceText CursorLine
-        autocmd Syntax * highlight link LspReferenceRead LspReferenceText
-        autocmd Syntax * highlight link LspReferenceWrite LspReferenceText
-      augroup END
-    ]])
+			augroup lspconfig
+				autocmd!
+				autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+				autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+				autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+				autocmd Syntax * highlight link LspReferenceText CursorLine
+				autocmd Syntax * highlight link LspReferenceRead LspReferenceText
+				autocmd Syntax * highlight link LspReferenceWrite LspReferenceText
+			augroup END
+		]])
+
 		-- }}}
 	end
+	-- }}}
 
 	-- allow override of LSP capabilities
 	local capabilities = opts.capabilities or vim.lsp.protocol.make_client_capabilities()
 
 	local lspconfig = require('lspconfig')
 	require('mason-lspconfig').setup_handlers({
-		-- default settings
+		-- {{{ default settings
 		function(server_name)
 			lspconfig[server_name].setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 			})
-		end,
+		end, -- }}}
 
-		intelephense = function()
+		intelephense = function() -- {{{
 			lspconfig.intelephense.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
@@ -96,9 +99,9 @@ M.setup = function(opts)
 					licenseKey = 'XXXXXXXXXXXXXXX',
 				},
 			})
-		end,
+		end, -- }}}
 
-		jdtls = function()
+		jdtls = function() -- {{{
 			-- workspace path
 			if not vim.env.WORKSPACE then
 				vim.env.WORKSPACE = vim.env.HOME .. '/ws/jdtls'
@@ -109,7 +112,19 @@ M.setup = function(opts)
 				capabilities = capabilities,
 				cmd = { 'jdtls' },
 			})
-		end,
+		end, -- }}}
+
+		sumneko_lua = function() -- {{{
+			lspconfig.sumneko_lua.setup({
+				on_attach = function(client, bufnr)
+					-- disable document formatting; prefer stylua (provided via null-ls)
+					client.resolved_capabilities.document_formatting = false
+					client.resolved_capabilities.document_range_formatting = false
+					on_attach(client, bufnr)
+				end,
+				capabilities = capabilities,
+			})
+		end, -- }}}
 	})
 end
 

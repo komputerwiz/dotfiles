@@ -128,7 +128,6 @@ map('n', '<Leader>fo', '<Cmd>Telescope lsp_document_symbols theme=cursor<CR>', o
 map('n', '<Leader>ft', '<Cmd>Telescope lsp_workspace_symbols theme=cursor<CR>', opts)
 map('n', '<Leader>cd', '<Cmd>cd %:p:h<CR><Cmd>pwd<CR>', opts)
 map('n', '<Leader>h', '<Cmd>Hexmode<CR>', opts)
-map('n', '<Leader>i', '<Cmd>lua vim.lsp.buf.formatting_sync()<CR>', opts)
 map('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>', opts)
 map('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>', opts)
 
