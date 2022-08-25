@@ -1,62 +1,67 @@
 local M = {}
 
-M.setup = function (opts)
-  opts = opts or {}
+M.setup = function(opts)
+	opts = opts or {}
 
-  -- adjust settings after the language server attaches to the current buffer
-  local function on_attach(client, bufnr)
-    local function bmap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local function bopt(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+	-- adjust settings after the language server attaches to the current buffer
+	local function on_attach(client, bufnr)
+		local function bmap(...)
+			vim.api.nvim_buf_set_keymap(bufnr, ...)
+		end
 
-    -- enable omni-completion (<C-x><C-o>)
-    bopt('omnifunc', 'v:lua.vim.lsp.omnifunc')
+		local function bopt(...)
+			vim.api.nvim_buf_set_option(bufnr, ...)
+		end
 
-    -- {{{ key mappings
+		-- enable omni-completion (<C-x><C-o>)
+		bopt('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    -- (see `:h vim.lsp.*` for docs)
-    local opts = {noremap = true, silent = true}
+		-- {{{ key mappings
 
-    -- {{{ code navigation
+		-- (see `:h vim.lsp.*` for docs)
+		local opts = { noremap = true, silent = true }
 
-    bmap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    bmap('n', 'g]', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    bmap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    bmap('n', 'gy', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    bmap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
+		-- {{{ code navigation
 
-    -- }}}
-    -- {{{ inline help
+		bmap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+		bmap('n', 'g]', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+		bmap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+		bmap('n', 'gy', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+		bmap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
 
-    bmap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    bmap('n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+		-- }}}
+		-- {{{ inline help
 
-    -- }}}
-    -- {{{ workspace management
+		bmap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+		bmap('n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
-    bmap('n', '<Leader>wa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    bmap('n', '<Leader>wr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    bmap('n', '<Leader>wl', '<Cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+		-- }}}
+		-- {{{ workspace management
 
-    -- }}}
-    -- {{{ code manipulation
+		bmap('n', '<Leader>wa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+		bmap('n', '<Leader>wr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+		bmap('n', '<Leader>wl', '<Cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 
-    bmap('n', '<Leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    bmap('n', '<Leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    bmap('n', '<Leader>=', '<Cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+		-- }}}
+		-- {{{ code manipulation
 
-    -- }}}
-    -- {{{ diagnostics
+		bmap('n', '<Leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
+		bmap('n', '<Leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+		bmap('n', '<Leader>=', '<Cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
-    bmap('n', '<Leader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
-    bmap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-    bmap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-    bmap('n', '<Leader>q', '<Cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
+		-- }}}
+		-- {{{ diagnostics
 
-    -- }}}
+		bmap('n', '<Leader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
+		bmap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+		bmap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+		bmap('n', '<Leader>q', '<Cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
 
-    -- }}}
-    -- {{{ autocmd and syntax
-    vim.cmd [[
+		-- }}}
+
+		-- }}}
+		-- {{{ autocmd and syntax
+		vim.cmd([[
       augroup lspconfig
         autocmd!
         autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
@@ -66,46 +71,46 @@ M.setup = function (opts)
         autocmd Syntax * highlight link LspReferenceRead LspReferenceText
         autocmd Syntax * highlight link LspReferenceWrite LspReferenceText
       augroup END
-    ]]
-    -- }}}
-  end
+    ]])
+		-- }}}
+	end
 
-  -- allow override of LSP capabilities
-  local capabilities = opts.capabilities or vim.lsp.protocol.make_client_capabilities()
+	-- allow override of LSP capabilities
+	local capabilities = opts.capabilities or vim.lsp.protocol.make_client_capabilities()
 
-  local lspconfig = require('lspconfig')
-  require('mason-lspconfig').setup_handlers({
-    -- default settings
-    function (server_name)
-      lspconfig[server_name].setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-      })
-    end,
+	local lspconfig = require('lspconfig')
+	require('mason-lspconfig').setup_handlers({
+		-- default settings
+		function(server_name)
+			lspconfig[server_name].setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+		end,
 
-    intelephense = function ()
-      lspconfig.intelephense.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-        init_options = {
-          licenseKey = 'XXXXXXXXXXXXXXX',
-        },
-      })
-    end,
+		intelephense = function()
+			lspconfig.intelephense.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				init_options = {
+					licenseKey = 'XXXXXXXXXXXXXXX',
+				},
+			})
+		end,
 
-    jdtls = function ()
-      -- workspace path
-      if not vim.env.WORKSPACE then
-        vim.env.WORKSPACE = vim.env.HOME .. '/ws/jdtls'
-      end
+		jdtls = function()
+			-- workspace path
+			if not vim.env.WORKSPACE then
+				vim.env.WORKSPACE = vim.env.HOME .. '/ws/jdtls'
+			end
 
-      lspconfig.jdtls.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-        cmd = {'jdtls'},
-      })
-    end,
-  })
+			lspconfig.jdtls.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				cmd = { 'jdtls' },
+			})
+		end,
+	})
 end
 
 return M
