@@ -411,6 +411,7 @@ local telescope = require('telescope')
 telescope.setup({
 	extensions = {
 		file_browser = {
+			hidden = true,
 			hijack_netrw = true,
 		},
 	},
@@ -430,15 +431,15 @@ g.tex_flavor = 'latex'
 -- Here we reset them to their default links in RUNTIME/syntax/*.vim and let
 -- the user-selected theme handle coloring
 cmd([[
-  augroup jsxsyntax
-    autocmd!
-    autocmd Syntax *typescript* highlight link xmlEndTag Identifier
-    autocmd Syntax *typescript* highlight link tsxCloseString htmlTagName
-    autocmd Syntax *typescript* highlight link htmlTag Function
-    autocmd Syntax *typescript* highlight link htmlEndTag Identifier
-    autocmd Syntax *typescript* highlight link htmlTagName htmlStatement
-    autocmd Syntax *typescript* highlight link tsxAttrib htmlArg
-  augroup END
+	augroup jsxsyntax
+		autocmd!
+		autocmd Syntax *typescript* highlight link xmlEndTag Identifier
+		autocmd Syntax *typescript* highlight link tsxCloseString htmlTagName
+		autocmd Syntax *typescript* highlight link htmlTag Function
+		autocmd Syntax *typescript* highlight link htmlEndTag Identifier
+		autocmd Syntax *typescript* highlight link htmlTagName htmlStatement
+		autocmd Syntax *typescript* highlight link tsxAttrib htmlArg
+	augroup END
 ]])
 --autocmd Syntax *typescript* highlight link ReactState
 --autocmd Syntax *typescript* highlight link ReactProps
@@ -465,11 +466,11 @@ require('language-servers').setup({
 -- {{{ automatically source file after editing
 
 cmd([[
-  augroup vimrc
-    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
-  augroup END
+	augroup vimrc
+		autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+	augroup END
 ]])
 
 -- }}}
 
--- vim: foldmethod=marker foldlevel=0
+-- vim: foldmethod=marker foldlevel=0 noexpandtab
