@@ -12,6 +12,7 @@ local tsconfigs = require('nvim-treesitter.configs')
 -- local modules
 local language_servers = require('language-servers')
 local snippets = require('snippets')
+local tags_source = require('tags-source')
 
 -- }}}
 -- {{{ common vim lua aliases
@@ -63,7 +64,6 @@ paq({
 	'nvim-telescope/telescope-file-browser.nvim',
 	{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 	'peitalin/vim-jsx-typescript',
-	'quangnguyen30192/cmp-nvim-tags',
 	'saadparwaiz1/cmp_luasnip',
 	'simrat39/symbols-outline.nvim',
 	'tpope/vim-abolish',
@@ -277,7 +277,9 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.prettierd,
 		null_ls.builtins.formatting.stylua,
+		tags_source,
 	},
+  on_attach = language_servers.on_attach,
 })
 
 -- }}}
@@ -343,7 +345,6 @@ cmp.setup({
 	}, {
 		{ name = 'path' },
 	}, {
-		{ name = 'tags' },
 		{ name = 'buffer' },
 	}),
 })
