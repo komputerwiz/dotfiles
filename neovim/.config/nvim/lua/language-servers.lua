@@ -60,19 +60,21 @@ M.setup = function(opts)
 		-- }}}
 
 		-- }}}
-		-- {{{ autocmd and syntax
+		-- {{{ autocmd and syntax for hovers
 
-		vim.cmd([[
-			augroup lspconfig
-				autocmd!
-				autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-				autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-				autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-				autocmd Syntax * highlight link LspReferenceText CursorLine
-				autocmd Syntax * highlight link LspReferenceRead LspReferenceText
-				autocmd Syntax * highlight link LspReferenceWrite LspReferenceText
-			augroup END
-		]])
+		if client.server_capabilities.documentHighlightProvider then
+			vim.cmd([[
+				augroup lsp_document_highlight
+					autocmd!
+					autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+					autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+					autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+					autocmd Syntax * highlight link LspReferenceText CursorLine
+					autocmd Syntax * highlight link LspReferenceRead LspReferenceText
+					autocmd Syntax * highlight link LspReferenceWrite LspReferenceText
+				augroup END
+			]])
+		end
 
 		-- }}}
 	end
@@ -118,8 +120,8 @@ M.setup = function(opts)
 			lspconfig.sumneko_lua.setup({
 				on_attach = function(client, bufnr)
 					-- disable document formatting; prefer stylua (provided via null-ls)
-					client.resolved_capabilities.document_formatting = false
-					client.resolved_capabilities.document_range_formatting = false
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentRangeFormattingProvider = false
 					on_attach(client, bufnr)
 				end,
 				capabilities = capabilities,
