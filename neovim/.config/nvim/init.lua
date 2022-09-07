@@ -1,3 +1,19 @@
+-- {{{ imports
+
+local cmp = require('cmp')
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local luasnip = require('luasnip')
+local mason = require('mason')
+local null_ls = require('null-ls')
+local paq = require('paq')
+local telescope = require('telescope')
+local tsconfigs = require('nvim-treesitter.configs')
+
+-- local modules
+local language_servers = require('language-servers')
+local snippets = require('snippets')
+
+-- }}}
 -- {{{ common vim lua aliases
 
 local cmd = vim.cmd -- execute commands
@@ -11,7 +27,7 @@ end -- merge option tables
 -- }}}
 -- {{{ plugins
 
-require('paq')({
+paq({
 	'savq/paq-nvim', -- let paq manage itself
 	'airblade/vim-gitgutter',
 	'cespare/vim-toml',
@@ -76,9 +92,9 @@ cmd('colorscheme NeoSolarized')
 
 -- force whitespace highlighting to look like comments
 cmd([[
-  augroup mysyntax
-    autocmd! Syntax,BufNewFile,BufReadPost * highlight link Whitespace Comment
-  augroup END
+	augroup mysyntax
+		autocmd! Syntax,BufNewFile,BufReadPost * highlight link Whitespace Comment
+	augroup END
 ]])
 
 -- }}}
@@ -227,7 +243,7 @@ g.GPGDefaultRecipients = {
 
 -- this configuration is too large and complex to fit here and has been broken
 -- into a separate file
-require('snippets')
+snippets.setup()
 
 -- }}}
 -- {{{ markdown (built-in)
@@ -237,7 +253,7 @@ g.markdown_folding = 1
 -- }}}
 -- {{{ mason
 
-require('mason').setup({
+mason.setup({
 	ui = {
 		icons = {
 			package_installed = '●',
@@ -257,7 +273,6 @@ g.netrw_winsize = 25
 -- }}}
 -- {{{ null-ls
 
-local null_ls = require('null-ls')
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.prettierd,
@@ -269,8 +284,6 @@ null_ls.setup({
 -- {{{ nvim-cmp
 
 -- from https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
-local luasnip = require('luasnip')
-local cmp = require('cmp')
 
 local function has_words_before()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -354,7 +367,7 @@ cmp.setup.cmdline(':', {
 -- }}}
 -- {{{ nvim-treesitter
 
-require('nvim-treesitter.configs').setup({
+tsconfigs.setup({
 	highlight = {
 		enable = true,
 		disable = {
@@ -407,7 +420,6 @@ g.symbols_outline = {
 -- }}}
 -- {{{ telescope
 
-local telescope = require('telescope')
 telescope.setup({
 	extensions = {
 		file_browser = {
@@ -456,9 +468,9 @@ cmd([[
 
 -- update LSP capabilities with plugin support
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
-require('language-servers').setup({
+language_servers.setup({
 	capabilities = capabilities,
 })
 
