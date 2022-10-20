@@ -277,7 +277,7 @@ null_ls.setup({
 -- from https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
 
 local function has_words_before()
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
@@ -293,7 +293,7 @@ cmp.setup({
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping({
-			i = function(fallback)
+			i = function() -- function(fallback)
 				if luasnip.choice_active() then
 					luasnip.change_choice(1)
 				else
@@ -457,8 +457,7 @@ vim.cmd([[
 -- {{{ language server (LSP) config
 
 -- update LSP capabilities with plugin support
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
 language_servers.setup({
 	capabilities = capabilities,

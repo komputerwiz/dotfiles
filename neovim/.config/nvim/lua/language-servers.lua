@@ -126,6 +126,15 @@ M.setup = function(opts)
 					on_attach(client, bufnr)
 				end,
 				capabilities = capabilities,
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = {
+								'vim',
+							},
+						},
+					},
+				},
 			})
 		end, -- }}}
 	})
