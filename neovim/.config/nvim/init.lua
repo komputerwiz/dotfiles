@@ -15,17 +15,6 @@ local snippets = require('snippets')
 local tags_source = require('tags-source')
 
 -- }}}
--- {{{ common vim lua aliases
-
-local cmd = vim.cmd -- execute commands
-local fn = vim.fn -- call functions
-local g = vim.g -- set global variables
-local opt = vim.opt -- set options
-local function extend(...)
-	return vim.tbl_extend('force', ...)
-end -- merge option tables
-
--- }}}
 -- {{{ plugins
 
 paq({
@@ -75,7 +64,7 @@ paq({
 	{
 		'nvim-treesitter/nvim-treesitter',
 		run = function()
-			cmd('TSUpdate')
+			vim.cmd('TSUpdate')
 		end,
 	},
 	'vim-airline/vim-airline',
@@ -88,10 +77,10 @@ paq({
 -- }}}
 -- {{{ syntax highlighting
 
-cmd('colorscheme NeoSolarized')
+vim.cmd('colorscheme NeoSolarized')
 
 -- force whitespace highlighting to look like comments
-cmd([[
+vim.cmd([[
 	augroup mysyntax
 		autocmd! Syntax,BufNewFile,BufReadPost * highlight link Whitespace Comment
 	augroup END
@@ -100,35 +89,35 @@ cmd([[
 -- }}}
 -- {{{ options
 
-opt.background = 'dark'
-opt.colorcolumn = { 80, 92, 100, 120 }
-opt.completeopt = { 'menu', 'menuone', 'noselect' } -- {'longest', 'menu'}
-opt.concealcursor = 'c'
-opt.conceallevel = 2
-opt.expandtab = true
-opt.exrc = true
-opt.hidden = true
-opt.joinspaces = false
-opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '+' }
-opt.mouse = 'a'
-opt.number = true
-opt.path:append({ '**' })
-opt.redrawtime = 500
-opt.scrolloff = 1
-opt.secure = true
-opt.shiftround = true
-opt.shiftwidth = 2
-opt.sidescrolloff = 5
-opt.softtabstop = 2
-opt.spelllang = 'en_us'
-opt.splitbelow = true
-opt.splitright = true
-opt.tabstop = 2
-opt.termguicolors = true
-opt.updatetime = 1000
-opt.wildmode = { 'longest:full', 'full' }
-opt.wrap = false
+vim.opt.background = 'dark'
+vim.opt.colorcolumn = { 80, 92, 100, 120 }
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' } -- {'longest', 'menu'}
+vim.opt.concealcursor = 'c'
+vim.opt.conceallevel = 2
+vim.opt.expandtab = true
+vim.opt.exrc = true
+vim.opt.hidden = true
+vim.opt.joinspaces = false
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '+' }
+vim.opt.mouse = 'a'
+vim.opt.number = true
+vim.opt.path:append({ '**' })
+vim.opt.redrawtime = 500
+vim.opt.scrolloff = 1
+vim.opt.secure = true
+vim.opt.shiftround = true
+vim.opt.shiftwidth = 2
+vim.opt.sidescrolloff = 5
+vim.opt.softtabstop = 2
+vim.opt.spelllang = 'en_us'
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.tabstop = 2
+vim.opt.termguicolors = true
+vim.opt.updatetime = 1000
+vim.opt.wildmode = { 'longest:full', 'full' }
+vim.opt.wrap = false
 
 -- }}}
 -- {{{ key mappings
@@ -174,7 +163,7 @@ map('i', '<C-w>', '<C-g>u<C-w>', opts)
 -- {{{ commands and functions
 
 -- delete the current file and its buffer (this functionality could be provided by tpope/vim-eunuch)
-cmd([[command! -bar -bang Delete call delete(expand('%:p')) | bdelete<bang>]])
+vim.cmd([[command! -bar -bang Delete call delete(expand('%:p')) | bdelete<bang>]])
 
 -- set tabstop, softtab, and shiftwidth to the same value
 function stab(width)
@@ -186,22 +175,22 @@ function stab(width)
 	end
 end
 
-cmd([[command! -nargs=1 Stab lua stab(<f-args>)]])
+vim.cmd([[command! -nargs=1 Stab lua stab(<f-args>)]])
 
 -- load scriptnames into a scratch buffer
-cmd([[command! -nargs=? Scriptnames Scratch scriptnames <f-args>]])
+vim.cmd([[command! -nargs=? Scriptnames Scratch scriptnames <f-args>]])
 
 -- simplify colorscheme for non-true-color terminals
-cmd([[command! SimpleColors set notermguicolors | colorscheme default]])
+vim.cmd([[command! SimpleColors set notermguicolors | colorscheme default]])
 
 -- }}}
 -- {{{ plugin config
 
 -- {{{ airline
 
-g.airline_left_sep = ''
-g.airline_right_sep = ''
-g.airline_mode_map = {
+vim.g.airline_left_sep = ''
+vim.g.airline_right_sep = ''
+vim.g.airline_mode_map = {
 	['__'] = '-', -- unknown
 	['c'] = 'C', -- command
 	['i'] = 'I', -- insert
@@ -224,17 +213,17 @@ g.airline_mode_map = {
 -- }}}
 -- {{{ dokuwiki
 
-g.dokuwiki_fenced_languages = { 'bash=sh', 'javascript', 'php', 'ruby' }
+vim.g.dokuwiki_fenced_languages = { 'bash=sh', 'javascript', 'php', 'ruby' }
 
 -- }}}
 -- {{{ editorconfig
-g.EditorConfig_exclude_patterns = { 'fugitive://.*' }
+vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*' }
 
 -- }}}
 -- {{{ gnupg
 
-g.GPGPreferSign = 1
-g.GPGDefaultRecipients = {
+vim.g.GPGPreferSign = 1
+vim.g.GPGDefaultRecipients = {
 	'Matthew J. Barry <komputerwiz.matt@gmail.com>',
 }
 
@@ -248,7 +237,7 @@ snippets.setup()
 -- }}}
 -- {{{ markdown (built-in)
 
-g.markdown_folding = 1
+vim.g.markdown_folding = 1
 
 -- }}}
 -- {{{ mason
@@ -266,9 +255,9 @@ mason.setup({
 -- }}}
 -- {{{ netrw (vim's built-in file browser)
 
-g.netrw_banner = 0
-g.netrw_liststyle = 3
-g.netrw_winsize = 25
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+vim.g.netrw_winsize = 25
 
 -- }}}
 -- {{{ null-ls
@@ -380,13 +369,13 @@ tsconfigs.setup({
 -- }}}
 -- {{{ rust (built-in)
 
-g.rust_conceal = 1
-g.rust_fold = 1
+vim.g.rust_conceal = 1
+vim.g.rust_fold = 1
 
 -- }}}
 -- {{{ symbols-outline
 
-g.symbols_outline = {
+vim.g.symbols_outline = {
 	auto_preview = false,
 	symbols = {
 		File = { icon = 'file' },
@@ -435,7 +424,7 @@ telescope.load_extension('file_browser')
 -- }}}
 -- {{{ tex (built-in)
 
-g.tex_flavor = 'latex'
+vim.g.tex_flavor = 'latex'
 
 -- }}}
 -- {{{ vim-jsx-typescript
@@ -443,7 +432,7 @@ g.tex_flavor = 'latex'
 -- The following syntax components are forcibly colored by vim-jsx-typescript.
 -- Here we reset them to their default links in RUNTIME/syntax/*.vim and let
 -- the user-selected theme handle coloring
-cmd([[
+vim.cmd([[
 	augroup jsxsyntax
 		autocmd!
 		autocmd Syntax *typescript* highlight link xmlEndTag Identifier
@@ -478,7 +467,7 @@ language_servers.setup({
 -- }}}
 -- {{{ automatically source file after editing
 
-cmd([[
+vim.cmd([[
 	augroup vimrc
 		autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
 	augroup END
