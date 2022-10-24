@@ -163,5 +163,22 @@ depends = ["fish"]
 "vscode/shell-integration.fish" = "~/.config/fish/conf.d/10-vscode.fish"
 
 # }}}
+# zsh {{{
+
+[zsh]
+depends = ["updater"]
+
+[zsh.files]
+"zsh/antigenrc" = "~/.zsh/antigenrc"
+"zsh/plugins" = "~/.zsh/plugins"
+"zsh/themes" = "~/.zsh/themes"
+"zsh/update.zsh" = "~/.config/update.d/50-zsh.zsh"
+"zsh/zlogin" = "~/.zlogin"
+"zsh/zlogout" = "~/.zlogout"
+"zsh/zprofile" = "~/.zprofile"
+"zsh/zshenv" = "~/.zshenv"
+"zsh/zshrc" = "~/.zshrc"
+
+# }}}
 
 # vim: foldmethod=marker
