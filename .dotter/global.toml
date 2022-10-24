@@ -57,6 +57,15 @@ depends = ["updater"]
 "n/update.sh" = "~/.config/update.d/50-n.sh"
 
 # }}}
+# npm {{{
+
+[npm]
+depends = ["updater"]
+
+[npm.files]
+"npm/update.sh" = "~/.config/update.d/50-npm-global.sh"
+
+# }}}
 # nvim {{{
 
 [nvim]
