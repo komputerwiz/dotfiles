@@ -139,5 +139,14 @@ depends = ["rbenv", "zsh"]
 "rbenv/init.zsh" = "~/.zsh/plugins.d/rbenv.zsh"
 
 # }}}
+# rustup {{{
+
+[rustup]
+depends = ["updater"]
+
+[rustup.files]
+"rustup/update.sh" = "~/.config/update.d/50-rustup.sh"
+
+# }}}
 
 # vim: foldmethod=marker
