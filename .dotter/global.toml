@@ -112,5 +112,32 @@ depends = ["zsh"]
 "pyv/zsh" = "~/.zsh"
 
 # }}}
+# rbenv {{{
+
+[rbenv]
+depends = ["updater"]
+
+[rbenv.files]
+"rbenv/update.sh" = "~/.config/update.d/50-rbenv.sh"
+
+[rbenv-bash]
+depends = ["bash", "rbenv"]
+
+[rbenv-bash.files]
+"rbenv/init.bash" = "~/.config/bash/rc.d/50-rbenv.sh"
+
+[rbenv-fish]
+depends = ["fish", "rbenv"]
+
+[rbenv-fish.files]
+"rbenv/init.fish" = "~/.config/fish/conf.d/10-rbenv.fish"
+
+[rbenv-zsh]
+depends = ["rbenv", "zsh"]
+
+[rbenv-zsh.files]
+"rbenv/init.zsh" = "~/.zsh/plugins.d/rbenv.zsh"
+
+# }}}
 
 # vim: foldmethod=marker
