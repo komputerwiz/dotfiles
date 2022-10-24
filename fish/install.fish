@@ -10,7 +10,8 @@ set -U fish_greeting ''
 
 # syntax highlighting colors (solarized)
 #
-#                              dark          light
+# name    color     # ttyname    dark-use      light-use
+# ------- --------- - ---------  ------------  ------------
 # base03  (#002b36) 8 brblack    background
 # base02  (#073642) 0 black      bg highlight
 # base01  (#586e75) A brgreen    secondary     emphasis

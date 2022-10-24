@@ -1,3 +1,16 @@
+# fish {{{
+
+[fish.files]
+"fish/config" = "~/.config/fish"
+"fish/update.fish" = "~/.config/update.d/50-fish.fish"
+
+# }}}
+# nvim {{{
+
 [nvim.files]
 "nvim/config" = "~/.config/nvim"
 "nvim/update.sh" = "~/.config/update.d/50-neovim.sh"
+
+# }}}
+
+# vim: foldmethod=marker
