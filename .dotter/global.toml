@@ -1,3 +1,12 @@
+# bash {{{
+
+[bash.files]
+"bash/rc.d" = "~/.config/bash/rc.d"
+"bash/bash_logout" = "~/.bash_logout"
+"bash/bashrc" = "~/.bashrc"
+"bash/profile" = "~/.profile"
+
+# }}}
 # fish {{{
 
 [fish.files]
