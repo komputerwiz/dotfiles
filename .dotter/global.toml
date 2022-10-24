@@ -97,5 +97,20 @@ depends = ["zsh"]
 "php-dev/zsh" = "~/.zsh"
 
 # }}}
+# pyv {{{
+
+[pyv-fish]
+depends = ["fish"]
+
+[pyv-fish.files]
+"pyv/fish" = "~/.config/fish"
+
+[pyv-zsh]
+depends = ["zsh"]
+
+[pyv-zsh.files]
+"pyv/zsh" = "~/.zsh"
+
+# }}}
 
 # vim: foldmethod=marker
