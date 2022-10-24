@@ -1,0 +1,441 @@
+# operating systems {{{
+# linux {{{
+# @arch {{{
+["@arch".files]
+"@arch" = ""
+# }}}
+# @ubuntu {{{
+["@ubuntu".files]
+"@ubuntu" = ""
+# }}}
+# }}}
+# @macos {{{
+["@macos".files]
+"@macos" = ""
+
+# @macos-fish {{{
+["@macos-fish"]
+depends = ["@macos", "fish"]
+
+["@macos-fish".files]
+"@macos-fish" = ""
+# }}}
+# @macos-zsh {{{
+["@macos-zsh"]
+depends = ["@macos", "zsh"]
+
+["@macos-zsh".files]
+"@macos-zsh" = ""
+# }}}
+# }}}
+# }}}
+# host-dependent config {{{
+# @imac {{{
+["@imac".files]
+"@imac" = ""
+# }}}
+# @macbook {{{
+["@macbook".files]
+"@macbook" = ""
+# }}}
+# @nymbus {{{
+["@nymbus".files]
+"@nymbus" = ""
+# }}}
+# @qumulus {{{
+["@qumulus".files]
+"@qumulus" = ""
+# }}}
+# @ripper {{{
+["@ripper".files]
+"@ripper" = ""
+# }}}
+# @tcat {{{
+["@tcat".files]
+"@tcat" = ""
+# }}}
+# }}}
+
+# legacy dotfiles infrastructure {{{
+# dotfiles {{{
+[dotfiles.files]
+dotfiles = ""
+# }}}
+# stow {{{
+[stow.files]
+stow = ""
+# }}}
+# }}}
+# mail sync {{{
+[mailsync]
+depends = ["afew", "alot", "notmuch", "offlineimap"]
+
+# afew {{{
+[afew.files]
+afew = ""
+# }}}
+# alot {{{
+[alot.files]
+alot = ""
+# }}}
+# notmuch {{{
+[notmuch.files]
+notmuch = ""
+# }}}
+# offlineimap {{{
+[offlineimap.files]
+offlineimap = ""
+# }}}
+# }}}
+# tiling wm {{{
+# dunst {{{
+[dunst.files]
+dunst = ""
+# }}}
+# i3 {{{
+[i3.files]
+i3 = ""
+# }}}
+# rofi {{{
+[rofi.files]
+rofi = ""
+# }}}
+# sway {{{
+[sway.files]
+sway = ""
+# }}}
+# }}}
+# shells {{{
+# bash {{{
+[bash.files]
+bash = ""
+# }}}
+# fish {{{
+[fish.files]
+fish = ""
+# }}}
+# zsh {{{
+[zsh.files]
+zsh = ""
+# }}}
+# }}}
+# dev tools and runtimes {{{
+# node.js {{{
+# n {{{
+[n.files]
+n = ""
+# }}}
+# npm {{{
+[npm.files]
+npm = ""
+# }}}
+# }}}
+# php {{{
+# php-dev {{{
+[php-dev.files]
+php-dev = ""
+
+# php-dev-fish {{{
+[php-dev-fish]
+depends = ["fish", "php-dev"]
+
+[php-dev-fish.files]
+php-dev-fish = ""
+# }}}
+# php-dev-zsh {{{
+[php-dev-zsh]
+depends = ["php-dev", "zsh"]
+
+[php-dev-zsh.files]
+php-dev-zsh = ""
+# }}}
+# }}}
+# }}}
+# python {{{
+# pyv {{{
+[pyv.files]
+pyv = ""
+
+# pyv-fish {{{
+[pyv-fish]
+depends = ["fish", "pyv"]
+
+[pyv-fish.files]
+pyv-fish = ""
+# }}}
+# pyv-zsh {{{
+[pyv-zsh]
+depends = ["pyv", "zsh"]
+
+[pyv-zsh.files]
+pyv-zsh = ""
+# }}}
+# }}}
+# }}}
+# ruby {{{
+# gem {{{
+[gem.files]
+gem = ""
+
+# gem-fish {{{
+[gem-fish]
+depends = ["fish", "gem"]
+
+[gem-fish.files]
+gem-fish = ""
+# }}}
+# gem-zsh {{{
+[gem-zsh]
+depends = ["gem", "zsh"]
+
+[gem-zsh.files]
+gem-zsh = ""
+# }}}
+# }}}
+# rbenv {{{
+[rbenv.files]
+rbenv = ""
+
+# rbenv-bash {{{
+[rbenv-bash]
+depends = ["bash", "rbenv"]
+
+[rbenv-bash.files]
+rbenv-bash = ""
+# }}}
+# rbenv-fish {{{
+[rbenv-fish]
+depends = ["fish", "rbenv"]
+
+[rbenv-fish.files]
+rbenv-fish = ""
+# }}}
+# rbenv-zsh {{{
+[rbenv-zsh]
+depends = ["rbenv", "zsh"]
+
+[rbenv-zsh.files]
+rbenv-zsh = ""
+# }}}
+# }}}
+# }}}
+# rust {{{
+# cargo {{{
+[cargo.files]
+cargo = ""
+
+# cargo-fish {{{
+[cargo-fish]
+depends = ["cargo", "fish"]
+
+[cargo-fish.files]
+cargo-fish = ""
+# }}}
+# cargo-zsh {{{
+[cargo-zsh]
+depends = ["cargo", "zsh"]
+
+[cargo-zsh.files]
+cargo-zsh = ""
+# }}}
+# }}}
+# rustup {{{
+[rustup.files]
+rustup = ""
+# }}}
+# }}}
+# }}}
+
+# alacritty {{{
+[alacritty.files]
+alacritty = ""
+# }}}
+# blender {{{
+[blender.files]
+blender = ""
+# }}}
+# direnv {{{
+# direnv-bash {{{
+[direnv-bash]
+depends = ["bash", "direnv"]
+
+[direnv-bash.files]
+direnv-bash = ""
+# }}}
+# direnv-fish {{{
+[direnv-fish]
+depends = ["direnv", "fish"]
+
+[direnv-fish.files]
+direnv-fish = ""
+# }}}
+# }}}
+# flatpak {{{
+[flatpak.files]
+flatpak = ""
+# }}}
+# fzf {{{
+[fzf.files]
+fzf = ""
+
+# fzf-bash {{{
+[fzf-bash]
+depends = ["bash", "fzf"]
+
+[fzf-bash.files]
+fzf-bash = ""
+# }}}
+# fzf-fish {{{
+[fzf-fish]
+depends = ["fish", "fzf"]
+
+[fzf-fish.files]
+fzf-fish = ""
+# }}}
+# fzf-zsh {{{
+[fzf-zsh]
+depends = ["fish", "zsh"]
+
+[fzf-zsh.files]
+fzf-zsh = ""
+# }}}
+# }}}
+# gimp {{{
+[gimp.files]
+gimp = ""
+# }}}
+# git {{{
+[git.files]
+git = ""
+# }}}
+# kitty {{{
+[kitty.files]
+kitty = ""
+
+# kitty-fish {{{
+[kitty-fish]
+depends = ["fish", "kitty"]
+
+[kitty-fish.files]
+kitty-fish = ""
+# }}}
+# kitty-zsh {{{
+[kitty-zsh]
+depends = ["kitty", "zsh"]
+
+[kitty-zsh.files]
+kitty-zsh = ""
+# }}}
+# }}}
+# latex {{{
+[latex.files]
+latex = ""
+# }}}
+# minecraft {{{
+[minecraft.files]
+minecraft = ""
+# }}}
+# mpv {{{
+[mpv.files]
+mpv = ""
+# }}}
+# neomutt {{{
+[neomutt.files]
+neomutt = ""
+# }}}
+# neovim {{{
+[neovim.files]
+neovim = ""
+# }}}
+# pandoc {{{
+[pandoc.files]
+pandoc = ""
+# }}}
+# pianobar {{{
+[pianobar.files]
+pianobar = ""
+# }}}
+# ranger {{{
+# ranger-fish {{{
+[ranger-fish]
+depends = ["fish", "ranger"]
+
+[ranger-fish.files]
+ranger-fish = ""
+# }}}
+# }}}
+# redshift {{{
+[redshift.files]
+redshift = ""
+# }}}
+# ssh {{{
+[ssh.files]
+ssh = ""
+# }}}
+# tmux {{{
+[tmux.files]
+tmux = ""
+
+# tmux-zsh {{{
+[tmux-zsh]
+depends = ["tmux", "zsh"]
+
+[tmux-zsh.files]
+tmux-zsh = ""
+# }}}
+# }}}
+# todo.txt {{{
+["todo.txt".files]
+"todo.txt" = ""
+# }}}
+# vim {{{
+[vim.files]
+vim = ""
+# }}}
+# vscode {{{
+# vscode-fish {{{
+[vscode-fish]
+depends = ["fish"]
+
+[vscode-fish.files]
+vscode-fish = ""
+# }}}
+# }}}
+# watson {{{
+[watson.files]
+watson = ""
+
+# watson-fish {{{
+[watson-fish]
+depends = ["fish", "watson"]
+
+[watson-fish.files]
+watson-fish = ""
+# }}}
+# watson-zsh {{{
+[watson-zsh]
+depends = ["watson", "zsh"]
+
+[watson-zsh.files]
+watson-zsh = ""
+# }}}
+# }}}
+# wx {{{
+[wx.files]
+wx = ""
+# }}}
+# ytdl {{{
+# ytdl-fish {{{
+[ytdl-fish]
+depends = ["fish"]
+
+[ytdl-fish.files]
+ytdl-fish = ""
+# }}}
+# }}}
+# zathura {{{
+[zathura.files]
+zathura = ""
+# }}}
+
+# vim: foldmethod=marker
