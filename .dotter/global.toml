@@ -48,6 +48,15 @@ depends = ["updater"]
 "git/ignore" = "~/.config/git/ignore"
 
 # }}}
+# n {{{
+
+[n]
+depends = ["updater"]
+
+[n.files]
+"n/update.sh" = "~/.config/update.d/50-n.sh"
+
+# }}}
 # nvim {{{
 
 [nvim]
