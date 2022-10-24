@@ -15,8 +15,14 @@
 # }}}
 # direnv {{{
 
+[direnv-bash]
+depends = ["bash"]
+
 [direnv-bash.files]
 "direnv/init.bash" = "~/.config/bash/rc.d/50-direnv.sh"
+
+[direnv-fish]
+depends = ["fish"]
 
 [direnv-fish.files]
 "direnv/init.fish" = "~/.config/fish/conf.d/direnv.fish"
@@ -78,8 +84,14 @@ depends = ["updater"]
 # }}}
 # php-dev {{{
 
+[php-dev-fish]
+depends = ["fish"]
+
 [php-dev-fish.files]
 "php-dev/fish" = "~/.config/fish"
+
+[php-dev-zsh]
+depends = ["zsh"]
 
 [php-dev-zsh.files]
 "php-dev/zsh" = "~/.zsh"
