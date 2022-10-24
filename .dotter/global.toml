@@ -148,5 +148,11 @@ depends = ["updater"]
 "rustup/update.sh" = "~/.config/update.d/50-rustup.sh"
 
 # }}}
+# ssh {{{
+
+[ssh.files]
+"ssh/config" = "~/.ssh/config"
+
+# }}}
 
 # vim: foldmethod=marker
