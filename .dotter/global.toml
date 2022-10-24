@@ -76,5 +76,14 @@ depends = ["updater"]
 "nvim/update.sh" = "~/.config/update.d/50-neovim.sh"
 
 # }}}
+# php-dev {{{
+
+[php-dev-fish.files]
+"php-dev/fish" = "~/.config/fish"
+
+[php-dev-zsh.files]
+"php-dev/zsh" = "~/.zsh"
+
+# }}}
 
 # vim: foldmethod=marker
