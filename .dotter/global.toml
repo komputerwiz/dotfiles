@@ -1,0 +1,3 @@
+[nvim.files]
+"nvim/config" = "~/.config/nvim"
+"nvim/update.sh" = "~/.config/update.d/50-neovim.sh"
