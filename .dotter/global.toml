@@ -154,5 +154,14 @@ depends = ["updater"]
 "ssh/config" = "~/.ssh/config"
 
 # }}}
+# vscode {{{
+
+[vscode-fish]
+depends = ["fish"]
+
+[vscode-fish.files]
+"vscode/shell-integration.fish" = "~/.config/fish/conf.d/10-vscode.fish"
+
+# }}}
 
 # vim: foldmethod=marker
