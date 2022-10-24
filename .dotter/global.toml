@@ -154,6 +154,12 @@ depends = ["updater"]
 "ssh/config" = "~/.ssh/config"
 
 # }}}
+# tmux {{{
+
+[tmux.files]
+"tmux/tmux.conf" = "~/.tmux.conf"
+
+# }}}
 # vscode {{{
 
 [vscode-fish]
