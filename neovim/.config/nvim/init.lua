@@ -456,11 +456,8 @@ vim.cmd([[
 -- }}}
 -- {{{ language server (LSP) config
 
--- update LSP capabilities with plugin support
-local capabilities = cmp_nvim_lsp.default_capabilities()
-
 language_servers.setup({
-	capabilities = capabilities,
+	capabilities = cmp_nvim_lsp.default_capabilities(),
 })
 
 -- }}}
