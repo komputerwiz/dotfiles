@@ -1,3 +1,9 @@
+# update script {{{
+
+[updater.files]
+"update.sh" = "~/.local/bin/update.sh"
+
+# }}}
 # bash {{{
 
 [bash.files]
@@ -9,6 +15,9 @@
 # }}}
 # fish {{{
 
+[fish]
+depends = ["updater"]
+
 [fish.files]
 "fish/config" = "~/.config/fish"
 "fish/update.fish" = "~/.config/update.d/50-fish.fish"
@@ -16,11 +25,17 @@
 # }}}
 # flatpak {{{
 
+[flatpak]
+depends = ["updater"]
+
 [flatpak.files]
 "flatpak/update.sh" = "~/.config/update.d/20-flatpak.sh"
 
 # }}}
 # nvim {{{
+
+[nvim]
+depends = ["updater"]
 
 [nvim.files]
 "nvim/config" = "~/.config/nvim"
