@@ -47,6 +47,18 @@ depends = ["updater"]
 "flatpak/update.sh" = "~/.config/update.d/20-flatpak.sh"
 
 # }}}
+# gem {{{
+
+[gem.files]
+"gem/gemrc" = "~/.gemrc"
+
+[gem-zsh]
+depends = ["zsh"]
+
+[gem-zsh.files]
+"gem/init.zsh" = "~/.zsh/env.d/gem.zsh"
+
+# }}}
 # git {{{
 
 [git.files]
