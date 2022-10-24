@@ -181,6 +181,24 @@ depends = ["fish"]
 "vscode/shell-integration.fish" = "~/.config/fish/conf.d/10-vscode.fish"
 
 # }}}
+# watson {{{
+
+[watson.files]
+"watson/config" = "~/.config/watson/config"
+
+[watson-fish]
+depends = ["fish", "watson"]
+
+[watson-fish.files]
+"watson/fish" = "~/.config/fish"
+
+[watson-zsh]
+depends = ["watson", "zsh"]
+
+[watson-zsh.files]
+"watson/zsh" = "~/.zsh"
+
+# }}}
 # zsh {{{
 
 [zsh]
