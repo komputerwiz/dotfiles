@@ -21,11 +21,32 @@ depends = ["archlinux", "fish"]
 "archlinux/fish_command_not_found.fish" = "~/.config/fish/functions/fish_command_not_found.fish"
 
 # }}}
+# debian {{{
+
+[debian]
+depends = ["apt"]
+
+# }}}
+# ubuntu {{{
+
+[ubuntu]
+depends = ["debian"]
 
 # }}}
 
 # }}}
 
+# }}}
+
+# apt {{{
+
+[apt]
+depends = ["updater"]
+
+[apt.files]
+"apt/update.sh" = "~/.config/update.d/10-apt.sh"
+
+# }}}
 # bash {{{
 
 [bash.files]
