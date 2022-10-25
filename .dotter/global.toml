@@ -4,6 +4,28 @@
 "update.sh" = "~/.local/bin/update.sh"
 
 # }}}
+
+# operating systems {{{
+
+# linux {{{
+
+# arch {{{
+
+[archlinux]
+depends = ["pacman"]
+
+[archlinux-fish]
+depends = ["archlinux", "fish"]
+
+[archlinux-fish.files]
+"archlinux/fish_command_not_found.fish" = "~/.config/fish/functions/fish_command_not_found.fish"
+
+# }}}
+
+# }}}
+
+# }}}
+
 # bash {{{
 
 [bash.files]
@@ -92,6 +114,17 @@ depends = ["updater"]
 [nvim.files]
 "nvim/config" = "~/.config/nvim"
 "nvim/update.sh" = "~/.config/update.d/50-neovim.sh"
+
+# }}}
+# pacman {{{
+
+[pacman]
+depends = ["updater"]
+
+[pacman.files]
+"pacman/makepkg.conf" = "~/.config/pacman/makepkg.conf"
+"pacman/update.sh" = "~/.config/update.d/10-pacman.sh"
+"pacman/update-aur.sh" = "~/.config/update.d/15-aur.sh"
 
 # }}}
 # php-dev {{{
