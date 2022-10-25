@@ -43,6 +43,6 @@
 	autoStash = true
 [user]
 	name = Matthew Barry
-	email = komputerwiz.matt@gmail.com
+	email = {{email}}
 
 # vim:noet ts=2 sts=2 sw=2

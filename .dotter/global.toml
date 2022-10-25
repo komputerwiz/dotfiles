@@ -125,6 +125,9 @@ depends = ["zsh"]
 "git/config" = "~/.gitconfig"
 "git/ignore" = "~/.config/git/ignore"
 
+[git.variables]
+email = "komputerwiz.matt@gmail.com"
+
 # }}}
 # homebrew {{{
 
