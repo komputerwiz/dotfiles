@@ -1,5 +1,0 @@
-configuration {
-	modi: "run,drun";
-	theme: "solarized";
-	font: "Ubuntu Mono 9";
-}

@@ -1,0 +1,126 @@
+snippet php "PHP declaration" bm
+<?php declare(strict_types=1);
+
+
+endsnippet
+
+snippet if "if (condition)" bm
+if ($1) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet ife "if (condition) else" bm
+if ($1) {
+	${2:${VISUAL}}
+} else {
+	$0
+}
+endsnippet
+
+snippet eli "elseif (condition)" bm
+} elseif ($1) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet f "function" bm
+function ${1:funcName}($2): ${3:void} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+# Object-Oriented PHP snippets
+
+snippet c "class definition" bm
+${2:final} class $1${3: extends $4}${5: implements $6}
+{
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet m "class method" bm
+${1:public} function ${2:funcNmae}($3): ${4:void}
+{
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet am "abstract class method" bm
+abstract ${1:public} function ${2:funcNmae}($3): ${4:void}
+{
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet i "interface definition" bm
+interface $1${2: extends $3}
+{
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet im "interface method declaration" bm
+public function ${1:funcName}($3): ${4:void};
+endsnippet
+
+snippet t "trait definition" bm
+trait $1${2: extends $3}
+{
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet getset "getter and setter" bm
+/**
+ * Get ${4:${1/[A-Z]+/ \L$0\E/g}}
+ *
+ * @return ${2/^\?(.*)/$1|null/}
+ */
+public function get${3:${1/\w/\u$0/}}(): ${2:?string}
+{
+	return $this->$1;
+}
+
+/**
+ * Set $4
+ *
+ * @param ${2/^\?(.*)/$1|null/} $$1
+ *
+ * @return $this
+ */
+public function set$3($2 $$1): self
+{
+	$this->$1 = $$1;
+
+	return $this;
+}
+endsnippet
+
+snippet get "getter" bm
+/**
+ * Get ${4:${1/[A-Z]+/ \L$0\E/g}}
+ *
+ * @return ${2/^\?(.*)/$1|null/}
+ */
+public function get${3:${1/\w/\u$0/}}(): ${2:?string}
+{
+	return $this->$1;
+}
+endsnippet
+
+snippet set "setter" bm
+/**
+ * Set ${4:${1/[A-Z]+/ \L$0\E/g}}
+ *
+ * @param ${2/^\?(.*)/$1|null/} $$1
+ *
+ * @return $this
+ */
+public function set${3:${1/\w/\u$0/}}(${2:?string} $$1): self
+{
+	$this->$1 = $$1;
+
+	return $this;
+}
+endsnippet

@@ -1,3 +1,0 @@
-#compdef pyv
-
-compadd $(ls "${ZSH_PYTHON_VIRTUALENV_BASE:-"$HOME/.virtualenvs/"}")

@@ -1,0 +1,6 @@
+alias c='composer'
+alias cu='composer update'
+alias cr='composer require'
+alias crm='composer remove'
+alias ci='composer install'
+alias ccp='composer create-project'

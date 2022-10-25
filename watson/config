@@ -1,0 +1,7 @@
+[options]
+date_format = %Y-%m-%d
+time_format = %H:%M:%S
+week_start = sunday
+
+stop_on_start = true
+stop_on_restart = true

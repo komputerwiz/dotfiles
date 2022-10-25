@@ -1,0 +1,344 @@
+# update script {{{
+
+[updater.files]
+"update.sh" = "~/.local/bin/update.sh"
+
+# }}}
+
+# operating systems {{{
+
+# linux {{{
+
+# arch {{{
+
+[archlinux]
+depends = ["pacman"]
+
+[archlinux-fish]
+depends = ["archlinux", "fish"]
+
+[archlinux-fish.files]
+"archlinux/fish_command_not_found.fish" = "~/.config/fish/functions/fish_command_not_found.fish"
+
+# }}}
+# debian {{{
+
+[debian]
+depends = ["apt"]
+
+# }}}
+# ubuntu {{{
+
+[ubuntu]
+depends = ["debian"]
+
+# }}}
+
+# }}}
+# macos {{{
+
+[macos]
+depends = ["homebrew"]
+
+[macos-zsh]
+depends = ["macos", "zsh"]
+
+[macos-zsh.files]
+"macos/env.zsh" = "~/.zsh/env.d/macos.zsh"
+
+# }}}
+
+# }}}
+
+# apt {{{
+
+[apt]
+depends = ["updater"]
+
+[apt.files]
+"apt/update.sh" = "~/.config/update.d/10-apt.sh"
+
+# }}}
+# bash {{{
+
+[bash.files]
+"bash/env.d" = "~/.config/bash/env.d"
+"bash/rc.d" = "~/.config/bash/rc.d"
+"bash/bash_logout" = "~/.bash_logout"
+"bash/bashrc" = "~/.bashrc"
+"bash/profile" = "~/.profile"
+
+[bash.variables]
+editor = "vim"
+
+# }}}
+# direnv {{{
+
+[direnv-bash]
+depends = ["bash"]
+
+[direnv-bash.files]
+"direnv/init.bash" = "~/.config/bash/rc.d/50-direnv.sh"
+
+[direnv-fish]
+depends = ["fish"]
+
+[direnv-fish.files]
+"direnv/init.fish" = "~/.config/fish/conf.d/direnv.fish"
+
+# }}}
+# fish {{{
+
+[fish]
+depends = ["updater"]
+
+[fish.files]
+"fish/config" = "~/.config/fish"
+"fish/update.fish" = "~/.config/update.d/50-fish.fish"
+
+# }}}
+# flatpak {{{
+
+[flatpak]
+depends = ["updater"]
+
+[flatpak.files]
+"flatpak/update.sh" = "~/.config/update.d/20-flatpak.sh"
+
+# }}}
+# gem {{{
+
+[gem.files]
+"gem/gemrc" = "~/.gemrc"
+
+[gem-zsh]
+depends = ["zsh"]
+
+[gem-zsh.files]
+"gem/init.zsh" = "~/.zsh/env.d/gem.zsh"
+
+# }}}
+# git {{{
+
+[git.files]
+"git/config" = "~/.gitconfig"
+"git/ignore" = "~/.config/git/ignore"
+
+# }}}
+# homebrew {{{
+
+[homebrew]
+depends = ["updater"]
+
+[homebrew.files]
+"homebrew/update.sh" = "~/.config/update.d/10-homebrew.sh"
+
+# }}}
+# mpv {{{
+
+[mpv.files]
+mpv = "~/.config/mpv"
+
+# }}}
+# n {{{
+
+[n]
+depends = ["updater"]
+
+[n.files]
+"n/update.sh" = "~/.config/update.d/50-n.sh"
+
+[n-bash]
+depends = ["bash", "n"]
+
+[n-bash.files]
+"n/env.bash" = "~/.config/bash/env.d/50-n.sh"
+
+[n-bash.variables]
+n_prefix = "$HOME/.local/opt/n"
+
+# }}}
+# npm {{{
+
+[npm]
+depends = ["updater"]
+
+[npm.files]
+"npm/update.sh" = "~/.config/update.d/50-npm-global.sh"
+
+# }}}
+# nvim {{{
+
+[nvim]
+depends = ["updater"]
+
+[nvim.files]
+"nvim/config" = { target = "~/.config/nvim", type = "symbolic" }
+"nvim/update.sh" = "~/.config/update.d/50-neovim.sh"
+"nvim/system.vim" = "~/.config/nvim/plugin/system.vim"
+
+[nvim.variables]
+python3 = "/usr/bin/python3"
+shell = "/bin/bash"
+
+# }}}
+# pacman {{{
+
+[pacman]
+depends = ["updater"]
+
+[pacman.files]
+"pacman/makepkg.conf" = "~/.config/pacman/makepkg.conf"
+"pacman/update.sh" = "~/.config/update.d/10-pacman.sh"
+"pacman/update-aur.sh" = "~/.config/update.d/15-aur.sh"
+
+# }}}
+# php-dev {{{
+
+[php-dev-fish]
+depends = ["fish"]
+
+[php-dev-fish.files]
+"php-dev/fish" = "~/.config/fish"
+
+[php-dev-zsh]
+depends = ["zsh"]
+
+[php-dev-zsh.files]
+"php-dev/zsh" = "~/.zsh"
+
+# }}}
+# pyv {{{
+
+[pyv-fish]
+depends = ["fish"]
+
+[pyv-fish.files]
+"pyv/fish" = "~/.config/fish"
+
+[pyv-zsh]
+depends = ["zsh"]
+
+[pyv-zsh.files]
+"pyv/zsh" = "~/.zsh"
+
+# }}}
+# rbenv {{{
+
+[rbenv]
+depends = ["updater"]
+
+[rbenv.files]
+"rbenv/update.sh" = "~/.config/update.d/50-rbenv.sh"
+
+[rbenv-bash]
+depends = ["bash", "rbenv"]
+
+[rbenv-bash.files]
+"rbenv/init.bash" = "~/.config/bash/rc.d/50-rbenv.sh"
+
+[rbenv-fish]
+depends = ["fish", "rbenv"]
+
+[rbenv-fish.files]
+"rbenv/init.fish" = "~/.config/fish/conf.d/10-rbenv.fish"
+
+[rbenv-zsh]
+depends = ["rbenv", "zsh"]
+
+[rbenv-zsh.files]
+"rbenv/init.zsh" = "~/.zsh/plugins.d/rbenv.zsh"
+
+# }}}
+# rustup {{{
+
+[rustup]
+depends = ["updater"]
+
+[rustup.files]
+"rustup/update.sh" = "~/.config/update.d/50-rustup.sh"
+
+[rustup-bash]
+depends = ["bash", "rustup"]
+
+[rustup-bash.files]
+"rustup/env.bash" = "~/.config/bash/env.d/50-rustup.sh"
+
+[rustup-bash.variables]
+rustup_home = "$HOME/.local/opt/rustup"
+
+# }}}
+# ssh {{{
+
+[ssh.files]
+"ssh/config" = "~/.ssh/config"
+
+# }}}
+# tmux {{{
+
+[tmux.files]
+"tmux/tmux.conf" = "~/.tmux.conf"
+
+# }}}
+# vim {{{
+
+[vim]
+depends = ["updater"]
+
+[vim.files]
+"vim/update.sh" = "~/.config/update.d/50-vim.sh"
+"vim/runtime" = { target = "~/.vim", type = "symbolic" }
+
+# }}}
+# vscode {{{
+
+[vscode-fish]
+depends = ["fish"]
+
+[vscode-fish.files]
+"vscode/shell-integration.fish" = "~/.config/fish/conf.d/10-vscode.fish"
+
+# }}}
+# watson {{{
+
+[watson.files]
+"watson/config" = "~/.config/watson/config"
+
+[watson-fish]
+depends = ["fish", "watson"]
+
+[watson-fish.files]
+"watson/fish" = "~/.config/fish"
+
+[watson-zsh]
+depends = ["watson", "zsh"]
+
+[watson-zsh.files]
+"watson/zsh" = "~/.zsh"
+
+# }}}
+# ytdl {{{
+
+[ytdl-fish.files]
+"ytdl/fish" = "~/.config/fish"
+
+# }}}
+# zsh {{{
+
+[zsh]
+depends = ["updater"]
+
+[zsh.files]
+"zsh/antigenrc" = "~/.zsh/antigenrc"
+"zsh/plugins" = "~/.zsh/plugins"
+"zsh/themes" = "~/.zsh/themes"
+"zsh/update.zsh" = "~/.config/update.d/50-zsh.zsh"
+"zsh/zlogin" = "~/.zlogin"
+"zsh/zlogout" = "~/.zlogout"
+"zsh/zprofile" = "~/.zprofile"
+"zsh/zshenv" = "~/.zshenv"
+"zsh/zshrc" = "~/.zshrc"
+
+# }}}
+
+# vim: foldmethod=marker

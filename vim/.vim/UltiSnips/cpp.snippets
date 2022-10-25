@@ -1,9 +1,0 @@
-extends c
-
-snippet ro5 "rule of five" bA
-$1($1 const&) = default;
-$1($1&&) noexcept = default;
-$1& operator=($1 const&) = default;
-$1& operator=($1&&) noexcept = default;
-~$1() = default;
-endsnippet
