@@ -259,6 +259,12 @@ depends = ["watson", "zsh"]
 "watson/zsh" = "~/.zsh"
 
 # }}}
+# ytdl {{{
+
+[ytdl-fish.files]
+"ytdl/fish" = "~/.config/fish"
+
+# }}}
 # zsh {{{
 
 [zsh]
