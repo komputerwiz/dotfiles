@@ -2,6 +2,7 @@
 
 [updater.files]
 "update.sh" = "~/.local/bin/update.sh"
+"pull-and-deploy.sh" = "~/.config/update.d/45-dotfiles.sh"
 
 # }}}
 
@@ -174,7 +175,7 @@ depends = ["updater"]
 
 [nvim.files]
 "nvim/config" = { target = "~/.config/nvim", type = "symbolic" }
-"nvim/update.sh" = "~/.config/update.d/50-neovim.sh"
+"nvim/update.sh" = "~/.config/update.d/50-nvim.sh"
 "nvim/system.vim" = "~/.config/nvim/plugin/system.vim"
 
 [nvim.variables]

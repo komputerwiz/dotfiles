@@ -1,2 +1,2 @@
 #!/bin/bash
-nvim +PaqSync +TSUpdate +qall
+nvim +PaqSync +TSUpdateSync +qall

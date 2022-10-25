@@ -34,7 +34,7 @@ while getopts ":a:hn" opt; do
   esac
 done
 
-DATA_DIR="${XDG_DATA_HOME:-"$HOME/.local/share"}/dotfiles"
+DATA_DIR="${XDG_DATA_HOME:-"$HOME/.local/share"}/updater"
 if test ! -d "$DATA_DIR"; then
   mkdir -p "$DATA_DIR"
 fi
@@ -64,7 +64,7 @@ if test -n "$LAST_RUN" -a -n "$FREQ"; then
   fi
 fi
 
-CONF_DIR="${XDG_CONFIG_HOME:-"$HOME/.config"}/dotfiles"
+CONF_DIR="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 for SCRIPT in "$CONF_DIR"/update.d/*; do
   if [[ "$SCRIPT" == *.sh ]]; then
     # source bash scripts regardless of executable bit status
