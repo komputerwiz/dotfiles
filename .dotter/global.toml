@@ -232,6 +232,16 @@ depends = ["updater"]
 "tmux/tmux.conf" = "~/.tmux.conf"
 
 # }}}
+# vim {{{
+
+[vim]
+depends = ["updater"]
+
+[vim.files]
+"vim/update.sh" = "~/.config/update.d/50-vim.sh"
+"vim/runtime" = "~/.vim"
+
+# }}}
 # vscode {{{
 
 [vscode-fish]
