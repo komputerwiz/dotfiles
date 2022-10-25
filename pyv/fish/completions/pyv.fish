@@ -1,12 +1,13 @@
 function __pyv_get_virtualenvs
   # virtualenv base directory configuration
-  set -l venv_base $HOME/.virtualenvs
-  if set -q PYV_VIRTUALENV_BASE
-    set venv_base $PYV_VIRTUALENV_BASE
-  end
+  set -q XDG_DATA_HOME
+  or set -l XDG_DATA_HOME $HOME/.local/share
 
-  for file in (ls $venv_base)
-    if test -f $venv_base/$file/bin/activate.fish
+  set -q PYV_VIRTUALENV_BASE
+  or set -l PYV_VIRTUALENV_BASE $XDG_DATA_HOME/pyv
+
+  for file in (ls $PYV_VIRTUALENV_BASE)
+    if test -f $PYV_VIRTUALENV_BASE/$file/bin/activate.fish
       echo $file
     end
   end

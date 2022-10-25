@@ -182,8 +182,9 @@ depends = ["updater"]
 "nvim/system.vim" = "~/.config/nvim/plugin/system.vim"
 
 [nvim.variables]
-python3 = "/usr/bin/python3"
-shell = "/bin/bash"
+nvim_python3 = "/usr/bin/python3"
+nvim_ruby = "/usr/bin/ruby"
+nvim_shell = "/bin/bash"
 
 # }}}
 # pacman {{{
@@ -239,7 +240,11 @@ depends = ["updater"]
 depends = ["bash", "rbenv"]
 
 [rbenv-bash.files]
+"rbenv/env.bash" = "~/.config/bash/env.d/50-rbenv.sh"
 "rbenv/init.bash" = "~/.config/bash/rc.d/50-rbenv.sh"
+
+[rbenv-bash.variables]
+rbenv_root = "$HOME/.local/opt/rbenv"
 
 [rbenv-fish]
 depends = ["fish", "rbenv"]
