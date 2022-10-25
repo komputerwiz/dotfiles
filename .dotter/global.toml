@@ -183,7 +183,7 @@ depends = ["updater"]
 
 [nvim.variables]
 nvim_python3 = "/usr/bin/python3"
-nvim_ruby = "/usr/bin/ruby"
+nvim_ruby = "/usr/bin/neovim-ruby-host"
 nvim_shell = "/bin/bash"
 
 # }}}
