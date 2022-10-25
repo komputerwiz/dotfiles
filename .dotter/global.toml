@@ -160,7 +160,7 @@ depends = ["updater"]
 depends = ["updater"]
 
 [nvim.files]
-"nvim/config" = "~/.config/nvim"
+"nvim/config" = { target = "~/.config/nvim", type = "symbolic" }
 "nvim/update.sh" = "~/.config/update.d/50-neovim.sh"
 
 # }}}
@@ -260,7 +260,7 @@ depends = ["updater"]
 
 [vim.files]
 "vim/update.sh" = "~/.config/update.d/50-vim.sh"
-"vim/runtime" = "~/.vim"
+"vim/runtime" = { target = "~/.vim", type = "symbolic" }
 
 # }}}
 # vscode {{{
