@@ -35,6 +35,18 @@ depends = ["debian"]
 # }}}
 
 # }}}
+# macos {{{
+
+[macos]
+depends = ["homebrew"]
+
+[macos-zsh]
+depends = ["macos", "zsh"]
+
+[macos-zsh.files]
+"macos/env.zsh" = "~/.zsh/env.d/macos.zsh"
+
+# }}}
 
 # }}}
 
@@ -107,6 +119,15 @@ depends = ["zsh"]
 [git.files]
 "git/config" = "~/.gitconfig"
 "git/ignore" = "~/.config/git/ignore"
+
+# }}}
+# homebrew {{{
+
+[homebrew]
+depends = ["updater"]
+
+[homebrew.files]
+"homebrew/update.sh" = "~/.config/update.d/10-homebrew.sh"
 
 # }}}
 # mpv {{{
