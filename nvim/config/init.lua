@@ -1,23 +1,6 @@
--- {{{ imports
-
-local cmp = require('cmp')
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
-local luasnip = require('luasnip')
-local mason = require('mason')
-local null_ls = require('null-ls')
-local paq = require('paq')
-local telescope = require('telescope')
-local tsconfigs = require('nvim-treesitter.configs')
-
--- local modules
-local language_servers = require('language-servers')
-local snippets = require('snippets')
-local tags_source = require('tags-source')
-
--- }}}
 -- {{{ plugins
 
-paq({
+require('paq')({
 	'savq/paq-nvim', -- let paq manage itself
 	'airblade/vim-gitgutter',
 	'cespare/vim-toml',
@@ -118,6 +101,22 @@ vim.opt.termguicolors = true
 vim.opt.updatetime = 1000
 vim.opt.wildmode = { 'longest:full', 'full' }
 vim.opt.wrap = false
+
+-- }}}
+-- {{{ imports
+
+local cmp = require('cmp')
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local luasnip = require('luasnip')
+local mason = require('mason')
+local null_ls = require('null-ls')
+local telescope = require('telescope')
+local tsconfigs = require('nvim-treesitter.configs')
+
+-- local modules
+local language_servers = require('language-servers')
+local snippets = require('snippets')
+local tags_source = require('tags-source')
 
 -- }}}
 -- {{{ key mappings
