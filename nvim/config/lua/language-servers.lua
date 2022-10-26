@@ -128,6 +128,9 @@ M.setup = function(opts)
 				capabilities = capabilities,
 				settings = {
 					Lua = {
+						runtime = {
+							version = 'LuaJIT',
+						},
 						diagnostics = {
 							globals = {
 								'vim',
@@ -141,4 +144,4 @@ M.setup = function(opts)
 end
 
 return M
--- vim: foldmethod=marker foldlevel=0
+-- vim: foldmethod=marker foldlevel=0 noexpandtab

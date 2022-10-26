@@ -162,26 +162,47 @@ map('i', '<C-w>', '<C-g>u<C-w>', opts)
 -- }}}
 -- {{{ commands and functions
 
+local command = vim.api.nvim_create_user_command
+
 -- delete the current file and its buffer (this functionality could be provided by tpope/vim-eunuch)
-vim.cmd([[command! -bar -bang Delete call delete(expand('%:p')) | bdelete<bang>]])
+command(
+	'Delete',
+	function (o)
+		vim.fn.delete(vim.fn.expand('%:p'))
+		vim.cmd('bdelete' .. (o.bang and '!' or ''))
+	end,
+	{
+		bar = true,
+		bang = true,
+	}
+)
 
 -- set tabstop, softtab, and shiftwidth to the same value
-function stab(width)
-	local width = tonumber(width)
-	if width > 0 then
-		vim.opt_local.softtabstop = width
-		vim.opt_local.tabstop = width
-		vim.opt_local.shiftwidth = width
-	end
-end
-
-vim.cmd([[command! -nargs=1 Stab lua stab(<f-args>)]])
+command(
+	'Stab',
+	function (o)
+		local width = tonumber(o.args)
+		if width > 0 then
+			vim.opt_local.softtabstop = width
+			vim.opt_local.tabstop = width
+			vim.opt_local.shiftwidth = width
+		end
+	end,
+	{ nargs = 1 }
+)
 
 -- load scriptnames into a scratch buffer
-vim.cmd([[command! -nargs=? Scriptnames Scratch scriptnames <f-args>]])
+command('Scriptnames', 'Scratch scriptnames <f-args>', { nargs = '?' })
 
 -- simplify colorscheme for non-true-color terminals
-vim.cmd([[command! SimpleColors set notermguicolors | colorscheme default]])
+command(
+	'SimpleColors',
+	function ()
+		vim.opt.termguicolors = false
+		vim.cmd('colorscheme default')
+	end,
+	{}
+)
 
 -- }}}
 -- {{{ plugin config
@@ -277,7 +298,7 @@ null_ls.setup({
 -- from https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
 
 local function has_words_before()
-	local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
