@@ -44,7 +44,7 @@ local function on_attach(client, bufnr)
 
 	bmap('n', '<Leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
 	bmap('n', '<Leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-	bmap('n', '<Leader>=', '<Cmd>lua vim.lsp.buf.formatting_sync()<CR>', opts)
+	bmap('n', '<Leader>=', '<Cmd>lua vim.lsp.buf.format()<CR>', opts)
 
 	-- }}}
 	-- {{{ diagnostics
