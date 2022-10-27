@@ -1,8 +1,25 @@
 #!/bin/bash
 set -e
 
+echo "$OSTYPE"
+if [[ "$OSTYPE" == darwin* ]]; then
+  OS=darwin
+elif [[ "$OSTYPE" = linux-gnu* ]]; then
+  OS=linux
+fi
+
+ARCH="$HOSTTYPE"
+
 INSTALL_DIR="$HOME/.dotfiles"
-DOTTER="$INSTALL_DIR/dotter"
+DOTTER="$INSTALL_DIR/.dotter/bin/dotter-$OS-$ARCH"
+
+echo "$DOTTER"
+exit
+
+if test ! -x "$DOTTER"; then
+  echo "dotter exec not found for OS ($OS) and arch ($ARCH)" >&2
+  exit
+fi
 
 cd "$INSTALL_DIR"
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
