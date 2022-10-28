@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-echo "$OSTYPE"
 if [[ "$OSTYPE" == darwin* ]]; then
   OS=darwin
 elif [[ "$OSTYPE" = linux-gnu* ]]; then
@@ -12,9 +11,6 @@ ARCH="$HOSTTYPE"
 
 INSTALL_DIR="$HOME/.dotfiles"
 DOTTER="$INSTALL_DIR/.dotter/bin/dotter-$OS-$ARCH"
-
-echo "$DOTTER"
-exit
 
 if test ! -x "$DOTTER"; then
   echo "dotter exec not found for OS ($OS) and arch ($ARCH)" >&2
