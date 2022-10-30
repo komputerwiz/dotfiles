@@ -297,6 +297,7 @@ depends = ["updater"]
 [vim.files]
 "vim/update.sh" = "~/.config/update.d/50-vim.sh"
 "vim/runtime" = { target = "~/.vim", type = "symbolic" }
+"vim/vimrc" = { target = "~/.vimrc", type = "symbolic" }
 
 # }}}
 # vscode {{{
