@@ -1,9 +1,0 @@
-#!/bin/bash
-set -e
-
-read -p "Reboot to Windows? [Y/n] " -r
-if [[ -z "$REPLY" || "$REPLY" =~ '^[Yy]' ]]; then
-  systemctl reboot \
-    --boot-loader-entry=auto-windows \
-    --boot-loader-menu=1
-fi
