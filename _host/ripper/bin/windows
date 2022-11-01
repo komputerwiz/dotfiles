@@ -3,7 +3,6 @@ set -e
 
 read -p "Reboot to Windows? [Y/n] " -r
 if [[ -z "$REPLY" || "$REPLY" =~ '^[Yy]' ]]; then
-  systemctl reboot \
-    --boot-loader-entry=auto-windows \
-    --boot-loader-menu=0
+  bootctl set-timeout-oneshot menu-hidden
+  systemctl reboot --boot-loader-entry=auto-windows
 fi
