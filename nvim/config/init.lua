@@ -2,7 +2,6 @@
 
 require('paq')({
 	'savq/paq-nvim', -- let paq manage itself
-	'airblade/vim-gitgutter',
 	'cespare/vim-toml',
 	'chaoren/vim-wordmotion',
 	'chikamichi/mediawiki.vim',
@@ -24,6 +23,7 @@ require('paq')({
 	'kyazdani42/nvim-web-devicons',
 	'L3MON4D3/LuaSnip',
 	'leafgarland/typescript-vim',
+	'lewis6991/gitsigns.nvim',
 	'lumiliet/vim-twig',
 	'mattn/emmet-vim',
 	'nblock/vim-dokuwiki',
@@ -107,6 +107,7 @@ vim.opt.wrap = false
 
 local cmp = require('cmp')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local gitsigns = require('gitsigns')
 local luasnip = require('luasnip')
 local mason = require('mason')
 local null_ls = require('null-ls')
@@ -237,7 +238,36 @@ vim.g.dokuwiki_fenced_languages = { 'bash=sh', 'javascript', 'php', 'ruby' }
 
 -- }}}
 -- {{{ editorconfig
+
 vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*' }
+
+-- }}}
+-- {{{ gitsigns
+
+gitsigns.setup({
+	on_attach = function(bufnr)
+		local gs = package.loaded.gitsigns
+
+		local function map(mode, l, r, opts)
+			opts = opts or {}
+			opts.buffer = bufnr
+			vim.keymap.set(mode, l, r, opts)
+		end
+
+		-- navigation
+		map('n', ']c', function ()
+			if vim.wo.diff then return ']c' end
+			vim.schedule(function () gs.next_hunk() end)
+			return '<Ignore>'
+		end, {expr=true})
+
+		map('n', '[c', function ()
+			if vim.wo.diff then return ']c' end
+			vim.schedule(function () gs.prev_hunk() end)
+			return '<Ignore>'
+		end, {expr=true})
+	end,
+})
 
 -- }}}
 -- {{{ gnupg
