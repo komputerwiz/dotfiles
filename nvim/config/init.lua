@@ -77,7 +77,7 @@ vim.opt.colorcolumn = { 80, 92, 100, 120 }
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' } -- {'longest', 'menu'}
 vim.opt.concealcursor = 'c'
 vim.opt.conceallevel = 2
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.exrc = true
 vim.opt.hidden = true
 vim.opt.joinspaces = false
@@ -122,87 +122,79 @@ local tags_source = require('tags-source')
 -- }}}
 -- {{{ key mappings
 
-local opts = { noremap = true, silent = true }
-local map = vim.api.nvim_set_keymap
+do
+	local opts = { noremap = true, silent = true }
+	local map = vim.api.nvim_set_keymap
 
-map('n', '<Leader>fb', '<Cmd>Telescope buffers theme=ivy<CR>', opts)
-map('n', '<Leader>fe', '<Cmd>Telescope file_browser<CR>', opts)
-map('n', '<Leader>ff', '<Cmd>Telescope find_files hidden=true<CR>', opts)
-map('n', '<Leader>fg', '<Cmd>Telescope live_grep<CR>', opts)
-map('n', '<Leader>fo', '<Cmd>Telescope lsp_document_symbols theme=cursor<CR>', opts)
-map('n', '<Leader>ft', '<Cmd>Telescope lsp_workspace_symbols theme=cursor<CR>', opts)
-map('n', '<Leader>cd', '<Cmd>cd %:p:h<CR><Cmd>pwd<CR>', opts)
-map('n', '<Leader>h', '<Cmd>Hexmode<CR>', opts)
-map('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>', opts)
-map('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>', opts)
+	map('n', '<Leader>fb', '<Cmd>Telescope buffers theme=ivy<CR>', opts)
+	map('n', '<Leader>fe', '<Cmd>Telescope file_browser<CR>', opts)
+	map('n', '<Leader>ff', '<Cmd>Telescope find_files hidden=true<CR>', opts)
+	map('n', '<Leader>fg', '<Cmd>Telescope live_grep<CR>', opts)
+	map('n', '<Leader>fo', '<Cmd>Telescope lsp_document_symbols theme=cursor<CR>', opts)
+	map('n', '<Leader>ft', '<Cmd>Telescope lsp_workspace_symbols theme=cursor<CR>', opts)
+	map('n', '<Leader>cd', '<Cmd>cd %:p:h<CR><Cmd>pwd<CR>', opts)
+	map('n', '<Leader>h', '<Cmd>Hexmode<CR>', opts)
+	map('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>', opts)
+	map('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>', opts)
 
-map('', '<F2>', [[<Cmd>let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>]], opts)
--- map('', '<F3>', '<Cmd>Lexplore<CR>', opts)
-map('', '<F3>', '<Cmd>Telescope file_browser<CR>', opts)
+	map('', '<F2>', [[<Cmd>let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>]], opts)
+	-- map('', '<F3>', '<Cmd>Lexplore<CR>', opts)
+	map('', '<F3>', '<Cmd>Telescope file_browser<CR>', opts)
 
-map('n', '<Space>', 'za', opts)
-map('v', '<Space>', 'za', opts)
+	map('n', '<Space>', 'za', opts)
+	map('v', '<Space>', 'za', opts)
 
-map('x', 'ga', '<Plug>(EasyAlign)', { silent = true })
-map('n', 'ga', '<Plug>(EasyAlign)', { silent = true })
+	map('x', 'ga', '<Plug>(EasyAlign)', { silent = true })
+	map('n', 'ga', '<Plug>(EasyAlign)', { silent = true })
 
--- use %% in command mode to insert the directory of the current buffer
-map('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], { noremap = true, nowait = true, expr = true })
+	-- use %% in command mode to insert the directory of the current buffer
+	map('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], { noremap = true, nowait = true, expr = true })
 
--- <C-Space> is treated differently by terminal emulators
-map('i', '<C-Space>', '<C-x><C-o>', opts)
-map('i', '<Nul>', '<C-x><C-o>', opts)
+	-- <C-Space> is treated differently by terminal emulators
+	map('i', '<C-Space>', '<C-x><C-o>', opts)
+	map('i', '<Nul>', '<C-x><C-o>', opts)
 
-map('n', '<C-p>', '<Cmd>Telescope find_files hidden=true<CR>', opts)
+	map('n', '<C-p>', '<Cmd>Telescope find_files hidden=true<CR>', opts)
 
--- start new undo sequence for <C-u> and <C-w> in insert mode
-map('i', '<C-u>', '<C-g>u<C-u>', opts)
-map('i', '<C-w>', '<C-g>u<C-w>', opts)
+	-- start new undo sequence for <C-u> and <C-w> in insert mode
+	map('i', '<C-u>', '<C-g>u<C-u>', opts)
+	map('i', '<C-w>', '<C-g>u<C-w>', opts)
+end
 
 -- }}}
 -- {{{ commands and functions
 
-local command = vim.api.nvim_create_user_command
+do
+	local command = vim.api.nvim_create_user_command
 
--- delete the current file and its buffer (this functionality could be provided by tpope/vim-eunuch)
-command(
-	'Delete',
-	function (o)
+	-- delete the current file and its buffer (this functionality could be provided by tpope/vim-eunuch)
+	command('Delete', function(o)
 		vim.fn.delete(vim.fn.expand('%:p'))
 		vim.cmd('bdelete' .. (o.bang and '!' or ''))
-	end,
-	{
+	end, {
 		bar = true,
 		bang = true,
-	}
-)
+	})
 
--- set tabstop, softtab, and shiftwidth to the same value
-command(
-	'Stab',
-	function (o)
+	-- set tabstop, softtab, and shiftwidth to the same value
+	command('Stab', function(o)
 		local width = tonumber(o.args)
 		if width > 0 then
 			vim.opt_local.softtabstop = width
 			vim.opt_local.tabstop = width
 			vim.opt_local.shiftwidth = width
 		end
-	end,
-	{ nargs = 1 }
-)
+	end, { nargs = 1 })
 
--- load scriptnames into a scratch buffer
-command('Scriptnames', 'Scratch scriptnames <f-args>', { nargs = '?' })
+	-- load scriptnames into a scratch buffer
+	command('Scriptnames', 'Scratch scriptnames <f-args>', { nargs = '?' })
 
--- simplify colorscheme for non-true-color terminals
-command(
-	'SimpleColors',
-	function ()
+	-- simplify colorscheme for non-true-color terminals
+	command('SimpleColors', function()
 		vim.opt.termguicolors = false
 		vim.cmd('colorscheme default')
-	end,
-	{}
-)
+	end, {})
+end
 
 -- }}}
 -- {{{ plugin config
@@ -255,17 +247,25 @@ gitsigns.setup({
 		end
 
 		-- navigation
-		map('n', ']c', function ()
-			if vim.wo.diff then return ']c' end
-			vim.schedule(function () gs.next_hunk() end)
+		map('n', ']c', function()
+			if vim.wo.diff then
+				return ']c'
+			end
+			vim.schedule(function()
+				gs.next_hunk()
+			end)
 			return '<Ignore>'
-		end, {expr=true})
+		end, { expr = true })
 
-		map('n', '[c', function ()
-			if vim.wo.diff then return ']c' end
-			vim.schedule(function () gs.prev_hunk() end)
+		map('n', '[c', function()
+			if vim.wo.diff then
+				return ']c'
+			end
+			vim.schedule(function()
+				gs.prev_hunk()
+			end)
 			return '<Ignore>'
-		end, {expr=true})
+		end, { expr = true })
 	end,
 })
 
@@ -318,7 +318,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		tags_source,
 	},
-  on_attach = language_servers.on_attach,
+	on_attach = language_servers.on_attach,
 })
 
 -- }}}
@@ -326,83 +326,85 @@ null_ls.setup({
 
 -- from https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
 
-local function has_words_before()
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-end
+do
+	local function has_words_before()
+		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+	end
 
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			luasnip.lsp_expand(args.body)
-		end,
-	},
-
-	mapping = cmp.mapping.preset.insert({
-		['<C-b>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-e>'] = cmp.mapping({
-			i = function() -- function(fallback)
-				if luasnip.choice_active() then
-					luasnip.change_choice(1)
-				else
-					cmp.abort()
-				end
+	cmp.setup({
+		snippet = {
+			expand = function(args)
+				luasnip.lsp_expand(args.body)
 			end,
-			c = cmp.mapping.close(),
+		},
+
+		mapping = cmp.mapping.preset.insert({
+			['<C-b>'] = cmp.mapping.scroll_docs(-4),
+			['<C-f>'] = cmp.mapping.scroll_docs(4),
+			['<C-Space>'] = cmp.mapping.complete(),
+			['<C-e>'] = cmp.mapping({
+				i = function() -- function(fallback)
+					if luasnip.choice_active() then
+						luasnip.change_choice(1)
+					else
+						cmp.abort()
+					end
+				end,
+				c = cmp.mapping.close(),
+			}),
+
+			['<Tab>'] = cmp.mapping(function(fallback)
+				if cmp.visible() then
+					-- cmp.select_next_item()
+					cmp.confirm({ select = true }) -- set to 'false' to force selection
+				elseif luasnip.expand_or_jumpable() then
+					luasnip.expand_or_jump()
+				elseif has_words_before() then
+					cmp.complete()
+				else
+					fallback()
+				end
+			end, { 'i', 's' }),
+
+			['<S-Tab>'] = cmp.mapping(function(fallback)
+				-- if cmp.visible() then
+				-- cmp.select_prev_item()
+				-- elseif luasnip.jumpable(-1) then
+				if luasnip.jumpable(-1) then
+					luasnip.jump(-1)
+				else
+					fallback()
+				end
+			end, { 'i', 's' }),
 		}),
 
-		['<Tab>'] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				-- cmp.select_next_item()
-				cmp.confirm({ select = true }) -- set to 'false' to force selection
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end, { 'i', 's' }),
+		sources = cmp.config.sources({
+			{ name = 'nvim_lsp' },
+			{ name = 'luasnip' },
+		}, {
+			{ name = 'path' },
+		}, {
+			{ name = 'buffer' },
+		}),
+	})
 
-		['<S-Tab>'] = cmp.mapping(function(fallback)
-			-- if cmp.visible() then
-			-- cmp.select_prev_item()
-			-- elseif luasnip.jumpable(-1) then
-			if luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { 'i', 's' }),
-	}),
+	cmp.setup.cmdline('/', {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = {
+			{ name = 'buffer' },
+		},
+	})
 
-	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' },
-	}, {
-		{ name = 'path' },
-	}, {
-		{ name = 'buffer' },
-	}),
-})
-
-cmp.setup.cmdline('/', {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = 'buffer' },
-	},
-})
-
-cmp.setup.cmdline(':', {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = 'path' },
-	}, {
-		{ name = 'cmdline' },
-	}),
-})
+	cmp.setup.cmdline(':', {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = cmp.config.sources({
+			{ name = 'path' },
+		}, {
+			{ name = 'cmdline' },
+		}),
+	})
+end
 
 -- }}}
 -- {{{ nvim-treesitter
