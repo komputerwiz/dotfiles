@@ -1,56 +1,81 @@
 -- {{{ plugins
 
 require('paq')({
+	-- {{{ lua plugins
+
 	'savq/paq-nvim', -- let paq manage itself
-	'chaoren/vim-wordmotion',
-	'dag/vim-fish',
-	'duggiefresh/vim-easydir',
 	'gpanders/editorconfig.nvim',
-	'hrsh7th/cmp-buffer',
-	'hrsh7th/cmp-cmdline',
-	'hrsh7th/cmp-nvim-lsp',
-	'hrsh7th/cmp-path',
-	'hrsh7th/nvim-cmp',
-	'jose-elias-alvarez/null-ls.nvim',
-	'jparise/vim-graphql',
-	-- {'junegunn/fzf', run = './install --bin'}, 'junegunn/fzf.vim',
-	'junegunn/vim-easy-align',
 	'kyazdani42/nvim-web-devicons',
 	'L3MON4D3/LuaSnip',
-	'leafgarland/typescript-vim',
 	'lewis6991/gitsigns.nvim',
-	'lumiliet/vim-twig',
-	'mattn/emmet-vim',
-	'nblock/vim-dokuwiki',
-	'nelstrom/vim-visual-star-search',
-	'neoclide/jsonc.vim',
-	'neovim/nvim-lspconfig',
-	'ntpeters/vim-better-whitespace',
 	'nvim-lua/plenary.nvim',
-	'nvim-telescope/telescope.nvim',
-	'nvim-telescope/telescope-file-browser.nvim',
-	{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 	'overcache/NeoSolarized',
-	'peitalin/vim-jsx-typescript',
-	'saadparwaiz1/cmp_luasnip',
 	'simrat39/symbols-outline.nvim',
-	'tpope/vim-abolish',
-	'tpope/vim-commentary',
-	'tpope/vim-fugitive',
-	'tpope/vim-repeat',
-	'tpope/vim-surround',
-	'tpope/vim-unimpaired',
 	{
 		'nvim-treesitter/nvim-treesitter',
 		run = function()
 			vim.cmd('TSUpdate')
 		end,
 	},
-	'vim-airline/vim-airline',
-	'vim-airline/vim-airline-themes',
-	'vim-pandoc/vim-criticmarkup',
+
+	-- {{{ cmp family
+
+	'hrsh7th/nvim-cmp',
+	'hrsh7th/cmp-buffer',
+	'hrsh7th/cmp-cmdline',
+	'hrsh7th/cmp-nvim-lsp',
+	'hrsh7th/cmp-path',
+	'saadparwaiz1/cmp_luasnip',
+
+	-- }}}
+	-- {{{ telescope family
+
+	'nvim-telescope/telescope.nvim',
+	'nvim-telescope/telescope-file-browser.nvim',
+	{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+
+	-- }}}
+	-- {{{ lsp integration
+
 	'williamboman/mason.nvim',
 	'williamboman/mason-lspconfig.nvim',
+	'jose-elias-alvarez/null-ls.nvim',
+	'neovim/nvim-lspconfig',
+
+	-- }}}
+
+	-- }}}
+	-- {{{ legacy vimscript plugins
+
+	'chaoren/vim-wordmotion',
+	'duggiefresh/vim-easydir',
+	'junegunn/vim-easy-align',
+	'mattn/emmet-vim',
+	'nelstrom/vim-visual-star-search',
+	'ntpeters/vim-better-whitespace',
+	'tpope/vim-abolish',
+	'tpope/vim-commentary',
+	'tpope/vim-fugitive',
+	'tpope/vim-repeat',
+	'tpope/vim-surround',
+	'tpope/vim-unimpaired',
+	'vim-airline/vim-airline',
+	'vim-airline/vim-airline-themes',
+
+	-- {{{ syntax/filetype
+
+	'dag/vim-fish', -- fish
+	'jparise/vim-graphql', -- graphql
+	-- 'leafgarland/typescript-vim', -- typescript (now built-in)
+	'lumiliet/vim-twig', -- twig, htmltwig
+	'nblock/vim-dokuwiki', -- dokuwiki
+	'neoclide/jsonc.vim', -- jsonc
+	-- 'peitalin/vim-jsx-typescript', -- typescriptreact (now built-in)
+	'vim-pandoc/vim-criticmarkup', -- criticmarkup
+
+	-- }}}
+
+	-- }}}
 })
 
 -- }}}
@@ -223,11 +248,6 @@ vim.g.airline_mode_map = {
 -- {{{ dokuwiki
 
 vim.g.dokuwiki_fenced_languages = { 'bash=sh', 'javascript', 'php', 'ruby' }
-
--- }}}
--- {{{ editorconfig
-
-vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*' }
 
 -- }}}
 -- {{{ gitsigns
@@ -465,31 +485,6 @@ telescope.load_extension('file_browser')
 -- {{{ tex (built-in)
 
 vim.g.tex_flavor = 'latex'
-
--- }}}
--- {{{ vim-jsx-typescript
-
--- The following syntax components are forcibly colored by vim-jsx-typescript.
--- Here we reset them to their default links in RUNTIME/syntax/*.vim and let
--- the user-selected theme handle coloring
-vim.cmd([[
-	augroup jsxsyntax
-		autocmd!
-		autocmd Syntax *typescript* highlight link xmlEndTag Identifier
-		autocmd Syntax *typescript* highlight link tsxCloseString htmlTagName
-		autocmd Syntax *typescript* highlight link htmlTag Function
-		autocmd Syntax *typescript* highlight link htmlEndTag Identifier
-		autocmd Syntax *typescript* highlight link htmlTagName htmlStatement
-		autocmd Syntax *typescript* highlight link tsxAttrib htmlArg
-	augroup END
-]])
---autocmd Syntax *typescript* highlight link ReactState
---autocmd Syntax *typescript* highlight link ReactProps
---autocmd Syntax *typescript* highlight link Events
---autocmd Syntax *typescript* highlight link ReduxKeywords
---autocmd Syntax *typescript* highlight link Ethereum
---autocmd Syntax *typescript* highlight link WebBrowser
---autocmd Syntax *typescript* highlight link ReactLifeCycleMethods
 
 -- }}}
 
