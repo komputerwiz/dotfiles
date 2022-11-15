@@ -2,20 +2,15 @@
 
 require('paq')({
 	'savq/paq-nvim', -- let paq manage itself
-	'cespare/vim-toml',
 	'chaoren/vim-wordmotion',
-	'chikamichi/mediawiki.vim',
 	'dag/vim-fish',
 	'duggiefresh/vim-easydir',
-	'editorconfig/editorconfig-vim',
-	'freitass/todo.txt-vim',
+	'gpanders/editorconfig.nvim',
 	'hrsh7th/cmp-buffer',
 	'hrsh7th/cmp-cmdline',
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/cmp-path',
 	'hrsh7th/nvim-cmp',
-	'icymind/NeoSolarized',
-	'jamessan/vim-gnupg',
 	'jose-elias-alvarez/null-ls.nvim',
 	'jparise/vim-graphql',
 	-- {'junegunn/fzf', run = './install --bin'}, 'junegunn/fzf.vim',
@@ -35,6 +30,7 @@ require('paq')({
 	'nvim-telescope/telescope.nvim',
 	'nvim-telescope/telescope-file-browser.nvim',
 	{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+	'overcache/NeoSolarized',
 	'peitalin/vim-jsx-typescript',
 	'saadparwaiz1/cmp_luasnip',
 	'simrat39/symbols-outline.nvim',
@@ -268,14 +264,6 @@ gitsigns.setup({
 		end, { expr = true })
 	end,
 })
-
--- }}}
--- {{{ gnupg
-
-vim.g.GPGPreferSign = 1
-vim.g.GPGDefaultRecipients = {
-	'Matthew J. Barry <komputerwiz.matt@gmail.com>',
-}
 
 -- }}}
 -- {{{ luasnip
