@@ -50,7 +50,6 @@ require('paq')({
 	'chaoren/vim-wordmotion',
 	'duggiefresh/vim-easydir',
 	'junegunn/vim-easy-align',
-	'mattn/emmet-vim',
 	'nelstrom/vim-visual-star-search',
 	'ntpeters/vim-better-whitespace',
 	'tpope/vim-abolish',

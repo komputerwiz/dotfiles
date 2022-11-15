@@ -94,6 +94,28 @@ M.setup = function(opts)
 			})
 		end, -- }}}
 
+		emmet_ls = function() -- {{{
+			lspconfig.emmet_ls.setup({
+				capabilities = capabilities,
+				filetypes = {
+					'*html*',
+					'typescriptreact',
+					'javascriptreact',
+					'css',
+					'sass',
+					'scss',
+					'less',
+				},
+				-- init_options = {
+				-- 	html = {
+				-- 		options = {
+				-- 			["bem.enabled"] = true,
+				-- 		},
+				-- 	},
+				-- },
+			})
+		end, -- }}}
+
 		intelephense = function() -- {{{
 			lspconfig.intelephense.setup({
 				on_attach = on_attach,
