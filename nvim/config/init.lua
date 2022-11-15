@@ -133,6 +133,7 @@ local mason = require('mason')
 local null_ls = require('null-ls')
 local telescope = require('telescope')
 local tsconfigs = require('nvim-treesitter.configs')
+local tsparsers = require('nvim-treesitter.parsers')
 
 -- local modules
 local language_servers = require('language-servers')
@@ -424,6 +425,8 @@ tsconfigs.setup({
 		},
 	},
 })
+
+tsparsers.filetype_to_parsername['html.twig'] = 'twig'
 
 -- }}}
 -- {{{ rust (built-in)
