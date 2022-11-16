@@ -10,7 +10,6 @@ require('paq')({
 	'lewis6991/gitsigns.nvim',
 	'nvim-lua/plenary.nvim',
 	'nvim-lualine/lualine.nvim',
-	'overcache/NeoSolarized',
 	'simrat39/symbols-outline.nvim',
 	{
 		'nvim-treesitter/nvim-treesitter',
@@ -53,6 +52,7 @@ require('paq')({
 	'junegunn/vim-easy-align',
 	'nelstrom/vim-visual-star-search',
 	'ntpeters/vim-better-whitespace',
+	'overcache/NeoSolarized',
 	'tpope/vim-abolish',
 	'tpope/vim-commentary',
 	'tpope/vim-fugitive',
@@ -276,6 +276,12 @@ lualine.setup({
 				end,
 			},
 		},
+		lualine_c = {
+			{
+				'filename',
+				path = 1,
+			},
+		},
 	},
 })
 
@@ -322,6 +328,24 @@ null_ls.setup({
 	},
 	on_attach = language_servers.on_attach,
 })
+
+-- }}}
+-- {{{ NeoSolarized
+
+-- NOTE: commented options represent default values
+
+-- font styles
+-- vim.g.neosolarized_bold = 1
+vim.g.neosolarized_italic = 1
+-- vim.g.neosolarized_underline = 1
+
+-- appearance
+-- vim.g.neosolarized_contrast = 'normal'
+-- vim.g.neosolarized_diffmode = 'normal'
+-- vim.g.neosolarized_termBoldAsBright = 1
+-- vim.g.neosolarized_termtrans = 0
+-- vim.g.neosolarized_visibility = 'normal'
+-- vim.g.neosolarized_vertSplitBgTrans = 1
 
 -- }}}
 -- {{{ nvim-cmp
