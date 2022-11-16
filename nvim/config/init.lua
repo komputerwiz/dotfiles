@@ -9,6 +9,7 @@ require('paq')({
 	'L3MON4D3/LuaSnip',
 	'lewis6991/gitsigns.nvim',
 	'nvim-lua/plenary.nvim',
+	'nvim-lualine/lualine.nvim',
 	'overcache/NeoSolarized',
 	'simrat39/symbols-outline.nvim',
 	{
@@ -58,8 +59,6 @@ require('paq')({
 	'tpope/vim-repeat',
 	'tpope/vim-surround',
 	'tpope/vim-unimpaired',
-	'vim-airline/vim-airline',
-	'vim-airline/vim-airline-themes',
 
 	-- {{{ syntax/filetype
 
@@ -128,6 +127,7 @@ vim.opt.wrap = false
 local cmp = require('cmp')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local gitsigns = require('gitsigns')
+local lualine = require('lualine')
 local luasnip = require('luasnip')
 local mason = require('mason')
 local null_ls = require('null-ls')
@@ -220,31 +220,6 @@ end
 -- }}}
 -- {{{ plugin config
 
--- {{{ airline
-
-vim.g.airline_left_sep = ''
-vim.g.airline_right_sep = ''
-vim.g.airline_mode_map = {
-	['__'] = '-', -- unknown
-	['c'] = 'C', -- command
-	['i'] = 'I', -- insert
-	['ic'] = 'I', -- insert (completion)
-	['ix'] = 'I', -- insert (completion)
-	['n'] = 'N', -- normal
-	['ni'] = 'N', -- insert-normal (i_CTRL-O)
-	['no'] = 'N', -- operator pending
-	['R'] = 'R', -- replace
-	['Rv'] = 'R', -- virtual replace
-	['s'] = 'S', -- select
-	['S'] = 'S', -- select (line)
-	[''] = 'S', -- select (block)
-	['t'] = 'T', -- terminal
-	['v'] = 'V', -- visual
-	['V'] = 'V', -- visual (line)
-	[''] = 'V', -- visual (block)
-}
-
--- }}}
 -- {{{ dokuwiki
 
 vim.g.dokuwiki_fenced_languages = { 'bash=sh', 'javascript', 'php', 'ruby' }
@@ -283,6 +258,25 @@ gitsigns.setup({
 			return '<Ignore>'
 		end, { expr = true })
 	end,
+})
+
+-- }}}
+-- lualine {{{
+
+lualine.setup({
+	options = {
+		theme = 'solarized_custom',
+	},
+	sections = {
+		lualine_a = {
+			{
+				'mode',
+				fmt = function(str)
+					return str:sub(1, 1)
+				end,
+			},
+		},
+	},
 })
 
 -- }}}
