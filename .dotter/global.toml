@@ -97,6 +97,16 @@ depends = ["updater"]
 "fish/config" = "~/.config/fish"
 "fish/update.fish" = "~/.config/update.d/50-fish.fish"
 
+# vanilla prompt {{{
+
+[fish-prompt]
+depends = ["fish"]
+
+[fish-prompt.files]
+"fish/prompt" = "~/.config/fish/functions"
+
+# }}}
+
 # }}}
 # flatpak {{{
 
