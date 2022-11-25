@@ -293,6 +293,28 @@ rustup_home = "$HOME/.local/opt/rustup"
 "ssh/config" = "~/.ssh/config"
 
 # }}}
+# starship {{{
+
+[starship]
+depends = ["updater"]
+
+[starship.files]
+"starship/config.toml" = "~/.config/starship.toml"
+"starship/install-or-update.sh" = "~/.config/update.d/50-starship.sh"
+
+[starship-bash]
+depends = ["bash", "starship"]
+
+[starship-bash.files]
+"starship/init.bash" = "~/.config/bash/rc.d/90-starship.sh"
+
+[starship-fish]
+depends = ["fish", "starship"]
+
+[starship-fish.files]
+"starship/init.fish" = "~/.config/fish/conf.d/90-starship.fish"
+
+# }}}
 # tmux {{{
 
 [tmux.files]
