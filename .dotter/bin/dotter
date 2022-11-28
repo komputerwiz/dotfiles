@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null && pwd)"
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  OS=darwin
+elif [[ "$OSTYPE" = linux-gnu* ]]; then
+  OS=linux
+fi
+
+ARCH="$HOSTTYPE"
+
+if test ! -x "$DIR/dotter-$OS-$ARCH"; then
+  echo "dotter exec not found for OS ($OS) and arch ($ARCH)" >&2
+  exit 1
+fi
+
+"$DIR/dotter-$OS-$ARCH" "$@"
