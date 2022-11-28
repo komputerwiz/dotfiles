@@ -2,3 +2,18 @@
 
 [directory]
 truncate_to_repo = false
+
+[java]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[shell]
+disabled = false
+fish_indicator = ""
+unknown_indicator = "sh?"
+format = "[$indicator]($style)"
