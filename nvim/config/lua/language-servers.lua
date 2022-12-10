@@ -94,6 +94,16 @@ M.setup = function(opts)
 			})
 		end, -- }}}
 
+		clangd = function() -- {{{
+			local clangd_capabilities = capabilities
+			clangd_capabilities.offsetEncoding = 'utf-8'
+
+			lspconfig.clangd.setup({
+				on_attach = on_attach,
+				capabilities = clangd_capabilities,
+			})
+		end, -- }}}
+
 		emmet_ls = function() -- {{{
 			lspconfig.emmet_ls.setup({
 				capabilities = capabilities,
@@ -113,6 +123,29 @@ M.setup = function(opts)
 				-- 		},
 				-- 	},
 				-- },
+			})
+		end, -- }}}
+
+		grammarly = function () -- {{{
+			lspconfig.grammarly.setup({
+				filetypes = {
+					'*markdown*',
+				},
+				init_options = {
+					grammarly = {
+						config = {
+							suggestions = {
+								ConjunctionAtStartOfSentence = true,
+								InformalPronounsAcademic = true,
+								OxfordComma = true,
+								PassiveVoice = true,
+								PrepositionAtTheEndOfSentence = true,
+								StylisticFragments = true,
+								UnnecessaryEllipses = true,
+							},
+						},
+					},
+				},
 			})
 		end, -- }}}
 
