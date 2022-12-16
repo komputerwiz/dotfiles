@@ -112,7 +112,14 @@ vim.opt.exrc = true
 vim.opt.hidden = true
 vim.opt.joinspaces = false
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '+' }
+vim.opt.listchars = {
+	tab = '» ',
+	lead = '·',
+	trail = '·',
+	nbsp = '␣',
+	precedes = '⟨',
+	extends = '⟩',
+}
 vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.path:append({ '**' })
@@ -121,6 +128,7 @@ vim.opt.scrolloff = 1
 vim.opt.secure = true
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
+vim.opt.showbreak = '↪ '
 vim.opt.sidescrolloff = 5
 vim.opt.softtabstop = 2
 vim.opt.spelllang = 'en_us'
@@ -447,6 +455,64 @@ end
 -- {{{ nvim-treesitter
 
 tsconfigs.setup({
+	ensure_installed = {
+		'bash',
+		'bibtex',
+		'c',
+		'c_sharp',
+		'cmake',
+		'comment',
+		'cpp',
+		'css',
+		'diff',
+		'dockerfile',
+		'dot',
+		'ebnf',
+		'fish',
+		'git_rebase',
+		'gitattributes',
+		'gitcommit',
+		'go',
+		'gomod',
+		'gowork',
+		'graphql',
+		'haskell',
+		'help',
+		'html',
+		'http',
+		'java',
+		'javascript',
+		'jq',
+		'jsdoc',
+		'json',
+		'json5',
+		'jsonc',
+		'latex',
+		'lua',
+		'make',
+		'markdown',
+		'markdown_inline',
+		'meson',
+		'ninja',
+		'php',
+		'phpdoc',
+		'pug',
+		'python',
+		'regex',
+		'rst',
+		'ruby',
+		'rust',
+		'scss',
+		'sql',
+		'svelte',
+		'todotxt',
+		'toml',
+		'tsx',
+		'twig',
+		'typescript',
+		'vim',
+		'yaml',
+	},
 	highlight = {
 		enable = true,
 		disable = {
