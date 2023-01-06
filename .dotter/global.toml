@@ -90,8 +90,8 @@ depends = ["fish"]
 # }}}
 # duplicity {{{
 
-[duplicity]
-"duplicity" = "~/.config/systemd/user
+[duplicity.files]
+"duplicity" = "~/.config/systemd/user"
 
 [duplicity.variables]
 duplicity_target_url = "sftp://matthew@nymbus.home.komputerwiz.net//mnt/zfs/orca/files/backup/%H/duplicity/%i"
