@@ -1,0 +1,26 @@
+[Unit]
+Description=Periodic duplicity backup (%I)
+
+[Service]
+Type=oneshot
+Environment=PASSPHRASE=***REMOVED***
+Environment=ROOT_DIR=%h/
+Environment=TARGET_URL={{ duplicity_target_url }}
+ExecStartPre=/usr/bin/duplicity cleanup \
+ --name %i \
+ --ssh-options -oIdentityFile=%h/.ssh/id_ed25519 \
+ --force \
+ ${TARGET_URL}
+ExecStart=/usr/bin/duplicity \
+ --name %i \
+ --ssh-options -oIdentityFile=%h/.ssh/id_ed25519 \
+ --asynchronous-upload \
+ --full-if-older-than 1M \
+ --exclude-filelist %h/.config/duplicity/%i/exclude.txt \
+ ${ROOT_DIR} \
+ ${TARGET_URL}
+ExecStartPost=/usr/bin/duplicity remove-older-than 6M \
+ --name %i \
+ --ssh-options -oIdentityFile=%h/.ssh/id_ed25519 \
+ --force \
+ ${TARGET_URL}
