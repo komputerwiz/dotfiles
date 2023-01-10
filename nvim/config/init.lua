@@ -102,9 +102,9 @@ vim.cmd([[
 -- }}}
 -- neovide gui {{{
 if vim.g.neovide then
-	vim.opt.guifont = { 'Fira Code Nerd Font', ':h12' }
-	vim.g.neovide_scale_factor = 0.75
-	vim.g.neovide_transparency = 0.95
+	vim.opt.guifont = { 'FiraCode Nerd Font', ':h9' }
+	vim.g.neovide_scale_factor = 1.0
+	vim.g.neovide_transparency = 1.0
 	vim.g.neovide_floating_blur_amount_x = 3.0
 	vim.g.neovide_floating_blur_amount_y = 3.0
 end
