@@ -95,12 +95,11 @@ M.setup = function(opts)
 		end, -- }}}
 
 		clangd = function() -- {{{
-			local clangd_capabilities = capabilities
-			clangd_capabilities.offsetEncoding = 'utf-8'
-
 			lspconfig.clangd.setup({
 				on_attach = on_attach,
-				capabilities = clangd_capabilities,
+				capabilities = vim.tbl_deep_extend('force', capabilities, {
+					offsetEncoding = {'utf-16'},
+				}),
 			})
 		end, -- }}}
 
