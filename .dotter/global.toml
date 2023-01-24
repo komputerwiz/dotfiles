@@ -94,6 +94,7 @@ depends = ["fish"]
 "duplicity" = "~/.config/systemd/user"
 
 [duplicity.variables]
+duplicity_gpg_passphrase = "***REMOVED***"
 duplicity_target_url = "sftp://matthew@nymbus.home.komputerwiz.net//mnt/zfs/orca/files/backup/%H/duplicity/%i"
 
 # }}}

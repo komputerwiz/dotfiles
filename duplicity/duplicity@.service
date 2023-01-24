@@ -3,7 +3,7 @@ Description=Periodic duplicity backup (%I)
 
 [Service]
 Type=oneshot
-Environment=PASSPHRASE=***REMOVED***
+Environment=PASSPHRASE={{ duplicity_gpg_passphrase }}
 Environment=ROOT_DIR=%h/
 Environment=TARGET_URL={{ duplicity_target_url }}
 ExecStartPre=/usr/bin/duplicity cleanup \
