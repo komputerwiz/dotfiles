@@ -294,6 +294,7 @@ depends = ["bash", "rustup"]
 
 [rustup-bash.variables]
 rustup_home = "$HOME/.local/opt/rustup"
+cargo_home = "$HOME/.local/opt/cargo"
 
 # }}}
 # ssh {{{
