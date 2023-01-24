@@ -1,38 +1,40 @@
 {
-    "diffEditor.ignoreTrimWhitespace": false,
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.acceptSuggestionOnEnter": "off",
+    "editor.codeLens": false,
     "editor.cursorBlinking": "phase",
     // "editor.cursorSmoothCaretAnimation": true,  // only if power/GPU can handle it
     "editor.cursorSurroundingLines": 1,
     "editor.find.autoFindInSelection": "multiline",
-    "editor.fontFamily": "'Fira Code', 'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'FiraCode Nerd Font', 'FiraCode NF', 'Fira Code', 'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     "editor.fontSize": 11,
+    "editor.inlayHints.enabled": "offUnlessPressed",
     "editor.renderWhitespace": "boundary",
     "editor.rulers": [80, 92, 100, 120],
     // "editor.smoothScrolling": true,  // only if power/GPU can handle it
     "editor.snippetSuggestions": "top",
-    "editor.tabSize": 2, // set here as a default; prefer editorconfig
-    "files.autoSave": "onFocusChange",
+    "editor.tabSize": 2,  // set here as a default; prefer editorconfig
     "files.insertFinalNewline": true, // set here as a default; prefer editorconfig
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true, // set here as a default; prefer editorconfig
-    "git.allowForcePush": true,
-    "git.autofetch": "all",
-    "git.confirmSync": false,
-    "git.enableSmartCommit": true,
-    "git.rebaseWhenSync": true,
-    "git.suggestSmartCommit": false,
     "search.smartCase": true,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.allowChords": false,
+    "terminal.integrated.confirmOnExit": "hasChildProcesses",
+    // "terminal.integrated.smoothScrolling": true,  // only if power/GPU can handle it
     "terminal.integrated.defaultProfile.linux": "fish",
     "window.autoDetectColorScheme": true,
+    "window.commandCenter": true,
+    "window.confirmBeforeClose": "keyboardOnly",
     "window.dialogStyle": "custom",
     "window.enableMenuBarMnemonics": false,
-    "window.menuBarVisibility": "toggle",
+    "window.menuBarVisibility": "hidden",
     "window.titleBarStyle": "custom",
+    "workbench.colorCustomizations": {
+        "editorInlayHint.background": "#00000000",
+        "editorInlayHint.foreground": "#80808080",
+    },
     "workbench.colorTheme": "Solarized Dark",
     "workbench.editor.untitled.hint": "hidden",
     "workbench.enableExperiments": false,
@@ -40,13 +42,37 @@
     "workbench.preferredLightColorTheme": "Solarized Light",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tips.enabled": false,
-    "window.zoomLevel": 0,
 
-    // extension-specific configuration
+    // extension config
+
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    "emmet.includeLanguages": {
+        "twig": "html"
+    },
+
+    "git.allowForcePush": true,
+    "git.autofetch": "all",
+    "git.confirmSync": false,
+    "git.rebaseWhenSync": true,
+    "git.suggestSmartCommit": false,
+
+    "gitlens.advanced.fileHistoryFollowsRenames": true,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.defaultDateFormat": "YYYY-MM-DD (dd) HH:mm",
+    "gitlens.defaultDateShortFormat": "YYYY-MM-DD (dd)",
+    "gitlens.defaultTimeFormat": "HH:mm",
+    "gitlens.hovers.currentLine.over": "line",
+
     "gitProjectManager.baseProjectsFolders": [ "/home/citd/matthew.barry/git/" ],
-    "C_Cpp.intelliSenseEngine": "Default",
-    "C_Cpp.suggestSnippets": false,
-    // "vim.enableNeovim": true,
-    // "vim.neovimPath": "/path/to/nvim",
-    "vsicons.projectDetection.autoReload": true,
+
+    "redhat.telemetry.enabled": false,
+
+    "rust-analyzer.diagnostics.warningsAsInfo": [
+        "dead_code"
+    ],
+
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+
 }

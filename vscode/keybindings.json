@@ -1,6 +1,10 @@
 [
   {
     "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+j",
     "command": "editor.action.joinLines",
     "when": "textInputFocus && !editorReadonly"
   },
@@ -72,21 +76,6 @@
 
   // toggle settings (via rebornix.toggle extension)
   {
-    "key": "F2",
-    "command": "toggle",
-    "args": {
-      "id": "light-dark-theme",
-      "value": [
-        {
-          "workbench.colorTheme": "Solarized Dark"
-        },
-        {
-          "workbench.colorTheme": "Solarized Light"
-        }
-      ]
-    }
-  },
-  {
     "key": "ctrl+alt+c",
     "command": "toggle",
     "when": "editorTextFocus",
@@ -101,5 +90,10 @@
         }
       ]
     }
+  },
+  {
+    "key": "shift+alt+r",
+    "command": "editor.action.rename",
+    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
   },
 ]
