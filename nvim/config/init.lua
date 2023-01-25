@@ -19,8 +19,10 @@ require('paq')({
 	'kyazdani42/nvim-web-devicons',
 	'L3MON4D3/LuaSnip',
 	'lewis6991/gitsigns.nvim',
+	'mfussenegger/nvim-dap',
 	'nvim-lua/plenary.nvim',
 	'nvim-lualine/lualine.nvim',
+	'rcarriga/nvim-dap-ui',
 	'simrat39/symbols-outline.nvim',
 	{
 		'nvim-treesitter/nvim-treesitter',
@@ -154,10 +156,13 @@ vim.opt.wrap = false
 
 local cmp = require('cmp')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local dap = require('dap')
+local dap_ui = require('dapui')
 local gitsigns = require('gitsigns')
 local lualine = require('lualine')
 local luasnip = require('luasnip')
 local mason = require('mason')
+local mason_registry = require('mason-registry')
 local null_ls = require('null-ls')
 local telescope = require('telescope')
 local tsconfigs = require('nvim-treesitter.configs')
@@ -189,6 +194,14 @@ do
 	map('', '<F2>', [[<Cmd>let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>]], opts)
 	-- map('', '<F3>', '<Cmd>Lexplore<CR>', opts)
 	map('', '<F3>', '<Cmd>Telescope file_browser<CR>', opts)
+	map('n', '<F4>', '<Cmd>DapToggleBreakpoint<CR>', opts)
+	map('n', '<F5>', '<Cmd>DapContinue<CR>', opts)
+	map('n', '<F6>', '<Cmd>DapStepInto<CR>', opts)
+	map('n', '<F7>', '<Cmd>DapStepOver<CR>', opts)
+	map('n', '<F8>', '<Cmd>DapStepOut<CR>', opts)
+	map('n', '<F9>', '<Cmd>DapRestartFrame<CR>', opts)
+	map('n', '<F10>', '<Cmd>DapTerminate<CR>', opts)
+	map('n', '<F12>', '<Cmd>lua require(\'dapui\').toggle()<CR>', opts)
 
 	map('n', '<Space>', 'za', opts)
 	map('v', '<Space>', 'za', opts)
@@ -458,6 +471,54 @@ do
 			{ name = 'cmdline' },
 		}),
 	})
+end
+
+-- }}}
+-- {{{ nvim-dap / nvim-dap-ui
+
+if mason_registry.has_package('codelldb') then
+	local codelldb = mason_registry.get_package('codelldb')
+	dap.adapters.codelldb = {
+		type = 'server',
+		port = '${port}',
+		executable = {
+			command = codelldb:get_install_path() .. '/extension/adapter/codelldb',
+			args = {
+				'--port',
+				'${port}',
+			},
+		},
+	}
+
+	dap.configurations.cpp = {
+		{
+			name = 'Launch file',
+			type = 'codelldb',
+			request = 'launch',
+			program = function ()
+				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+			end,
+			cwd = '${workspaceFolder}',
+			stopOnEntry = false,
+		},
+	}
+
+	dap.configurations.c = dap.configurations.cpp
+	dap.configurations.rust = dap.configurations.cpp
+end
+
+dap_ui.setup()
+
+dap.listeners.after.event_initialized['dapui_config'] = function ()
+	dap_ui.open()
+end
+
+dap.listeners.after.event_terminated['dapui_config'] = function ()
+	dap_ui.close()
+end
+
+dap.listeners.after.event_exited['dapui_config'] = function ()
+	dap_ui.close()
 end
 
 -- }}}
