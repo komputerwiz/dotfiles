@@ -476,7 +476,12 @@ end
 -- }}}
 -- {{{ nvim-dap / nvim-dap-ui
 
-if mason_registry.has_package('codelldb') then
+vim.fn.sign_define('DapBreakpoint', { text = '', texthl='', linehl='', numhl='' })
+vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl='', linehl='', numhl='' })
+vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl='', linehl='', numhl='' })
+vim.fn.sign_define('DapLogPoint', { text = '', texthl='', linehl='', numhl='' })
+
+if mason_registry.is_installed('codelldb') then
 	local codelldb = mason_registry.get_package('codelldb')
 	dap.adapters.codelldb = {
 		type = 'server',
