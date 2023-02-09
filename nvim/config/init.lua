@@ -399,6 +399,15 @@ do
 		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 	end
 
+	local function snip_choice_or_abort()
+		if luasnip.choice_active() then
+			luasnip.change_choice(1)
+		else
+			cmp.abort()
+		end
+	end
+
+
 	cmp.setup({
 		snippet = {
 			expand = function(args)
@@ -411,13 +420,8 @@ do
 			['<C-f>'] = cmp.mapping.scroll_docs(4),
 			['<C-Space>'] = cmp.mapping.complete(),
 			['<C-e>'] = cmp.mapping({
-				i = function() -- function(fallback)
-					if luasnip.choice_active() then
-						luasnip.change_choice(1)
-					else
-						cmp.abort()
-					end
-				end,
+				i = snip_choice_or_abort,
+				s = snip_choice_or_abort,
 				c = cmp.mapping.close(),
 			}),
 

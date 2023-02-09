@@ -66,7 +66,7 @@ local function rec_delim(args, parent, old_state, delim, placeholder)
 			sn(nil, {
 				t(delim),
 				i(1, placeholder),
-				d(2, rec_delim, {}, delim, placeholder),
+				d(2, rec_delim, {}, { user_args = { delim, placeholder } }),
 			}),
 		})
 	)
@@ -85,7 +85,7 @@ M.setup = function()
 			-- display `snip:choice` at end of line when choice node is active
 			[types.choiceNode] = {
 				active = {
-					virt_text = { { 'snip:choice', 'Comment' } },
+					virt_text = { { 'snip:choice (<C-e>)', 'Comment' } },
 				},
 			},
 		},
@@ -241,7 +241,9 @@ M.setup = function()
 				sn(nil, {
 					t(' implements '),
 					i(1, 'MyInterface'),
-					d(2, rec_delim, {}, ', ', 'MyInterface'),
+					d(2, rec_delim, {}, {
+						user_args = { ', ', 'MyInterface' },
+					}),
 				}),
 			}),
 			t({ '', '{', '\t' }),
@@ -265,7 +267,9 @@ M.setup = function()
 				sn(nil, {
 					t(' extends '),
 					i(1, 'MyInterface'),
-					d(2, rec_delim, {}, ', ', 'MyInterface'),
+					d(2, rec_delim, {}, {
+						user_args = { ', ', 'MyInterface' },
+					}),
 				}),
 			}),
 			t({ '', '{', '\t' }),
@@ -408,7 +412,9 @@ M.setup = function()
 		s({ trig = 'item', name = 'Itemized List Item' }, {
 			t('\\item '),
 			i(1),
-			d(2, rec_delim, {}, { '', '\\item ' }),
+			d(2, rec_delim, {}, {
+				user_args = { { '', '\\item ' } },
+			}),
 		}),
 
 		s({ trig = 'f', name = 'Math Fraction' }, { t('\\frac{'), i(1), t('}{'), i(2), t('}') }),
