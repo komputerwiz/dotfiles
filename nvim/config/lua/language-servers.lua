@@ -171,8 +171,8 @@ M.setup = function(opts)
 			})
 		end, -- }}}
 
-		sumneko_lua = function() -- {{{
-			lspconfig.sumneko_lua.setup({
+		lua_ls = function() -- {{{
+			lspconfig.lua_ls.setup({
 				on_attach = function(client, bufnr)
 					-- disable document formatting; prefer stylua (provided via null-ls)
 					client.server_capabilities.documentFormattingProvider = false

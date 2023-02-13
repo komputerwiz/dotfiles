@@ -19,10 +19,8 @@ require('paq')({
 	'kyazdani42/nvim-web-devicons',
 	'L3MON4D3/LuaSnip',
 	'lewis6991/gitsigns.nvim',
-	'mfussenegger/nvim-dap',
 	'nvim-lua/plenary.nvim',
 	'nvim-lualine/lualine.nvim',
-	'rcarriga/nvim-dap-ui',
 	'simrat39/symbols-outline.nvim',
 	{
 		'nvim-treesitter/nvim-treesitter',
@@ -30,6 +28,7 @@ require('paq')({
 			vim.cmd('TSUpdate')
 		end,
 	},
+	'windwp/nvim-autopairs',
 
 	-- {{{ cmp family
 
@@ -48,12 +47,14 @@ require('paq')({
 	{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 
 	-- }}}
-	-- {{{ lsp integration
+	-- {{{ lsp/dap integration
 
 	'williamboman/mason.nvim',
 	'williamboman/mason-lspconfig.nvim',
 	'jose-elias-alvarez/null-ls.nvim',
+	'mfussenegger/nvim-dap',
 	'neovim/nvim-lspconfig',
+	'rcarriga/nvim-dap-ui',
 
 	-- }}}
 
@@ -154,9 +155,12 @@ vim.opt.wrap = false
 -- }}}
 -- {{{ imports
 
+local autopairs = require('nvim-autopairs')
 local cmp = require('cmp')
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local dap = require('dap')
+local dap_ext_vscode = require('dap.ext.vscode')
 local dap_ui = require('dapui')
 local gitsigns = require('gitsigns')
 local lualine = require('lualine')
@@ -389,6 +393,11 @@ vim.g.neosolarized_italic = 1
 -- vim.g.neosolarized_vertSplitBgTrans = 1
 
 -- }}}
+-- {{{ nvim-autopairs
+
+autopairs.setup({})
+
+-- }}}
 -- {{{ nvim-cmp
 
 -- from https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
@@ -475,10 +484,17 @@ do
 			{ name = 'cmdline' },
 		}),
 	})
+
+	-- automatically insert `(` after autocompleting a function or method
+	cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 end
 
 -- }}}
 -- {{{ nvim-dap / nvim-dap-ui
+
+dap_ext_vscode.type_to_filetypes = {
+	lldb = { 'c', 'cpp', 'rust' },
+}
 
 vim.fn.sign_define('DapBreakpoint', { text = '', texthl='', linehl='', numhl='' })
 vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl='', linehl='', numhl='' })
@@ -499,6 +515,9 @@ if mason_registry.is_installed('codelldb') then
 		},
 	}
 
+	dap.adapters.lldb = dap.adapters.codelldb
+
+	--[[
 	dap.configurations.cpp = {
 		{
 			name = 'Launch file',
@@ -514,6 +533,7 @@ if mason_registry.is_installed('codelldb') then
 
 	dap.configurations.c = dap.configurations.cpp
 	dap.configurations.rust = dap.configurations.cpp
+	--]]
 end
 
 dap_ui.setup()
