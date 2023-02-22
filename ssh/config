@@ -16,6 +16,11 @@ HostName 104.130.137.237
 Port 22
 User matthew
 
+Host falcon
+HostName 166.78.156.85
+Port 22
+User ubuntu
+
 Host tcat
 #HostName mbarry.citd.tamu.edu
 HostName tcat.komputerwiz.net
