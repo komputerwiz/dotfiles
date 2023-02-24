@@ -2,9 +2,17 @@
 # see `:help spell-wordlist-format` for more info
 /encoding=utf-8
 /regions=us
+Dalvik/=
 GIS/=
+SMS/=
+SQLite/=
+TCP/=
+UDP/=
+UI/=
 advisor
 algorithmically
+botnet
+botnets
 capita
 codec
 codecs
