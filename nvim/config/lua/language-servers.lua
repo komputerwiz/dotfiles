@@ -129,6 +129,7 @@ M.setup = function(opts)
 			lspconfig.grammarly.setup({
 				filetypes = {
 					'*markdown*',
+					'tex',
 				},
 				init_options = {
 					grammarly = {
