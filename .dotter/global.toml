@@ -378,6 +378,15 @@ depends = ["watson", "zsh"]
 # }}}
 # ytdl {{{
 
+[ytdl]
+depends = ["updater"]
+
+[ytdl.files]
+"ytdl/update.sh" = "~/.config/update.d/50-ytdl.sh"
+
+[ytdl-fish]
+depends = ["fish", "ytdl"]
+
 [ytdl-fish.files]
 "ytdl/fish" = "~/.config/fish"
 
