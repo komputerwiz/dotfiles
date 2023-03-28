@@ -15,6 +15,7 @@ require('paq')({
 	-- {{{ lua plugins
 
 	'savq/paq-nvim', -- let paq manage itself
+	'chrisgrieser/nvim-spider',
 	'gpanders/editorconfig.nvim',
 	'kyazdani42/nvim-web-devicons',
 	'L3MON4D3/LuaSnip',
@@ -61,7 +62,6 @@ require('paq')({
 	-- }}}
 	-- {{{ legacy vimscript plugins
 
-	'chaoren/vim-wordmotion',
 	'duggiefresh/vim-easydir',
 	'junegunn/vim-easy-align',
 	'nelstrom/vim-visual-star-search',
@@ -168,7 +168,9 @@ local luasnip = require('luasnip')
 local mason = require('mason')
 local mason_registry = require('mason-registry')
 local null_ls = require('null-ls')
+local spider = require('spider')
 local telescope = require('telescope')
+local telescope_builtin = require('telescope.builtin')
 local tsconfigs = require('nvim-treesitter.configs')
 local tsparsers = require('nvim-treesitter.parsers')
 
@@ -180,52 +182,47 @@ local tags_source = require('tags-source')
 -- }}}
 -- {{{ key mappings
 
-do
-	local opts = { noremap = true, silent = true }
-	local map = vim.api.nvim_set_keymap
+vim.keymap.set('n', '<Leader>cd', '<Cmd>cd %:p:h<CR><Cmd>pwd<CR>')
+vim.keymap.set('n', '<Leader>fb', telescope_builtin.buffers)
+vim.keymap.set('n', '<Leader>fe', telescope.extensions.file_browser.file_browser)
+vim.keymap.set('n', '<Leader>ff', telescope_builtin.find_files)
+vim.keymap.set('n', '<Leader>fg', telescope_builtin.live_grep)
+vim.keymap.set('n', '<Leader>fh', telescope_builtin.help_tags)
+vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_document_symbols)
+vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_workspace_symbols)
+vim.keymap.set('n', '<Leader>h', '<Cmd>Hexmode<CR>')
+vim.keymap.set('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>')
+vim.keymap.set('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>')
 
-	map('n', '<Leader>fb', '<Cmd>Telescope buffers theme=ivy<CR>', opts)
-	map('n', '<Leader>fe', '<Cmd>Telescope file_browser<CR>', opts)
-	map('n', '<Leader>ff', '<Cmd>Telescope find_files hidden=true<CR>', opts)
-	map('n', '<Leader>fg', '<Cmd>Telescope live_grep<CR>', opts)
-	map('n', '<Leader>fo', '<Cmd>Telescope lsp_document_symbols theme=cursor<CR>', opts)
-	map('n', '<Leader>ft', '<Cmd>Telescope lsp_workspace_symbols theme=cursor<CR>', opts)
-	map('n', '<Leader>cd', '<Cmd>cd %:p:h<CR><Cmd>pwd<CR>', opts)
-	map('n', '<Leader>h', '<Cmd>Hexmode<CR>', opts)
-	map('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>', opts)
-	map('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>', opts)
+vim.keymap.set('', '<F2>', function() vim.opt.background = vim.o.background == 'dark' and 'light' or 'dark' end, { desc = 'toggle-dark-mode' })
+vim.keymap.set('n', '<F3>', telescope.extensions.file_browser.file_browser)
+vim.keymap.set('n', '<F4>', dap.toggle_breakpoint)
+vim.keymap.set('n', '<F5>', dap.continue)
+vim.keymap.set('n', '<F6>', dap.step_into)
+vim.keymap.set('n', '<F7>', dap.step_over)
+vim.keymap.set('n', '<F8>', dap.step_out)
+vim.keymap.set('n', '<F9>', dap.restart_frame)
+vim.keymap.set('n', '<F10>', dap.terminate)
+vim.keymap.set('n', '<F11>', dap.run_to_cursor)
+vim.keymap.set('n', '<F12>', dap_ui.toggle)
 
-	map('', '<F2>', [[<Cmd>let &background = ( &background == 'dark' ? 'light' : 'dark' )<CR>]], opts)
-	-- map('', '<F3>', '<Cmd>Lexplore<CR>', opts)
-	map('', '<F3>', '<Cmd>Telescope file_browser<CR>', opts)
-	map('n', '<F4>', '<Cmd>DapToggleBreakpoint<CR>', opts)
-	map('n', '<F5>', '<Cmd>DapContinue<CR>', opts)
-	map('n', '<F6>', '<Cmd>DapStepInto<CR>', opts)
-	map('n', '<F7>', '<Cmd>DapStepOver<CR>', opts)
-	map('n', '<F8>', '<Cmd>DapStepOut<CR>', opts)
-	map('n', '<F9>', '<Cmd>DapRestartFrame<CR>', opts)
-	map('n', '<F10>', '<Cmd>DapTerminate<CR>', opts)
-	map('n', '<F12>', '<Cmd>lua require(\'dapui\').toggle()<CR>', opts)
+vim.keymap.set({'n', 'o', 'x'}, 'w', function() spider.motion('w') end, { desc = 'spider-w' })
+vim.keymap.set({'n', 'o', 'x'}, 'e', function() spider.motion('e') end, { desc = 'spider-e' })
+vim.keymap.set({'n', 'o', 'x'}, 'b', function() spider.motion('b') end, { desc = 'spider-b' })
+vim.keymap.set({'n', 'o', 'x'}, 'ge', function() spider.motion('ge') end, { desc = 'spider-ge' })
 
-	map('n', '<Space>', 'za', opts)
-	map('v', '<Space>', 'za', opts)
+vim.keymap.set({'n', 'v'}, '<Space>', 'za')
 
-	map('x', 'ga', '<Plug>(EasyAlign)', { silent = true })
-	map('n', 'ga', '<Plug>(EasyAlign)', { silent = true })
+vim.keymap.set({'n', 'x'}, 'ga', '<Plug>(EasyAlign)', { remap = true })
 
-	-- use %% in command mode to insert the directory of the current buffer
-	map('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], { noremap = true, nowait = true, expr = true })
+-- use %% in command mode to insert the directory of the current buffer
+vim.keymap.set('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], { nowait = true, expr = true })
 
-	-- <C-Space> is treated differently by terminal emulators
-	map('i', '<C-Space>', '<C-x><C-o>', opts)
-	map('i', '<Nul>', '<C-x><C-o>', opts)
+vim.keymap.set('n', '<C-p>', telescope_builtin.find_files)
 
-	map('n', '<C-p>', '<Cmd>Telescope find_files hidden=true<CR>', opts)
-
-	-- start new undo sequence for <C-u> and <C-w> in insert mode
-	map('i', '<C-u>', '<C-g>u<C-u>', opts)
-	map('i', '<C-w>', '<C-g>u<C-w>', opts)
-end
+-- start new undo sequence for <C-u> and <C-w> in insert mode
+vim.keymap.set('i', '<C-u>', '<C-g>u<C-u>')
+vim.keymap.set('i', '<C-w>', '<C-g>u<C-w>')
 
 -- }}}
 -- {{{ commands and functions
@@ -667,6 +664,20 @@ vim.g.symbols_outline = {
 -- {{{ telescope
 
 telescope.setup({
+	pickers = {
+		buffers = {
+			theme = 'ivy',
+		},
+		find_files = {
+			hidden = true,
+		},
+		lsp_document_symbols = {
+			theme = 'cursor',
+		},
+		lsp_workspace_symbols = {
+			theme = 'cursor',
+		},
+	},
 	extensions = {
 		file_browser = {
 			hidden = true,
