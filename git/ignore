@@ -38,3 +38,8 @@ ehthumbs_vista.db
 
 ## Local configuration patches
 _*.patch
+
+## Files that are excluded from backups.
+## These files either are too big or contain secrets.
+## Hence, they should not be in a git repository either.
+*.nobak
