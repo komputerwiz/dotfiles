@@ -16,6 +16,7 @@ require('paq')({
 
 	'savq/paq-nvim', -- let paq manage itself
 	'chrisgrieser/nvim-spider',
+	'cpea2506/relative-toggle.nvim',
 	'gpanders/editorconfig.nvim',
 	'kyazdani42/nvim-web-devicons',
 	'L3MON4D3/LuaSnip',
