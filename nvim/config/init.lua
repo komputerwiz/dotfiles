@@ -683,6 +683,7 @@ telescope.setup({
 		file_browser = {
 			hidden = true,
 			hijack_netrw = true,
+			theme = 'ivy',
 		},
 	},
 })
