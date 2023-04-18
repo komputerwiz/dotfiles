@@ -172,7 +172,6 @@ local null_ls = require('null-ls')
 local telescope = require('telescope')
 local telescope_builtin = require('telescope.builtin')
 local tsconfigs = require('nvim-treesitter.configs')
-local tsparsers = require('nvim-treesitter.parsers')
 
 -- local modules
 local language_servers = require('language-servers')
@@ -618,7 +617,7 @@ tsconfigs.setup({
 	},
 })
 
-tsparsers.filetype_to_parsername['html.twig'] = 'twig'
+vim.treesitter.language.register('twig', 'html.twig') -- use 'twig' parser to handle 'html.twig' filetype
 
 -- }}}
 -- {{{ rust (built-in)
