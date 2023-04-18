@@ -169,7 +169,6 @@ local luasnip = require('luasnip')
 local mason = require('mason')
 local mason_registry = require('mason-registry')
 local null_ls = require('null-ls')
-local spider = require('spider')
 local telescope = require('telescope')
 local telescope_builtin = require('telescope.builtin')
 local tsconfigs = require('nvim-treesitter.configs')
@@ -207,10 +206,11 @@ vim.keymap.set('n', '<F10>', dap.terminate)
 vim.keymap.set('n', '<F11>', dap.run_to_cursor)
 vim.keymap.set('n', '<F12>', dap_ui.toggle)
 
-vim.keymap.set({'n', 'o', 'x'}, 'w', function() spider.motion('w') end, { desc = 'spider-w' })
-vim.keymap.set({'n', 'o', 'x'}, 'e', function() spider.motion('e') end, { desc = 'spider-e' })
-vim.keymap.set({'n', 'o', 'x'}, 'b', function() spider.motion('b') end, { desc = 'spider-b' })
-vim.keymap.set({'n', 'o', 'x'}, 'ge', function() spider.motion('ge') end, { desc = 'spider-ge' })
+-- these have to be ex commands in order for dot-repeat to work
+vim.keymap.set({'n', 'o', 'x'}, 'w', [[<Cmd>lua require('spider').motion('w')<CR>]], { desc = 'spider-w' })
+vim.keymap.set({'n', 'o', 'x'}, 'e', [[<Cmd>lua require('spider').motion('e')<CR>]], { desc = 'spider-e' })
+vim.keymap.set({'n', 'o', 'x'}, 'b', [[<Cmd>lua require('spider').motion('b')<CR>]], { desc = 'spider-b' })
+vim.keymap.set({'n', 'o', 'x'}, 'ge',[[<Cmd>lua require('spider').motion('ge')<CR>]], { desc = 'spider-ge' })
 
 vim.keymap.set({'n', 'v'}, '<Space>', 'za')
 
