@@ -606,6 +606,7 @@ tsconfigs.setup({
 		'twig',
 		'typescript',
 		'vim',
+		'vimdoc',
 		'yaml',
 	},
 	highlight = {
