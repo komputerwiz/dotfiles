@@ -19,6 +19,7 @@ right = [
   "diagnostics",
   "selections",
   "file-type",
+  "position-percentage",
   "position",
   "file-encoding",
 ]
