@@ -149,6 +149,12 @@ depends = ["zsh"]
 email = "komputerwiz.matt@gmail.com"
 
 # }}}
+# helix {{{
+
+[helix.files]
+"helix" = "~/.config/helix"
+
+# }}}
 # homebrew {{{
 
 [homebrew]

@@ -1,0 +1,48 @@
+theme = "solarized_dark"
+
+[editor]
+auto-format = false
+rulers = [80, 92, 100, 120]
+color-modes = true
+scrolloff = 1
+text-width = 120
+
+[editor.statusline]
+left = [
+  "mode",
+  "spinner",
+  "version-control",
+  "file-name",
+  "file-modification-indicator",
+]
+right = [
+  "diagnostics",
+  "selections",
+  "file-type",
+  "position",
+  "file-encoding",
+]
+
+[editor.statusline.mode]
+normal = "N"
+insert = "I"
+select = "S"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.whitespace.render]
+space = "none"
+nbsp = "all"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+tab = "»"
+space = "·"
+nbsp = "␣"
+
+[editor.indent-guides]
+render = true

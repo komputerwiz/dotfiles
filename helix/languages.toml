@@ -1,0 +1,7 @@
+[[language]]
+name = "php"
+indent = { tab-width = 2, unit = "\t" }
+language-server = { command = "intelephense", args = ["--stdio"] }
+
+[language.config]
+licenseKey = "XXXXXXXXXXXXXXX"
