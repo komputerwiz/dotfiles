@@ -7,10 +7,16 @@ color-modes = true
 scrolloff = 1
 text-width = 120
 
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
 [editor.statusline]
 left = [
   "mode",
   "spinner",
+  "spacer",
   "version-control",
   "file-name",
   "file-modification-indicator",
@@ -18,6 +24,7 @@ left = [
 right = [
   "diagnostics",
   "selections",
+  "separator",
   "file-type",
   "position-percentage",
   "position",
@@ -29,11 +36,6 @@ normal = "N"
 insert = "I"
 select = "S"
 
-[editor.cursor-shape]
-insert = "bar"
-normal = "block"
-select = "underline"
-
 [editor.whitespace.render]
 space = "none"
 nbsp = "all"
@@ -41,9 +43,10 @@ tab = "all"
 newline = "none"
 
 [editor.whitespace.characters]
-tab = "»"
 space = "·"
 nbsp = "␣"
+tab = "»"
+tabpad = " "
 
 [editor.indent-guides]
 render = true

@@ -5,3 +5,7 @@ language-server = { command = "intelephense", args = ["--stdio"] }
 
 [language.config]
 licenseKey = "XXXXXXXXXXXXXXX"
+
+[[language]]
+name = "rust"
+indent = { tab-width = 2, unit = "\t" }
