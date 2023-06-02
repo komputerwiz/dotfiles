@@ -17,6 +17,6 @@ symbol = " "
 
 [shell]
 disabled = false
-fish_indicator = ""
+nu_indicator = "nsh"
 unknown_indicator = "sh?"
 format = "[$indicator]($style)"

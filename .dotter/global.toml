@@ -203,6 +203,12 @@ depends = ["updater"]
 "npm/update.sh" = "~/.config/update.d/50-npm-global.sh"
 
 # }}}
+# nushell {{{
+
+[nushell.files]
+"nushell" = "~/.config/nushell"
+
+# }}}
 # nvim {{{
 
 [nvim]
