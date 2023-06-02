@@ -1,2 +1,5 @@
 [nushell.files]
 "nushell" = "~/Library/Application Support/nushell"
+
+[homebrew.variables]
+homebrew_prefix = "/opt/homebrew"

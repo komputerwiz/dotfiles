@@ -1,0 +1,2 @@
+[homebrew.variables]
+homebrew_prefix = "/home/linuxbrew/.linuxbrew"

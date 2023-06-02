@@ -1,3 +1,3 @@
 if status --is-interactive
-	eval (/opt/homebrew/bin/brew shellenv)
+	eval ({{homebrew_prefix}}/bin/brew shellenv)
 end
