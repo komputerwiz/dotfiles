@@ -163,6 +163,12 @@ depends = ["updater"]
 [homebrew.files]
 "homebrew/update.sh" = "~/.config/update.d/10-homebrew.sh"
 
+[homebrew-bash]
+depends = ["homebrew", "bash"]
+
+[homebrew-bash.files]
+"homebrew/init.bash" = "~/.config/bash/env.d/10-homebrew.sh"
+
 [homebrew-fish]
 depends = ["homebrew", "fish"]
 
