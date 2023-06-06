@@ -12,3 +12,9 @@ alias l='ls -F'
 
 alias h='history'
 alias hs='history | grep'
+
+function last_history_item
+    echo $history[1]
+end
+
+abbr --add !! --position anywhere --function last_history_item
