@@ -477,6 +477,8 @@ let-env config = {
 	]
 }
 
+let-env LS_COLORS = (vivid generate solarized-dark | str trim)
+
 source ~/.cache/starship/init.nu
 
 alias v = ^$env.EDITOR

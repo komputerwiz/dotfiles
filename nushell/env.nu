@@ -44,7 +44,6 @@ if ($'($env.HOME)/.local/bin' | path exists) {
 
 let-env EDITOR = nvim
 let-env VIRTUAL_ENV_DISABLE_PROMPT = true
-let-env LS_COLORS = (vivid generate solarized-dark | str trim)
 
 {{#if homebrew_prefix}}
 # Initialize homebrew environment (see docs and output for `brew shellenv`)
