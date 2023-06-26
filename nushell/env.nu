@@ -55,9 +55,43 @@ let-env PATH = ($env.PATH | split row (char esep) | prepend [
 	$'($env.HOMEBREW_PREFIX)/sbin'
 ])
 
-let-env MANPATH = (if MANPATH in $env { $env.MANPATH | split row (char esep) } else { [] } |
-	prepend $'($env.HOMEBREW_PREFIX)/share/man')
+# defaults from /etc/manpath.config
+if MANPATH not-in $env {
+	let-env MANPATH = [
+		/usr/man
+		/usr/share/man
+		/usr/local/man
+		/usr/local/share/man
+		/usr/X11R6/man
+		/opt/man
+		/snap/man
+	]
+}
 
-let-env INFOPATH = (if INFOPATH in $env { $env.INFOPATH | split row (char esep) } else { [] } |
-	prepend $'($env.HOMEBREW_PREFIX)/share/info')
+let-env MANPATH = ($env.MANPATH | split row (char esep) | prepend $'($env.HOMEBREW_PREFIX)/share/man')
+
+# defaults from `info --debug -1 _`
+if INFOPATH not-in $env {
+	let-env INFOPATH = [
+		/usr/info
+		/usr/lib/info
+		/usr/share/info
+		/usr/share/lib/info
+		/usr/local/info
+		/usr/local/lib/info
+		/usr/local/lib/emacs/info
+		/usr/local/share/info
+		/usr/local/share/lib/info
+		/usr/local/emacs/info
+		/usr/local/gnu/info
+		/usr/local/gnu/lib/info
+		/usr/local/gnu/lib/emacs/info
+		/usr/gnu/info
+		/usr/gnu/lib/info
+		/usr/gnu/lib/emacs/info
+		/opt/gnu/info
+	]
+}
+
+let-env INFOPATH = ($env.INFOPATH | split row (char esep) | prepend $'($env.HOMEBREW_PREFIX)/share/info')
 {{/if}}
