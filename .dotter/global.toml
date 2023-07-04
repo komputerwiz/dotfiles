@@ -322,6 +322,15 @@ rustup_home = "$HOME/.local/opt/rustup"
 cargo_home = "$HOME/.local/opt/cargo"
 
 # }}}
+# snap {{{
+
+[snap]
+depends = ["updater"]
+
+[snap.files]
+"snap/update.sh" = "~/.config/update.d/20-snap.sh"
+
+# }}}
 # ssh {{{
 
 [ssh.files]
