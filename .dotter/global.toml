@@ -339,11 +339,13 @@ depends = ["updater"]
 # }}}
 # starship {{{
 
-[starship]
-depends = ["updater"]
-
 [starship.files]
 "starship/config.toml" = "~/.config/starship.toml"
+
+[starship-updater]
+depends = ["starship", "updater"]
+
+[starship-updater.files]
 "starship/install-or-update.sh" = "~/.config/update.d/50-starship.sh"
 
 [starship-bash]
@@ -406,16 +408,20 @@ depends = ["watson", "zsh"]
 # ytdl {{{
 
 [ytdl]
-depends = ["updater"]
 
-[ytdl.files]
+[ytdl-updater]
+depends = ["updater", "ytdl"]
+
+[ytdl-updater.files]
 "ytdl/update.sh" = "~/.config/update.d/50-ytdl.sh"
+
 
 [ytdl-fish]
 depends = ["fish", "ytdl"]
 
 [ytdl-fish.files]
 "ytdl/fish" = "~/.config/fish"
+
 
 # }}}
 # zsh {{{
