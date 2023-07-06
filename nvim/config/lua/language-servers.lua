@@ -155,6 +155,7 @@ M.setup = function(opts)
 				capabilities = capabilities,
 				init_options = {
 					licenseKey = 'XXXXXXXXXXXXXXX',
+					globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense',
 				},
 			})
 		end, -- }}}
