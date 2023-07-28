@@ -52,7 +52,6 @@ require('paq')({
 
 	'williamboman/mason.nvim',
 	'williamboman/mason-lspconfig.nvim',
-	'jose-elias-alvarez/null-ls.nvim',
 	'mfussenegger/nvim-dap',
 	'neovim/nvim-lspconfig',
 	'rcarriga/nvim-dap-ui',
@@ -167,7 +166,6 @@ local lualine = require('lualine')
 local luasnip = require('luasnip')
 local mason = require('mason')
 local mason_registry = require('mason-registry')
-local null_ls = require('null-ls')
 local telescope = require('telescope')
 local telescope_builtin = require('telescope.builtin')
 local tsconfigs = require('nvim-treesitter.configs')
@@ -175,7 +173,6 @@ local tsconfigs = require('nvim-treesitter.configs')
 -- local modules
 local language_servers = require('language-servers')
 local snippets = require('snippets')
-local tags_source = require('tags-source')
 
 -- }}}
 -- {{{ key mappings
@@ -357,18 +354,6 @@ mason.setup({
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 vim.g.netrw_winsize = 25
-
--- }}}
--- {{{ null-ls
-
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.prettierd,
-		null_ls.builtins.formatting.stylua,
-		tags_source,
-	},
-	on_attach = language_servers.on_attach,
-})
 
 -- }}}
 -- {{{ NeoSolarized

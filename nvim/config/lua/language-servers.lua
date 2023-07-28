@@ -175,12 +175,7 @@ M.setup = function(opts)
 
 		lua_ls = function() -- {{{
 			lspconfig.lua_ls.setup({
-				on_attach = function(client, bufnr)
-					-- disable document formatting; prefer stylua (provided via null-ls)
-					client.server_capabilities.documentFormattingProvider = false
-					client.server_capabilities.documentRangeFormattingProvider = false
-					on_attach(client, bufnr)
-				end,
+				on_attach = on_attach,
 				capabilities = capabilities,
 				settings = {
 					Lua = {
