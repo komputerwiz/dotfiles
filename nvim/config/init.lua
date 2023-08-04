@@ -334,6 +334,7 @@ snippets.setup()
 -- {{{ markdown (built-in)
 
 vim.g.markdown_folding = 1
+vim.g.markdown_recommended_style = 0
 
 -- }}}
 -- {{{ mason
@@ -609,6 +610,7 @@ vim.treesitter.language.register('twig', 'html.twig') -- use 'twig' parser to ha
 
 vim.g.rust_conceal = 1
 vim.g.rust_fold = 1
+vim.g.rust_recommended_style = 0
 
 -- }}}
 -- {{{ symbols-outline
