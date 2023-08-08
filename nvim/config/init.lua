@@ -39,6 +39,7 @@ require('paq')({
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/cmp-path',
 	'saadparwaiz1/cmp_luasnip',
+	'uga-rosa/cmp-dictionary',
 
 	-- }}}
 	-- {{{ telescope family
@@ -157,6 +158,7 @@ vim.opt.wrap = false
 local autopairs = require('nvim-autopairs')
 local cmp = require('cmp')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp_dictionary = require('cmp_dictionary')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local dap = require('dap')
 local dap_ext_vscode = require('dap.ext.vscode')
@@ -185,6 +187,7 @@ vim.keymap.set('n', '<Leader>fg', telescope_builtin.live_grep)
 vim.keymap.set('n', '<Leader>fh', telescope_builtin.help_tags)
 vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_document_symbols)
 vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_workspace_symbols)
+vim.keymap.set('n', '<Leader>gh', '<Cmd>0Gclog<CR>')
 vim.keymap.set('n', '<Leader>h', '<Cmd>Hexmode<CR>')
 vim.keymap.set('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>')
 vim.keymap.set('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>')
@@ -448,6 +451,7 @@ do
 			{ name = 'path' },
 		}, {
 			{ name = 'buffer' },
+			{ name = 'dictionary', keyword_length = 2 },
 		}),
 	})
 
@@ -469,6 +473,14 @@ do
 
 	-- automatically insert `(` after autocompleting a function or method
 	cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
+	cmp_dictionary.setup({})
+
+	cmp_dictionary.switcher({
+		filetype = {
+			markdown = vim.fn.expand('$HOME/callsigns.dict'),
+		},
+	})
 end
 
 -- }}}
