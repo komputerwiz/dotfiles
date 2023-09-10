@@ -176,6 +176,12 @@ depends = ["homebrew", "fish"]
 "homebrew/init.fish" = "~/.config/fish/conf.d/10-homebrew.fish"
 
 # }}}
+# latex {{{
+
+[latex.files]
+"latex/packages" = { target = "~/texmf/tex/latex", type = "symbolic" }
+
+# }}}
 # mpv {{{
 
 [mpv.files]
