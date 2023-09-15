@@ -75,14 +75,17 @@ editor = "vim"
 # }}}
 # direnv {{{
 
+[direnv.files]
+"direnv/config.toml" = "~/.config/direnv/config.toml"
+
 [direnv-bash]
-depends = ["bash"]
+depends = ["bash", "direnv"]
 
 [direnv-bash.files]
 "direnv/init.bash" = "~/.config/bash/rc.d/50-direnv.sh"
 
 [direnv-fish]
-depends = ["fish"]
+depends = ["direnv", "fish"]
 
 [direnv-fish.files]
 "direnv/init.fish" = "~/.config/fish/conf.d/direnv.fish"
