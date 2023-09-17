@@ -334,6 +334,25 @@ M.setup = function()
 
 	ls.add_snippets('markdown', {
 		s('qso', { t('{{% qso '), i(1), t(' %}}') }),
+		s('motion', {
+			t('{{< motion "'), i(1, "to do ..."), t('" '), i(2, 'mover'), t(' '),
+			c(3, {
+				t('/>}}'),
+				sn(nil, {
+					i(1, 'seconder'), t(' "'), i(3, 'outcome'),
+					t('" '),
+					c(2, {
+						t('/>}}'),
+						sn(nil, {
+							t({'>}}', '\t'}), i(1, 'discussion'), t({'', '{{</ motion >}}'}),
+						}),
+					}),
+				}),
+				sn(nil, {
+					t({'>}}', '\t'}), i(1, 'discussion'), t({'', '{{</ motion >}}'}),
+				}),
+			}),
+		}),
 		s('sup', { t('<sup>'), i(1), t('</sup>') }),
 		s('sub', { t('<sub>'), i(1), t('</sub>') }),
 		s({
