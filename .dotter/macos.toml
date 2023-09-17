@@ -1,5 +1,8 @@
-[nushell.files]
-"nushell" = "~/Library/Application Support/nushell"
-
 [homebrew.variables]
 homebrew_prefix = "/opt/homebrew"
+
+[latex.files]
+"latex/packages" = { target = "~/.local/opt/texmf/tex/latex", type = "symbolic" }
+
+[nushell.files]
+"nushell" = "~/Library/Application Support/nushell"
