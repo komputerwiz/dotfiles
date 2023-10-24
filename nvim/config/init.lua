@@ -25,7 +25,7 @@ require('paq')({
 	'simrat39/symbols-outline.nvim',
 	{
 		'nvim-treesitter/nvim-treesitter',
-		run = function()
+		build = function()
 			vim.cmd('TSUpdate')
 		end,
 	},
@@ -46,7 +46,7 @@ require('paq')({
 
 	'nvim-telescope/telescope.nvim',
 	'nvim-telescope/telescope-file-browser.nvim',
-	{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
 	-- }}}
 	-- {{{ lsp/dap integration
@@ -77,13 +77,11 @@ require('paq')({
 	-- {{{ syntax/filetype
 
 	'dag/vim-fish', -- fish
-	'jparise/vim-graphql', -- graphql
-	-- 'leafgarland/typescript-vim', -- typescript (now built-in)
-	'lumiliet/vim-twig', -- twig, htmltwig
-	'nblock/vim-dokuwiki', -- dokuwiki
-	'neoclide/jsonc.vim', -- jsonc
-	-- 'peitalin/vim-jsx-typescript', -- typescriptreact (now built-in)
-	'vim-pandoc/vim-criticmarkup', -- criticmarkup
+	{ 'jparise/vim-graphql', as = 'graphql', opt = true },
+	{ 'lumiliet/vim-twig', as = 'twig', opt = true },
+	{ 'nblock/vim-dokuwiki', as = 'dokuwiki', opt = true },
+	{ 'neoclide/jsonc.vim', as = 'jsonc', opt = true },
+	{ 'vim-pandoc/vim-criticmarkup', as = 'criticmarkup', opt = true },
 
 	-- }}}
 
