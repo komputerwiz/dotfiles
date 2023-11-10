@@ -568,7 +568,6 @@ tsconfigs.setup({
 		'gowork',
 		'graphql',
 		'haskell',
-		'help',
 		'html',
 		'http',
 		'java',

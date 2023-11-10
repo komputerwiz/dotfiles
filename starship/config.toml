@@ -1,5 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+[battery]
+disabled = true
+
 [directory]
 truncate_to_repo = false
 
