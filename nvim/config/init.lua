@@ -18,10 +18,12 @@ require('paq')({
 	'chrisgrieser/nvim-spider',
 	'cpea2506/relative-toggle.nvim',
 	'kyazdani42/nvim-web-devicons',
+	'kylechui/nvim-surround',
 	'L3MON4D3/LuaSnip',
 	'lewis6991/gitsigns.nvim',
 	'nvim-lua/plenary.nvim',
 	'nvim-lualine/lualine.nvim',
+	'stevearc/oil.nvim',
 	'simrat39/symbols-outline.nvim',
 	{
 		'nvim-treesitter/nvim-treesitter',
@@ -71,7 +73,6 @@ require('paq')({
 	'tpope/vim-commentary',
 	'tpope/vim-fugitive',
 	'tpope/vim-repeat',
-	'tpope/vim-surround',
 	'tpope/vim-unimpaired',
 
 	-- {{{ syntax/filetype
@@ -166,6 +167,8 @@ local lualine = require('lualine')
 local luasnip = require('luasnip')
 local mason = require('mason')
 local mason_registry = require('mason-registry')
+local oil = require('oil')
+local surround = require('nvim-surround')
 local telescope = require('telescope')
 local telescope_builtin = require('telescope.builtin')
 local tsconfigs = require('nvim-treesitter.configs')
@@ -543,6 +546,11 @@ dap.listeners.after.event_exited['dapui_config'] = function ()
 end
 
 -- }}}
+-- {{{ nvim-surround
+
+surround.setup()
+
+-- }}}
 -- {{{ nvim-treesitter
 
 tsconfigs.setup({
@@ -613,6 +621,11 @@ tsconfigs.setup({
 })
 
 vim.treesitter.language.register('twig', 'html.twig') -- use 'twig' parser to handle 'html.twig' filetype
+
+-- }}}
+-- {{{ oil
+
+oil.setup()
 
 -- }}}
 -- {{{ rust (built-in)
