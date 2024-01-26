@@ -41,7 +41,6 @@ require('paq')({
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/cmp-path',
 	'saadparwaiz1/cmp_luasnip',
-	'uga-rosa/cmp-dictionary',
 
 	-- }}}
 	-- {{{ telescope family
@@ -157,7 +156,6 @@ vim.opt.wrap = false
 local autopairs = require('nvim-autopairs')
 local cmp = require('cmp')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local cmp_dictionary = require('cmp_dictionary')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local dap = require('dap')
 local dap_ext_vscode = require('dap.ext.vscode')
@@ -474,14 +472,6 @@ do
 
 	-- automatically insert `(` after autocompleting a function or method
 	cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-
-	cmp_dictionary.setup({})
-
-	cmp_dictionary.switcher({
-		filetype = {
-			markdown = vim.fn.expand('$HOME/callsigns.dict'),
-		},
-	})
 end
 
 -- }}}
