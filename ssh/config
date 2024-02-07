@@ -20,10 +20,16 @@ Host falcon
 HostName 166.78.156.85
 Port 22
 User ubuntu
+IdentityFile ~/.ssh/rackspace
 
 Host tcat
 #HostName mbarry.citd.tamu.edu
 HostName tcat.komputerwiz.net
 Port 22
 User matthew.barry
+ForwardAgent yes
+
+Host *.citd.tamu.edu
+User mbarry-admin2
+LogLevel error
 ForwardAgent yes
