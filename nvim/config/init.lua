@@ -1158,6 +1158,21 @@ vim.g.tex_flavor = 'latex'
 -- }}}
 -- {{{ language server (LSP) config
 
+-- clangd
+-- codelldb
+-- emmet-ls
+-- grammarly-languageserver
+-- intelephense
+-- jdtls
+-- lemminx
+-- lua-language-server
+-- prettierd
+-- pyright
+-- rust-analyzer
+-- stylua
+-- texlab
+-- typescript-language-server
+
 do
 	local capabilities = cmp_nvim_lsp.default_capabilities()
 
