@@ -2,7 +2,7 @@
 #   set -x (gnome-keyring-daemon --start | string split '=')
 # end
 
-set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/keyring/ssh
+set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/gcr/ssh
 
 # "equivalent" programs
 alias dig='drill'
