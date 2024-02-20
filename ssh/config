@@ -33,3 +33,8 @@ Host *.citd.tamu.edu
 User mbarry-admin2
 LogLevel error
 ForwardAgent yes
+
+Host *.textrac.star.tamu.edu
+User textrac
+LogLevel error
+IdentityFile ~/.ssh/textrac/textrac
