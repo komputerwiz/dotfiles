@@ -23,14 +23,15 @@ require('paq')({
 	'lewis6991/gitsigns.nvim',
 	'nvim-lua/plenary.nvim',
 	'nvim-lualine/lualine.nvim',
-	'stevearc/oil.nvim',
-	'simrat39/symbols-outline.nvim',
 	{
 		'nvim-treesitter/nvim-treesitter',
 		build = function()
 			vim.cmd('TSUpdate')
 		end,
 	},
+	'stevearc/oil.nvim',
+	'simrat39/symbols-outline.nvim',
+	'Tsuzat/NeoSolarized.nvim',
 	'windwp/nvim-autopairs',
 
 	-- {{{ cmp family
@@ -67,7 +68,6 @@ require('paq')({
 	'junegunn/vim-easy-align',
 	'nelstrom/vim-visual-star-search',
 	'ntpeters/vim-better-whitespace',
-	'overcache/NeoSolarized',
 	'tpope/vim-abolish',
 	'tpope/vim-commentary',
 	'tpope/vim-fugitive',
@@ -157,6 +157,7 @@ local luasnip = require('luasnip')
 local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
 local mason_registry = require('mason-registry')
+local neosolarized = require('NeoSolarized')
 local oil = require('oil')
 local surround = require('nvim-surround')
 local telescope = require('telescope')
@@ -823,18 +824,24 @@ vim.g.netrw_winsize = 25
 
 -- NOTE: commented options represent default values
 
--- font styles
--- vim.g.neosolarized_bold = 1
-vim.g.neosolarized_italic = 1
--- vim.g.neosolarized_underline = 1
-
--- appearance
--- vim.g.neosolarized_contrast = 'normal'
--- vim.g.neosolarized_diffmode = 'normal'
--- vim.g.neosolarized_termBoldAsBright = 1
--- vim.g.neosolarized_termtrans = 0
--- vim.g.neosolarized_visibility = 'normal'
--- vim.g.neosolarized_vertSplitBgTrans = 1
+neosolarized.setup({
+	-- style = 'dark',
+	-- transparent = true,
+	-- terminal_colors = true,
+	-- enable_italics = true,
+	-- styles = {
+	-- 	comments = { italic = true },
+	-- 	keywords = { italic = true },
+	-- 	functions = { bold = true },
+	-- 	variables = {},
+	-- 	string = { italic = true },
+	-- 	underline = true,
+	-- 	undercurl = true,
+	-- },
+	on_highlights = function(highlights, colors)
+		highlights.ColorColumn.bg = colors.bg1
+	end,
+})
 
 -- }}}
 -- {{{ nvim-autopairs
@@ -1368,7 +1375,13 @@ end
 -- }}}
 -- {{{ syntax highlighting
 
-vim.cmd('colorscheme NeoSolarized')
+vim.cmd [[
+	try
+		colorscheme NeoSolarized
+	catch /.*/
+		colorscheme default
+	endtry
+]]
 
 -- force whitespace highlighting to look like comments
 vim.cmd([[
