@@ -545,7 +545,7 @@ do
 			}),
 			t('class '),
 			filename_node(3, 'MyClass'),
-			-- f(function (args) return table.concat(args[1]):gsub('..*', ' ') end, 1),
+			-- f(function(args) return table.concat(args[1]):gsub('..*', ' ') end, 1),
 			c(4, {
 				t(''),
 				sn(nil, {
@@ -994,7 +994,7 @@ if mason_registry.is_installed('codelldb') then
 			name = 'Launch file',
 			type = 'codelldb',
 			request = 'launch',
-			program = function ()
+			program = function()
 				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
 			end,
 			cwd = '${workspaceFolder}',
@@ -1009,15 +1009,15 @@ end
 
 dap_ui.setup()
 
-dap.listeners.after.event_initialized['dapui_config'] = function ()
+dap.listeners.after.event_initialized['dapui_config'] = function()
 	dap_ui.open()
 end
 
-dap.listeners.after.event_terminated['dapui_config'] = function ()
+dap.listeners.after.event_terminated['dapui_config'] = function()
 	dap_ui.close()
 end
 
-dap.listeners.after.event_exited['dapui_config'] = function ()
+dap.listeners.after.event_exited['dapui_config'] = function()
 	dap_ui.close()
 end
 
@@ -1321,7 +1321,7 @@ do
 			})
 		end,
 		-- }}}
-		grammarly = function () -- {{{
+		grammarly = function() -- {{{
 			lspconfig.grammarly.setup({
 				filetypes = {
 					'*markdown*',
