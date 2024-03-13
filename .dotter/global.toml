@@ -433,6 +433,29 @@ depends = ["fish", "ytdl"]
 
 
 # }}}
+# zoxide {{{
+
+[zoxide]
+
+[zoxide-bash]
+depends = ["bash", "zoxide"]
+
+[zoxide-bash.files]
+"zoxide/init.bash" = "~/.config/bash/rc.d/90-zoxide.sh"
+
+[zoxide-fish]
+depends = ["fish", "zoxide"]
+
+[zoxide-fish.files]
+"zoxide/init.fish" = "~/.config/fish/conf.d/90-zoxide.fish"
+
+[zoxide-zsh]
+depends = ["zoxide", "zsh"]
+
+[zoxide-zsh.files]
+"zoxide/plugin.zsh" = "~/.zsh/plugins.d/zoxide.zsh"
+
+#}}}
 # zsh {{{
 
 [zsh]
