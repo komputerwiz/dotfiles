@@ -169,6 +169,7 @@ local tsconfigs = require('nvim-treesitter.configs')
 
 vim.keymap.set('n', '<Leader>cd', '<Cmd>cd %:p:h<CR><Cmd>pwd<CR>')
 vim.keymap.set('n', '<Leader>fb', telescope_builtin.buffers)
+vim.keymap.set('n', '<Leader>fd', telescope_builtin.diagnostics)
 vim.keymap.set('n', '<Leader>fe', telescope.extensions.file_browser.file_browser)
 vim.keymap.set('n', '<Leader>ff', telescope_builtin.find_files)
 vim.keymap.set('n', '<Leader>fg', telescope_builtin.live_grep)
@@ -1269,7 +1270,7 @@ do
 		bmap('n', '<Leader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
 		bmap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 		bmap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-		bmap('n', '<Leader>q', '<Cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
+		bmap('n', '<Leader>q', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 		-- }}}
 
