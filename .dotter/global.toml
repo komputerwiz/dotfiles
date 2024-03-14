@@ -90,6 +90,12 @@ depends = ["direnv", "fish"]
 [direnv-fish.files]
 "direnv/init.fish" = "~/.config/fish/conf.d/direnv.fish"
 
+[direnv-zsh]
+depends = ["direnv", "zsh"]
+
+[direnv-zsh.files]
+"direnv/plugin.zsh" = "~/.zsh/plugins.d/direnv.zsh"
+
 # }}}
 # duplicity {{{
 
@@ -369,6 +375,12 @@ depends = ["fish", "starship"]
 [starship-fish.files]
 "starship/init.fish" = "~/.config/fish/conf.d/90-starship.fish"
 
+[starship-zsh]
+depends = ["starship", "zsh"]
+
+[starship-zsh.files]
+"starship/init.zsh" = "~/.zsh/rc.d/90-starship.zsh"
+
 # }}}
 # tmux {{{
 
@@ -464,7 +476,7 @@ depends = ["updater"]
 [zsh.files]
 "zsh/antigenrc" = "~/.zsh/antigenrc"
 "zsh/plugins" = "~/.zsh/plugins"
-"zsh/themes" = "~/.zsh/themes"
+#"zsh/themes" = "~/.zsh/themes"
 "zsh/update.zsh" = "~/.config/update.d/50-zsh.zsh"
 "zsh/zlogin" = "~/.zlogin"
 "zsh/zlogout" = "~/.zlogout"

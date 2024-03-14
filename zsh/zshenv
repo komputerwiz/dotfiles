@@ -14,7 +14,7 @@
 umask 022
 
 # other environment variables
-export EDITOR="vim"
+export EDITOR="{{editor}}"
 
 # set antigen install path
 export ADOTDIR="$HOME/.zsh/antigen"

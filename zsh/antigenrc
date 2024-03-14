@@ -24,7 +24,7 @@ antigen bundle zsh-users/zsh-autosuggestions # must be loaded before syntax high
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search # must be loaded after syntax highlighting
 
-antigen theme "$HOME/.zsh/themes" komputerwiz
+#antigen theme "$HOME/.zsh/themes" komputerwiz
 
 antigen apply
 
