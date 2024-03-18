@@ -29,7 +29,7 @@ Port 22
 User matthew.barry
 ForwardAgent yes
 
-Host *.citd.tamu.edu
+Host *.citd.tamu.edu *.tcat.tamu.edu
 User mbarry-admin2
 LogLevel error
 ForwardAgent yes
