@@ -215,6 +215,12 @@ depends = ["bash", "n"]
 n_prefix = "$HOME/.local/opt/n"
 
 # }}}
+# nix {{{
+
+[nix.files]
+"nix" = "~/.config/nix"
+
+# }}}
 # npm {{{
 
 [npm]
