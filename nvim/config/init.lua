@@ -58,6 +58,7 @@ require('paq')({
 	'mfussenegger/nvim-dap',
 	'neovim/nvim-lspconfig',
 	'rcarriga/nvim-dap-ui',
+	'nvim-neotest/nvim-nio', -- required for nvim-dap-ui
 
 	-- }}}
 
