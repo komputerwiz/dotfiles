@@ -1342,9 +1342,10 @@ do
 			lspconfig.grammarly.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
+				cmd = { 'n', 'run', '16', vim.fn.stdpath('data') .. '/mason/bin/grammarly-languageserver', '--stdio' },
 				filetypes = {
 					'*markdown*',
-					'tex',
+					'*tex*',
 				},
 				init_options = {
 					grammarly = {
