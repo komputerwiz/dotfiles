@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=conky
-GenericName=Conky
-Comment=Geeky Desktop Stats
-Exec=sh -c "sleep 10 && conky"
-Terminal=false
-Type=Application
-Categories=System;Utility;
-StartupNotify=false

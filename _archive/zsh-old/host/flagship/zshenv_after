@@ -1,6 +1,0 @@
-# zshenv for flagship (post-load)
-
-
-### ENVIRONMENT VARIABLES AND OTHER OPTIONS ###
-
-umask 002

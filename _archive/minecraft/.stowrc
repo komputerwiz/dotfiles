@@ -1,6 +1,0 @@
---target ../..
---ignore .DS_Store
---ignore .*.example
---ignore ^@.*
---ignore README.*
---ignore .gitignore

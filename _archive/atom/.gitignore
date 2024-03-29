@@ -1,9 +1,0 @@
-/packages/*
-!/packages/packages.cson
-/storage/*
-/compile-cache/*
-/dev/*
-/.apm/*
-/.npm/*
-/.node-gyp/*
-/nohup.out

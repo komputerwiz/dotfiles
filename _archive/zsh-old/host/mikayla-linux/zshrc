@@ -1,6 +1,0 @@
-plugins=("${plugins[@]}"
-    archlinux
-)
-
-# One Vim ... just one (http://www.derekwyatt.org/vim/vim-tutorial-videos/vim-intermediate-tutorial-videos/#onevim)
-alias gv='gvim --remote-silent'

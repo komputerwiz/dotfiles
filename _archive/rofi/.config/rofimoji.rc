@@ -1,4 +1,0 @@
-action = clipboard
-skin-tone = neutral
-prompt = emoji
-files = [emojis, arrows, box_drawing, latin-1_supplement, latin_extended-a, latin_extended-b, latin_extended-c, latin_extended-d, latin_extended-e, latin_extended_additional, greek_and_coptic, mathematical_operators, /home/matthew/.config/rofimoji.list]

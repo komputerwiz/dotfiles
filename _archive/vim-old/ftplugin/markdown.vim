@@ -1,1 +1,0 @@
-setlocal makeprg=markdown\ %\ >\ %<.html
