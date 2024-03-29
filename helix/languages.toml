@@ -12,5 +12,5 @@ indent = { tab-width = 2, unit = "\t" }
 [language-servers.intelephense]
 command = "intelephense"
 args = ["--stdio"]
-config = { licenseKey = "XXXXXXXXXXXXXXX" }
+config = { licenseKey = "{{intelephense_license_key}}" }
 

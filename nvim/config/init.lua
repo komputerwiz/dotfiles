@@ -1348,6 +1348,8 @@ do
 					'*tex*',
 				},
 				init_options = {
+					-- this is set in sysetm.vim from dotter variables in local.toml
+					clientId = vim.g.grammarly_client_id,
 					grammarly = {
 						config = {
 							suggestions = {
@@ -1370,7 +1372,8 @@ do
 				on_attach = on_attach,
 				capabilities = capabilities,
 				init_options = {
-					licenseKey = 'XXXXXXXXXXXXXXX',
+					-- this is set in sysetm.vim from dotter variables in local.toml
+					licenseKey = vim.g.intelephense_license_key,
 					globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense',
 				},
 			})
