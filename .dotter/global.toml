@@ -453,7 +453,8 @@ depends = ["fish", "ytdl"]
 # }}}
 # zoxide {{{
 
-[zoxide]
+[zoxide.variables]
+zoxide_command = "z"
 
 [zoxide-bash]
 depends = ["bash", "zoxide"]
