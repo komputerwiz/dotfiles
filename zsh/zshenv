@@ -24,8 +24,6 @@ export ADOTDIR="$HOME/.zsh/antigen"
 
 [ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
 
-export PATH="$PATH:."
-
 
 ### LOAD ADDITIONAL LOCAL FILES ###
 

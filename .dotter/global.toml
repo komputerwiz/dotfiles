@@ -184,6 +184,12 @@ depends = ["homebrew", "fish"]
 [homebrew-fish.files]
 "homebrew/init.fish" = "~/.config/fish/conf.d/10-homebrew.fish"
 
+[homebrew-zsh]
+depends = ["homebrew", "zsh"]
+
+[homebrew-zsh.files]
+"homebrew/init.zsh" = "~/.zsh/env.d/10-homebrew.zsh"
+
 # }}}
 # latex {{{
 
@@ -205,14 +211,20 @@ depends = ["updater"]
 [n.files]
 "n/update.sh" = "~/.config/update.d/50-n.sh"
 
+[n.variables]
+n_prefix = "$HOME/.local/opt/n"
+
 [n-bash]
 depends = ["bash", "n"]
 
 [n-bash.files]
 "n/env.bash" = "~/.config/bash/env.d/50-n.sh"
 
-[n-bash.variables]
-n_prefix = "$HOME/.local/opt/n"
+[n-zsh]
+depends = ["n", "zsh"]
+
+[n-zsh.files]
+"n/env.zsh" = "~/.zsh/env.d/50-n.zsh"
 
 # }}}
 # nix {{{
@@ -332,15 +344,21 @@ depends = ["updater"]
 [rustup.files]
 "rustup/update.sh" = "~/.config/update.d/50-rustup.sh"
 
+[rustup.variables]
+rustup_home = "$HOME/.local/opt/rustup"
+cargo_home = "$HOME/.local/opt/cargo"
+
 [rustup-bash]
 depends = ["bash", "rustup"]
 
 [rustup-bash.files]
 "rustup/env.bash" = "~/.config/bash/env.d/50-rustup.sh"
 
-[rustup-bash.variables]
-rustup_home = "$HOME/.local/opt/rustup"
-cargo_home = "$HOME/.local/opt/cargo"
+[rustup-zsh]
+depends = ["rustup", "zsh"]
+
+[rustup-zsh.files]
+"rustup/env.zsh" = "~/.zsh/env.d/50-rustup.zsh"
 
 # }}}
 # snap {{{
