@@ -1433,6 +1433,20 @@ vim.cmd([[
 ]])
 
 -- }}}
+-- {{{ file associations
+
+vim.filetype.add({
+	extension = {
+		cshtml = 'html.cs',
+		gabc = 'gabc',
+		hujson = 'jsonc',
+	},
+	filename = {
+		Jenkinsfile = 'groovy',
+	},
+})
+
+-- }}}
 -- {{{ automatically source file after editing
 
 vim.cmd([[
