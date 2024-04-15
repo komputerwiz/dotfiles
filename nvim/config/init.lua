@@ -1444,6 +1444,9 @@ vim.filetype.add({
 	filename = {
 		Jenkinsfile = 'groovy',
 	},
+	pattern = {
+		['.*/ansible/.*%.yml'] = 'yaml.ansible',
+	},
 })
 
 -- }}}
