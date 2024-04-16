@@ -1200,9 +1200,12 @@ vim.g.tex_flavor = 'latex'
 -- }}}
 -- {{{ language server (LSP) config
 
+-- {{{ list of installed/recommended language servers
+
+-- ansible-language-server
 -- clangd
 -- codelldb
--- emmet-ls
+-- emmet-language-server
 -- grammarly-languageserver
 -- intelephense
 -- jdtls
@@ -1214,6 +1217,8 @@ vim.g.tex_flavor = 'latex'
 -- stylua
 -- texlab
 -- typescript-language-server
+
+-- }}}
 
 do
 	local capabilities = cmp_nvim_lsp.default_capabilities()
