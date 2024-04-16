@@ -14,14 +14,21 @@
 	rb = rebase
 	sm = submodule
 	st = status
+[branch]
+	sort = -committerdate
+[column]
+	ui = auto
 [core]
 	excludesfile = ~/.config/git/ignore
+	fsmonitor = true
+	untrackedcache = true
 [credential]
 	helper = cache --timeout=3600
 [diff]
 	tool = vimdiff
 [fetch]
 	prune = true
+	writeCommitGraph = true
 [github]
 	user = komputerwiz
 	
@@ -41,6 +48,9 @@
 [rebase]
 	autoSquash = true
 	autoStash = true
+	updateRefs = true
+[rerere]
+	enabled = true
 [user]
 	name = Matthew Barry
 	email = {{email}}
