@@ -412,6 +412,12 @@ depends = ["starship", "zsh"]
 "tmux/tmux.conf" = "~/.tmux.conf"
 
 # }}}
+# trash {{{
+
+[trash-macos-fish.files]
+"trash/macos/rm.fish" = "~/.config/fish/functions/rm.fish"
+
+# }}}
 # vim {{{
 
 [vim]
