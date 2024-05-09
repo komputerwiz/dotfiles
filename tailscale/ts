@@ -1,0 +1,115 @@
+#!/bin/bash
+set -e
+
+tailscale_cmd() {
+	CMD="${TS_TAILSCALE_CMD:-tailscale}"
+	if [[ "${TS_USE_SUDO:-0}" -eq 1 ]]; then
+		sudo "$CMD" "$@"
+	else
+		"$CMD" "$@"
+	fi
+}
+
+get_available_tailnets() {
+	tailscale_cmd switch --list 2>/dev/null | tail +2 | awk '{print $3}' | sed -e 's/\*$//'
+}
+
+get_current_tailnet() {
+	tailscale_cmd switch --list 2>/dev/null | tail +2 | awk '{print $3}' | grep '\*$' | sed -e 's/\*$//'
+}
+
+# outputs lines in the following format:
+# name:str active:bool online:bool is_exit_node:bool offers_exit_node:bool
+get_peers() {
+	tailscale_cmd status --json 2>/dev/null | jq -r '.Peer|map([.DNSName,.Active,.Online,.ExitNode,.ExitNodeOption]|join(" "))[]'
+}
+
+get_exit_nodes() {
+	tailscale_cmd status --json 2>/dev/null | jq -r '.Peer[]|select(.ExitNodeOption).DNSName'
+}
+
+is_tunnel_active() {
+	[[ "$(tailscale_cmd status --json 2>/dev/null | jq -r '.Peer[]|select(.ExitNode).DNSName' | wc -l)" -gt 0 ]]
+}
+
+print_status() {
+	echo "AVAILABLE TAILNETS:"
+	get_available_tailnets | while read TAILNET; do
+		if [[ "$TAILNET" = "$(get_current_tailnet)" ]]; then
+			echo -e "  - \e[1;33m$TAILNET\e[0m (current)"
+		else
+			echo "  - $TAILNET"
+		fi
+	done
+
+	echo
+	echo "CURRENT PEERS:"
+	get_peers | while read NAME ACTIVE ONLINE IS_EXIT_NODE OFFERS_EXIT_NODE; do
+		echo -n "  "
+		if [[ "$ONLINE" = "true" ]]; then
+			echo -en "\e[32monline\e[0m   $NAME"
+		else
+			echo -en "\e[31moffline\e[0m  \e[2m$NAME\e[0m"
+		fi
+		if [[ "$OFFERS_EXIT_NODE" = "true" ]]; then
+			echo -n " (exit node"
+			if [[ "$IS_EXIT_NODE" = "true" ]]; then
+				echo -en "; \e[33mactive\e[0m"
+			fi
+			echo -n ")"
+		fi
+		echo
+	done
+}
+
+main() {
+	if [[ "$#" -eq 0 ]]; then
+		print_status
+	elif [[ "$1" = "tunnel" ]]; then
+		if is_tunnel_active; then
+			echo "Deactivating tunnel..."
+			tailscale_cmd set --exit-node ""
+		else
+			AVAILABLE_EXIT_NODES=($(get_exit_nodes))
+			case "${#AVAILABLE_EXIT_NODES[@]}" in
+				0)
+					echo "No exit nodes available" >&2
+					exit 1
+					;;
+				1)
+					EXIT_NODE="${AVAILABLE_EXIT_NODES[0]}"
+					;;
+				*)
+					echo "Available exit nodes:"
+					IDX=1;
+					for NAME in "${AVAILABLE_EXIT_NODES[@]}"; do
+						echo "$IDX. $NAME"
+						IDX=$(expr $IDX + 1)
+					done
+					echo
+					read -p "Your selection (empty cancels): " IDX
+					if [[ -z "$IDX" ]]; then
+						exit 0
+					fi
+					IDX=$(expr $IDX - 1 || true)
+					EXIT_NODE="${AVAILABLE_EXIT_NODES[$IDX]}"
+					;;
+			esac
+
+			if [[ -z "$EXIT_NODE" ]]; then
+				echo "No exit node selected" >&2
+				exit 1
+			fi
+
+			echo "Activating tunnel to $EXIT_NODE..."
+			tailscale_cmd set --exit-node "$EXIT_NODE"
+		fi
+	elif [[ "$#" -eq 1 ]] && [[ -n "$(get_available_tailnets | grep "^$1\$")" ]]; then
+		tailscale_cmd switch "$1"
+	else
+		tailscale_cmd "$@"
+	fi
+
+}
+
+main "$@"

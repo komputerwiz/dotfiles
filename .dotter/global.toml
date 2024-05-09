@@ -406,6 +406,12 @@ depends = ["starship", "zsh"]
 "starship/init.zsh" = "~/.zsh/rc.d/90-starship.zsh"
 
 # }}}
+# tailscale {{{
+
+[tailscale.files]
+"tailscale/ts" = "~/.local/bin/ts"
+
+# }}}
 # tmux {{{
 
 [tmux.files]
