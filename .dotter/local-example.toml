@@ -1,0 +1,142 @@
+includes = [
+	# ".dotter/linux.toml",
+	# ".dotter/macos.toml",
+	# ".dotter/windows.toml",
+]
+
+# See definitions in `global.toml` for details
+packages = [
+	## Base OS
+
+	# "archlinux",
+	# "archlinux-fish",
+	# "debian",
+	# "macos",
+	# "macos-zsh",
+	# "ubuntu",
+
+
+	## Shells
+
+	# "bash",
+	# "fish",
+	# "fish-prompt",
+	# "nushell",
+	# "zsh",
+
+
+	## Package Managers
+
+	# "apt",
+
+	# "flatpak",
+
+	# "homebrew",
+	# "homebrew-bash",
+	# "homebrew-fish",
+	# "homebrew-zsh",
+
+	# "nix",
+
+	# "pacman",
+
+	# "snap",
+
+
+	## Other Packages
+
+	# "direnv",
+	# "direnv-bash",
+	# "direnv-fish",
+	# "direnv-zsh",
+
+	# "duplicity",
+
+	# "eclipse",
+
+	# "gem",
+	# "gem-zsh",
+
+	# "git",
+
+	# "helix",
+
+	# "latex",
+
+	# "mpv",
+
+	# "n",
+	# "n-bash",
+	# "n-zsh",
+
+	# "npm",
+
+	# "nvim",
+
+	# "php-dev-fish",
+	# "php-dev-zsh",
+
+	# "pyv-fish",
+	# "pyv-zsh",
+
+	# "rbenv",
+	# "rbenv-bash",
+	# "rbenv-fish",
+	# "rbenv-zsh",
+
+	# "rustup-bash",
+	# "rustup-zsh",
+	# "rustup",
+
+	# "ssh",
+
+	# "starship",
+	# "starship-updater",
+	# "starship-bash",
+	# "starship-fish",
+	# "starship-zsh",
+
+	# "tailscale",
+
+	# "tmux",
+
+	# "trash-macos-fish",
+
+	# "vim",
+
+	# "watson",
+	# "watson-fish",
+	# "watson-zsh",
+
+	# "vscode-fish",
+
+	# "ytdl",
+	# "ytdl-updater",
+	# "ytdl-fish",
+
+	# "zoxide",
+	# "zoxide-bash",
+	# "zoxide-fish",
+	# "zoxide-zsh",
+
+}
+
+[files]
+"_host/foobar/bin" = "~/.local/bin"
+
+[variables]
+# editor = "vim"
+# email = "komputerwiz.matt@gmail.com"
+
+# cargo_home = "$HOME/.local/opt/cargo"
+# duplicity_gpg_passphrase = "..."
+# duplicity_target_url = "..."
+# grammarly_client_id = "..."
+# intelephense_license_key = "..."
+# n_prefix = "$HOME/.local/opt/n"
+# nvim_python3 = "/usr/bin/python3"
+# nvim_ruby = "/usr/bin/neovim-ruby-host"
+# nvim_shell = "/bin/bash"
+# rbenv_root = "$HOME/.local/opt/rbenv"
+# rustup_home = "$HOME/.local/opt/rustup"
+# zoxide_command = "z"
