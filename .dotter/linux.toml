@@ -1,2 +1,6 @@
+[eclipse.files]
+"eclipse/icon.svg" = "~/.local/share/icons/hicolor/scalable/apps/eclipse.svg"
+"eclipse/eclipse.desktop" = "~/.local/share/applications/eclipse.desktop"
+
 [homebrew.variables]
 homebrew_prefix = "/home/linuxbrew/.linuxbrew"

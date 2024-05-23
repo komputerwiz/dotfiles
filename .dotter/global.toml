@@ -106,6 +106,11 @@ depends = ["direnv", "zsh"]
 duplicity_target_url = "sftp://matthew@nymbus.home.komputerwiz.net//mnt/zfs/orca/files/backup/%H/duplicity/%i"
 
 # }}}
+# {{{ eclipse 
+
+[eclipse]
+
+# }}}
 # fish {{{
 
 [fish]
