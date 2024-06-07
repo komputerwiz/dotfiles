@@ -118,11 +118,10 @@ packages = [
 	# "zoxide-bash",
 	# "zoxide-fish",
 	# "zoxide-zsh",
-
-}
+]
 
 [files]
-"_host/foobar/bin" = "~/.local/bin"
+# "_host/foobar/bin" = "~/.local/bin"
 
 [variables]
 # editor = "vim"
