@@ -1004,7 +1004,6 @@ if mason_registry.is_installed('codelldb') then
 
 	dap.adapters.lldb = dap.adapters.codelldb
 
-	--[[
 	dap.configurations.cpp = {
 		{
 			name = 'Launch file',
@@ -1020,7 +1019,6 @@ if mason_registry.is_installed('codelldb') then
 
 	dap.configurations.c = dap.configurations.cpp
 	dap.configurations.rust = dap.configurations.cpp
-	--]]
 end
 
 dap_ui.setup()
