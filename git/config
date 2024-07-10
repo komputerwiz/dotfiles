@@ -1,19 +1,27 @@
 [alias]
 	a = add
 	aa = add --all
-	br = branch
-	ci = commit
-	co = checkout
+	c = commit
 	cp = cherry-pick
 	d = diff
 	dc = diff --cached
 	dt = difftool
 	f = fetch
+	g = log --all --decorate --pretty=oneline-detailed --graph --date=iso
 	gc-all = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc
-	l = log --pretty=oneline-detailed --graph --all --decorate --date=iso
+	l = pull
+	m = merge
+	mc = merge --continue
+	ma = merge --abort
+	p = push
+	pf = push --force-with-lease
 	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	s = status
 	sm = submodule
-	st = status
+	sw = switch
+	swc = switch --create
 [branch]
 	sort = -committerdate
 [column]
