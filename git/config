@@ -1,6 +1,8 @@
 [alias]
 	a = add
 	aa = add --all
+	b = branch
+	bd = branch --delete
 	bl = blame -b -w -C -C -C
 	bs = bisect
 	bsb = bisect bad
