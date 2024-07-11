@@ -1443,6 +1443,7 @@ vim.filetype.add({
 		cshtml = 'html.cs',
 		gabc = 'gabc',
 		hujson = 'jsonc',
+		njk = 'htmldjango',
 	},
 	filename = {
 		Jenkinsfile = 'groovy',
