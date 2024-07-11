@@ -1,27 +1,50 @@
 [alias]
 	a = add
 	aa = add --all
-	c = commit
+	bl = blame -b -w -C -C -C
+	bs = bisect
+	bsb = bisect bad
+	bsg = bisect good
+	bsr = bisect reset
+	bss = bisect start
+	c = commit -v
+	ca = commit -v --amend
+	can = commit -v --amend --no-edit
 	cp = cherry-pick
+	cpa = cherry-pick --abort
+	cpc = cherry-pick --continue
 	d = diff
 	dc = diff --cached
 	dt = difftool
 	f = fetch
+	fa = fetch --all --prune --jobs=10
 	g = log --all --decorate --pretty=oneline-detailed --graph --date=iso
 	gc-all = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc
 	l = pull
+	ls = log --stat
+	lsp = log --stat -p
 	m = merge
-	mc = merge --continue
 	ma = merge --abort
+	mc = merge --continue
 	p = push
 	pf = push --force-with-lease
 	rb = rebase
 	rba = rebase --abort
 	rbc = rebase --continue
+	rbi = rebase --interactive
+	rbs = rebase -skip
+	rmc = rm --cached
+	rs = restore --staged
 	s = status
-	sm = submodule
+	sta = stash push
+	std = stash drop
+	stl = stash list
+	stp = stash pop
+	sts = stash show --text
 	sw = switch
 	swc = switch --create
+	y = apply
+	yr = apply --reverse
 [branch]
 	sort = -committerdate
 [column]
