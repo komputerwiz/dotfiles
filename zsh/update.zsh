@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-source "$ADOTDIR/antigen.zsh"
+source "$HOME/.zsh/antigen.zsh"
 antigen init "$HOME/.zsh/antigenrc"
 
 antigen cleanup
