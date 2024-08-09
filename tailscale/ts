@@ -11,7 +11,7 @@ tailscale_cmd() {
 }
 
 get_available_tailnets() {
-	tailscale_cmd switch --list 2>/dev/null | tail +2 | awk '{print $3}' | sed -e 's/\*$//'
+	tailscale_cmd switch --list 2>/dev/null | tail +2 | awk '{print $3}' | sed -e 's/\*$//' | sort
 }
 
 get_current_tailnet() {
@@ -21,7 +21,7 @@ get_current_tailnet() {
 # outputs lines in the following format:
 # name:str active:bool online:bool is_exit_node:bool offers_exit_node:bool
 get_peers() {
-	tailscale_cmd status --json 2>/dev/null | jq -r '.Peer|map([.DNSName,.Active,.Online,.ExitNode,.ExitNodeOption]|join(" "))[]'
+	tailscale_cmd status --json 2>/dev/null | jq -r '.Peer|to_entries|map(.value)|sort_by(.DNSName)|map([.DNSName,.Active,.Online,.ExitNode,.ExitNodeOption]|join(" "))[]'
 }
 
 get_exit_nodes() {
