@@ -16,6 +16,9 @@ umask 022
 # other environment variables
 export EDITOR="{{editor}}"
 
+# set antigen install path
+export ADOTDIR="$HOME/.zsh/antigen"
+
 
 ### GLOBAL PATHS ###
 

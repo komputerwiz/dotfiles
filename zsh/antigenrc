@@ -6,7 +6,7 @@ DISABLE_AUTO_TITLE=true
 
 ### ANTIGEN ###
 
-antigen use oh-my-zsh
+antigen use ohmyzsh/ohmyzsh
 
 for file in "$HOME"/.zsh/plugins.d/*.zsh(N); do source "$file"; done
 
