@@ -3,8 +3,8 @@ set -e
 
 tailscale_cmd() {
 	CMD="${TS_TAILSCALE_CMD:-tailscale}"
-	if [[ "${TS_USE_SUDO:-0}" -eq 1 ]]; then
-		sudo "$CMD" "$@"
+	if [[ -n "${TS_USE_SUDO}" ]]; then
+		"$TS_USE_SUDO" "$CMD" "$@"
 	else
 		"$CMD" "$@"
 	fi
