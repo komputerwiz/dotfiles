@@ -233,8 +233,12 @@ depends = ["n", "zsh"]
 # }}}
 # nix {{{
 
+[nix]
+depends = ["updater"]
+
 [nix.files]
-"nix" = "~/.config/nix"
+"nix/nix.conf" = "~/.config/nix/nix.conf"
+"nix/update.sh" = "~/.config/update.d/10-nix.sh"
 
 # }}}
 # npm {{{
