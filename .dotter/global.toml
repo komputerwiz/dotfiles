@@ -1,8 +1,59 @@
+# {{{ global updater and config loader priorities
+#
+# 10 - distro system package managers
+#
+# - apt
+# - homebrew
+# - pacman
+#
+# 15 third-party system package managers and software sources
+#
+# - aur
+# - nix
+#
+# 20 - system containerized app managers
+#
+# - flatpak
+# - snap
+#
+# 30 - user environment config
+#
+# - dotfiles
+#
+# 40 - runtime version managers
+#
+# - n
+# - rbenv
+#
+# 50 - user package managers
+#
+# - npm-global
+#
+# 60 - shell plugins
+#
+# - fish
+# - zsh
+# - starship (update)
+#
+# 80 - misc software and plugins
+#
+# - rustup
+# - vim
+# - ytdl
+# - nvim
+#
+# 90 - late-binding shell environment
+#
+# - starship (loading)
+# - zoxide (loading)
+#
+# }}}
+
 # update script {{{
 
 [updater.files]
 "update.sh" = "~/.local/bin/update.sh"
-"pull-and-deploy.sh" = "~/.config/update.d/45-dotfiles.sh"
+"pull-and-deploy.sh" = "~/.config/update.d/30-dotfiles.sh"
 
 # }}}
 
@@ -118,7 +169,7 @@ depends = ["updater"]
 
 [fish.files]
 "fish/config" = "~/.config/fish"
-"fish/update.fish" = "~/.config/update.d/50-fish.fish"
+"fish/update.fish" = "~/.config/update.d/60-fish.fish"
 
 # vanilla prompt {{{
 
@@ -213,7 +264,7 @@ mpv = "~/.config/mpv"
 depends = ["updater"]
 
 [n.files]
-"n/update.sh" = "~/.config/update.d/50-n.sh"
+"n/update.sh" = "~/.config/update.d/40-n.sh"
 
 [n.variables]
 n_prefix = "$HOME/.local/opt/n"
@@ -222,13 +273,13 @@ n_prefix = "$HOME/.local/opt/n"
 depends = ["bash", "n"]
 
 [n-bash.files]
-"n/env.bash" = "~/.config/bash/env.d/50-n.sh"
+"n/env.bash" = "~/.config/bash/env.d/40-n.sh"
 
 [n-zsh]
 depends = ["n", "zsh"]
 
 [n-zsh.files]
-"n/env.zsh" = "~/.zsh/env.d/50-n.zsh"
+"n/env.zsh" = "~/.zsh/env.d/40-n.zsh"
 
 # }}}
 # nix {{{
@@ -238,7 +289,7 @@ depends = ["updater"]
 
 [nix.files]
 "nix/nix.conf" = "~/.config/nix/nix.conf"
-"nix/update.sh" = "~/.config/update.d/10-nix.sh"
+"nix/update.sh" = "~/.config/update.d/15-nix.sh"
 
 # }}}
 # npm {{{
@@ -263,7 +314,7 @@ depends = ["updater"]
 
 [nvim.files]
 "nvim/config" = { target = "~/.config/nvim", type = "symbolic" }
-"nvim/update.sh" = "~/.config/update.d/50-nvim.sh"
+"nvim/update.sh" = "~/.config/update.d/80-nvim.sh"
 "nvim/system.vim" = "~/.config/nvim/plugin/system.vim"
 
 [nvim.variables]
@@ -319,14 +370,14 @@ depends = ["zsh"]
 depends = ["updater"]
 
 [rbenv.files]
-"rbenv/update.sh" = "~/.config/update.d/50-rbenv.sh"
+"rbenv/update.sh" = "~/.config/update.d/40-rbenv.sh"
 
 [rbenv-bash]
 depends = ["bash", "rbenv"]
 
 [rbenv-bash.files]
-"rbenv/env.bash" = "~/.config/bash/env.d/50-rbenv.sh"
-"rbenv/init.bash" = "~/.config/bash/rc.d/50-rbenv.sh"
+"rbenv/env.bash" = "~/.config/bash/env.d/40-rbenv.sh"
+"rbenv/init.bash" = "~/.config/bash/rc.d/40-rbenv.sh"
 
 [rbenv-bash.variables]
 rbenv_root = "$HOME/.local/opt/rbenv"
@@ -335,7 +386,7 @@ rbenv_root = "$HOME/.local/opt/rbenv"
 depends = ["fish", "rbenv"]
 
 [rbenv-fish.files]
-"rbenv/init.fish" = "~/.config/fish/conf.d/10-rbenv.fish"
+"rbenv/init.fish" = "~/.config/fish/conf.d/40-rbenv.fish"
 
 [rbenv-zsh]
 depends = ["rbenv", "zsh"]
@@ -350,7 +401,7 @@ depends = ["rbenv", "zsh"]
 depends = ["updater"]
 
 [rustup.files]
-"rustup/update.sh" = "~/.config/update.d/50-rustup.sh"
+"rustup/update.sh" = "~/.config/update.d/80-rustup.sh"
 
 [rustup.variables]
 rustup_home = "$HOME/.local/opt/rustup"
@@ -360,13 +411,13 @@ cargo_home = "$HOME/.local/opt/cargo"
 depends = ["bash", "rustup"]
 
 [rustup-bash.files]
-"rustup/env.bash" = "~/.config/bash/env.d/50-rustup.sh"
+"rustup/env.bash" = "~/.config/bash/env.d/80-rustup.sh"
 
 [rustup-zsh]
 depends = ["rustup", "zsh"]
 
 [rustup-zsh.files]
-"rustup/env.zsh" = "~/.zsh/env.d/50-rustup.zsh"
+"rustup/env.zsh" = "~/.zsh/env.d/80-rustup.zsh"
 
 # }}}
 # snap {{{
@@ -393,7 +444,7 @@ depends = ["updater"]
 depends = ["starship", "updater"]
 
 [starship-updater.files]
-"starship/install-or-update.sh" = "~/.config/update.d/50-starship.sh"
+"starship/install-or-update.sh" = "~/.config/update.d/60-starship.sh"
 
 [starship-bash]
 depends = ["bash", "starship"]
@@ -438,7 +489,7 @@ depends = ["starship", "zsh"]
 depends = ["updater"]
 
 [vim.files]
-"vim/update.sh" = "~/.config/update.d/50-vim.sh"
+"vim/update.sh" = "~/.config/update.d/80-vim.sh"
 "vim/runtime" = { target = "~/.vim", type = "symbolic" }
 "vim/vimrc" = { target = "~/.vimrc", type = "symbolic" }
 
@@ -478,7 +529,7 @@ depends = ["watson", "zsh"]
 depends = ["updater", "ytdl"]
 
 [ytdl-updater.files]
-"ytdl/update.sh" = "~/.config/update.d/50-ytdl.sh"
+"ytdl/update.sh" = "~/.config/update.d/80-ytdl.sh"
 
 
 [ytdl-fish]
@@ -522,7 +573,7 @@ depends = ["updater"]
 "zsh/antigenrc" = "~/.zsh/antigenrc"
 "zsh/plugins" = "~/.zsh/plugins"
 #"zsh/themes" = "~/.zsh/themes"
-"zsh/update.zsh" = "~/.config/update.d/50-zsh.zsh"
+"zsh/update.zsh" = "~/.config/update.d/60-zsh.zsh"
 "zsh/zlogin" = "~/.zlogin"
 "zsh/zlogout" = "~/.zlogout"
 "zsh/zprofile" = "~/.zprofile"
