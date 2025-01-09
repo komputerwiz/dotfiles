@@ -652,6 +652,7 @@ do
 	-- {{{ markdown
 
 	ls.add_snippets('markdown', {
+		s('qrz', { t('['), i(2, 'Good on QRZ'), t('](https://qrz.com/db/'), i(1, 'n0call'), t(')') }),
 		s('qso', { t('{{% qso '), i(1), t(' %}}') }),
 		s('motion', {
 			t('{{< motion "'), i(1, "to do ..."), t('" '), i(2, 'mover'), t(' '),
@@ -672,6 +673,7 @@ do
 				}),
 			}),
 		}),
+		s('rref', { t('['), i(1, 'text'), t(']({{< relref "'), i(2, 'href'), t('" >}})') }),
 		s('sup', { t('<sup>'), i(1), t('</sup>') }),
 		s('sub', { t('<sub>'), i(1), t('</sub>') }),
 		s({
