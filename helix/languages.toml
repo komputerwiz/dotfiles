@@ -14,3 +14,5 @@ command = "intelephense"
 args = ["--stdio"]
 config = { licenseKey = "{{intelephense_license_key}}" }
 
+[langauge-servers.rust-analyzer]
+command = "rust-analyzer"
