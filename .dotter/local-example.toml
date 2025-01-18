@@ -69,6 +69,8 @@ packages = [
 	# "n-bash",
 	# "n-zsh",
 
+	# "neovide",
+
 	# "npm",
 
 	# "nvim",

@@ -282,6 +282,15 @@ depends = ["n", "zsh"]
 "n/env.zsh" = "~/.zsh/env.d/40-n.zsh"
 
 # }}}
+# neovide {{{
+
+[neovide]
+depends = ["nvim"]
+
+[neovide.files]
+"nvim/neovide/config.toml" = "~/.config/neovide/config.toml"
+
+# }}}
 # nix {{{
 
 [nix]
