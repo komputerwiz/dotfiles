@@ -93,11 +93,12 @@ require('paq')({
 -- neovide gui {{{
 
 if vim.g.neovide then
-	vim.o.guifont = 'FiraCode Nerd Font:h9'
+	vim.o.guifont = 'Iosevka Nerd Font:h12'
 	vim.g.neovide_scale_factor = 1.0
 	vim.g.neovide_transparency = 1.0
 	vim.g.neovide_floating_blur_amount_x = 3.0
 	vim.g.neovide_floating_blur_amount_y = 3.0
+	vim.g.neovide_remember_window_size = true
 end
 
 -- }}}
