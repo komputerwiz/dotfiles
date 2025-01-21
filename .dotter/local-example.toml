@@ -29,6 +29,11 @@ packages = [
 
 	# "apt",
 
+	# "atuin",
+	# "atuin-bash",
+	# "atuin-fish",
+	# "atuin-zsh",
+
 	# "flatpak",
 
 	# "homebrew",

@@ -111,6 +111,30 @@ depends = ["updater"]
 "apt/update.sh" = "~/.config/update.d/10-apt.sh"
 
 # }}}
+# atuin {{{
+
+[atuin.files]
+"atuin/config.toml" = "~/.config/atuin/config.toml"
+
+[atuin-bash]
+depends = ["atuin"]
+
+[atuin-bash.files]
+"atuin/init.bash" = "~/.config/bash/rc.d/90-atuin.sh"
+
+[atuin-fish]
+depends = ["atuin"]
+
+[atuin-fish.files]
+"atuin/init.fish" = "~/.config/fish/conf.d/90-atuin.fish"
+
+[atuin-zsh]
+depends = ["atuin"]
+
+[atuin-zsh.files]
+"atuin/init.zsh" = "~/.zsh/rc.d/90-atuin.zsh"
+
+# }}}
 # bash {{{
 
 [bash.files]
