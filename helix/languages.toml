@@ -1,3 +1,20 @@
+[language-server.scls]
+command = "simple-completion-language-server"
+
+[language-server.scls.config]
+max_completion_items = 100
+feature_words = true
+feature_snippets = true
+snippets_first = true
+snippets_inline_by_word_tail = false
+feature_unicode_input = false
+feature_paths = false
+feature_citations = false
+
+[language-server.scls.environment]
+RUST_LOG = "info,simple-completion-language-server=info"
+LOG_FILE = "/tmp/hx-completion.log"
+
 [[language]]
 name = "php"
 indent = { tab-width = 2, unit = "\t" }
@@ -16,3 +33,7 @@ config = { licenseKey = "{{intelephense_license_key}}" }
 
 [langauge-servers.rust-analyzer]
 command = "rust-analyzer"
+
+[[language]]
+name = "markdown"
+language-servers = [ "scls" ]

@@ -1,0 +1,7 @@
+[[snippets]]
+prefix = "qrz"
+body = "[${2:Good on QRZ}](https://qrz.com/db/${1:n0call})"
+
+[[snippets]]
+prefix = "qso"
+body = "{{% qso $1 %}}"

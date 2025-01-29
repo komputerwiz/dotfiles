@@ -240,7 +240,7 @@ email = "komputerwiz.matt@gmail.com"
 # helix {{{
 
 [helix.files]
-"helix" = "~/.config/helix"
+"helix" = { target = "~/.config/helix", type = "symbolic" }
 
 # }}}
 # homebrew {{{
