@@ -111,11 +111,11 @@ packages = [
 
 	# "vim",
 
+	# "vscode-fish",
+
 	# "watson",
 	# "watson-fish",
 	# "watson-zsh",
-
-	# "vscode-fish",
 
 	# "ytdl",
 	# "ytdl-updater",
