@@ -3,6 +3,8 @@ set -e
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null && pwd)"
 
+VERSION="0.13.3"
+
 if [[ "$OSTYPE" == darwin* ]]; then
   OS=darwin
 elif [[ "$OSTYPE" == linux-gnu* ]]; then
@@ -15,9 +17,11 @@ if [[ "$ARCH" == "arm64" ]]; then
   ARCH=aarch64
 fi
 
-if test ! -x "$DIR/dotter-$OS-$ARCH"; then
+EXE="$DIR/dotter-$VERSION-$OS-$ARCH"
+
+if test ! -x "$EXE"; then
   echo "dotter exec not found for OS ($OS) and arch ($ARCH)" >&2
   exit 1
 fi
 
-"$DIR/dotter-$OS-$ARCH" "$@"
+"$EXE" "$@"
