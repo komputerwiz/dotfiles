@@ -29,11 +29,6 @@ packages = [
 
 	# "apt",
 
-	# "atuin",
-	# "atuin-bash",
-	# "atuin-fish",
-	# "atuin-zsh",
-
 	# "flatpak",
 
 	# "homebrew",
@@ -49,6 +44,14 @@ packages = [
 
 
 	## Other Packages
+
+	# NOTE: mutually exclusive with atuin
+	# "aliases",
+
+	# "atuin",
+	# "atuin-bash",
+	# "atuin-fish",
+	# "atuin-zsh",
 
 	# "direnv",
 	# "direnv-bash",

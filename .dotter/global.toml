@@ -102,6 +102,18 @@ depends = ["macos", "zsh"]
 
 # }}}
 
+# aliases {{{
+
+[aliases-bash.files]
+"aliases/aliases.bash" = "~/.config/bash/rc.d/10-aliases.sh"
+
+[aliases-fish.files]
+"aliases/aliases.fish" = "~/.config/fish/conf.d/10-aliases.fish"
+
+[aliases-zsh.files]
+"aliases/aliases.zsh" = "~/.zsh/rc.d/10-aliases.zsh"
+
+# }}}
 # apt {{{
 
 [apt]

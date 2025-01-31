@@ -102,6 +102,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# ALIASES
+
+alias v="$EDITOR"
+
+# NOTE: aliases handled by atuin and/or aliases module
+
+# ADDITIONAL MODULES
+
 for FILE in "${XDG_CONFIG_HOME:-"$HOME/.config"}/bash/rc.d/"*".sh"; do
   if test -f "$FILE"; then
     . "$FILE"

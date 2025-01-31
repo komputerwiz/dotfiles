@@ -10,6 +10,3 @@
 # using OpenSSH's ssh-agent until GCR can fix bug with ssh-add
 # systemctl enable --user ssh-agent.service
 set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
-
-# "equivalent" programs
-alias vim='nvim'

@@ -1,3 +1,26 @@
+# system {{{
+
+alias la='ls -aF'
+alias ll='ls -hlF'
+alias lal='ls -ahlF'
+alias lla='ls -ahlF'
+alias l='ls -F'
+
+#alias cp='cp -i'
+#alias mv='mv -i'
+
+# }}}
+# composer {{{
+
+alias c='composer'
+alias cu='composer update'
+alias cr='composer require'
+alias crm='composer remove'
+alias ci='composer install'
+alias ccp='composer create-project'
+
+# }}}
+# git {{{
 alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
@@ -55,3 +78,12 @@ alias gsw='git switch'
 alias gswc='git switch --create'
 alias gy='git apply'
 alias gyr='git apply --reverse'
+
+# }}}
+# watson {{{
+
+alias tt='watson'
+
+# }}}
+
+# vim: foldmethod=marker
