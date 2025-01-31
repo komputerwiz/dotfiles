@@ -288,17 +288,27 @@ depends = ["updater"]
 [homebrew.files]
 "homebrew/update.sh" = "~/.config/update.d/10-homebrew.sh"
 
+
 [homebrew-bash]
 depends = ["homebrew", "bash"]
 
 [homebrew-bash.files]
 "homebrew/init.bash" = "~/.config/bash/env.d/10-homebrew.sh"
 
+
 [homebrew-fish]
 depends = ["homebrew", "fish"]
 
 [homebrew-fish.files]
 "homebrew/init.fish" = "~/.config/fish/conf.d/10-homebrew.fish"
+
+
+[homebrew-nushell]
+depends = ["homebrew", "nushell"]
+
+[homebrew-nushell.files]
+"homebrew/init.nu" = "~/.local/share/nushell/vendor/autoload/10-homebrew.nu"
+
 
 [homebrew-zsh]
 depends = ["homebrew", "zsh"]
