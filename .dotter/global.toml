@@ -18,6 +18,7 @@
 #
 # 30 - user environment config
 #
+# - aliases (loading)
 # - dotfiles
 #
 # 40 - runtime version managers
@@ -104,17 +105,32 @@ depends = ["macos", "zsh"]
 
 # aliases {{{
 
+[aliases-bash]
+depends = ["bash"]
+
 [aliases-bash.files]
-"aliases/aliases.bash" = "~/.config/bash/rc.d/10-aliases.sh"
+"aliases/aliases.bash" = { target = "~/.config/bash/rc.d/30-aliases.sh", type = "symbolic" }
+
+
+[aliases-fish]
+depends = ["fish"]
 
 [aliases-fish.files]
-"aliases/aliases.fish" = "~/.config/fish/conf.d/10-aliases.fish"
+"aliases/aliases.fish" = { target = "~/.config/fish/conf.d/30-aliases.fish", type = "symbolic" }
+
+
+[aliases-nushell]
+depends = ["nushell"]
 
 [aliases-nushell.files]
-"aliases/aliases.nu" = "~/.local/share/nushell/vendor/autoload/10-aliases.nu"
+"aliases/aliases.nu" = { target = "~/.local/share/nushell/vendor/autoload/30-aliases.nu", type = "symbolic" }
+
+
+[aliases-zsh]
+depends = ["zsh"]
 
 [aliases-zsh.files]
-"aliases/aliases.zsh" = "~/.zsh/rc.d/10-aliases.zsh"
+"aliases/aliases.zsh" = { target = "~/.zsh/rc.d/30-aliases.zsh", type = "symbolic" }
 
 # }}}
 # apt {{{
