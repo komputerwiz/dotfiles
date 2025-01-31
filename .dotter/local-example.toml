@@ -65,6 +65,8 @@ packages = [
 	# "gem",
 	# "gem-zsh",
 
+	# "ghostty",
+
 	# "git",
 
 	# "helix",
@@ -140,6 +142,7 @@ packages = [
 # cargo_home = "$HOME/.local/opt/cargo"
 # duplicity_gpg_passphrase = "..."
 # duplicity_target_url = "..."
+# ghostty_command = "/usr/bin/fish"
 # grammarly_client_id = "..."
 # intelephense_license_key = "..."
 # n_prefix = "$HOME/.local/opt/n"
