@@ -1085,6 +1085,7 @@ tsconfigs.setup({
 		'markdown_inline',
 		'meson',
 		'ninja',
+		'nu',
 		'php',
 		'phpdoc',
 		'pug',
