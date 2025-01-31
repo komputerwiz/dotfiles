@@ -110,6 +110,9 @@ depends = ["macos", "zsh"]
 [aliases-fish.files]
 "aliases/aliases.fish" = "~/.config/fish/conf.d/10-aliases.fish"
 
+[aliases-nushell.files]
+"aliases/aliases.nu" = "~/.local/share/nushell/vendor/autoload/10-aliases.nu"
+
 [aliases-zsh.files]
 "aliases/aliases.zsh" = "~/.zsh/rc.d/10-aliases.zsh"
 

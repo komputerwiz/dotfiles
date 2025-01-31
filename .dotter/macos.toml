@@ -6,3 +6,6 @@ homebrew_prefix = "/opt/homebrew"
 
 [nushell.files]
 "nushell" = "~/Library/Application Support/nushell"
+
+[aliases-nushell.files]
+"aliases/aliases.nu" = "~/Library/Application Support/nushell/vendor/autoload/10-aliases.nu"
