@@ -227,6 +227,12 @@ depends = ["zsh"]
 "gem/init.zsh" = "~/.zsh/env.d/gem.zsh"
 
 # }}}
+# ghostty {{{
+
+[ghostty.files]
+"ghostty" = "~/.config/ghostty"
+
+# }}}
 # git {{{
 
 [git.files]

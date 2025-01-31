@@ -1,0 +1,9 @@
+theme = dark:Builtin Solarized Dark,light:Builtin Solarized Light
+font-family = IosevkaTerm Nerd Font
+font-size = 12
+
+{{#if ghostty_command}}
+command = {{ghostty_command}}
+{{/if}}
+
+macos-option-as-alt = true
