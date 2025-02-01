@@ -84,15 +84,15 @@ def _solarized [base] {
 		shape_block: { fg: $blue, attr: b }
 		shape_bool: { fg: $cyan }
 		shape_custom: { attr: b }
-		shape_external: { fg: $cyan }
-		shape_externalarg: { fg: $green, attr: b }
+		shape_external: { fg: $green }
+		shape_externalarg: { fg: $base.fg }
 		shape_filepath: { fg: $cyan }
 		shape_flag: { fg: $blue, attr: b }
 		shape_float: { fg: $violet, attr: b }
 		shape_garbage: { fg: $base.fg_emph, bg: $red, attr: b }
 		shape_globpattern: { fg: $cyan, attr: b }
 		shape_int: { fg: $violet, attr: b }
-		shape_internalcall: { fg: $cyan, attr: b }
+		shape_internalcall: { fg: $green, attr: b }
 		shape_list: { fg: $cyan, attr: b }
 		shape_literal: { fg: $blue }
 		shape_nothing: { fg: $cyan }
