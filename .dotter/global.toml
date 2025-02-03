@@ -323,6 +323,30 @@ depends = ["homebrew", "zsh"]
 "latex/packages" = { target = "~/texmf/tex/latex", type = "symbolic" }
 
 # }}}
+# mise {{{
+
+[mise.files]
+"mise/config.toml" = "~/.config/mise/config.toml"
+
+[mise-bash]
+depends = ["bash", "mise"]
+
+[mise-bash.files]
+"mise/init.bash" = "~/.config/bash/rc.d/90-mise.sh"
+
+[mise-fish]
+depends = ["fish", "mise"]
+
+[mise-fish.files]
+"mise/init.fish" = "~/.config/fish/conf.d/90-mise.fish"
+
+[mise-zsh]
+depends = ["mise", "zsh"]
+
+[mise-zsh.files]
+"mise/init.zsh" = "~/.zsh/rc.d/90-mise.zsh"
+
+# }}}
 # mpv {{{
 
 [mpv.files]
