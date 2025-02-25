@@ -110,6 +110,11 @@ def _solarized [base] {
 # Configuration
 
 $env.config.color_config = _solarized $dark
+
+$env.config.cursor_shape.emacs = 'blink_line'
+$env.config.cursor_shape.vi_insert = 'line'
+$env.config.cursor_shape.vi_normal = 'block'
+
 $env.config.show_banner = false
 
 $env.LS_COLORS = (vivid generate solarized-dark | str trim)
