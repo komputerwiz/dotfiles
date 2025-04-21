@@ -1,6 +1,21 @@
 #!/bin/bash
 set -e
 
+# Color setup
+if [[ -n "$NO_COLOR" ]]; then
+	RED=""
+	GREEN=""
+	YELLOW=""
+	MUTED=""
+	RESET=""
+else
+	RED='\033[0;31m'
+	GREEN='\033[0;32m'
+	YELLOW='\033[0;33m'
+	MUTED='\033[2m'
+	RESET='\033[0m'
+fi
+
 tailscale_cmd() {
 	CMD="${TS_TAILSCALE_CMD:-tailscale}"
 	if [[ -n "${TS_USE_SUDO}" ]]; then
@@ -36,7 +51,7 @@ print_status() {
 	echo "AVAILABLE TAILNETS:"
 	get_available_tailnets | while read TAILNET; do
 		if [[ "$TAILNET" = "$(get_current_tailnet)" ]]; then
-			echo -e "  - \e[1;33m$TAILNET\e[0m (current)"
+			echo -e "  - ${YELLOW}${TAILNET}${RESET} (current)"
 		else
 			echo "  - $TAILNET"
 		fi
@@ -47,14 +62,14 @@ print_status() {
 	get_peers | while read NAME ACTIVE ONLINE IS_EXIT_NODE OFFERS_EXIT_NODE; do
 		echo -n "  "
 		if [[ "$ONLINE" = "true" ]]; then
-			echo -en "\e[32monline\e[0m   $NAME"
+			echo -en "${GREEN}online${RESET}   $NAME"
 		else
-			echo -en "\e[31moffline\e[0m  \e[2m$NAME\e[0m"
+			echo -en "${RED}offline${RESET}  ${MUTED}$NAME${RESET}"
 		fi
 		if [[ "$OFFERS_EXIT_NODE" = "true" ]]; then
 			echo -n " (exit node"
 			if [[ "$IS_EXIT_NODE" = "true" ]]; then
-				echo -en "; \e[33mactive\e[0m"
+				echo -en "; ${GREEN}active${RESET}"
 			fi
 			echo -n ")"
 		fi
