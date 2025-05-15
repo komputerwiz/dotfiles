@@ -108,7 +108,7 @@ vim.opt.background = 'dark'
 vim.opt.colorcolumn = { 80, 92, 100, 120 }
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' } -- {'longest', 'menu'}
 vim.opt.concealcursor = 'c'
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
 vim.opt.expandtab = false
 vim.opt.exrc = true
 vim.opt.hidden = true
@@ -143,76 +143,59 @@ vim.opt.wildmode = { 'longest:full', 'full' }
 vim.opt.wrap = false
 
 -- }}}
--- {{{ imports
-
-local autopairs = require('nvim-autopairs')
-local cmp = require('cmp')
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
-local dap = require('dap')
-local dap_ext_vscode = require('dap.ext.vscode')
-local dap_ui = require('dapui')
-local gitsigns = require('gitsigns')
-local lspconfig = require('lspconfig')
-local lualine = require('lualine')
-local luasnip = require('luasnip')
-local mason = require('mason')
-local mason_lspconfig = require('mason-lspconfig')
-local mason_registry = require('mason-registry')
-local neosolarized = require('NeoSolarized')
-local oil = require('oil')
-local surround = require('nvim-surround')
-local telescope = require('telescope')
-local telescope_builtin = require('telescope.builtin')
-local tsconfigs = require('nvim-treesitter.configs')
-
--- }}}
 -- {{{ key mappings
 
-vim.keymap.set('n', '<Leader>cd', '<Cmd>cd %:p:h<CR><Cmd>pwd<CR>')
-vim.keymap.set('n', '<Leader>fb', telescope_builtin.buffers)
-vim.keymap.set('n', '<Leader>fd', telescope_builtin.diagnostics)
-vim.keymap.set('n', '<Leader>fe', telescope.extensions.file_browser.file_browser)
-vim.keymap.set('n', '<Leader>ff', telescope_builtin.find_files)
-vim.keymap.set('n', '<Leader>fg', telescope_builtin.live_grep)
-vim.keymap.set('n', '<Leader>fh', telescope_builtin.help_tags)
-vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_document_symbols)
-vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_workspace_symbols)
-vim.keymap.set('n', '<Leader>gh', '<Cmd>0Gclog<CR>')
-vim.keymap.set('n', '<Leader>h', '<Cmd>Hexmode<CR>')
-vim.keymap.set('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>')
-vim.keymap.set('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>')
+do
+	local dap = require('dap')
+	local dap_ui = require('dapui')
+	local telescope_builtin = require('telescope.builtin')
+	local telescope = require('telescope')
 
-vim.keymap.set('', '<F2>', function() vim.opt.background = vim.o.background == 'dark' and 'light' or 'dark' end, { desc = 'toggle-dark-mode' })
-vim.keymap.set('n', '<F3>', telescope.extensions.file_browser.file_browser)
-vim.keymap.set('n', '<F4>', dap.toggle_breakpoint)
-vim.keymap.set('n', '<F5>', dap.continue)
-vim.keymap.set('n', '<F6>', dap.step_into)
-vim.keymap.set('n', '<F7>', dap.step_over)
-vim.keymap.set('n', '<F8>', dap.step_out)
-vim.keymap.set('n', '<F9>', dap.restart_frame)
-vim.keymap.set('n', '<F10>', dap.terminate)
-vim.keymap.set('n', '<F11>', dap.run_to_cursor)
-vim.keymap.set('n', '<F12>', dap_ui.toggle)
+	vim.keymap.set('n', '<Leader>cd', '<Cmd>cd %:p:h<CR><Cmd>pwd<CR>')
+	vim.keymap.set('n', '<Leader>fb', telescope_builtin.buffers)
+	vim.keymap.set('n', '<Leader>fd', telescope_builtin.diagnostics)
+	vim.keymap.set('n', '<Leader>fe', telescope.extensions.file_browser.file_browser)
+	vim.keymap.set('n', '<Leader>ff', telescope_builtin.find_files)
+	vim.keymap.set('n', '<Leader>fg', telescope_builtin.live_grep)
+	vim.keymap.set('n', '<Leader>fh', telescope_builtin.help_tags)
+	vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_document_symbols)
+	vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_workspace_symbols)
+	vim.keymap.set('n', '<Leader>gh', '<Cmd>0Gclog<CR>')
+	vim.keymap.set('n', '<Leader>h', '<Cmd>Hexmode<CR>')
+	vim.keymap.set('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>')
+	vim.keymap.set('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>')
 
--- these have to be ex commands in order for dot-repeat to work
-vim.keymap.set({'n', 'o', 'x'}, 'w', [[<Cmd>lua require('spider').motion('w')<CR>]], { desc = 'spider-w' })
-vim.keymap.set({'n', 'o', 'x'}, 'e', [[<Cmd>lua require('spider').motion('e')<CR>]], { desc = 'spider-e' })
-vim.keymap.set({'n', 'o', 'x'}, 'b', [[<Cmd>lua require('spider').motion('b')<CR>]], { desc = 'spider-b' })
-vim.keymap.set({'n', 'o', 'x'}, 'ge',[[<Cmd>lua require('spider').motion('ge')<CR>]], { desc = 'spider-ge' })
+	vim.keymap.set('', '<F2>', function() vim.opt.background = vim.o.background == 'dark' and 'light' or 'dark' end, { desc = 'toggle-dark-mode' })
+	vim.keymap.set('n', '<F3>', telescope.extensions.file_browser.file_browser)
+	vim.keymap.set('n', '<F4>', dap.toggle_breakpoint)
+	vim.keymap.set('n', '<F5>', dap.continue)
+	vim.keymap.set('n', '<F6>', dap.step_into)
+	vim.keymap.set('n', '<F7>', dap.step_over)
+	vim.keymap.set('n', '<F8>', dap.step_out)
+	vim.keymap.set('n', '<F9>', dap.restart_frame)
+	vim.keymap.set('n', '<F10>', dap.terminate)
+	vim.keymap.set('n', '<F11>', dap.run_to_cursor)
+	vim.keymap.set('n', '<F12>', dap_ui.toggle)
 
-vim.keymap.set({'n', 'v'}, '<Space>', 'za')
+	-- these have to be ex commands in order for dot-repeat to work
+	vim.keymap.set({'n', 'o', 'x'}, 'w', [[<Cmd>lua require('spider').motion('w')<CR>]], { desc = 'spider-w' })
+	vim.keymap.set({'n', 'o', 'x'}, 'e', [[<Cmd>lua require('spider').motion('e')<CR>]], { desc = 'spider-e' })
+	vim.keymap.set({'n', 'o', 'x'}, 'b', [[<Cmd>lua require('spider').motion('b')<CR>]], { desc = 'spider-b' })
+	vim.keymap.set({'n', 'o', 'x'}, 'ge',[[<Cmd>lua require('spider').motion('ge')<CR>]], { desc = 'spider-ge' })
 
-vim.keymap.set({'n', 'x'}, 'ga', '<Plug>(EasyAlign)', { remap = true })
+	vim.keymap.set({'n', 'v'}, '<Space>', 'za')
 
--- use %% in command mode to insert the directory of the current buffer
-vim.keymap.set('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], { nowait = true, expr = true })
+	vim.keymap.set({'n', 'x'}, 'ga', '<Plug>(EasyAlign)', { remap = true })
 
-vim.keymap.set('n', '<C-p>', telescope_builtin.find_files)
+	-- use %% in command mode to insert the directory of the current buffer
+	vim.keymap.set('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], { nowait = true, expr = true })
 
--- start new undo sequence for <C-u> and <C-w> in insert mode
-vim.keymap.set('i', '<C-u>', '<C-g>u<C-u>')
-vim.keymap.set('i', '<C-w>', '<C-g>u<C-w>')
+	vim.keymap.set('n', '<C-p>', telescope_builtin.find_files)
+
+	-- start new undo sequence for <C-u> and <C-w> in insert mode
+	vim.keymap.set('i', '<C-u>', '<C-g>u<C-u>')
+	vim.keymap.set('i', '<C-w>', '<C-g>u<C-w>')
+end
 
 -- }}}
 -- {{{ commands and functions
@@ -259,7 +242,7 @@ vim.g.dokuwiki_fenced_languages = { 'bash=sh', 'javascript', 'php', 'ruby' }
 -- }}}
 -- {{{ gitsigns
 
-gitsigns.setup({
+require('gitsigns').setup({
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
 
@@ -295,7 +278,7 @@ gitsigns.setup({
 -- }}}
 -- lualine {{{
 
-lualine.setup({
+require('lualine').setup({
 	options = {
 		theme = 'solarized_custom',
 	},
@@ -321,7 +304,7 @@ lualine.setup({
 -- {{{ luasnip
 
 do
-	local ls = luasnip
+	local ls = require('luasnip')
 	local types = require('luasnip.util.types')
 
 	-- {{{ shorthand variables
@@ -803,10 +786,10 @@ do
 		pattern = '*',
 		callback = function()
 			if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
-				and luasnip.session.current_nodes[vim.api.nvim_get_current_buf()]
-				and not luasnip.session.jump_active
+				and ls.session.current_nodes[vim.api.nvim_get_current_buf()]
+				and not ls.session.jump_active
 			then
-				luasnip.unlink_current()
+				ls.unlink_current()
 			end
 		end
 	})
@@ -821,7 +804,7 @@ vim.g.markdown_recommended_style = 0
 -- }}}
 -- {{{ mason
 
-mason.setup({
+require('mason').setup({
 	ui = {
 		icons = {
 			package_installed = '●',
@@ -857,7 +840,7 @@ do
 	})
 end
 
-neosolarized.setup({
+require('NeoSolarized').setup({
 	-- NOTE: commented options represent default values
 	-- style = 'dark',
 	-- transparent = true
@@ -884,7 +867,7 @@ neosolarized.setup({
 -- }}}
 -- {{{ nvim-autopairs
 
-autopairs.setup({})
+require('nvim-autopairs').setup({})
 
 -- }}}
 -- {{{ nvim-cmp
@@ -892,6 +875,9 @@ autopairs.setup({})
 -- from https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
 
 do
+	local cmp = require('cmp')
+	local luasnip = require('luasnip')
+
 	local function has_words_before()
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
@@ -976,13 +962,14 @@ do
 	})
 
 	-- automatically insert `(` after autocompleting a function or method
+	local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 	cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 end
 
 -- }}}
 -- {{{ nvim-dap / nvim-dap-ui
 
-dap_ext_vscode.type_to_filetypes = {
+require('dap.ext.vscode').type_to_filetypes = {
 	lldb = { 'c', 'cpp', 'rust' },
 }
 
@@ -991,62 +978,34 @@ vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl='', linehl='
 vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl='', linehl='', numhl='' })
 vim.fn.sign_define('DapLogPoint', { text = '', texthl='', linehl='', numhl='' })
 
-if mason_registry.is_installed('codelldb') then
-	local codelldb = mason_registry.get_package('codelldb')
-	dap.adapters.codelldb = {
-		type = 'server',
-		port = '${port}',
-		executable = {
-			command = codelldb:get_install_path() .. '/extension/adapter/codelldb',
-			args = {
-				'--port',
-				'${port}',
-			},
-		},
-	}
+do
+	local dap = require('dap')
+	local dap_ui = require('dapui')
 
-	dap.adapters.lldb = dap.adapters.codelldb
+	dap_ui.setup()
 
-	dap.configurations.cpp = {
-		{
-			name = 'Launch file',
-			type = 'codelldb',
-			request = 'launch',
-			program = function()
-				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-			end,
-			cwd = '${workspaceFolder}',
-			stopOnEntry = false,
-		},
-	}
+	dap.listeners.after.event_initialized['dapui_config'] = function()
+		dap_ui.open()
+	end
 
-	dap.configurations.c = dap.configurations.cpp
-	dap.configurations.rust = dap.configurations.cpp
-end
+	dap.listeners.after.event_terminated['dapui_config'] = function()
+		dap_ui.close()
+	end
 
-dap_ui.setup()
-
-dap.listeners.after.event_initialized['dapui_config'] = function()
-	dap_ui.open()
-end
-
-dap.listeners.after.event_terminated['dapui_config'] = function()
-	dap_ui.close()
-end
-
-dap.listeners.after.event_exited['dapui_config'] = function()
-	dap_ui.close()
+	dap.listeners.after.event_exited['dapui_config'] = function()
+		dap_ui.close()
+	end
 end
 
 -- }}}
 -- {{{ nvim-surround
 
-surround.setup()
+require('nvim-surround').setup()
 
 -- }}}
 -- {{{ nvim-treesitter
 
-tsconfigs.setup({
+require('nvim-treesitter.configs').setup({
 	ensure_installed = {
 		'bash',
 		'bibtex',
@@ -1119,7 +1078,7 @@ vim.treesitter.language.register('twig', 'html.twig') -- use 'twig' parser to ha
 -- }}}
 -- {{{ oil
 
-oil.setup()
+require('oil').setup()
 
 -- }}}
 -- {{{ rust (built-in)
@@ -1166,31 +1125,34 @@ vim.g.symbols_outline = {
 -- }}}
 -- {{{ telescope
 
-telescope.setup({
-	pickers = {
-		buffers = {
-			theme = 'ivy',
+do
+	local telescope = require('telescope')
+	telescope.setup({
+		pickers = {
+			buffers = {
+				theme = 'ivy',
+			},
+			find_files = {
+				hidden = true,
+			},
+			lsp_document_symbols = {
+				theme = 'cursor',
+			},
+			lsp_workspace_symbols = {
+				theme = 'cursor',
+			},
 		},
-		find_files = {
-			hidden = true,
+		extensions = {
+			file_browser = {
+				hidden = true,
+				hijack_netrw = true,
+				theme = 'ivy',
+			},
 		},
-		lsp_document_symbols = {
-			theme = 'cursor',
-		},
-		lsp_workspace_symbols = {
-			theme = 'cursor',
-		},
-	},
-	extensions = {
-		file_browser = {
-			hidden = true,
-			hijack_netrw = true,
-			theme = 'ivy',
-		},
-	},
-})
+	})
 
-telescope.load_extension('file_browser')
+	telescope.load_extension('file_browser')
+end
 
 -- }}}
 -- {{{ tex (built-in)
@@ -1202,28 +1164,90 @@ vim.g.tex_flavor = 'latex'
 -- }}}
 -- {{{ language server (LSP) config
 
--- {{{ list of installed/recommended language servers
-
--- ansible-language-server
--- clangd
--- codelldb
--- emmet-language-server
--- grammarly-languageserver
--- intelephense
--- jdtls
--- lemminx
--- lua-language-server
--- prettierd
--- pyright
--- rust-analyzer
--- stylua
--- texlab
--- typescript-language-server
-
--- }}}
+require('mason-lspconfig').setup({
+	ensure_installed = {
+		'ansible-language-server',
+		'clangd',
+		'codelldb',
+		'emmet-language-server',
+		'intelephense',
+		'jdtls',
+		'lemminx',
+		'lua-language-server',
+		'prettierd',
+		'pyright',
+		'rust-analyzer',
+		'stylua',
+		'texlab',
+		'typescript-language-server',
+	},
+})
 
 do
-	local capabilities = cmp_nvim_lsp.default_capabilities()
+	local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+	vim.lsp.config('*', { -- {{{
+		capabilities = capabilities,
+	})
+	-- }}}
+	vim.lsp.config('clangd', { -- {{{
+		capabilities = vim.tbl_deep_extend('force', capabilities, {
+			offsetEncoding = {'utf-16'},
+		}),
+	})
+	-- }}}
+	vim.lsp.config('emmet_ls', { -- {{{
+		filetypes = {
+			'*html*',
+			'typescriptreact',
+			'javascriptreact',
+			'css',
+			'sass',
+			'scss',
+			'less',
+		},
+		-- init_options = {
+		-- 	html = {
+		-- 		options = {
+		-- 			["bem.enabled"] = true,
+		-- 		},
+		-- 	},
+		-- },
+	})
+	-- }}}
+	vim.lsp.config('intelephense', { -- {{{
+		init_options = {
+			-- this is set in sysetm.vim from dotter variables in local.toml
+			licenseKey = vim.g.intelephense_license_key,
+			globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense',
+		},
+	})
+	-- }}}
+	vim.lsp.config('jdtls', { -- {{{
+		cmd = { 'jdtls' },
+	})
+
+	if not vim.env.WORKSPACE then
+		vim.env.WORKSPACE = vim.env.HOME .. '/ws/jdtls'
+	end
+	-- }}}
+	vim.lsp.config('lua_ls', { -- {{{
+		settings = {
+			Lua = {
+				runtime = {
+					version = 'LuaJIT',
+				},
+				diagnostics = {
+					globals = {
+						'vim',
+					},
+				},
+			},
+		},
+	})
+	-- }}}
+
+	-- NOTE: everything below here is from the legacy configuration and should be updated
 
 	-- {{{ on_attach() - adjust settings after the language server attaches to the current buffer
 
@@ -1304,121 +1328,6 @@ do
 
 	-- }}}
 
-	mason_lspconfig.setup_handlers({
-		-- {{{ default settings
-		function(server_name)
-			lspconfig[server_name].setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-		end,
-		-- }}}
-		clangd = function() -- {{{
-			lspconfig.clangd.setup({
-				on_attach = on_attach,
-				capabilities = vim.tbl_deep_extend('force', capabilities, {
-					offsetEncoding = {'utf-16'},
-				}),
-			})
-		end,
-		-- }}}
-		emmet_ls = function() -- {{{
-			lspconfig.emmet_ls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				filetypes = {
-					'*html*',
-					'typescriptreact',
-					'javascriptreact',
-					'css',
-					'sass',
-					'scss',
-					'less',
-				},
-				-- init_options = {
-				-- 	html = {
-				-- 		options = {
-				-- 			["bem.enabled"] = true,
-				-- 		},
-				-- 	},
-				-- },
-			})
-		end,
-		-- }}}
-		grammarly = function() -- {{{
-			lspconfig.grammarly.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				cmd = { 'n', 'run', '16', vim.fn.stdpath('data') .. '/mason/bin/grammarly-languageserver', '--stdio' },
-				filetypes = {
-					'*markdown*',
-					'*tex*',
-				},
-				init_options = {
-					-- this is set in sysetm.vim from dotter variables in local.toml
-					clientId = vim.g.grammarly_client_id,
-					grammarly = {
-						config = {
-							suggestions = {
-								ConjunctionAtStartOfSentence = true,
-								InformalPronounsAcademic = true,
-								OxfordComma = true,
-								PassiveVoice = true,
-								PrepositionAtTheEndOfSentence = true,
-								StylisticFragments = true,
-								UnnecessaryEllipses = true,
-							},
-						},
-					},
-				},
-			})
-		end,
-		-- }}}
-		intelephense = function() -- {{{
-			lspconfig.intelephense.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				init_options = {
-					-- this is set in sysetm.vim from dotter variables in local.toml
-					licenseKey = vim.g.intelephense_license_key,
-					globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense',
-				},
-			})
-		end,
-		-- }}}
-		jdtls = function() -- {{{
-			-- workspace path
-			if not vim.env.WORKSPACE then
-				vim.env.WORKSPACE = vim.env.HOME .. '/ws/jdtls'
-			end
-
-			lspconfig.jdtls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				cmd = { 'jdtls' },
-			})
-		end,
-		-- }}}
-		lua_ls = function() -- {{{
-			lspconfig.lua_ls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						runtime = {
-							version = 'LuaJIT',
-						},
-						diagnostics = {
-							globals = {
-								'vim',
-							},
-						},
-					},
-				},
-			})
-		end,
-		-- }}}
-	})
 end
 
 -- }}}
