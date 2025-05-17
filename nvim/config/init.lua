@@ -1164,22 +1164,25 @@ vim.g.tex_flavor = 'latex'
 -- }}}
 -- {{{ language server (LSP) config
 
+-- (see `:h lsp-quickstart` for docs)
+
 require('mason-lspconfig').setup({
 	ensure_installed = {
-		'ansible-language-server',
+		'ansiblels',
 		'clangd',
-		'codelldb',
-		'emmet-language-server',
+		-- codelldb?
+		'emmet_ls',
 		'intelephense',
 		'jdtls',
 		'lemminx',
-		'lua-language-server',
-		'prettierd',
+		'lua_ls',
+		-- prettierd?
 		'pyright',
-		'rust-analyzer',
-		'stylua',
+		'rust_analyzer',
+		-- stylua?
+		'svelte',
 		'texlab',
-		'typescript-language-server',
+		'ts_ls',
 	},
 })
 
@@ -1247,84 +1250,68 @@ do
 	})
 	-- }}}
 
-	-- NOTE: everything below here is from the legacy configuration and should be updated
+	-- {{{ LspAttach - adjust settings after the language server attaches to the current buffer
 
-	-- {{{ on_attach() - adjust settings after the language server attaches to the current buffer
+	vim.api.nvim_create_autocmd('LspAttach', {
+		group = vim.api.nvim_create_augroup('', {}),
+		callback = function(args)
+			local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-	local function on_attach(client, bufnr)
-		local function bmap(...)
-			vim.api.nvim_buf_set_keymap(bufnr, ...)
+			-- {{{ key mappings
+
+			-- helper functions for setting buffer-local keymaps and options
+			local function bmap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+			local function bopt(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+			local opts = { noremap = true, silent = true }
+
+			-- {{{ code navigation
+
+			-- NOTE: see :h lsp-defaults
+			bmap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+			bmap('n', 'gy', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+
+			-- }}}
+			-- {{{ diagnostics
+
+			if client:supports_method('textDocument/diagnostic') then
+				bmap('n', '<Leader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
+				bmap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+				bmap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+				bmap('n', '<Leader>q', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+			end
+
+			-- }}}
+			-- {{{ workspace management
+
+			if client:supports_method('workspace/workspaceFolders') then
+				bmap('n', '<Leader>wa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+				bmap('n', '<Leader>wr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+				bmap('n', '<Leader>wl', '<Cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+			end
+
+			-- }}}
+
+			-- }}}
+
+			-- {{{ autocmd and syntax for hovers
+
+			if client:supports_method('textDocument/documentHighlight') then
+				vim.cmd([[
+					augroup lsp_document_highlight
+						autocmd!
+						autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+						autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+						autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+						autocmd Syntax * highlight link LspReferenceText CursorLine
+						autocmd Syntax * highlight link LspReferenceRead LspReferenceText
+						autocmd Syntax * highlight link LspReferenceWrite LspReferenceText
+					augroup END
+				]])
+			end
+
+			-- }}}
 		end
-
-		local function bopt(...)
-			vim.api.nvim_buf_set_option(bufnr, ...)
-		end
-
-		-- enable omni-completion (<C-x><C-o>)
-		bopt('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-		-- {{{ key mappings
-
-		-- (see `:h vim.lsp.*` for docs)
-		local opts = { noremap = true, silent = true }
-
-		-- {{{ code navigation
-
-		bmap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-		bmap('n', 'g]', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-		bmap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-		bmap('n', 'gy', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-		bmap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
-
-		-- }}}
-		-- {{{ inline help
-
-		bmap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-		bmap('n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-
-		-- }}}
-		-- {{{ workspace management
-
-		bmap('n', '<Leader>wa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-		bmap('n', '<Leader>wr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-		bmap('n', '<Leader>wl', '<Cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-
-		-- }}}
-		-- {{{ code manipulation
-
-		bmap('n', '<Leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
-		bmap('n', '<Leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-		bmap('n', '<Leader>=', '<Cmd>lua vim.lsp.buf.format()<CR>', opts)
-
-		-- }}}
-		-- {{{ diagnostics
-
-		bmap('n', '<Leader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
-		bmap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-		bmap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-		bmap('n', '<Leader>q', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-
-		-- }}}
-
-		-- }}}
-		-- {{{ autocmd and syntax for hovers
-
-		if client.server_capabilities.documentHighlightProvider then
-			vim.cmd([[
-				augroup lsp_document_highlight
-					autocmd!
-					autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-					autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-					autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-					autocmd Syntax * highlight link LspReferenceText CursorLine
-					autocmd Syntax * highlight link LspReferenceRead LspReferenceText
-					autocmd Syntax * highlight link LspReferenceWrite LspReferenceText
-				augroup END
-			]])
-		end
-
-		-- }}}
-	end
+	})
 
 	-- }}}
 
