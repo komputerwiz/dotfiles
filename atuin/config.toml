@@ -116,9 +116,10 @@ filter_mode_shell_up_key_binding = "host"
 ## start with ^ or end with $, they'll match anywhere in CWD.
 ## For details on the supported regular expression syntax, see
 ## https://docs.rs/regex/latest/regex/#syntax
-# cwd_filter = [
-#   "^/very/secret/area",
-# ]
+cwd_filter = [
+  "^/home/.*/\\.private",
+  "^/Users/.*/Library/Private",
+]
 
 ## Configure the maximum height of the preview to show.
 ## Useful when you have long scripts in your history that you want to distinguish
