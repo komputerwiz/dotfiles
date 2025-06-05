@@ -1201,13 +1201,20 @@ do
 	-- }}}
 	vim.lsp.config('emmet_ls', { -- {{{
 		filetypes = {
+			-- markup/templates
 			'*html*',
+			'pug',
+			'svelte',
+			'vue',
+			-- scripts
+			'javascript',
 			'typescriptreact',
 			'javascriptreact',
+			-- stylesheets
 			'css',
+			'less',
 			'sass',
 			'scss',
-			'less',
 		},
 		-- init_options = {
 		-- 	html = {
@@ -1260,25 +1267,21 @@ do
 			-- {{{ key mappings
 
 			-- helper functions for setting buffer-local keymaps and options
-			local function bmap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-			local function bopt(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+			local function bmap(...) vim.api.nvim_buf_set_keymap(args.buf, ...) end
+			local function bopt(...) vim.api.nvim_buf_set_option(args.buf, ...) end
 			local opts = { noremap = true, silent = true }
 
 			-- {{{ code navigation
 
 			-- NOTE: see :h lsp-defaults
-			bmap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-			bmap('n', 'gy', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+			bmap('n', 'grD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+			bmap('n', 'gry', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 
 			-- }}}
 			-- {{{ diagnostics
 
-			if client:supports_method('textDocument/diagnostic') then
-				bmap('n', '<Leader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
-				bmap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-				bmap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-				bmap('n', '<Leader>q', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-			end
+			bmap('n', '<Leader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
+			bmap('n', '<Leader>q', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 			-- }}}
 			-- {{{ workspace management
