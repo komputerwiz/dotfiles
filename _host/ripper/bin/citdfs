@@ -4,7 +4,7 @@ set -e
 SUDO="/usr/bin/sudo"
 SYSTEMCTL="/usr/bin/systemctl"
 
-NAMES=("archive" "citdweb" "home" "projects" "public" "sysadmin")
+NAMES=("acre" "archive" "citdweb" "home" "projects" "public" "sysadmin")
 NAMES_PRE=("${NAMES[@]/#/mnt-net-citdfs-}")
 MOUNTS_ALL=("${NAMES_PRE[@]/%/.mount}")
 
