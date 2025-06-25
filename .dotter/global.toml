@@ -274,6 +274,12 @@ depends = ["zsh"]
 email = "komputerwiz.matt@gmail.com"
 
 # }}}
+# git-delta {{{
+
+[git-delta.variables]
+use_git_delta = true
+
+# }}}
 # helix {{{
 
 [helix.files]

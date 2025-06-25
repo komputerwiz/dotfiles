@@ -52,11 +52,14 @@
 [column]
 	ui = auto
 [core]
+	{{#if use_git_delta}}pager = delta{{/if}}
 	excludesfile = ~/.config/git/ignore
 	fsmonitor = true
 	untrackedcache = true
 [credential]
 	helper = cache --timeout=3600
+[delta]
+	navigate = true
 [diff]
 	tool = vimdiff
 [fetch]
@@ -69,12 +72,14 @@
 	smudge = git-lfs smudge -- %f
 [github]
 	user = komputerwiz
-	
 [include]
 	path = ~/.config/git/config.sec
 [init]
 	defaultBranch = master
+[interactive]
+	{{#if use_git_delta}}diffFilter = delta --color-only{{/if}}
 [merge]
+	conflictstyle = zdiff3
 	tool = vimdiff
 	ff = false
 [pretty]
