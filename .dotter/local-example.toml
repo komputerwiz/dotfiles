@@ -6,6 +6,8 @@ includes = [
 
 # See definitions in `global.toml` for details
 packages = [
+	"default",
+
 	## Base OS
 
 	# "archlinux",
@@ -73,6 +75,11 @@ packages = [
 	# "helix",
 
 	# "latex",
+
+	# "mise",
+	# "mise-bash",
+	# "mise-fish",
+	# "mise-zsh",
 
 	# "mpv",
 

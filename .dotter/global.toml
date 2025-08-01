@@ -1,3 +1,10 @@
+# global defaults {{{
+
+[default.variables]
+grammarly_client_id = ''
+intelephense_license_key = ''
+
+# }}}
 # {{{ global updater and config loader priorities
 #
 # 10 - distro system package managers
