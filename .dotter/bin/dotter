@@ -3,7 +3,12 @@ set -e
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null && pwd)"
 
-VERSION="0.13.3"
+if [ ! -f "$DIR/.dotter-version" ]; then
+	echo "dotter version file (.dotter-version) missing" >&2
+	exit 1
+fi
+
+VERSION="${DOTTER_VERSION:-"$(cat "$DIR/.dotter-version")"}"
 
 if [[ "$OSTYPE" == darwin* ]]; then
   OS=darwin
