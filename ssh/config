@@ -1,40 +1,39 @@
 AddKeysToAgent yes
 Include config.sec
 
-Host home
-HostName nymbus.home.komputerwiz.net
-Port 22
+Host home nymbus.home.komputerwiz.net
+Hostname nymbus.home.komputerwiz.net
 User matthew
 
 Host plex
-HostName nymbus.home.komputerwiz.net
-Port 22
+Hostname nymbus.home.komputerwiz.net
 User plex
 
-Host vortex
-HostName 104.130.137.237
-Port 22
+Host ripper.home.komputerwiz.net
 User matthew
 
 Host falcon
-HostName 166.78.156.85
-Port 22
+Hostname 166.78.156.85
 User ubuntu
 IdentityFile ~/.ssh/rackspace
-
-Host tcat
-#HostName mbarry.citd.tamu.edu
-HostName tcat.komputerwiz.net
-Port 22
-User matthew.barry
-ForwardAgent yes
 
 Host *.citd.tamu.edu *.tcat.tamu.edu
 User mbarry-admin2
 LogLevel error
 ForwardAgent yes
 
+Host gitea
+Hostname gitea.citd.tamu.edu
+User git
+
 Host *.textrac.star.tamu.edu
 User textrac
+LogLevel error
+IdentityFile ~/.ssh/textrac/textrac
+
+Host textrac-star tailscale.textrac.star.tamu.edu
+Hostname tailscale.textrac.star.tamu.edu
+User ubuntu
+ProxyJump remote-dev.citd.tamu.edu
 LogLevel error
 IdentityFile ~/.ssh/textrac/textrac
