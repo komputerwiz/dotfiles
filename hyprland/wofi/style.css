@@ -1,0 +1,68 @@
+/* window itself */
+#window {
+	background: transparent;
+	font-size: 20px;
+	font-family: Roboto, 'Source Sans 3';
+	font-weight: 300;
+}
+
+/* box that contains everything */
+#outer-box {
+	margin: 30px;
+	border-radius: 10px;
+	border: 1px solid #073642;
+	background: #002b36;
+	box-shadow: /* penumbra */ 0 5px 10px rgba(0, 0, 0, 0.2), /* umbra */ 0 2px 5px rgba(0, 0, 0, 0.5);
+	color: #839496;
+}
+
+/* search bar */
+#input {
+	background: transparent;
+	box-shadow: none;
+	outline: none;
+
+	color: #93a1a1;
+	margin: -1px -1px 0;
+	border: 1px solid #073642;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	padding: 1rem;
+	font-size: 2rem;
+}
+
+/* scrolled window containing all entries */
+#scroll {
+	margin: 1rem 0;
+}
+
+/* box containing all entries */
+#inner-box {
+}
+
+/* images in entries displayed in image mode */
+#img {
+}
+
+/* text in entries */
+#text {
+}
+
+/* all entries */
+#entry {
+	padding: 0.4rem 1rem;
+	border-bottom: 1px solid #073642;
+}
+
+/* entries currently selected */
+#entry:selected {
+	outline: none;
+	background: #268bd2;
+	color: #fff;
+}
+
+/* all boxes shown when expanding entries with multiple actions */
+#expander-box {
+}

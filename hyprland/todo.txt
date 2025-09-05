@@ -1,0 +1,3 @@
+This contains all config used for a Hyprland-based desktop environment
+These configs were copied directly from the threadripper's setup and should be "genericized" to work on other systems
+There isn't any mapping yet for these configs in .dotter/global.toml

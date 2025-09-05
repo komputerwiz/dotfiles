@@ -1,0 +1,5 @@
+stylesheet=style.css
+prompt=
+term=ghostty
+matching=fuzzy
+gtk_dark=true
