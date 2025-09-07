@@ -330,6 +330,16 @@ depends = ["homebrew", "zsh"]
 "homebrew/init.zsh" = "~/.zsh/env.d/10-homebrew.zsh"
 
 # }}}
+# hyprland {{{
+
+[hyprland.files]
+"hyprland/hyprland.conf" = "~/.config/hypr/hyprland.conf"
+"hyprland/hyprpaper.conf" = "~/.config/hypr/hyprpaper.conf"
+"hyprland/dunstrc" = "~/.config/dunst/dunstrc"
+"hyprland/waybar" = "~/.config/waybar"
+"hyprland/wofi" = "~/.config/wofi"
+
+# }}}
 # latex {{{
 
 [latex.files]

@@ -12,6 +12,7 @@
 		"hyprland/window",
 	],
 	"modules-right": [
+		"tray",
 		"clock",
 		"custom/power",
 	],
@@ -29,6 +30,11 @@
 				"today": "<span color='#268bd2'><b>{}</b></span>",
 			},
 		},
+	},
+
+	"tray": {
+		"icon-size": 24,
+		"spacing": 10,
 	},
 
 	"hyprland/window": {
