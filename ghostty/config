@@ -10,3 +10,17 @@ command = {{ghostty_command}}
 {{/if}}
 
 macos-option-as-alt = true
+
+keybind = ctrl+equal=unbind
+keybind = ctrl++=unbind
+keybind = ctrl+shift+equal=increase_font_size:1
+keybind = ctrl+shift++=increase_font_size:1
+
+keybind = ctrl+-=unbind
+keybind = ctrl+shift+-=decrease_font_size:1
+
+keybind = ctrl+0=unbind
+keybind = ctrl+shift+0=reset_font_size
+
+keybind = ctrl+,=unbind
+keybind = ctrl+shift+,=open_config
