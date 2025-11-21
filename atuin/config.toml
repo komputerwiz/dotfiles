@@ -117,7 +117,7 @@ filter_mode_shell_up_key_binding = "host"
 ## For details on the supported regular expression syntax, see
 ## https://docs.rs/regex/latest/regex/#syntax
 cwd_filter = [
-  "^/home/.*/\\.private",
+  "^(/mnt/[^/]+)?/home/.*/\\.private",
   "^/Users/.*/Library/Private",
 ]
 
