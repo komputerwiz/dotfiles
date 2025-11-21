@@ -1275,7 +1275,6 @@ do
 
 			-- NOTE: see :h lsp-defaults
 			bmap('n', 'grD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-			bmap('n', 'gry', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 
 			-- }}}
 			-- {{{ diagnostics
