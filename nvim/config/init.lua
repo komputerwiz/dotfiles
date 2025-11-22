@@ -1202,9 +1202,11 @@ do
 	vim.lsp.config('emmet_ls', { -- {{{
 		filetypes = {
 			-- markup/templates
-			'*html*',
+			'html',
+			'htmldjango',
 			'pug',
 			'svelte',
+			'twig',
 			'vue',
 			-- scripts
 			'javascript',
