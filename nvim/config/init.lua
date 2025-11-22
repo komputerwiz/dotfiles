@@ -151,31 +151,31 @@ do
 	local telescope_builtin = require('telescope.builtin')
 	local telescope = require('telescope')
 
-	vim.keymap.set('n', '<Leader>cd', '<Cmd>cd %:p:h<CR><Cmd>pwd<CR>')
-	vim.keymap.set('n', '<Leader>fb', telescope_builtin.buffers)
-	vim.keymap.set('n', '<Leader>fd', telescope_builtin.diagnostics)
-	vim.keymap.set('n', '<Leader>fe', telescope.extensions.file_browser.file_browser)
-	vim.keymap.set('n', '<Leader>ff', telescope_builtin.find_files)
-	vim.keymap.set('n', '<Leader>fg', telescope_builtin.live_grep)
-	vim.keymap.set('n', '<Leader>fh', telescope_builtin.help_tags)
-	vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_document_symbols)
-	vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_workspace_symbols)
-	vim.keymap.set('n', '<Leader>gh', '<Cmd>0Gclog<CR>')
-	vim.keymap.set('n', '<Leader>h', '<Cmd>Hexmode<CR>')
-	vim.keymap.set('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>')
-	vim.keymap.set('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>')
+	vim.keymap.set('n', '<Leader>cd', '<Cmd>cd %:p:h<CR><Cmd>pwd<CR>', { desc = 'cd to file'})
+	vim.keymap.set('n', '<Leader>fb', telescope_builtin.buffers, { desc = 'Telescope: Buffers'})
+	vim.keymap.set('n', '<Leader>fd', telescope_builtin.diagnostics, { desc = 'Telescope: Diagnostics'})
+	vim.keymap.set('n', '<Leader>fe', telescope.extensions.file_browser.file_browser, { desc = 'Telescope: File browser'})
+	vim.keymap.set('n', '<Leader>ff', telescope_builtin.find_files, { desc = 'Telescope: Files'})
+	vim.keymap.set('n', '<Leader>fg', telescope_builtin.live_grep, { desc = 'Telescope: Grep'})
+	vim.keymap.set('n', '<Leader>fh', telescope_builtin.help_tags, { desc = 'Telescope: Help tags'})
+	vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_document_symbols, { desc = 'Telescope: Document symbols'})
+	vim.keymap.set('n', '<Leader>fo', telescope_builtin.lsp_workspace_symbols, { desc = 'Telescope: Workspace symbols'})
+	vim.keymap.set('n', '<Leader>gh', '<Cmd>0Gclog<CR>', { desc = 'Open git quickfix log'})
+	vim.keymap.set('n', '<Leader>h', '<Cmd>Hexmode<CR>', { desc = 'Hex mode'})
+	vim.keymap.set('n', '<Leader>o', '<Cmd>SymbolsOutline<CR>', { desc = 'Open outline'})
+	vim.keymap.set('n', '<Leader>v', '<Cmd>leftabove split $MYVIMRC<CR>', { desc = 'Edit vimrc'})
 
-	vim.keymap.set('', '<F2>', function() vim.opt.background = vim.o.background == 'dark' and 'light' or 'dark' end, { desc = 'toggle-dark-mode' })
-	vim.keymap.set('n', '<F3>', telescope.extensions.file_browser.file_browser)
-	vim.keymap.set('n', '<F4>', dap.toggle_breakpoint)
-	vim.keymap.set('n', '<F5>', dap.continue)
-	vim.keymap.set('n', '<F6>', dap.step_into)
-	vim.keymap.set('n', '<F7>', dap.step_over)
-	vim.keymap.set('n', '<F8>', dap.step_out)
-	vim.keymap.set('n', '<F9>', dap.restart_frame)
-	vim.keymap.set('n', '<F10>', dap.terminate)
-	vim.keymap.set('n', '<F11>', dap.run_to_cursor)
-	vim.keymap.set('n', '<F12>', dap_ui.toggle)
+	vim.keymap.set('', '<F2>', function() vim.opt.background = vim.o.background == 'dark' and 'light' or 'dark' end, { desc = 'Toggle dark mode' })
+	vim.keymap.set('n', '<F3>', '<Cmd>Oil --float<CR>', { desc = 'Open parent dericetory'})
+	vim.keymap.set('n', '<F4>', dap.toggle_breakpoint, { desc = 'DAP: Toggle breakpoint'})
+	vim.keymap.set('n', '<F5>', dap.continue, { desc = 'DAP: Continue'})
+	vim.keymap.set('n', '<F6>', dap.step_into, { desc = 'DAP: Step into'})
+	vim.keymap.set('n', '<F7>', dap.step_over, { desc = 'DAP: Step over'})
+	vim.keymap.set('n', '<F8>', dap.step_out, { desc = 'DAP: Step out'})
+	vim.keymap.set('n', '<F9>', dap.restart_frame, { desc = 'DAP: Restart frame'})
+	vim.keymap.set('n', '<F10>', dap.terminate, { desc = 'DAP: Terminate'})
+	vim.keymap.set('n', '<F11>', dap.run_to_cursor, { desc = 'DAP: Run to cursor'})
+	vim.keymap.set('n', '<F12>', dap_ui.toggle, { desc = 'Toggle debug interface'})
 
 	-- these have to be ex commands in order for dot-repeat to work
 	vim.keymap.set({'n', 'o', 'x'}, 'w', [[<Cmd>lua require('spider').motion('w')<CR>]], { desc = 'spider-w' })
@@ -183,14 +183,14 @@ do
 	vim.keymap.set({'n', 'o', 'x'}, 'b', [[<Cmd>lua require('spider').motion('b')<CR>]], { desc = 'spider-b' })
 	vim.keymap.set({'n', 'o', 'x'}, 'ge',[[<Cmd>lua require('spider').motion('ge')<CR>]], { desc = 'spider-ge' })
 
-	vim.keymap.set({'n', 'v'}, '<Space>', 'za')
+	vim.keymap.set({'n', 'v'}, '<Space>', 'za', { desc = 'Expand fold'})
 
-	vim.keymap.set({'n', 'x'}, 'ga', '<Plug>(EasyAlign)', { remap = true })
+	vim.keymap.set({'n', 'x'}, 'ga', '<Plug>(EasyAlign)', { remap = true, desc = 'EasyAlign' })
 
 	-- use %% in command mode to insert the directory of the current buffer
 	vim.keymap.set('c', '%%', [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], { nowait = true, expr = true })
 
-	vim.keymap.set('n', '<C-p>', telescope_builtin.find_files)
+	vim.keymap.set('n', '<C-p>', telescope_builtin.find_files, { desc = 'Telescope: Files'})
 
 	-- start new undo sequence for <C-u> and <C-w> in insert mode
 	vim.keymap.set('i', '<C-u>', '<C-g>u<C-u>')
@@ -437,6 +437,54 @@ do
 
 		s('shrug', t('¯\\_(ツ)_/¯')),
 		s({ trig = 'uuid', name = 'Random UUIDv4' }, f(uuid4)),
+
+		-- {{{ favorite emoji
+
+		s({ hidden = true, trig = ':thumbsup:', desc = '👍' }, t('👍')),
+		s({ hidden = true, trig = ':+1:', desc = '👍' }, t('👍')),
+		s({ hidden = true, trig = ':happy:', desc = '🙂'}, t('🙂')),
+		s({ hidden = true, trig = ':smile:', desc = '🙂'}, t('🙂')),
+		s({ hidden = true, trig = ':sad:', desc = '🙁'}, t('🙁')),
+		s({ hidden = true, trig = ':frown:', desc = '🙁'}, t('🙁')),
+		s({ hidden = true, trig = ':grin:', desc = '😁'}, t('😁')),
+		s({ hidden = true, trig = ':wink:', desc = '😉'}, t('😉')),
+		s({ hidden = true, trig = ':sweat_smile:', desc = '😅' }, t('😅')),
+		s({ hidden = true, trig = ':joy:', desc = '😂' }, t('😂')),
+		s({ hidden = true, trig = ':sunglasses:', desc = '😎' }, t('😎')),
+		s({ hidden = true, trig = ':smirk:', desc = '😏' }, t('😏')),
+		s({ hidden = true, trig = ':unamused:', desc = '😒' }, t('😒')),
+		s({ hidden = true, trig = ':sweat:', desc = '😓' }, t('😓')),
+		s({ hidden = true, trig = ':confused:', desc = '😕' }, t('😕')),
+		s({ hidden = true, trig = ':confounded:', desc = '😖' }, t('😖')),
+		s({ hidden = true, trig = ':tongue_wink:', desc = '😜' }, t('😜')),
+		s({ hidden = true, trig = ':tongue:', desc = '😝' }, t('😝')),
+		s({ hidden = true, trig = ':disappointed:', desc = '😞' }, t('😞')),
+		s({ hidden = true, trig = ':cry:', desc = '😢' }, t('😢')),
+		s({ hidden = true, trig = ':grimace:', desc = '😬' }, t('😬')),
+		s({ hidden = true, trig = ':sob:', desc = '😭' }, t('😭')),
+		s({ hidden = true, trig = ':dolphin:', desc = '🐬' }, t('🐬')),
+		s({ hidden = true, trig = ':orca:', desc = '🫍' }, t('🫍')),
+		s({ hidden = true, trig = ':whale:', desc = '🐳' }, t('🐳')),
+		s({ hidden = true, trig = ':whale2:', desc = '🐋' }, t('🐋')),
+		s({ hidden = true, trig = ':paw_prints:', desc = '🐾' }, t('🐾')),
+		s({ hidden = true, trig = ':rocket:', desc = '🚀' }, t('🚀')),
+		s({ hidden = true, trig = ':thinking:', desc = '🤔' }, t('🤔')),
+		s({ hidden = true, trig = ':fire:', desc = '🔥' }, t('🔥')),
+		s({ hidden = true, trig = ':box:', desc = '📦' }, t('📦')),
+		s({ hidden = true, trig = ':100:', desc = '💯' }, t('💯')),
+		s({ hidden = true, trig = ':poop:', desc = '💩' }, t('💩')),
+		s({ hidden = true, trig = ':boom:', desc = '💥' }, t('💥')),
+		s({ hidden = true, trig = ':heart:', desc = '❤' }, t('❤')),
+		s({ hidden = true, trig = ':eyes:', desc = '👀' }, t('👀')),
+		s({ hidden = true, trig = ':gift:', desc = '🎁' }, t('🎁')),
+		s({ hidden = true, trig = ':balloon:', desc = '🎈' }, t('🎈')),
+		s({ hidden = true, trig = ':tada:', desc = '🎉' }, t('🎉')),
+		s({ hidden = true, trig = ':confetti:', desc = '🎊' }, t('🎊')),
+		s({ hidden = true, trig = ':beer:', desc = '🍺' }, t('🍺')),
+		s({ hidden = true, trig = ':beers:', desc = '🍻' }, t('🍻')),
+		s({ hidden = true, trig = ':cheers:', desc = '🍻' }, t('🍻')),
+
+		-- }}}
 	})
 
 	-- }}}
@@ -636,12 +684,19 @@ do
 	-- {{{ markdown
 
 	ls.add_snippets('markdown', {
-		s('qrz', { t('['), i(2, 'Good on QRZ'), t('](https://qrz.com/db/'), i(1, 'n0call'), t(')') }),
-		s('qso', { t('{{% qso '), i(1), t(' %}}') }),
-		s('motion', {
+		s({ trig = 'qrz', name = 'Link to QRZ profile' }, {
+			t('['), i(2, 'Good on QRZ'), t('](https://qrz.com/db/'), i(1, 'n0call'), t(')'),
+		}),
+		s({ trig = 'qso', name = 'Contact shortcode' }, {
+			t('{{% qso '), i(1), t(' %}}'),
+		}),
+		s({
+			trig = 'motion',
+			name = 'Motion shortcode',
+			desc = 'motion, mover, seconder, discussion, and outcome',
+		}, {
 			t('{{< motion "'), i(1, "to do ..."), t('" '), i(2, 'mover'), t(' '),
 			c(3, {
-				t('/>}}'),
 				sn(nil, {
 					i(1, 'seconder'), t(' "'), i(3, 'outcome'),
 					t('" '),
@@ -652,29 +707,56 @@ do
 						}),
 					}),
 				}),
+				t('/>}}'),
 				sn(nil, {
 					t({'>}}', '\t'}), i(1, 'discussion'), t({'', '{{</ motion >}}'}),
 				}),
 			}),
 		}),
-		s('rref', { t('['), i(1, 'text'), t(']({{< relref "'), i(2, 'href'), t('" >}})') }),
-		s('sup', { t('<sup>'), i(1), t('</sup>') }),
-		s('sub', { t('<sub>'), i(1), t('</sub>') }),
+		s({ trig = 'rref', name = 'Relative reference link' }, {
+			t('['), i(1, 'text'), t(']({{< relref "'), i(2, 'href'), t('" >}})'),
+		}),
+		s({ trig = 'sup', name = 'Superscript tag' }, {
+			t('<sup>'), i(1), t('</sup>'),
+		}),
+		s({ trig = 'sub', name = 'Subscript tag' }, {
+			t('<sub>'), i(1), t('</sub>'),
+		}),
 		s({
-			trig = '#(%d+)',
+			trig = 'gh#(%d+)',
+			name = 'GitHub Issue Link',
+			regTrig = true,
+			docTrig = 'GitHub Link',
+		}, {
+			t('[#'),
+			f(function(_, snip)
+				return snip.captures and snip.captures[1] or ''
+			end),
+			t('](https://github.com/'),
+			i(1, 'user'),
+			t('/'),
+			i(2, 'repo'),
+			t('/issues/'),
+			f(function(_, snip)
+				return snip.captures and snip.captures[1] or ''
+			end),
+			t(')'),
+		}),
+		s({
+			trig = 'gt#(%d+)',
 			name = 'TCAT Gitea Issue Link',
 			regTrig = true,
 			docTrig = 'Gitea Link',
 		}, {
 			t('[#'),
 			f(function(_, snip)
-				return snip.captures[1]
+				return snip.captures and snip.captures[1] or ''
 			end),
 			t('](https://gitea.citd.tamu.edu/TCAT/'),
 			i(1, 'project'),
 			t('/issues/'),
 			f(function(_, snip)
-				return snip.captures[1]
+				return snip.captures and snip.captures[1] or ''
 			end),
 			t(')'),
 		}),
@@ -684,9 +766,9 @@ do
 	-- {{{ php
 
 	ls.add_snippets('php', {
-		s('php', t({ '<?php declare(strict_types=1);', '', '' })),
+		s({ trig = 'php', name = 'Opening PHP tag with strict_types' }, t({ '<?php declare(strict_types=1);', '', '' })),
 
-		s('getter', {
+		s({ trig = 'getter', name = 'Class property getter' }, {
 			t('public function get'),
 			d(3, capitalize, { 1 }),
 			t('(): '),
@@ -696,7 +778,7 @@ do
 			t({ ';', '}' }),
 		}),
 
-		s('setter', {
+		s({ trig = 'setter', name = 'Class property setter' }, {
 			t('public function set'),
 			d(3, capitalize, { 1 }),
 			t('('),
@@ -715,7 +797,9 @@ do
 	-- {{{ sh
 
 	ls.add_snippets('sh', {
-		s('DIR', t({ 'DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null && pwd)"', '' })),
+		s({ trig = 'DIR', name = 'Script directory' }, {
+			t({ 'DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null && pwd)"', '' }),
+		}),
 	})
 
 	-- }}}
@@ -909,12 +993,27 @@ do
 				c = cmp.mapping.close(),
 			}),
 
+			['<CR>'] = cmp.mapping(function(fallback)
+				if cmp.visible() and luasnip.locally_jumpable(1) then
+					if luasnip.expandable() then
+						luasnip.expand()
+					else
+						cmp.confirm({ select = true })
+					end
+				else
+					fallback()
+				end
+			end),
+
 			['<Tab>'] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					-- cmp.select_next_item()
-					cmp.confirm({ select = true }) -- set to 'false' to force selection
-				elseif luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
+				if luasnip.locally_jumpable(1) then
+					-- give precedence to jumping to locations within a snippet
+					luasnip.jump(1)
+				elseif cmp.visible() then
+					-- cmp.select_next_item() -- use <C-n> instead
+					cmp.confirm({ select = true })
+				elseif luasnip.expandable() then
+					luasnip.expand()
 				elseif has_words_before() then
 					cmp.complete()
 				else
@@ -924,7 +1023,7 @@ do
 
 			['<S-Tab>'] = cmp.mapping(function(fallback)
 				-- if cmp.visible() then
-				-- cmp.select_prev_item()
+				-- cmp.select_prev_item() -- use <C-p> instead
 				-- elseif luasnip.jumpable(-1) then
 				if luasnip.jumpable(-1) then
 					luasnip.jump(-1)
