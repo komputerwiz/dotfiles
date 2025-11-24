@@ -79,7 +79,7 @@
 [interactive]
 	{{#if use_git_delta}}diffFilter = delta --color-only{{/if}}
 [merge]
-	conflictstyle = zdiff3
+	{{#if use_git_delta}}conflictstyle = zdiff3{{/if}}
 	tool = vimdiff
 	ff = false
 [pretty]
