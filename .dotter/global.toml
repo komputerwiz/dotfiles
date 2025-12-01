@@ -356,6 +356,8 @@ duplicity_target_url = "sftp://matthew@nymbus.home.komputerwiz.net//mnt/zfs/orca
 # }}}
 # fzf {{{
 
+[fzf]
+
 [fzf-bash]
 depends = ["fzf"]
 
