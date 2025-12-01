@@ -30,6 +30,7 @@ intelephense_license_key = ''
 #
 # 40 - runtime version managers
 #
+# - mise
 # - n
 # - rbenv
 #
@@ -53,7 +54,6 @@ intelephense_license_key = ''
 # 90 - late-binding shell environment
 #
 # - fzf (loading)
-# - mise (loading)
 # - starship (loading)
 # - zoxide (loading)
 #
@@ -433,26 +433,30 @@ use_git_delta = true
 # }}}
 # mise {{{
 
+[mise]
+depends = ["updater"]
+
 [mise.files]
 "mise/config.toml" = "~/.config/mise/config.toml"
+"mise/update.sh" = "~/.config/update.d/40-mise.sh"
 
 [mise-bash]
 depends = ["bash", "mise"]
 
 [mise-bash.files]
-"mise/init.bash" = "~/.config/bash/rc.d/90-mise.sh"
+"mise/init.bash" = "~/.config/bash/rc.d/40-mise.sh"
 
 [mise-fish]
 depends = ["fish", "mise"]
 
 [mise-fish.files]
-"mise/init.fish" = "~/.config/fish/conf.d/90-mise.fish"
+"mise/init.fish" = "~/.config/fish/conf.d/40-mise.fish"
 
 [mise-zsh]
 depends = ["mise", "zsh"]
 
 [mise-zsh.files]
-"mise/init.zsh" = "~/.zsh/rc.d/90-mise.zsh"
+"mise/init.zsh" = "~/.zsh/rc.d/40-mise.zsh"
 
 # }}}
 # mpv {{{
