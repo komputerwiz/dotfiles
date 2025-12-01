@@ -64,6 +64,11 @@ packages = [
 
 	# "eclipse",
 
+	# "fzf",
+	# "fzf-bash",
+	# "fzf-fish",
+	# "fzf-zsh",
+
 	# "gem",
 	# "gem-zsh",
 

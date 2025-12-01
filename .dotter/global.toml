@@ -52,6 +52,8 @@ intelephense_license_key = ''
 #
 # 90 - late-binding shell environment
 #
+# - fzf (loading)
+# - mise (loading)
 # - starship (loading)
 # - zoxide (loading)
 #
@@ -65,7 +67,7 @@ intelephense_license_key = ''
 
 # }}}
 
-# operating systems {{{
+# base operating systems {{{
 
 # linux {{{
 
@@ -110,6 +112,156 @@ depends = ["macos", "zsh"]
 
 # }}}
 
+# shells {{{
+
+# bash {{{
+
+[bash.files]
+"bash/env.d" = "~/.config/bash/env.d"
+"bash/rc.d" = "~/.config/bash/rc.d"
+"bash/bash_logout" = "~/.bash_logout"
+"bash/bashrc" = "~/.bashrc"
+"bash/profile" = "~/.profile"
+
+[bash.variables]
+editor = "vim"
+
+# }}}
+# fish {{{
+
+[fish]
+depends = ["updater"]
+
+[fish.files]
+"fish/config" = "~/.config/fish"
+"fish/update.fish" = "~/.config/update.d/60-fish.fish"
+
+# vanilla prompt {{{
+
+[fish-prompt]
+depends = ["fish"]
+
+[fish-prompt.files]
+"fish/prompt" = "~/.config/fish/functions"
+
+# }}}
+
+# }}}
+# nushell {{{
+
+[nushell.files]
+"nushell" = "~/.config/nushell"
+
+# }}}
+# zsh {{{
+
+[zsh]
+depends = ["updater"]
+
+[zsh.files]
+"zsh/antigenrc" = "~/.zsh/antigenrc"
+"zsh/plugins" = "~/.zsh/plugins"
+#"zsh/themes" = "~/.zsh/themes"
+"zsh/update.zsh" = "~/.config/update.d/60-zsh.zsh"
+"zsh/zlogin" = "~/.zlogin"
+"zsh/zlogout" = "~/.zlogout"
+"zsh/zprofile" = "~/.zprofile"
+"zsh/zshenv" = "~/.zshenv"
+"zsh/zshrc" = "~/.zshrc"
+
+# }}}
+
+# }}}
+# package managers {{{
+
+# apt {{{
+
+[apt]
+depends = ["updater"]
+
+[apt.files]
+"apt/update.sh" = "~/.config/update.d/10-apt.sh"
+
+# }}}
+# flatpak {{{
+
+[flatpak]
+depends = ["updater"]
+
+[flatpak.files]
+"flatpak/update.sh" = "~/.config/update.d/20-flatpak.sh"
+
+# }}}
+# homebrew {{{
+
+[homebrew]
+depends = ["updater"]
+
+[homebrew.files]
+"homebrew/update.sh" = "~/.config/update.d/10-homebrew.sh"
+
+
+[homebrew-bash]
+depends = ["homebrew", "bash"]
+
+[homebrew-bash.files]
+"homebrew/init.bash" = "~/.config/bash/env.d/10-homebrew.sh"
+
+
+[homebrew-fish]
+depends = ["homebrew", "fish"]
+
+[homebrew-fish.files]
+"homebrew/init.fish" = "~/.config/fish/conf.d/10-homebrew.fish"
+
+
+[homebrew-nushell]
+depends = ["homebrew", "nushell"]
+
+[homebrew-nushell.files]
+"homebrew/init.nu" = "~/.local/share/nushell/vendor/autoload/10-homebrew.nu"
+
+
+[homebrew-zsh]
+depends = ["homebrew", "zsh"]
+
+[homebrew-zsh.files]
+"homebrew/init.zsh" = "~/.zsh/env.d/10-homebrew.zsh"
+
+# }}}
+# nix {{{
+
+[nix]
+depends = ["updater"]
+
+[nix.files]
+"nix/nix.conf" = "~/.config/nix/nix.conf"
+"nix/update.sh" = "~/.config/update.d/15-nix.sh"
+
+# }}}
+# pacman {{{
+
+[pacman]
+depends = ["updater"]
+
+[pacman.files]
+"pacman/makepkg.conf" = "~/.config/pacman/makepkg.conf"
+"pacman/update.sh" = "~/.config/update.d/10-pacman.sh"
+"pacman/update-aur.sh" = "~/.config/update.d/15-aur.sh"
+
+# }}}
+# snap {{{
+
+[snap]
+depends = ["updater"]
+
+[snap.files]
+"snap/update.sh" = "~/.config/update.d/20-snap.sh"
+
+# }}}
+
+# }}}
+
 # aliases {{{
 
 [aliases-bash]
@@ -140,15 +292,6 @@ depends = ["zsh"]
 "aliases/aliases.zsh" = { target = "~/.zsh/rc.d/30-aliases.zsh", type = "symbolic" }
 
 # }}}
-# apt {{{
-
-[apt]
-depends = ["updater"]
-
-[apt.files]
-"apt/update.sh" = "~/.config/update.d/10-apt.sh"
-
-# }}}
 # atuin {{{
 
 [atuin.files]
@@ -171,19 +314,6 @@ depends = ["atuin"]
 
 [atuin-zsh.files]
 "atuin/init.zsh" = "~/.zsh/rc.d/90-atuin.zsh"
-
-# }}}
-# bash {{{
-
-[bash.files]
-"bash/env.d" = "~/.config/bash/env.d"
-"bash/rc.d" = "~/.config/bash/rc.d"
-"bash/bash_logout" = "~/.bash_logout"
-"bash/bashrc" = "~/.bashrc"
-"bash/profile" = "~/.profile"
-
-[bash.variables]
-editor = "vim"
 
 # }}}
 # direnv {{{
@@ -224,33 +354,25 @@ duplicity_target_url = "sftp://matthew@nymbus.home.komputerwiz.net//mnt/zfs/orca
 [eclipse]
 
 # }}}
-# fish {{{
+# fzf {{{
 
-[fish]
-depends = ["updater"]
+[fzf-bash]
+depends = ["fzf"]
 
-[fish.files]
-"fish/config" = "~/.config/fish"
-"fish/update.fish" = "~/.config/update.d/60-fish.fish"
+[fzf-bash.files]
+"fzf/init.bash" = "~/.config/bash/rc.d/90-fzf.sh"
 
-# vanilla prompt {{{
+[fzf-fish]
+depends = ["fzf"]
 
-[fish-prompt]
-depends = ["fish"]
+[fzf-fish.files]
+"fzf/init.fish" = "~/.config/fish/conf.d/90-fzf.fish"
 
-[fish-prompt.files]
-"fish/prompt" = "~/.config/fish/functions"
+[fzf-zsh]
+depends = ["fzf"]
 
-# }}}
-
-# }}}
-# flatpak {{{
-
-[flatpak]
-depends = ["updater"]
-
-[flatpak.files]
-"flatpak/update.sh" = "~/.config/update.d/20-flatpak.sh"
+[fzf-zsh.files]
+"fzf/init.zsh" = "~/.zsh/rc.d/90-fzf.zsh"
 
 # }}}
 # gem {{{
@@ -291,43 +413,6 @@ use_git_delta = true
 
 [helix.files]
 "helix" = { target = "~/.config/helix", type = "symbolic" }
-
-# }}}
-# homebrew {{{
-
-[homebrew]
-depends = ["updater"]
-
-[homebrew.files]
-"homebrew/update.sh" = "~/.config/update.d/10-homebrew.sh"
-
-
-[homebrew-bash]
-depends = ["homebrew", "bash"]
-
-[homebrew-bash.files]
-"homebrew/init.bash" = "~/.config/bash/env.d/10-homebrew.sh"
-
-
-[homebrew-fish]
-depends = ["homebrew", "fish"]
-
-[homebrew-fish.files]
-"homebrew/init.fish" = "~/.config/fish/conf.d/10-homebrew.fish"
-
-
-[homebrew-nushell]
-depends = ["homebrew", "nushell"]
-
-[homebrew-nushell.files]
-"homebrew/init.nu" = "~/.local/share/nushell/vendor/autoload/10-homebrew.nu"
-
-
-[homebrew-zsh]
-depends = ["homebrew", "zsh"]
-
-[homebrew-zsh.files]
-"homebrew/init.zsh" = "~/.zsh/env.d/10-homebrew.zsh"
 
 # }}}
 # hyprland {{{
@@ -409,16 +494,6 @@ depends = ["nvim"]
 "nvim/neovide/config.toml" = "~/.config/neovide/config.toml"
 
 # }}}
-# nix {{{
-
-[nix]
-depends = ["updater"]
-
-[nix.files]
-"nix/nix.conf" = "~/.config/nix/nix.conf"
-"nix/update.sh" = "~/.config/update.d/15-nix.sh"
-
-# }}}
 # npm {{{
 
 [npm]
@@ -426,12 +501,6 @@ depends = ["updater"]
 
 [npm.files]
 "npm/update.sh" = "~/.config/update.d/50-npm-global.sh"
-
-# }}}
-# nushell {{{
-
-[nushell.files]
-"nushell" = "~/.config/nushell"
 
 # }}}
 # nvim {{{
@@ -448,17 +517,6 @@ depends = ["updater"]
 nvim_python3 = "/usr/bin/python3"
 nvim_ruby = "/usr/bin/neovim-ruby-host"
 nvim_shell = "/bin/bash"
-
-# }}}
-# pacman {{{
-
-[pacman]
-depends = ["updater"]
-
-[pacman.files]
-"pacman/makepkg.conf" = "~/.config/pacman/makepkg.conf"
-"pacman/update.sh" = "~/.config/update.d/10-pacman.sh"
-"pacman/update-aur.sh" = "~/.config/update.d/15-aur.sh"
 
 # }}}
 # php-dev {{{
@@ -545,15 +603,6 @@ depends = ["rustup", "zsh"]
 
 [rustup-zsh.files]
 "rustup/env.zsh" = "~/.zsh/env.d/80-rustup.zsh"
-
-# }}}
-# snap {{{
-
-[snap]
-depends = ["updater"]
-
-[snap.files]
-"snap/update.sh" = "~/.config/update.d/20-snap.sh"
 
 # }}}
 # ssh {{{
@@ -691,22 +740,5 @@ depends = ["zoxide", "zsh"]
 "zoxide/plugin.zsh" = "~/.zsh/plugins.d/zoxide.zsh"
 
 #}}}
-# zsh {{{
-
-[zsh]
-depends = ["updater"]
-
-[zsh.files]
-"zsh/antigenrc" = "~/.zsh/antigenrc"
-"zsh/plugins" = "~/.zsh/plugins"
-#"zsh/themes" = "~/.zsh/themes"
-"zsh/update.zsh" = "~/.config/update.d/60-zsh.zsh"
-"zsh/zlogin" = "~/.zlogin"
-"zsh/zlogout" = "~/.zlogout"
-"zsh/zprofile" = "~/.zprofile"
-"zsh/zshenv" = "~/.zshenv"
-"zsh/zshrc" = "~/.zshrc"
-
-# }}}
 
 # vim: foldmethod=marker
