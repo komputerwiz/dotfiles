@@ -195,6 +195,13 @@ do
 	-- start new undo sequence for <C-u> and <C-w> in insert mode
 	vim.keymap.set('i', '<C-u>', '<C-g>u<C-u>')
 	vim.keymap.set('i', '<C-w>', '<C-g>u<C-w>')
+
+	-- GUI keybindings
+	if vim.g.neovide then
+		vim.keymap.set({'n', 'v'}, '<C-+>', function () vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1 end, { desc = 'Increase font size' })
+		vim.keymap.set({'n', 'v'}, '<C-_>', function () vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1 end, { desc = 'Decrease font size' })
+		vim.keymap.set({'n', 'v'}, '<C-)>', function () vim.g.neovide_scale_factor = 1 end, { desc = 'Reset font size' })
+	end
 end
 
 -- }}}
