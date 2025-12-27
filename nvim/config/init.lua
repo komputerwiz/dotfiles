@@ -1111,8 +1111,12 @@ require('nvim-surround').setup()
 -- }}}
 -- {{{ nvim-treesitter
 
-require('nvim-treesitter.configs').setup({
-	ensure_installed = {
+do
+	treesitter = require('nvim-treesitter')
+
+	treesitter.setup()
+
+	treesitter.install({
 		'bash',
 		'bibtex',
 		'c',
@@ -1170,16 +1174,10 @@ require('nvim-treesitter.configs').setup({
 		'vim',
 		'vimdoc',
 		'yaml',
-	},
-	highlight = {
-		enable = true,
-		disable = {
-			'php', -- breaks indentation
-		},
-	},
-})
+	})
 
-vim.treesitter.language.register('twig', 'html.twig') -- use 'twig' parser to handle 'html.twig' filetype
+	vim.treesitter.language.register('twig', { 'html.twig' }) -- use 'twig' parser to handle 'html.twig' filetype
+end
 
 -- }}}
 -- {{{ oil
