@@ -1113,73 +1113,37 @@ require('nvim-surround').setup()
 -- }}}
 -- {{{ nvim-treesitter
 
-do
-	treesitter = require('nvim-treesitter')
+-- automatically install and activate treesitter parsers for supported languages
+vim.api.nvim_create_autocmd({ 'Filetype' }, {
+	callback = function(event)
+		-- ensure nvim-treesitter is loaded
+		local ok, nvim_treesitter = pcall(require, 'nvim-treesitter')
 
-	treesitter.setup()
+		-- nvim-treesitter is not installed
+		if not ok then
+			return
+		end
 
-	treesitter.install({
-		'bash',
-		'bibtex',
-		'c',
-		'c_sharp',
-		'cmake',
-		'comment',
-		'cpp',
-		'css',
-		'diff',
-		'dockerfile',
-		'dot',
-		'ebnf',
-		'fish',
-		'git_rebase',
-		'gitattributes',
-		'gitcommit',
-		'go',
-		'gomod',
-		'gowork',
-		'graphql',
-		'haskell',
-		'html',
-		'http',
-		'java',
-		'javascript',
-		'jq',
-		'jsdoc',
-		'json',
-		'json5',
-		'jsonc',
-		'latex',
-		'lua',
-		'make',
-		'markdown',
-		'markdown_inline',
-		'meson',
-		'ninja',
-		'nu',
-		'php',
-		'phpdoc',
-		'pug',
-		'python',
-		'regex',
-		'rst',
-		'ruby',
-		'rust',
-		'scss',
-		'sql',
-		'svelte',
-		'todotxt',
-		'toml',
-		'tsx',
-		'twig',
-		'typescript',
-		'vim',
-		'vimdoc',
-		'yaml',
-	})
+		-- check whether treesitter parser is available
+		local parsers = require('nvim-treesitter.parsers')
+		if not parsers[event.match] or not nvim_treesitter.install then
+			return
+		end
 
-	vim.treesitter.language.register('twig', { 'html.twig' }) -- use 'twig' parser to handle 'html.twig' filetype
-end
+		local filetype = vim.bo[event.buf].filetype
+		local language = vim.treesitter.language.get_lang(filetype)
+		nvim_treesitter.install({ language }):await(function(err)
+			if err then
+				vim.notify('Treesitter install error for filetype: ' .. filetype .. ' error: ' .. err)
+				return
+			end
+
+			pcall(vim.treesitter.start, event.buf)
+			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+		end)
+	end,
+})
 
 -- }}}
 -- {{{ oil
