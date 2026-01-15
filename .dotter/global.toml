@@ -49,7 +49,6 @@ intelephense_license_key = ''
 # - rustup
 # - vim
 # - ytdl
-# - nvim
 #
 # 90 - late-binding shell environment
 #
@@ -511,12 +510,8 @@ depends = ["updater"]
 # }}}
 # nvim {{{
 
-[nvim]
-depends = ["updater"]
-
 [nvim.files]
 "nvim/config" = { target = "~/.config/nvim", type = "symbolic" }
-"nvim/update.sh" = "~/.config/update.d/80-nvim.sh"
 "nvim/system.vim" = "~/.config/nvim/plugin/system.vim"
 
 [nvim.variables]
