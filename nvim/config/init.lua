@@ -90,7 +90,9 @@ require('paq')({
 })
 
 -- }}}
--- neovide gui {{{
+-- {{{ neovide gui options
+
+-- NOTE: neovide-specific keybindings are defined with the other keybindings below
 
 if vim.g.neovide then
 	vim.o.guifont = 'Iosevka Nerd Font:h12'
@@ -244,6 +246,7 @@ end
 
 -- {{{ dokuwiki
 
+-- Code block syntax highlighting
 vim.g.dokuwiki_fenced_languages = { 'bash=sh', 'javascript', 'php', 'ruby' }
 
 -- }}}
@@ -287,6 +290,7 @@ require('gitsigns').setup({
 
 require('lualine').setup({
 	options = {
+		-- see 'lua/lualine/themes/solarized_custom.lua'
 		theme = 'solarized_custom',
 	},
 	sections = {
@@ -314,6 +318,22 @@ do
 	local ls = require('luasnip')
 	local types = require('luasnip.util.types')
 
+	ls.setup({
+		history = true,
+		updateevents = 'TextChanged,TextChangedI',
+		enable_autosnippets = true,
+		ext_opts = {
+			-- display `snip:choice` at end of line when choice node is active
+			[types.choiceNode] = {
+				active = {
+					virt_text = { { '  <-- snip:choice (<C-e>)', 'Comment' } },
+				},
+			},
+		},
+	})
+
+	-- {{{ snippet definitions
+
 	-- {{{ shorthand variables
 
 	local s = ls.snippet
@@ -333,7 +353,7 @@ do
 		return args[1]
 	end
 
-	-- traditional functional map operation
+	--[[ traditional functional map operation (currently unused)
 	local function map(tbl, fn)
 		local rv = {}
 		for key, val in pairs(tbl) do
@@ -341,6 +361,7 @@ do
 		end
 		return rv
 	end
+	]]
 
 	-- capitalize the first letter of a word
 	local function capitalize(args)
@@ -384,25 +405,6 @@ do
 	end
 
 	-- }}}
-
-	-- {{{ luasnip configuration
-
-	ls.config.set_config({
-		history = true,
-		updateevents = 'TextChanged,TextChangedI',
-		-- enable_autosnippets = true,
-		ext_opts = {
-			-- display `snip:choice` at end of line when choice node is active
-			[types.choiceNode] = {
-				active = {
-					virt_text = { { 'snip:choice (<C-e>)', 'Comment' } },
-				},
-			},
-		},
-	})
-
-	-- }}}
-	-- {{{ snippet definitions
 
 	-- {{{ global snippets
 
@@ -693,6 +695,8 @@ do
 	-- {{{ markdown
 
 	ls.add_snippets('markdown', {
+
+		-- ham radio notes/minutes
 		s({ trig = 'qrz', name = 'Link to QRZ profile' }, {
 			t('['), i(2, 'Good on QRZ'), t('](https://qrz.com/db/'), i(1, 'n0call'), t(')'),
 		}),
@@ -722,15 +726,21 @@ do
 				}),
 			}),
 		}),
+
+		-- hugo shortcodes
 		s({ trig = 'rref', name = 'Relative reference link' }, {
 			t('['), i(1, 'text'), t(']({{< relref "'), i(2, 'href'), t('" >}})'),
 		}),
+
+		-- tags
 		s({ trig = 'sup', name = 'Superscript tag' }, {
 			t('<sup>'), i(1), t('</sup>'),
 		}),
 		s({ trig = 'sub', name = 'Subscript tag' }, {
 			t('<sub>'), i(1), t('</sub>'),
 		}),
+
+		-- issue links for work notes
 		s({
 			trig = 'gh#(%d+)',
 			name = 'GitHub Issue Link',
@@ -769,6 +779,7 @@ do
 			end),
 			t(')'),
 		}),
+
 	})
 
 	-- }}}
@@ -806,6 +817,17 @@ do
 	-- {{{ sh
 
 	ls.add_snippets('sh', {
+		s({ trig = '^#!', name = 'Shebang', trigEngine = 'pattern', snippetType = 'autosnippet' }, {
+			t('#!'),
+			c(1, {
+				sn(nil, {
+					t('/usr/bin/env '),
+					i(1, 'bash'),
+				}),
+				i(1, '/bin/bash'),
+			}),
+			t({'', ''}),
+		}),
 		s({ trig = 'DIR', name = 'Script directory' }, {
 			t({ 'DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null && pwd)"', '' }),
 		}),
