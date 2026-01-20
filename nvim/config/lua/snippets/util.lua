@@ -10,15 +10,15 @@ local d = ls.dynamic_node
 local r = ls.restore_node
 
 return {
-	-- copies the text value of another text field
-	copy = function(args)
-		return args[1]
-	end,
-
 	-- capitalize the first letter of a word
 	capitalize = function(args)
 		local capitalized = table.concat(args[1]):gsub('^%l', string.upper)
 		return sn(nil, i(1, capitalized))
+	end,
+
+	-- copies the text value of another text field
+	copy = function(args)
+		return args[1]
 	end,
 
 	-- recursive delimited expansion

@@ -51,3 +51,8 @@ opt.termguicolors = true
 opt.updatetime = 1000
 opt.wildmode = { 'longest:full', 'full' }
 opt.wrap = false
+
+-- netrw config (vim's built-in file browser)
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+vim.g.netrw_winsize = 25

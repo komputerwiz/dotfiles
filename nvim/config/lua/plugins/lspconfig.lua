@@ -83,21 +83,16 @@ return {
 				callback = function(args)
 					local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-					-- helper functions for setting buffer-local keymaps and options
-					local function bmap(...) vim.api.nvim_buf_set_keymap(args.buf, ...) end
-					local function bopt(...) vim.api.nvim_buf_set_option(args.buf, ...) end
-					local opts = { noremap = true, silent = true }
-
 					-- NOTE: see :h lsp-defaults
-					bmap('n', 'grD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+					vim.keymap.set('n', 'grD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', { buffer = true, noremap = true, silent = true, desc = 'LSP: Go to declaration' })
 
-					bmap('n', '<Leader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
-					bmap('n', '<Leader>q', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+					vim.keymap.set('n', '<LocalLeader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>', { buffer = true, noremap = true, silent = true, desc = 'LSP Diagnostics: open float' })
+					vim.keymap.set('n', '<LocalLeader>q', '<Cmd>lua vim.diagnostic.setloclist()<CR>', { buffer = true, noremap = true, silent = true, desc = 'LSP Diognostics: open loclist' })
 
 					if client:supports_method('workspace/workspaceFolders') then
-						bmap('n', '<Leader>wa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-						bmap('n', '<Leader>wr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-						bmap('n', '<Leader>wl', '<Cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+						vim.keymap.set('n', '<LocalLeader>wa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', { buffer = true, noremap = true, silent = true, desc = 'LSP Workspace: add folder' })
+						vim.keymap.set('n', '<LocalLeader>wr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', { buffer = true, noremap = true, silent = true, desc = 'LSP Workspace: remove folder' })
+						vim.keymap.set('n', '<LocalLeader>wl', '<Cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', { buffer = true, noremap = true, silent = true, desc = 'LSP Workspace: list folders' })
 					end
 
 					if client:supports_method('textDocument/documentHighlight') then
@@ -115,8 +110,6 @@ return {
 					end
 				end
 			})
-
-			-- }}}
 
 		end,
 	},
