@@ -60,6 +60,9 @@ packages = [
 	# "direnv-fish",
 	# "direnv-zsh",
 
+	# "dolphin-thoughts",
+	# "dolphin-thoughts-fish",
+
 	# "duplicity",
 
 	# "eclipse",

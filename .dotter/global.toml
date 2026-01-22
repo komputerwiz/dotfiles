@@ -339,6 +339,18 @@ depends = ["direnv", "zsh"]
 "direnv/plugin.zsh" = "~/.zsh/plugins.d/direnv.zsh"
 
 # }}}
+# dolphin-thoughts {{{
+
+[dolphin-thoughts.files]
+"dolphin-thoughts/config" = { target = "~/.config/greetings", type = "symbolic" }
+
+[dolphin-thoughts-fish]
+depends = ["dolphin-thoughts", "fish"]
+
+[dolphin-thoughts-fish.files]
+"dolphin-thoughts/fish_greeting.fish" = "~/.config/fish/functions/fish_greeting.fish"
+
+# }}}
 # duplicity {{{
 
 [duplicity.files]
@@ -348,7 +360,7 @@ depends = ["direnv", "zsh"]
 duplicity_target_url = "sftp://matthew@nymbus.home.komputerwiz.net//mnt/zfs/orca/files/backup/%H/duplicity/%i"
 
 # }}}
-# {{{ eclipse 
+# {{{ eclipse
 
 [eclipse]
 

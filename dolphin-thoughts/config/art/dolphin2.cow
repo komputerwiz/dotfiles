@@ -1,0 +1,10 @@
+$thoughts = '/';
+$the_cow = <<EOC;
+             ,-._         $thoughts
+           _.-'  '--.    $thoughts
+         .'      _  -`\_
+        / .----.`_.'----'
+        ;/     `
+ jgs   /_;
+
+EOC
