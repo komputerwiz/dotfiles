@@ -15,6 +15,11 @@ User matthew
 Host falcon
 Hostname 166.78.156.85
 User ubuntu
+IdentityFile ~/.ssh/rackspace-legacy
+
+Host zenyth
+Hostname 50.56.158.73
+User ubuntu
 IdentityFile ~/.ssh/rackspace
 
 Host *.citd.tamu.edu *.tcat.tamu.edu
