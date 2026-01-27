@@ -339,16 +339,25 @@ depends = ["direnv", "zsh"]
 "direnv/plugin.zsh" = "~/.zsh/plugins.d/direnv.zsh"
 
 # }}}
-# dolphin-thoughts {{{
+# dolpinsay {{{
 
-[dolphin-thoughts.files]
-"dolphin-thoughts/config" = { target = "~/.config/greetings", type = "symbolic" }
+[dolphinsay.files]
+"dolphinsay/art" = { target = "~/.config/dolphinsay/art", type = "symbolic" }
 
-[dolphin-thoughts-fish]
-depends = ["dolphin-thoughts", "fish"]
+[dolphinsay-fish]
+depends = ["dolphinsay", "fish"]
 
-[dolphin-thoughts-fish.files]
-"dolphin-thoughts/fish_greeting.fish" = "~/.config/fish/functions/fish_greeting.fish"
+[dolphinsay-fish.files]
+"dolphinsay/dolphinsay.fish" = "~/.config/fish/functions/dolphinsay.fish"
+
+[dolphinsay-greet.files]
+"dolphinsay/text" = { target = "~/.config/dolphinsay/text", type = "symbolic" }
+
+[dolphinsay-greet-fish]
+depends = ["dolphinsay-greet", "dolphinsay-fish"]
+
+[dolphinsay-greet-fish.files]
+"dolphinsay/fish_greeting.fish" = "~/.config/fish/functions/fish_greeting.fish"
 
 # }}}
 # duplicity {{{
