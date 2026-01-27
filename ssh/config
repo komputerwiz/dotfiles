@@ -1,7 +1,7 @@
 AddKeysToAgent yes
 Include config.sec
 
-Host home nymbus.home.komputerwiz.net
+Host home nymbus nymbus.home.komputerwiz.net
 Hostname nymbus.home.komputerwiz.net
 User matthew
 
@@ -12,12 +12,7 @@ User plex
 Host ripper.home.komputerwiz.net
 User matthew
 
-Host falcon
-Hostname 166.78.156.85
-User ubuntu
-IdentityFile ~/.ssh/rackspace-legacy
-
-Host zenyth
+Host zenyth zenyth.komputerwiz.net
 Hostname 50.56.158.73
 User ubuntu
 IdentityFile ~/.ssh/rackspace
@@ -27,6 +22,10 @@ User mbarry-admin2
 LogLevel error
 ForwardAgent yes
 SetEnv TERM=xterm-256color
+
+Host github
+Hostname github.com
+User git
 
 Host gitea
 Hostname gitea.citd.tamu.edu
