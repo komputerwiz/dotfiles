@@ -7,8 +7,9 @@ return {
 
 			ls.setup({
 				history = true,
-				updateevents = 'TextChanged,TextChangedI',
+				updateevents = { 'TextChanged', 'TextChangedI' },
 				enable_autosnippets = true,
+				store_selection_keys = '<Tab>',
 				ext_opts = {
 					-- display `snip:choice` at end of line when choice node is active
 					[types.choiceNode] = {

@@ -14,11 +14,11 @@ return {
 	-- ham radio notes/minutes
 
 	s({ trig = 'qrz', name = 'Link to QRZ profile' }, {
-		t('['), i(2, 'Good on QRZ'), t('](https://qrz.com/db/'), i(1, 'n0call'), t(')'),
+		t('['), i(2, 'Good on QRZ'), t('](https://qrz.com/db/'), u.visual(1, 'n0call'), t(')'),
 	}),
 
 	s({ trig = 'qso', name = 'Contact shortcode' }, {
-		t('{{% qso '), i(1), t(' %}}'),
+		t('{{% qso '), u.visual(1), t(' %}}'),
 	}),
 
 	s({
@@ -48,17 +48,17 @@ return {
 	-- hugo shortcodes
 
 	s({ trig = 'rref', name = 'Relative reference link' }, {
-		t('['), i(1, 'text'), t(']({{< relref "'), i(2, 'href'), t('" >}})'),
+		t('['), u.visual(1, 'text'), t(']({{< relref "'), i(2, 'href'), t('" >}})'),
 	}),
 
 	-- tags
 
 	s({ trig = 'sup', name = 'Superscript tag' }, {
-		t('<sup>'), i(1), t('</sup>'),
+		t('<sup>'), u.visual(1), t('</sup>'),
 	}),
 
 	s({ trig = 'sub', name = 'Subscript tag' }, {
-		t('<sub>'), i(1), t('</sub>'),
+		t('<sub>'), u.visual(1), t('</sub>'),
 	}),
 
 	-- issue links for work notes
