@@ -414,6 +414,9 @@ depends = ["zsh"]
 [ghostty.files]
 "ghostty" = "~/.config/ghostty"
 
+[ghostty.variables]
+ghostty_font_size = 12
+
 # }}}
 # git {{{
 

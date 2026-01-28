@@ -159,6 +159,7 @@ packages = [
 # duplicity_gpg_passphrase = "..."
 # duplicity_target_url = "..."
 # ghostty_command = "/usr/bin/fish"
+# ghostty_font_size = 12
 # grammarly_client_id = "..."
 # intelephense_license_key = "..."
 # n_prefix = "$HOME/.local/opt/n"
