@@ -456,32 +456,32 @@ use_git_delta = true
 "latex/packages" = { target = "~/texmf/tex/latex", type = "symbolic" }
 
 # }}}
-# mise {{{
+# mise-en-place {{{
 
 [mise]
 depends = ["updater"]
 
 [mise.files]
-"mise/config.toml" = "~/.config/mise/config.toml"
-"mise/update.sh" = "~/.config/update.d/40-mise.sh"
+"mise-en-place/config.toml" = "~/.config/mise/config.toml"
+"mise-en-place/update.sh" = "~/.config/update.d/40-mise.sh"
 
 [mise-bash]
 depends = ["bash", "mise"]
 
 [mise-bash.files]
-"mise/init.bash" = "~/.config/bash/rc.d/40-mise.sh"
+"mise-en-place/init.bash" = "~/.config/bash/rc.d/40-mise.sh"
 
 [mise-fish]
 depends = ["fish", "mise"]
 
 [mise-fish.files]
-"mise/init.fish" = "~/.config/fish/conf.d/40-mise.fish"
+"mise-en-place/init.fish" = "~/.config/fish/conf.d/40-mise.fish"
 
 [mise-zsh]
 depends = ["mise", "zsh"]
 
 [mise-zsh.files]
-"mise/init.zsh" = "~/.zsh/rc.d/40-mise.zsh"
+"mise-en-place/init.zsh" = "~/.zsh/rc.d/40-mise.zsh"
 
 # }}}
 # mpv {{{
@@ -766,4 +766,4 @@ depends = ["zoxide", "zsh"]
 
 #}}}
 
-# vim: foldmethod=marker
+# vim: foldmethod=marker foldlevel=0
