@@ -12,6 +12,19 @@ return {
 	{ 'tpope/vim-commentary' },
 	{
 		'tpope/vim-fugitive',
+		cmd = {
+			'Git',
+			'Gcd', 'Glcd',
+			'Ggrep', 'Glgrep',
+			'Gclog', 'Gllog',
+			'Ge', 'Gedit', 'Gpedit', 'Gsplit', 'Gvsplit', 'Gtabedit', 'Gdrop',
+			'Gr', 'Gread',
+			'Gdiffsplit', 'Ghdiffsplit', 'Gvdiffsplit',
+			'Gw', 'Gwrite', 'Gwq',
+			'GRemove', 'GUnlink', 'GDelete',
+			'GMove', 'GRename',
+			'GBrowse',
+		},
 		keys = {
 			{ '<Leader>gh', '<Cmd>0Gclog<CR>', mode = 'n', desc = 'Open git log in quickfix' },
 		},
