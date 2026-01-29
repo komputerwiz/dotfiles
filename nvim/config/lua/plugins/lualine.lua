@@ -17,6 +17,12 @@ return {
 						end,
 					},
 				},
+				lualine_b = {
+					'branch',
+					'diff',
+					'lsp_status',
+					'diagnostics',
+				},
 				lualine_c = {
 					{
 						'filename',
