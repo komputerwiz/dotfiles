@@ -29,6 +29,27 @@ return {
 						path = 1,
 					},
 				},
+				lualine_x = {
+					{
+						function()
+							local ok, ollama = pcall(require, 'ollama')
+							if not ok then return '' end
+
+							local status = ollama.status()
+							if status == 'IDLE' then
+								return "󱙺" -- nf-md-robot-outline
+							elseif status == 'WORKING' then
+								return "󰚩" -- nf-md-robot
+							end
+						end,
+
+						cond = function()
+							local ok, ollama = pcall(require, 'ollama')
+							if not ok then return false end
+							return package.loaded['ollama'] and ollama.status ~= nil
+						end
+					},
+				},
 			},
 		},
 	},
