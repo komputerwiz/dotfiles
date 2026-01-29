@@ -60,8 +60,12 @@ packages = [
 	# "direnv-fish",
 	# "direnv-zsh",
 
-	# "dolphin-thoughts",
-	# "dolphin-thoughts-fish",
+	# "dolphinsay",      # wrapper script for cowsay
+	# "dolphinsay-fish", # fish-native function
+	# show a random dolphin thought on interactive shell
+	# "dolphinsay-greet-bash",
+	# "dolphinsay-greet-fish",
+	# "dolphinsay-greet-zsh",
 
 	# "duplicity",
 

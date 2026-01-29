@@ -343,21 +343,42 @@ depends = ["direnv", "zsh"]
 
 [dolphinsay.files]
 "dolphinsay/art" = { target = "~/.config/dolphinsay/art", type = "symbolic" }
+"dolphinsay/dolphinsay.sh" = "~/.local/bin/dolphinsay"
+
 
 [dolphinsay-fish]
-depends = ["dolphinsay", "fish"]
+depends = ["fish"]
 
 [dolphinsay-fish.files]
 "dolphinsay/dolphinsay.fish" = "~/.config/fish/functions/dolphinsay.fish"
 
+
+[dolphinsay-greet]
+depends = ["dolphinsay"]
+
 [dolphinsay-greet.files]
 "dolphinsay/text" = { target = "~/.config/dolphinsay/text", type = "symbolic" }
+
+
+[dolphinsay-greet-bash]
+depends = ["bash", "dolphinsay-greet"]
+
+[dolphinsay-greet-bash.files]
+"dolphinsay/greeting.sh" = "~/.config/bash/rc.d/99-dolphinsay-greet.sh"
+
 
 [dolphinsay-greet-fish]
 depends = ["dolphinsay-greet", "dolphinsay-fish"]
 
 [dolphinsay-greet-fish.files]
 "dolphinsay/fish_greeting.fish" = "~/.config/fish/functions/fish_greeting.fish"
+
+
+[dolphinsay-greet-zsh]
+depends = ["dolphinsay-greet", "zsh"]
+
+[dolphinsay-greet-zsh.files]
+"dolphinsay/greeting.sh" = "~/.zsh/rc.d/99-dolphinsay-greet.zsh"
 
 # }}}
 # duplicity {{{
