@@ -23,28 +23,33 @@ function M.copy(args)
 end
 
 -- recursive delimited expansion
-function M.rec_delim(args, parent, old_state, delim, placeholder)
-	return sn(
-		nil,
-		c(1, {
-			t(''), -- putting sn(...) first causes infinite loop
-			sn(nil, {
-				t(delim),
-				i(1, placeholder),
-				d(2, M.rec_delim, {}, { user_args = { delim, placeholder } }),
-			}),
-		})
-	)
+
+function M.rec_delim(jump_index, delim, placeholder)
+	function recurse()
+		return sn(
+			nil,
+			c(1, {
+				t(''), -- putting sn(...) first causes infinite loop
+				sn(nil, {
+					t(delim),
+					i(1, placeholder),
+					d(2, recurse),
+				}),
+			})
+		)
+	end
+
+	return d(jump_index, recurse)
 end
 
 -- obtain the visual selection as fixed text if available
 -- or act like a placeholder if no visual selection is available
 function M.visual(jump_index, placeholder)
-	return d(jump_index, function(_, snip)
-		if snip.env.SELECT_RAW then
-			return sn(nil, { t(snip.env.SELECT_RAW) })
+	return d(jump_index, function(args, parent, old_state, user_args)
+		if #parent.snippet.env.SELECT_RAW > 0 then
+			return sn(nil, t(parent.snippet.env.SELECT_RAW))
 		else
-			return sn(nil, { i(1, placeholder)})
+			return sn(nil, i(1, placeholder))
 		end
 	end)
 end

@@ -72,9 +72,7 @@ return {
 			sn(nil, {
 				t(' implements '),
 				i(1, 'MyInterface'),
-				d(2, u.rec_delim, {}, {
-					user_args = { ', ', 'MyInterface' },
-				}),
+				u.rec_delim(2, ', ', 'MyInterface'),
 			}),
 		}),
 		t({ '', '{', '\t' }),
@@ -98,9 +96,7 @@ return {
 			sn(nil, {
 				t(' extends '),
 				i(1, 'MyInterface'),
-				d(2, u.rec_delim, {}, {
-					user_args = { ', ', 'MyInterface' },
-				}),
+				u.rec_delim(2, ', ', 'MyInterface'),
 			}),
 		}),
 		t({ '', '{', '\t' }),

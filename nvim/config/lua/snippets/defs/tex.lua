@@ -25,9 +25,7 @@ return {
 	s({ trig = 'item', name = 'Itemized List Item' }, {
 		t('\\item '),
 		i(1),
-		d(2, u.rec_delim, {}, {
-			user_args = { { '', '\\item ' } },
-		}),
+		u.rec_delim(2, { '', '\\item ' }),
 	}),
 
 	s({ trig = 'f', name = 'Math Fraction' }, { t('\\frac{'), i(1), t('}{'), i(2), t('}') }),
