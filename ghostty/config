@@ -1,4 +1,4 @@
-theme = dark:Builtin Solarized Dark,light:Builtin Solarized Light
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 font-family = IosevkaTerm Nerd Font
 font-size = {{ghostty_font_size}}
 
