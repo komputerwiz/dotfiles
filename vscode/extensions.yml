@@ -1,4 +1,10 @@
 extensions:
+  - id: Catppuccin.catppuccin-vsc
+    name: Catppuccin for VS Code
+    author: Catppuccin
+    description: Soothing pastel theme for VSCode
+    enabled: true
+
   - id: bungcip.better-toml
     name: Better TOML
     author: bungcip

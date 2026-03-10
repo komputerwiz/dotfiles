@@ -36,15 +36,17 @@
         "editorInlayHint.background": "#00000000",
         "editorInlayHint.foreground": "#80808080",
     },
-    "workbench.colorTheme": "Solarized Dark",
+    "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.editor.empty.hint": "hidden",
     "workbench.enableExperiments": false,
-    "workbench.preferredDarkColorTheme": "Solarized Dark",
-    "workbench.preferredLightColorTheme": "Solarized Light",
+    "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+    "workbench.preferredLightColorTheme": "Catppuccin Latte",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tips.enabled": false,
 
     // extension config
+
+    "catppuccin.accentColor": "blue",
 
     "diffEditor.ignoreTrimWhitespace": false,
 
