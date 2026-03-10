@@ -5,3 +5,5 @@ function last_history_item
 end
 
 abbr --add !! --position anywhere --function last_history_item
+
+fish_config theme choose "Catppuccin Mocha"
