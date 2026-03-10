@@ -47,3 +47,6 @@ _*.patch
 ## These files either are too big or contain secrets.
 ## Hence, they should not be in a git repository either.
 *.nobak
+
+## Claude Code
+**/.claude/settings.local.json
