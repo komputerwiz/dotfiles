@@ -5,8 +5,7 @@ return {
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		opts = {
 			options = {
-				-- see 'lua/lualine/themes/solarized_custom.lua'
-				theme = 'solarized_custom',
+				theme = 'catppuccin',
 			},
 			sections = {
 				lualine_a = {
