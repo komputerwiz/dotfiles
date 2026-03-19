@@ -2,10 +2,13 @@ return {
 	{
 		'nvim-lualine/lualine.nvim',
 		lazy = false,
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		dependencies = {
+			'catppuccin/nvim',
+			'nvim-tree/nvim-web-devicons',
+		},
 		opts = {
 			options = {
-				theme = 'catppuccin',
+				theme = 'catppuccin-nvim',
 			},
 			sections = {
 				lualine_a = {
