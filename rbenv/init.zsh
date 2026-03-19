@@ -1,1 +1,1 @@
-antigen bundle rbenv
+antidote bundle ohmyzsh/ohmyzsh path:plugins/rbenv

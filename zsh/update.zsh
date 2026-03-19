@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-source "$HOME/.zsh/antigen.zsh"
-antigen init "$HOME/.zsh/antigenrc"
+source "$HOME/.zsh/antidoterc"
 
-antigen cleanup
-antigen selfupdate
-antigen update
+antidote update

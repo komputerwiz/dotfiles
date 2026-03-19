@@ -158,7 +158,7 @@ depends = ["fish"]
 depends = ["updater"]
 
 [zsh.files]
-"zsh/antigenrc" = "~/.zsh/antigenrc"
+"zsh/antidoterc" = "~/.zsh/antidoterc"
 "zsh/plugins" = "~/.zsh/plugins"
 #"zsh/themes" = "~/.zsh/themes"
 "zsh/update.zsh" = "~/.config/update.d/60-zsh.zsh"

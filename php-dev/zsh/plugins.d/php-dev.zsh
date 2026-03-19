@@ -1,2 +1,2 @@
-antigen bundle "$HOME/.zsh/plugins/composer"
-antigen bundle "$HOME/.zsh/plugins/sf"
+antidote bundle "$HOME/.zsh/plugins/composer"
+antidote bundle "$HOME/.zsh/plugins/sf"

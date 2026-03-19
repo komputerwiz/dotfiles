@@ -1,0 +1,32 @@
+### CONFIG ###
+
+DISABLE_CORRECTION=true
+DISABLE_AUTO_TITLE=true
+
+
+### ANTIDOTE ###
+
+[[ -e "${ZDOTDIR:-$HOME}/.antidote" ]] || git clone https://github.com/mattmc3/antidote.git "${ZDOTDIR:-$HOME}/.antidote"
+source "$HOME/.antidote/antidote.zsh"
+source <(antidote init)
+
+antidote bundle getantidote/use-omz
+
+for file in "$HOME"/.zsh/plugins.d/*.zsh(N); do source "$file"; done
+
+antidote bundle "$HOME/.zsh/plugins/reboot-notifier"
+
+antidote bundle <<EOBUNDLES
+ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/history
+ohmyzsh/ohmyzsh path:plugins/sudo
+
+# must be loaded before syntax highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+# must be loaded after syntax highlighting
+zsh-users/zsh-history-substring-search
+EOBUNDLES
+
+# vim: ft=zsh

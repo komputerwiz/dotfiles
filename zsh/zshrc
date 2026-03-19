@@ -8,11 +8,9 @@
 #    /etc/zlogout   +  ~/.zlogout
 
 
-### ANTIGEN ###
+### ANTIDOTE ###
 
-source "$HOME/.zsh/antigen.zsh"
-antigen init "$HOME/.zsh/antigenrc"
-
+source "$HOME/.zsh/antidoterc"
 
 ### OPTIONS ###
 

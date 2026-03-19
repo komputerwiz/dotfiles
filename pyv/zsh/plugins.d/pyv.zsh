@@ -1,1 +1,1 @@
-antigen bundle "$HOME/.zsh/plugins/pyv"
+antidote bundle "$HOME/.zsh/plugins/pyv"

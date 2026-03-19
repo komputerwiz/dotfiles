@@ -1,1 +1,1 @@
-antigen bundle direnv
+antidote bundle ohmyzsh/ohmyzsh path:plugins/direnv

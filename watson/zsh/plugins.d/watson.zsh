@@ -1,1 +1,1 @@
-antigen bundle "$HOME/.zsh/plugins/watson"
+antidote bundle "$HOME/.zsh/plugins/watson"
