@@ -15,7 +15,11 @@ function fish_greeting
 	set message (fortune "$fish_greetings_dir")
 
 	if type -q cowsay
-		echo "$message" | dolphinsay -r
+		if type -q lolcat
+			echo "$message" | dolphinsay -r | lolcat
+		else
+			echo "$message" | dolphinsay -r
+		end
 	else
 		echo "$message"
 	end
