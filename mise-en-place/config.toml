@@ -1,5 +1,6 @@
 [tools]
 node = "latest"
+watchexec = "latest"
 
 [settings]
 experimental = true
