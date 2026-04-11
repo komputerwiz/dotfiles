@@ -19,7 +19,7 @@ return {
 
 	--@type Ollama.Config
 	opts = {
-		model = 'devstral-small-2',
+		model = 'lfm2',
 		-- url = 'http://127.0.0.1:11434',
 		-- serve = {
 		--	on_start = false,
