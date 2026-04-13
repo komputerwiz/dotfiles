@@ -1,3 +1,4 @@
+# set OS-specific paths and variables
 includes = [
 	# ".dotter/linux.toml",
 	# ".dotter/macos.toml",
@@ -11,10 +12,8 @@ packages = [
 	## Base OS
 
 	# "archlinux",
-	# "archlinux-fish",
 	# "debian",
 	# "macos",
-	# "macos-zsh",
 	# "ubuntu",
 
 
@@ -30,126 +29,50 @@ packages = [
 	## Package Managers
 
 	# "apt",
-
 	# "flatpak",
-
 	# "homebrew",
-	# "homebrew-bash",
-	# "homebrew-fish",
-	# "homebrew-zsh",
-
 	# "nix",
-
 	# "pacman",
-
 	# "snap",
 
 
 	## Other Packages
 
-	# NOTE: mutually exclusive with atuin
-	# "aliases",
-
+	# "aliases",           # NOTE: mutually exclusive with atuin
 	# "atuin",
-	# "atuin-bash",
-	# "atuin-fish",
-	# "atuin-zsh",
-
 	# "direnv",
-	# "direnv-bash",
-	# "direnv-fish",
-	# "direnv-zsh",
-
-	# "dolphinsay",      # wrapper script for cowsay
-	# "dolphinsay-fish", # fish-native function
-	# show a random dolphin thought on interactive shell
-	# "dolphinsay-greet-bash",
-	# "dolphinsay-greet-fish",
-	# "dolphinsay-greet-zsh",
-
+	# "dolphinsay",        # wrapper script for cowsay
+	# "dolphinsay-greet",  # show a random dolphin thought on interactive shell
 	# "duplicity",
-
-	# "eclipse",
-
 	# "fzf",
-	# "fzf-bash",
-	# "fzf-fish",
-	# "fzf-zsh",
-
 	# "gem",
-	# "gem-zsh",
-
 	# "ghostty",
-
 	# "git",
-	# "git-delta",
-
 	# "helix",
-
+	# "hyprland",
 	# "latex",
-
 	# "mise",
-	# "mise-bash",
-	# "mise-fish",
-	# "mise-zsh",
-
 	# "mpv",
-
 	# "n",
-	# "n-bash",
-	# "n-zsh",
-
 	# "neovide",
-
 	# "npm",
-
 	# "nvim",
-
-	# "php-dev-fish",
-	# "php-dev-zsh",
-
-	# "pyv-fish",
-	# "pyv-zsh",
-
+	# "php-dev",
+	# "pyv",
 	# "rbenv",
-	# "rbenv-bash",
-	# "rbenv-fish",
-	# "rbenv-zsh",
-
-	# "rustup-bash",
-	# "rustup-zsh",
 	# "rustup",
-
 	# "ssh",
-
 	# "starship",
 	# "starship-updater",
-	# "starship-bash",
-	# "starship-fish",
-	# "starship-zsh",
-
 	# "tailscale",
-
 	# "tmux",
-
-	# "trash-macos-fish",
-
+	# "trash-macos",
 	# "vim",
-
-	# "vscode-fish",
-
+	# "vscode",
 	# "watson",
-	# "watson-fish",
-	# "watson-zsh",
-
 	# "ytdl",
 	# "ytdl-updater",
-	# "ytdl-fish",
-
 	# "zoxide",
-	# "zoxide-bash",
-	# "zoxide-fish",
-	# "zoxide-zsh",
 ]
 
 [files]

@@ -1,8 +1,9 @@
 # global defaults {{{
 
 [default.variables]
-grammarly_client_id = ''
-intelephense_license_key = ''
+grammarly_client_id = ""
+intelephense_license_key = ""
+editor = "vim"
 
 # }}}
 # {{{ global updater and config loader priorities
@@ -75,11 +76,8 @@ intelephense_license_key = ''
 [archlinux]
 depends = ["pacman"]
 
-[archlinux-fish]
-depends = ["archlinux", "fish"]
-
-[archlinux-fish.files]
-"archlinux/fish_command_not_found.fish" = "~/.config/fish/functions/fish_command_not_found.fish"
+[archlinux.files]
+"archlinux/fish_command_not_found.fish" = { target = "~/.config/fish/functions/fish_command_not_found.fish", type = "symbolic", if = "dotter.packages.fish" }
 
 # }}}
 # debian {{{
@@ -101,11 +99,8 @@ depends = ["debian"]
 [macos]
 depends = ["homebrew"]
 
-[macos-zsh]
-depends = ["macos", "zsh"]
-
-[macos-zsh.files]
-"macos/env.zsh" = "~/.zsh/env.d/macos.zsh"
+[macos.files]
+"macos/env.zsh" = { target = "~/.zsh/env.d/macos.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 
@@ -121,9 +116,6 @@ depends = ["macos", "zsh"]
 "bash/bash_logout" = "~/.bash_logout"
 "bash/bashrc" = "~/.bashrc"
 "bash/profile" = "~/.profile"
-
-[bash.variables]
-editor = "vim"
 
 # }}}
 # fish {{{
@@ -198,34 +190,10 @@ depends = ["updater"]
 
 [homebrew.files]
 "homebrew/update.sh" = "~/.config/update.d/10-homebrew.sh"
-
-
-[homebrew-bash]
-depends = ["homebrew", "bash"]
-
-[homebrew-bash.files]
-"homebrew/init.bash" = "~/.config/bash/env.d/10-homebrew.sh"
-
-
-[homebrew-fish]
-depends = ["homebrew", "fish"]
-
-[homebrew-fish.files]
-"homebrew/init.fish" = "~/.config/fish/conf.d/10-homebrew.fish"
-
-
-[homebrew-nushell]
-depends = ["homebrew", "nushell"]
-
-[homebrew-nushell.files]
-"homebrew/init.nu" = "~/.local/share/nushell/vendor/autoload/10-homebrew.nu"
-
-
-[homebrew-zsh]
-depends = ["homebrew", "zsh"]
-
-[homebrew-zsh.files]
-"homebrew/init.zsh" = "~/.zsh/env.d/10-homebrew.zsh"
+"homebrew/init.bash" = { target = "~/.config/bash/env.d/10-homebrew.sh", type = "template", if = "dotter.packages.bash" }
+"homebrew/init.fish" = { target = "~/.config/fish/conf.d/10-homebrew.fish", type = "template", if = "dotter.packages.fish" }
+"homebrew/init.nu" = { target = "~/.local/share/nushell/vendor/autoload/10-homebrew.nu", type = "template", if = "dotter.packages.nushell" }
+"homebrew/init.zsh" = { target = "~/.zsh/env.d/10-homebrew.zsh", type = "template", if = "dotter.packages.zsh" }
 
 # }}}
 # nix {{{
@@ -263,80 +231,29 @@ depends = ["updater"]
 
 # aliases {{{
 
-[aliases-bash]
-depends = ["bash"]
-
-[aliases-bash.files]
-"aliases/aliases.bash" = { target = "~/.config/bash/rc.d/30-aliases.sh", type = "symbolic" }
-
-
-[aliases-fish]
-depends = ["fish"]
-
-[aliases-fish.files]
-"aliases/aliases.fish" = { target = "~/.config/fish/conf.d/30-aliases.fish", type = "symbolic" }
-
-
-[aliases-nushell]
-depends = ["nushell"]
-
-[aliases-nushell.files]
-"aliases/aliases.nu" = { target = "~/.local/share/nushell/vendor/autoload/30-aliases.nu", type = "symbolic" }
-
-
-[aliases-zsh]
-depends = ["zsh"]
-
-[aliases-zsh.files]
-"aliases/aliases.zsh" = { target = "~/.zsh/rc.d/30-aliases.zsh", type = "symbolic" }
+[aliases.files]
+"aliases/aliases.bash" = { target = "~/.config/bash/rc.d/30-aliases.sh", type = "symbolic", if = "dotter.packages.bash" }
+"aliases/aliases.fish" = { target = "~/.config/fish/conf.d/30-aliases.fish", type = "symbolic", if = "dotter.packages.fish" }
+"aliases/aliases.nu" = { target = "~/.local/share/nushell/vendor/autoload/30-aliases.nu", type = "symbolic", if = "dotter.packages.nushell" }
+"aliases/aliases.zsh" = { target = "~/.zsh/rc.d/30-aliases.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 # atuin {{{
 
 [atuin.files]
 "atuin/config.toml" = "~/.config/atuin/config.toml"
-
-[atuin-bash]
-depends = ["atuin"]
-
-[atuin-bash.files]
-"atuin/init.bash" = "~/.config/bash/rc.d/90-atuin.sh"
-
-[atuin-fish]
-depends = ["atuin"]
-
-[atuin-fish.files]
-"atuin/init.fish" = "~/.config/fish/conf.d/90-atuin.fish"
-
-[atuin-zsh]
-depends = ["atuin"]
-
-[atuin-zsh.files]
-"atuin/init.zsh" = "~/.zsh/rc.d/90-atuin.zsh"
+"atuin/init.bash" = { target = "~/.config/bash/rc.d/90-atuin.sh", type = "symbolic", if = "dotter.packages.bash" }
+"atuin/init.fish" = { target = "~/.config/fish/conf.d/90-atuin.fish", type = "symbolic", if = "dotter.packages.fish" }
+"atuin/init.zsh" = { target = "~/.zsh/rc.d/90-atuin.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 # direnv {{{
 
 [direnv.files]
 "direnv/config.toml" = "~/.config/direnv/config.toml"
-
-[direnv-bash]
-depends = ["bash", "direnv"]
-
-[direnv-bash.files]
-"direnv/init.bash" = "~/.config/bash/rc.d/50-direnv.sh"
-
-[direnv-fish]
-depends = ["direnv", "fish"]
-
-[direnv-fish.files]
-"direnv/init.fish" = "~/.config/fish/conf.d/direnv.fish"
-
-[direnv-zsh]
-depends = ["direnv", "zsh"]
-
-[direnv-zsh.files]
-"direnv/plugin.zsh" = "~/.zsh/plugins.d/direnv.zsh"
+"direnv/init.bash" = { target = "~/.config/bash/rc.d/50-direnv.sh", type = "symbolic", if = "dotter.packages.bash" }
+"direnv/init.fish" = { target = "~/.config/fish/conf.d/direnv.fish", type = "symbolic", if = "dotter.packages.fish" }
+"direnv/plugin.zsh" = { target = "~/.zsh/plugins.d/direnv.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 # dolpinsay {{{
@@ -346,39 +263,14 @@ depends = ["direnv", "zsh"]
 "dolphinsay/dolphinsay.sh" = "~/.local/bin/dolphinsay"
 
 
-[dolphinsay-fish]
-depends = ["fish"]
-
-[dolphinsay-fish.files]
-"dolphinsay/dolphinsay.fish" = "~/.config/fish/functions/dolphinsay.fish"
-
-
 [dolphinsay-greet]
 depends = ["dolphinsay"]
 
 [dolphinsay-greet.files]
 "dolphinsay/text" = { target = "~/.config/dolphinsay/text", type = "symbolic" }
-
-
-[dolphinsay-greet-bash]
-depends = ["bash", "dolphinsay-greet"]
-
-[dolphinsay-greet-bash.files]
-"dolphinsay/greeting.sh" = "~/.config/bash/rc.d/99-dolphinsay-greet.sh"
-
-
-[dolphinsay-greet-fish]
-depends = ["dolphinsay-greet", "dolphinsay-fish"]
-
-[dolphinsay-greet-fish.files]
-"dolphinsay/fish_greeting.fish" = "~/.config/fish/functions/fish_greeting.fish"
-
-
-[dolphinsay-greet-zsh]
-depends = ["dolphinsay-greet", "zsh"]
-
-[dolphinsay-greet-zsh.files]
-"dolphinsay/greeting.sh" = "~/.zsh/rc.d/99-dolphinsay-greet.zsh"
+"dolphinsay/greeting.sh" = { target = "~/.config/bash/rc.d/99-dolphinsay-greet.sh", type = "symbolic", if = "dotter.packages.bash" }
+"dolphinsay/fish_greeting.fish" = { target = "~/.config/fish/functions/fish_greeting.fish", type = "symbolic", if = "dotter.packages.fish" }
+"dolphinsay/greeting.sh" = { target = "~/.zsh/rc.d/99-dolphinsay-greet.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 # duplicity {{{
@@ -390,44 +282,19 @@ depends = ["dolphinsay-greet", "zsh"]
 duplicity_target_url = "sftp://matthew@nymbus.home.komputerwiz.net//mnt/zfs/orca/files/backup/%H/duplicity/%i"
 
 # }}}
-# {{{ eclipse
-
-[eclipse]
-
-# }}}
 # fzf {{{
 
-[fzf]
-
-[fzf-bash]
-depends = ["fzf"]
-
-[fzf-bash.files]
-"fzf/init.bash" = "~/.config/bash/rc.d/90-fzf.sh"
-
-[fzf-fish]
-depends = ["fzf"]
-
-[fzf-fish.files]
-"fzf/init.fish" = "~/.config/fish/conf.d/90-fzf.fish"
-
-[fzf-zsh]
-depends = ["fzf"]
-
-[fzf-zsh.files]
-"fzf/init.zsh" = "~/.zsh/rc.d/90-fzf.zsh"
+[fzf.files]
+"fzf/init.bash" = { target = "~/.config/bash/rc.d/90-fzf.sh", type = "symbolic", if = "dotter.packages.bash" }
+"fzf/init.fish" = { target = "~/.config/fish/conf.d/90-fzf.fish", type = "symbolic", if = "dotter.packages.fish" }
+"fzf/init.zsh" = { target = "~/.zsh/rc.d/90-fzf.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 # gem {{{
 
 [gem.files]
 "gem/gemrc" = "~/.gemrc"
-
-[gem-zsh]
-depends = ["zsh"]
-
-[gem-zsh.files]
-"gem/init.zsh" = "~/.zsh/env.d/gem.zsh"
+"gem/init.zsh" = { target = "~/.zsh/env.d/gem.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 # ghostty {{{
@@ -447,12 +314,6 @@ ghostty_font_size = 12
 
 [git.variables]
 email = "komputerwiz.matt@gmail.com"
-
-# }}}
-# git-delta {{{
-
-[git-delta.variables]
-use_git_delta = true
 
 # }}}
 # helix {{{
@@ -485,24 +346,9 @@ depends = ["updater"]
 [mise.files]
 "mise-en-place/config.toml" = "~/.config/mise/config.toml"
 "mise-en-place/update.sh" = "~/.config/update.d/40-mise.sh"
-
-[mise-bash]
-depends = ["bash", "mise"]
-
-[mise-bash.files]
-"mise-en-place/init.bash" = "~/.config/bash/rc.d/40-mise.sh"
-
-[mise-fish]
-depends = ["fish", "mise"]
-
-[mise-fish.files]
-"mise-en-place/init.fish" = "~/.config/fish/conf.d/40-mise.fish"
-
-[mise-zsh]
-depends = ["mise", "zsh"]
-
-[mise-zsh.files]
-"mise-en-place/init.zsh" = "~/.zsh/rc.d/40-mise.zsh"
+"mise-en-place/init.bash" = { target = "~/.config/bash/rc.d/40-mise.sh", type = "symbolic", if = "dotter.packages.bash" }
+"mise-en-place/init.fish" = { target = "~/.config/fish/conf.d/40-mise.fish", type = "symbolic", if = "dotter.packages.fish" }
+"mise-en-place/init.zsh" = { target = "~/.zsh/rc.d/40-mise.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 # mpv {{{
@@ -518,21 +364,11 @@ depends = ["updater"]
 
 [n.files]
 "n/update.sh" = "~/.config/update.d/40-n.sh"
+"n/env.bash" = { target = "~/.config/bash/env.d/40-n.sh", type = "template", if = "dotter.packages.bash" }
+"n/env.zsh" = { target = "~/.zsh/env.d/40-n.zsh", type = "template", if = "dotter.packages.zsh" }
 
 [n.variables]
 n_prefix = "$HOME/.local/opt/n"
-
-[n-bash]
-depends = ["bash", "n"]
-
-[n-bash.files]
-"n/env.bash" = "~/.config/bash/env.d/40-n.sh"
-
-[n-zsh]
-depends = ["n", "zsh"]
-
-[n-zsh.files]
-"n/env.zsh" = "~/.zsh/env.d/40-n.zsh"
 
 # }}}
 # neovide {{{
@@ -567,32 +403,16 @@ nvim_shell = "/bin/bash"
 # }}}
 # php-dev {{{
 
-[php-dev-fish]
-depends = ["fish"]
-
-[php-dev-fish.files]
-"php-dev/fish" = "~/.config/fish"
-
-[php-dev-zsh]
-depends = ["zsh"]
-
-[php-dev-zsh.files]
-"php-dev/zsh" = "~/.zsh"
+[php-dev.files]
+"php-dev/fish" = { target = "~/.config/fish", type = "symbolic", if = "dotter.packages.fish" }
+"php-dev/zsh" = { target = "~/.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 # pyv {{{
 
-[pyv-fish]
-depends = ["fish"]
-
-[pyv-fish.files]
-"pyv/fish" = "~/.config/fish"
-
-[pyv-zsh]
-depends = ["zsh"]
-
-[pyv-zsh.files]
-"pyv/zsh" = "~/.zsh"
+[pyv.files]
+"pyv/fish" = { target = "~/.config/fish", type = "symbolic", if = "dotter.packages.fish" }
+"pyv/zsh" = { target = "~/.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 # rbenv {{{
@@ -602,28 +422,13 @@ depends = ["updater"]
 
 [rbenv.files]
 "rbenv/update.sh" = "~/.config/update.d/40-rbenv.sh"
+"rbenv/env.bash" = { target = "~/.config/bash/env.d/40-rbenv.sh", type = "template", if = "dotter.packages.bash" }
+"rbenv/init.bash" = { target = "~/.config/bash/rc.d/40-rbenv.sh", type = "symbolic", if = "dotter.packages.bash" }
+"rbenv/init.fish" = { target = "~/.config/fish/conf.d/40-rbenv.fish", type = "symbolic", if = "dotter.packages.fish" }
+"rbenv/init.zsh" = { target = "~/.zsh/plugins.d/rbenv.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
-[rbenv-bash]
-depends = ["bash", "rbenv"]
-
-[rbenv-bash.files]
-"rbenv/env.bash" = "~/.config/bash/env.d/40-rbenv.sh"
-"rbenv/init.bash" = "~/.config/bash/rc.d/40-rbenv.sh"
-
-[rbenv-bash.variables]
+[rbenv.variables]
 rbenv_root = "$HOME/.local/opt/rbenv"
-
-[rbenv-fish]
-depends = ["fish", "rbenv"]
-
-[rbenv-fish.files]
-"rbenv/init.fish" = "~/.config/fish/conf.d/40-rbenv.fish"
-
-[rbenv-zsh]
-depends = ["rbenv", "zsh"]
-
-[rbenv-zsh.files]
-"rbenv/init.zsh" = "~/.zsh/plugins.d/rbenv.zsh"
 
 # }}}
 # rustup {{{
@@ -633,22 +438,12 @@ depends = ["updater"]
 
 [rustup.files]
 "rustup/update.sh" = "~/.config/update.d/80-rustup.sh"
+"rustup/env.bash" = { target = "~/.config/bash/env.d/80-rustup.sh", type = "template", if = "dotter.packages.bash" }
+"rustup/env.zsh" = { target = "~/.zsh/env.d/80-rustup.zsh", type = "template", if = "dotter.packages.zsh" }
 
 [rustup.variables]
 rustup_home = "$HOME/.local/opt/rustup"
 cargo_home = "$HOME/.local/opt/cargo"
-
-[rustup-bash]
-depends = ["bash", "rustup"]
-
-[rustup-bash.files]
-"rustup/env.bash" = "~/.config/bash/env.d/80-rustup.sh"
-
-[rustup-zsh]
-depends = ["rustup", "zsh"]
-
-[rustup-zsh.files]
-"rustup/env.zsh" = "~/.zsh/env.d/80-rustup.zsh"
 
 # }}}
 # ssh {{{
@@ -661,30 +456,15 @@ depends = ["rustup", "zsh"]
 
 [starship.files]
 "starship/config.toml" = "~/.config/starship.toml"
+"starship/init.bash" = { target = "~/.config/bash/rc.d/90-starship.sh", type = "symbolic", if = "dotter.packages.bash" }
+"starship/init.fish" = { target = "~/.config/fish/conf.d/90-starship.fish", type = "symbolic", if = "dotter.packages.fish" }
+"starship/init.zsh" = { target = "~/.zsh/rc.d/90-starship.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 [starship-updater]
 depends = ["starship", "updater"]
 
 [starship-updater.files]
 "starship/install-or-update.sh" = "~/.config/update.d/60-starship.sh"
-
-[starship-bash]
-depends = ["bash", "starship"]
-
-[starship-bash.files]
-"starship/init.bash" = "~/.config/bash/rc.d/90-starship.sh"
-
-[starship-fish]
-depends = ["fish", "starship"]
-
-[starship-fish.files]
-"starship/init.fish" = "~/.config/fish/conf.d/90-starship.fish"
-
-[starship-zsh]
-depends = ["starship", "zsh"]
-
-[starship-zsh.files]
-"starship/init.zsh" = "~/.zsh/rc.d/90-starship.zsh"
 
 # }}}
 # tailscale {{{
@@ -701,8 +481,8 @@ depends = ["starship", "zsh"]
 # }}}
 # trash {{{
 
-[trash-macos-fish.files]
-"trash/macos/rm.fish" = "~/.config/fish/functions/rm.fish"
+[trash-macos.files]
+"trash/macos/rm.fish" = { target = "~/.config/fish/functions/rm.fish", type = "symbolic", if = "dotter.packages.fish" }
 
 # }}}
 # vim {{{
@@ -718,34 +498,22 @@ depends = ["updater"]
 # }}}
 # vscode {{{
 
-[vscode-fish]
-depends = ["fish"]
-
-[vscode-fish.files]
-"vscode/shell-integration.fish" = "~/.config/fish/conf.d/10-vscode.fish"
+[vscode.files]
+"vscode/shell-integration.fish" = { target = "~/.config/fish/conf.d/10-vscode.fish", type = "symbolic", if = "dotter.packages.fish" }
 
 # }}}
 # watson {{{
 
 [watson.files]
 "watson/config" = "~/.config/watson/config"
-
-[watson-fish]
-depends = ["fish", "watson"]
-
-[watson-fish.files]
-"watson/fish" = "~/.config/fish"
-
-[watson-zsh]
-depends = ["watson", "zsh"]
-
-[watson-zsh.files]
-"watson/zsh" = "~/.zsh"
+"watson/fish" = { target = "~/.config/fish", type = "symbolic", if = "dotter.packages.fish" }
+"watson/zsh" = { target = "~/.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 # ytdl {{{
 
-[ytdl]
+[ytdl.files]
+"ytdl/fish" = { target = "~/.config/fish", type = "symbolic", if = "dotter.packages.fish" }
 
 [ytdl-updater]
 depends = ["updater", "ytdl"]
@@ -753,37 +521,16 @@ depends = ["updater", "ytdl"]
 [ytdl-updater.files]
 "ytdl/update.sh" = "~/.config/update.d/80-ytdl.sh"
 
-
-[ytdl-fish]
-depends = ["fish", "ytdl"]
-
-[ytdl-fish.files]
-"ytdl/fish" = "~/.config/fish"
-
-
 # }}}
 # zoxide {{{
 
+[zoxide.files]
+"zoxide/init.bash" = { target = "~/.config/bash/rc.d/90-zoxide.sh", type = "template", if = "dotter.packages.bash" }
+"zoxide/init.fish" = { target = "~/.config/fish/conf.d/90-zoxide.fish", type = "template", if = "dotter.packages.fish" }
+"zoxide/plugin.zsh" = { target = "~/.zsh/plugins.d/zoxide.zsh", type = "template", if = "dotter.packages.zsh" }
+
 [zoxide.variables]
 zoxide_command = "z"
-
-[zoxide-bash]
-depends = ["bash", "zoxide"]
-
-[zoxide-bash.files]
-"zoxide/init.bash" = "~/.config/bash/rc.d/90-zoxide.sh"
-
-[zoxide-fish]
-depends = ["fish", "zoxide"]
-
-[zoxide-fish.files]
-"zoxide/init.fish" = "~/.config/fish/conf.d/90-zoxide.fish"
-
-[zoxide-zsh]
-depends = ["zoxide", "zsh"]
-
-[zoxide-zsh.files]
-"zoxide/plugin.zsh" = "~/.zsh/plugins.d/zoxide.zsh"
 
 #}}}
 

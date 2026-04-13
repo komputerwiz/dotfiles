@@ -52,7 +52,7 @@
 [column]
 	ui = auto
 [core]
-	{{#if use_git_delta}}pager = delta{{/if}}
+	{{#if (is_executable "delta")}}pager = delta{{/if}}
 	excludesfile = ~/.config/git/ignore
 	fsmonitor = true
 	untrackedcache = true
@@ -77,9 +77,9 @@
 [init]
 	defaultBranch = master
 [interactive]
-	{{#if use_git_delta}}diffFilter = delta --color-only{{/if}}
+	{{#if (is_executable "delta")}}diffFilter = delta --color-only{{/if}}
 [merge]
-	{{#if use_git_delta}}conflictstyle = zdiff3{{/if}}
+	{{#if (is_executable "delta")}}conflictstyle = zdiff3{{/if}}
 	tool = vimdiff
 	ff = false
 [pretty]
