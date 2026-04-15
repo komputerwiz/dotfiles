@@ -1,0 +1,35 @@
+[rounding]
+# Round segment start/end times to the nearest interval.
+# Allowed values: 1m, 5m, 10m, 15m, 30m, 1h
+# Applies when the current time is used (i.e., no --at flag).
+# Can be overridden per-command with --round=<INTERVAL> or disabled with --no-round.
+interval = "5m"
+
+[tui]
+# Show a ".." parent navigation entry at the top of the context tree sidebar
+# when a working context is active. Selecting it (or pressing -) navigates up
+# to the parent context, or clears the working context if already at the top
+# level. Set to false to hide this entry and rely solely on the - shortcut.
+# Default: true
+show_parent_entry = false
+
+[ranges]
+# First day of the calendar week for "this-week" / "last-week" ranges.
+# Default: "sunday" (US convention). Use "monday" for ISO 8601.
+week_start = "sunday"
+
+# User-defined range presets for use with --range / -R.
+# A preset can be a string alias for a built-in keyword, or a table with
+# "from" and "to" fields (same formats as --from / --to).
+[ranges.presets]
+tw     = "this-work-week"
+lw     = "last-work-week"
+
+[sync]
+# URL of the remote sync server (client devices only).
+remote = "https://zenyth.komputerwiz.net/tt"
+
+[server]
+# Pre-shared token for remote device registration via the HTTP API.
+# If absent, remote registration is disabled.
+#enrollment_token = "change-me"

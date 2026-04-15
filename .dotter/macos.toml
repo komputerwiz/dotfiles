@@ -12,3 +12,6 @@ homebrew_prefix = "/opt/homebrew"
 
 [nushell.files]
 "nushell" = "~/Library/Application Support/nushell"
+
+[tt.files]
+"tt/config.toml" = "~/Library/Application Support/tt/config.toml"

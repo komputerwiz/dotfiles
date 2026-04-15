@@ -48,6 +48,7 @@ editor = "vim"
 # 80 - misc software and plugins
 #
 # - rustup
+# - tt
 # - vim
 # - ytdl
 #
@@ -483,6 +484,15 @@ depends = ["starship", "updater"]
 
 [trash-macos.files]
 "trash/macos/rm.fish" = { target = "~/.config/fish/functions/rm.fish", type = "symbolic", if = "dotter.packages.fish" }
+
+# }}}
+# tt (time-tracker) {{{
+
+[tt.files]
+"tt/config.toml" = "~/.config/tt/config.toml"
+"tt/init.bash" = { target = "~/.config/bash/rc.d/80-tt.sh", type = "symbolic", if = "dotter.packages.bash" }
+"tt/init.fish" = { target = "~/.config/fish/conf.d/80-tt.fish", type = "symbolic", if = "dotter.packages.fish" }
+"tt/init.zsh" = { target = "~/.zsh/rc.d/80-tt.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
 # vim {{{

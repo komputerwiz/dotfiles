@@ -1,0 +1,1 @@
+COMPLETE=fish tt | source

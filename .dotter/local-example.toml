@@ -67,6 +67,7 @@ packages = [
 	# "tailscale",
 	# "tmux",
 	# "trash-macos",
+	# "tt",
 	# "vim",
 	# "vscode",
 	# "watson",
