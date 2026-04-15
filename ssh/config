@@ -1,5 +1,8 @@
 AddKeysToAgent yes
 Include config.sec
+{{#if (is_executable "colima")}}
+Include ~/.colima/ssh_config
+{{/if}}
 
 Host home nymbus nymbus.home.komputerwiz.net
 Hostname nymbus.home.komputerwiz.net
