@@ -248,6 +248,15 @@ depends = ["updater"]
 "atuin/init.zsh" = { target = "~/.zsh/rc.d/90-atuin.zsh", type = "symbolic", if = "dotter.packages.zsh" }
 
 # }}}
+# btop / bpytop {{{
+
+[btop.files]
+btop = "~/.config/btop"
+
+[bpytop.files]
+btop = "~/.config/bpytop"
+
+# }}}
 # direnv {{{
 
 [direnv.files]

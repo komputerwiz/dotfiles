@@ -40,6 +40,8 @@ packages = [
 
 	# "aliases",           # NOTE: mutually exclusive with atuin
 	# "atuin",
+	# "btop",
+	# "bpytop",
 	# "direnv",
 	# "dolphinsay",        # wrapper script for cowsay
 	# "dolphinsay-greet",  # show a random dolphin thought on interactive shell
