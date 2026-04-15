@@ -1,11 +1,11 @@
-[aliases-nushell.files]
-"aliases/aliases.nu" = { target = "~/Library/Application Support/nushell/vendor/autoload/30-aliases.nu", type = "symbolic" }
+[aliases.files]
+"aliases/aliases.nu" = { target = "~/Library/Application Support/nushell/vendor/autoload/30-aliases.nu", type = "symbolic", if = "dotter.packages.nushell" }
 
 [homebrew.variables]
 homebrew_prefix = "/opt/homebrew"
 
-[homebrew-nushell.files]
-"homebrew/init.nu" = "~/Library/Application Support/nushell/vendor/autoload/10-homebrew.nu"
+[homebrew.files]
+"homebrew/init.nu" = { target = "~/Library/Application Support/nushell/vendor/autoload/10-homebrew.nu", type = "symbolic", if = "dotter.packages.nushell" }
 
 [latex.files]
 "latex/packages" = { target = "~/.local/opt/texmf/tex/latex", type = "symbolic" }
