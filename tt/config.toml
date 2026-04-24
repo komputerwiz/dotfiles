@@ -13,6 +13,18 @@ interval = "5m"
 # Default: true
 show_parent_entry = false
 
+[log]
+# Default date range applied to "tt log" when --range, --from, and --to are all
+# omitted. Accepts any built-in keyword or user-defined preset name (see
+# [ranges.presets] below). Override per-invocation with --range, --from, --to,
+# or bypass entirely with --all (show all segments regardless of config).
+default_range = "today"
+
+[report]
+# Default date range applied to "tt report" when --range, --from, and --to are
+# all omitted. Same values accepted as [log].default_range.
+default_range = "this-week"
+
 [ranges]
 # First day of the calendar week for "this-week" / "last-week" ranges.
 # Default: "sunday" (US convention). Use "monday" for ISO 8601.
