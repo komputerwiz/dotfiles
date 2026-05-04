@@ -37,14 +37,21 @@ User git
 Host *.textrac.star.tamu.edu
 User textrac
 LogLevel error
-IdentityFile ~/.ssh/textrac/textrac
+IdentityFile ~/.ssh/textrac
 
-Host textrac-star tailscale.textrac.star.tamu.edu
+Host textrac-prod-star textrac-star tailscale.textrac.star.tamu.edu
 Hostname tailscale.textrac.star.tamu.edu
 User ubuntu
 ProxyJump remote-dev.citd.tamu.edu
 LogLevel error
-IdentityFile ~/.ssh/textrac/textrac
+IdentityFile ~/.ssh/textrac
+
+Host textrac-staging-star
+Hostname staging.tailnet.textrac.star.tamu.edu
+User ubuntu
+ProxyJump textrac-prod-star
+LogLevel error
+IdentityFile ~/.ssh/textrac
 
 Host w5bcs
 Hostname w5bcs.radio
