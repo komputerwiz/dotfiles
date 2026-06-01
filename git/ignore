@@ -26,6 +26,9 @@ tramp
 ## Visual Studio Code Files
 .vscode
 
+## Zed Files
+.zed
+
 ## macOS Files
 .DS_Store
 .AppleDouble
