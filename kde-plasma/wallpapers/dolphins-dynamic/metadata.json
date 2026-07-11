@@ -1,0 +1,12 @@
+{
+	"KPackageStructure": "Plasma/Wallpaper",
+	"KPlugin": {
+		"Authors": [
+			{
+				"Name": "Matthew Barry"
+			}
+		],
+		"Id": "dolphins-dynamic",
+		"Name": "Dolphins (Dynamic)"
+	}
+}

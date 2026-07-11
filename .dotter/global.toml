@@ -342,6 +342,12 @@ email = "komputerwiz.matt@gmail.com"
 "hyprland/wofi" = "~/.config/wofi"
 
 # }}}
+# KDE / plasma {{{
+
+[kde-plasma.files]
+"kde-plasma/wallpapers" = "~/.local/share/wallpapers"
+
+# }}}
 # latex {{{
 
 [latex.files]
