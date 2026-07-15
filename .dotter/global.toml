@@ -277,10 +277,14 @@ btop = "~/.config/bpytop"
 depends = ["dolphinsay"]
 
 [dolphinsay-greet.files]
-"dolphinsay/text" = { target = "~/.config/dolphinsay/text", type = "symbolic" }
+"dolphinsay/text/clothing" = { target = "~/.config/dolphinsay/text/clothing", type = "symbolic" }
+"dolphinsay/text/sayings" = { target = "~/.config/dolphinsay/text/sayings", type = "symbolic" }
 "dolphinsay/greeting.sh" = { target = "~/.config/bash/rc.d/99-dolphinsay-greet.sh", type = "symbolic", if = "dotter.packages.bash" }
 "dolphinsay/fish_greeting.fish" = { target = "~/.config/fish/functions/fish_greeting.fish", type = "symbolic", if = "dotter.packages.fish" }
 "dolphinsay/greeting.sh" = { target = "~/.zsh/rc.d/99-dolphinsay-greet.zsh", type = "symbolic", if = "dotter.packages.zsh" }
+
+[dolphinsay-greet-nsfw.files]
+"dolphinsay/text/nsfw" = { target = "~/.config/dolphinsay/text/nsfw", type = "symbolic" }
 
 # }}}
 # duplicity {{{

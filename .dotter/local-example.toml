@@ -38,13 +38,14 @@ packages = [
 
 	## Other Packages
 
-	# "aliases",           # NOTE: mutually exclusive with atuin
+	# "aliases",                # NOTE: mutually exclusive with atuin
 	# "atuin",
 	# "btop",
 	# "bpytop",
 	# "direnv",
-	# "dolphinsay",        # wrapper script for cowsay
-	# "dolphinsay-greet",  # show a random dolphin thought on interactive shell
+	# "dolphinsay",             # wrapper script for cowsay
+	# "dolphinsay-greet",       # show a random dolphin thought on interactive shell
+	# "dolphinsay-greet-nsfw",  # dolphins know no boundaries!
 	# "duplicity",
 	# "fzf",
 	# "gem",
