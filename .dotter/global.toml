@@ -349,7 +349,7 @@ email = "komputerwiz.matt@gmail.com"
 # KDE / plasma {{{
 
 [kde-plasma.files]
-"kde-plasma/wallpapers" = "~/.local/share/wallpapers"
+"kde-plasma/wallpapers" = { target = "~/.local/share/wallpapers", type = "symbolic" }
 
 # }}}
 # latex {{{
