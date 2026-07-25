@@ -350,6 +350,8 @@ email = "komputerwiz.matt@gmail.com"
 
 [kde-plasma.files]
 "kde-plasma/wallpapers" = { target = "~/.local/share/wallpapers", type = "symbolic" }
+"kde-plasma/colors" = "~/.local/share/color-schemes"
+"kde-plasma/themes" = "~/.local/share/plasma/look-and-feel/"
 
 # }}}
 # latex {{{

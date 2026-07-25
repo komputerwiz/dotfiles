@@ -1,0 +1,19 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "matthew@komputerwiz.net",
+                "Name": "Matthew Barry"
+            }
+        ],
+        "Description": "Dark theme based on Breeze styles and Catppuccin Mocha color scheme",
+        "Id": "Breeze Catppuccin Mocha Blue",
+        "License": "MIT",
+        "Name": "Breeze Catppuccin Mocha Blue",
+        "Website": "https://komputerwiz.net"
+    },
+    "Keywords": "Desktop;Workspace;Appearance;Look and Feel;",
+    "X-Plasma-APIVersion": "2",
+    "X-Plasma-MainScript": "default"
+}
