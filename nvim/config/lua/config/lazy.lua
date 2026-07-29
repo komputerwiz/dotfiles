@@ -29,7 +29,7 @@ require('lazy').setup({
 	},
 	checker = {
 		-- automatically check for plugin updates on startup
-		enabled = true,
+		enabled = false,
 		-- only once per day
 		frequency = 86400,
 	},
