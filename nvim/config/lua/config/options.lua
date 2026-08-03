@@ -18,6 +18,7 @@ opt.colorcolumn = { 80, 92, 100, 120 }
 opt.completeopt = { 'menu', 'menuone', 'noselect' } -- {'longest', 'menu'}
 opt.concealcursor = 'c'
 opt.conceallevel = 0
+opt.cursorline = true
 opt.expandtab = false
 opt.exrc = true
 opt.foldlevel = 99
