@@ -65,7 +65,15 @@ local M = {
 
 local function emoji(glyph, triggers)
 	for _, name in ipairs(triggers) do
-		table.insert(M, s({ hidden = emoji_hidden, trig = ':' .. name .. ':', desc = glyph }, t(glyph)))
+		table.insert(M, s({
+			hidden = emoji_hidden,
+			trig = ':' .. name .. ':',
+			desc = glyph,
+			-- only show snippet suggestion in autocomplete when line ends with colon-prefixed word
+			show_condition = function(line_to_cursor)
+				return line_to_cursor:match(':[%w_]*$') ~= nil
+			end,
+		}, t(glyph)))
 	end
 end
 
