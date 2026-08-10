@@ -43,6 +43,7 @@ editor = "vim"
 #
 # - fish
 # - zsh
+# - atuin (update)
 # - starship (update)
 #
 # 80 - misc software and plugins
@@ -54,6 +55,7 @@ editor = "vim"
 #
 # 90 - late-binding shell environment
 #
+# - atuin (loading)
 # - fzf (loading)
 # - starship (loading)
 # - zoxide (loading)
@@ -243,6 +245,7 @@ depends = ["updater"]
 
 [atuin.files]
 "atuin/config.toml" = "~/.config/atuin/config.toml"
+"atuin/update.sh" = "~/.config/update.d/60-atuin.sh"
 "atuin/init.bash" = { target = "~/.config/bash/rc.d/90-atuin.sh", type = "symbolic", if = "dotter.packages.bash" }
 "atuin/init.fish" = { target = "~/.config/fish/conf.d/90-atuin.fish", type = "symbolic", if = "dotter.packages.fish" }
 "atuin/init.zsh" = { target = "~/.zsh/rc.d/90-atuin.zsh", type = "symbolic", if = "dotter.packages.zsh" }
