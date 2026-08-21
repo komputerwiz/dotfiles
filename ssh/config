@@ -25,6 +25,9 @@ ControlMaster auto
 ControlPersist 10m
 ControlPath ~/.ssh/cm/%r@%h:%p
 User mbarry-admin2
+LogLevel error
+ForwardAgent yes
+SetEnv TERM=xterm-256color
 
 Host *.citd.tamu.edu *.tcat.tamu.edu !remote-dev.citd.tamu.edu
 User mbarry-admin2
