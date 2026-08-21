@@ -85,6 +85,27 @@ return {
 	}),
 
 	s({
+		trig = 'ghpr#(%d+)',
+		name = 'GitHub Pull Request Link',
+		regTrig = true,
+		docTrig = 'GitHub PR Link',
+	}, {
+		t('[PR #'),
+		f(function(_, snip)
+			return snip.captures and snip.captures[1] or ''
+		end),
+		t('](https://github.com/'),
+		i(1, 'user'),
+		t('/'),
+		i(2, 'repo'),
+		t('/pull/'),
+		f(function(_, snip)
+			return snip.captures and snip.captures[1] or ''
+		end),
+		t(')'),
+	}),
+
+	s({
 		trig = 'gt#(%d+)',
 		name = 'TCAT Gitea Issue Link',
 		regTrig = true,
