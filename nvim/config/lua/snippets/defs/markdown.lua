@@ -2,6 +2,7 @@ local ls = require('luasnip')
 local u = require('snippets.util')
 
 local s = ls.snippet
+local ms = ls.multi_snippet
 local sn = ls.snippet_node
 local t = ls.text_node
 local i = ls.insert_node
@@ -13,12 +14,16 @@ local r = ls.restore_node
 return {
 	-- ham radio notes/minutes
 
-	s({ trig = 'qrz', name = 'Link to QRZ profile' }, {
-		t('['), i(2, 'Good on QRZ'), t('](https://qrz.com/db/'), u.visual(1, 'n0call'), t(')'),
+	ms({
+		'q',
+		'qso',
+		common = { name = 'Contact shortcode' },
+	}, {
+		t('{{% qso '), u.visual(1), t(' %}}'),
 	}),
 
-	s({ trig = 'qso', name = 'Contact shortcode' }, {
-		t('{{% qso '), u.visual(1), t(' %}}'),
+	s({ trig = 'qrz', name = 'Link to QRZ profile' }, {
+		t('['), i(2, 'Good on QRZ'), t('](https://qrz.com/db/'), u.visual(1, 'n0call'), t(')'),
 	}),
 
 	s({
@@ -74,9 +79,15 @@ return {
 			return snip.captures and snip.captures[1] or ''
 		end),
 		t('](https://github.com/'),
-		i(1, 'user'),
+		i(1, 'tamu-edu'),
 		t('/'),
-		i(2, 'repo'),
+		c(2, {
+			sn(nil, {
+				t('tcat-'),
+				i(1, 'repo'),
+			}),
+			i(1, 'repo'),
+		}),
 		t('/issues/'),
 		f(function(_, snip)
 			return snip.captures and snip.captures[1] or ''
@@ -95,9 +106,15 @@ return {
 			return snip.captures and snip.captures[1] or ''
 		end),
 		t('](https://github.com/'),
-		i(1, 'user'),
+		i(1, 'tamu-edu'),
 		t('/'),
-		i(2, 'repo'),
+		c(2, {
+			sn(nil, {
+				t('tcat-'),
+				i(1, 'repo'),
+			}),
+			i(1, 'repo'),
+		}),
 		t('/pull/'),
 		f(function(_, snip)
 			return snip.captures and snip.captures[1] or ''
@@ -116,7 +133,7 @@ return {
 			return snip.captures and snip.captures[1] or ''
 		end),
 		t('](https://gitea.citd.tamu.edu/TCAT/'),
-		i(1, 'project'),
+		i(1, 'repo'),
 		t('/issues/'),
 		f(function(_, snip)
 			return snip.captures and snip.captures[1] or ''
