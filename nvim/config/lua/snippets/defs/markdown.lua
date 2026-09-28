@@ -140,4 +140,23 @@ return {
 		end),
 		t(')'),
 	}),
+
+	s({
+		trig = 'gtpr#(%d+)',
+		name = 'TCAT Gitea Pull Request Link',
+		regTrig = true,
+		docTrig = 'Gitea PR Link',
+	}, {
+		t('[#'),
+		f(function(_, snip)
+			return snip.captures and snip.captures[1] or ''
+		end),
+		t('](https://gitea.citd.tamu.edu/TCAT/'),
+		i(1, 'repo'),
+		t('/pulls/'),
+		f(function(_, snip)
+			return snip.captures and snip.captures[1] or ''
+		end),
+		t(')'),
+	}),
 }
