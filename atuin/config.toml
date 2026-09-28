@@ -404,9 +404,3 @@ ignored_commands = [
 ## Syntax highlight commands in the search results, using the theme's colors.
 ## Not available on all platforms (e.g. Windows).
 # syntax_highlight = true
-
-[sync]
-records = true
-
-[dotfiles]
-enabled = true

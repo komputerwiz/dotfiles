@@ -38,7 +38,7 @@ packages = [
 
 	## Other Packages
 
-	# "aliases",                # NOTE: mutually exclusive with atuin
+	# "aliases",
 	# "atuin",
 	# "btop",
 	# "bpytop",

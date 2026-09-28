@@ -1,26 +1,14 @@
 # system {{{
 
-alias la='ls -aF'
-alias ll='ls -hlF'
-alias lal='ls -ahlF'
-alias lla='ls -ahlF'
 alias l='ls -F'
-
-#alias cp='cp -i'
-#alias mv='mv -i'
-
-# }}}
-# composer {{{
-
-alias c='composer'
-alias cu='composer update'
-alias cr='composer require'
-alias crm='composer remove'
-alias ci='composer install'
-alias ccp='composer create-project'
+alias la='ls -aF'
+alias lal='ls -ahlF'
+alias ll='ls -hlF'
+alias lla='ls -ahlF'
 
 # }}}
 # git {{{
+
 alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
@@ -33,13 +21,8 @@ alias gbsg='git bisect good'
 alias gbsr='git bisect reset'
 alias gbss='git bisect start'
 alias gc='git commit -v'
-#alias gc!='git commit -v --amend'
 alias gca='git commit -v --amend'
-#alias gcn!='git commit -v --no-edit --amend'
 alias gcan='git commit -v --amend --no-edit'
-#alias gcb='git checkout -b'
-#alias gcm='git checkout master'
-#alias gco='git checkout'
 alias gcp='git cherry-pick'
 alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
@@ -56,18 +39,15 @@ alias gm='git merge'
 alias gma='git merge --abort'
 alias gmc='git merge --continue'
 alias gp='git push'
-#alias gp!='git push --force'
 alias gpf='git push --force-with-lease'
 alias grb='git rebase'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 alias grbi='git rebase --interactive'
-#alias grbm='git rebase master'
 alias grbs='git rebase --skip'
 alias grm='git rm'
 alias grmc='git rm --cached'
 alias grs='git restore --staged'
-#alias gsm='git submodule'
 alias gst='git status'
 alias gsta='git stash push'
 alias gstd='git stash drop'
@@ -78,11 +58,6 @@ alias gsw='git switch'
 alias gswc='git switch --create'
 alias gy='git apply'
 alias gyr='git apply --reverse'
-
-# }}}
-# watson {{{
-
-alias tt='watson'
 
 # }}}
 

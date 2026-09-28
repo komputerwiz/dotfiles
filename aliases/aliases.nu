@@ -1,8 +1,8 @@
 # system {{{
 
-alias ll = ls -l
 alias la = ls -a
 alias lal = ls -al
+alias ll = ls -l
 alias lla = ls -al
 
 # }}}
