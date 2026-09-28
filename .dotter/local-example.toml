@@ -93,6 +93,7 @@ packages = [
 # ghostty_command = "/usr/bin/fish"
 # ghostty_font_size = 12
 # grammarly_client_id = "..."
+# homebrew_greedy_updates = false
 # intelephense_license_key = "..."
 # n_prefix = "$HOME/.local/opt/n"
 # nvim_python3 = "/usr/bin/python3"

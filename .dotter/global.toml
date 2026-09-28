@@ -198,6 +198,9 @@ depends = ["updater"]
 "homebrew/init.nu" = { target = "~/.local/share/nushell/vendor/autoload/10-homebrew.nu", type = "template", if = "dotter.packages.nushell" }
 "homebrew/init.zsh" = { target = "~/.zsh/env.d/10-homebrew.zsh", type = "template", if = "dotter.packages.zsh" }
 
+[homebrew.variables]
+homebrew_greedy_updates = false
+
 # }}}
 # nix {{{
 
