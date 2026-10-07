@@ -50,6 +50,14 @@ return {
 		}),
 	}),
 
+	s({ trig = 'maps', name = 'Link to Google Maps' }, {
+		t('[['),
+		u.visual(1, 'Google Maps'),
+		t(']('),
+		i(2, 'url'),
+		t(')]')
+	}),
+
 	-- hugo shortcodes
 
 	s({ trig = 'rref', name = 'Relative reference link' }, {
